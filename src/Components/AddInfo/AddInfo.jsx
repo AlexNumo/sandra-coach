@@ -1,5 +1,8 @@
 import { Formik } from "formik";
-import {clientAPI} from '../../service/axios.config';
+import { clientAPI } from '../../service/axios.config';
+import {
+  BTNSubmit
+} from './AddInfo.styled';
 // import * as Yup from "yup";
 
 const InfoCoach = () => {
@@ -163,9 +166,9 @@ const InfoCoach = () => {
             >
               Reset
             </button>
-            <button type="submit" disabled={isSubmitting}>
+            <BTNSubmit type="submit" disabled={isSubmitting}>
               Submit
-            </button>
+            </BTNSubmit>
           </form>
         );
       }}
