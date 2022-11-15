@@ -4,9 +4,8 @@ import ScheduleTable from '../ScheduleTable/ScheduleTable';
 import {clientAPI} from '../../service/axios.config';
 import {
   PositionTable, 
-  // ScheduleLink
+  ScheduleLink
 } from './ScheduleGet.styled';
-// import { Link } from 'react-router-dom';
 
 
 function ScheduleGet() {
@@ -274,7 +273,7 @@ function ScheduleGet() {
         />
       </tbody>
       </Table>
-      {/* <ScheduleLink to='schedule'>Змінити</ScheduleLink> */}
+      <ScheduleLink to='/'>Головне меню</ScheduleLink>
     </PositionTable>
   );
 }

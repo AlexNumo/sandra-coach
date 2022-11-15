@@ -12,6 +12,10 @@ const LinkStyle = styled(NavLink)`
   font-family: 'Times New Roman', Times, serif;
   font-size: 25px;
   font-weight: 400;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
 `;
 
 export {
