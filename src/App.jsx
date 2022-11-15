@@ -18,7 +18,7 @@ import Toaster from './Components/Toasts/Toasts';
 // import TEST from './Components/TEST/TEST';
 
 // const Header = lazy(() => import('./Components/Header/Header.jsx' /* webpackChunkName: "Header"*/));
-// const MainPage = lazy(() => import('./Components/MainPage/MainPage.jsx' /* webpackChunkName: "MainPage"*/));
+const MainPage = lazy(() => import('./Components/MainPage/MainPage.jsx' /* webpackChunkName: "MainPage"*/));
 const Schedule = lazy(() => import('./Components/Schedule/Schedule.jsx' /* webpackChunkName: "Schedule"*/));
 const ScheduleGet = lazy(() => import('./Components/ScheduleGet/ScheduleGet.jsx' /* webpackChunkName: "ScheduleGet"*/));
 // const Album = lazy(() => import('./Components/Album/Album.jsx' /* webpackChunkName: "Album"*/));
@@ -33,16 +33,16 @@ function App() {
         <Routes>
           <Route exact path='/' element={
             <>
-              {/* <Header />
-              <MainPage /> */}
-              <Schedule />
-              <ScheduleGet />
-              {/* <Album />
-              <Market /> */}
+              <MainPage/>
             </>
           } />
-          {/* <Route path='/' element={<Abonnement /> } />
-          <Route path='/' element={<><Schedule /><ScheduleGet /></>} /> */}
+          <Route path='/schedule' element={
+            <>
+              <Schedule />
+              <ScheduleGet />
+            </>
+          } />
+          {/* <Route path='/' element={<><Schedule /><ScheduleGet /></>} /> */}
           {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Routes>
       </Suspense>
