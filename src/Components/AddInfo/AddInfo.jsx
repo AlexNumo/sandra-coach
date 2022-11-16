@@ -1,9 +1,10 @@
 import { Formik } from "formik";
 import { clientAPI } from '../../service/axios.config';
 import {
-  BTNSubmit
+  BTNSubmit,
+  ERROR
 } from './AddInfo.styled';
-// import * as Yup from "yup";
+import * as Yup from "yup";
 
 const InfoCoach = () => {
   const options = [
@@ -26,6 +27,19 @@ const InfoCoach = () => {
     { id: "functional", value: "Functional", text: 'Functional' },
     { id: "metabolick-workout", value: "Metabolick workout", text: 'Metabolick workout' },
   ];
+
+  const CoachSchema = Yup.object().shape({
+    name_Coach: Yup.string()
+      .min(2, <ERROR>Введіть більше символів</ERROR>)
+      .max(50, <ERROR>Введіть меншк символів</ERROR>)
+      .required(<ERROR>Обовязкове поле</ERROR>),
+    date: Yup.string()
+      .required(<ERROR>Оберіть дату</ERROR>),
+    kind_trainee: Yup.string()
+      .required(<ERROR>Оберіть вид тренування</ERROR>),
+    how_many_people: Yup.string()
+      .required(<ERROR>Введіть кількість людей</ERROR>),
+  });
   return (
     <>
       <h1>Info of coach and clients</h1>
@@ -36,6 +50,7 @@ const InfoCoach = () => {
           kind_trainee: "",
           how_many_people: "",
         }}
+        validationSchema={CoachSchema}
         onSubmit={async values => {
           await clientAPI.addNewCoach(values);
         // await new Promise(resolve => setTimeout(resolve, 500));

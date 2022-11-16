@@ -121,7 +121,6 @@ input[type=number]{
 
 .select{
   background-color: inherit;
-  width: 100%;
 }
 `;
 

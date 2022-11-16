@@ -21,6 +21,7 @@ import Toaster from './Components/Toasts/Toasts';
 const MainPage = lazy(() => import('./Components/MainPage/MainPage.jsx' /* webpackChunkName: "MainPage"*/));
 const Schedule = lazy(() => import('./Components/Schedule/Schedule.jsx' /* webpackChunkName: "Schedule"*/));
 const ScheduleGet = lazy(() => import('./Components/ScheduleGet/ScheduleGet.jsx' /* webpackChunkName: "ScheduleGet"*/));
+// const ScheduleTEST = lazy(() => import('./Components/ScheduleTEST/ScheduleTEST.jsx' /* webpackChunkName: "ScheduleGet"*/));
 const InfoCoach = lazy(() => import('./Pages/InfoCoach/InfoCoach.jsx' /* webpackChunkName: "InfoCoach"*/));
 // const Market = lazy(() => import('./Components/Market/Market.jsx' /* webpackChunkName: "Market"*/));
 // const Abonnement = lazy(() => import('./Pages/Abonnement/Abonnement.jsx' /* webpackChunkName: "Abonnement"*/));
@@ -36,6 +37,7 @@ function App() {
             <>
               <Schedule />
               <ScheduleGet />
+              {/* <ScheduleTEST/> */}
             </>
           } />
 

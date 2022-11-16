@@ -6,6 +6,16 @@ const BTNSubmit = styled.button`
   width: 50px;
 `;
 
+const ERROR = styled.div`
+  background-color: red;
+  border: 1px solid;
+  width: 100px;
+  height: 20px;
+  display: flex;
+  position: relative;
+`;
+
 export {
-  BTNSubmit
+  BTNSubmit,
+  ERROR
 };

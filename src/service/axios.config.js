@@ -4,12 +4,23 @@ import instanceClientAPI from './api';
 
 export const sendData = async ({ id, day, time, kind_trainee }) => {
   try {
-    const res = await instanceClientAPI.post(`/api`, {id, day, time, kind_trainee});
+    const res = await instanceClientAPI.post(`/api`, { id, day, time, kind_trainee });
+    toast.success('Зміни відправлено');
     return res;
   } catch (e) {
       toast.error('Щось пішло не так');
   }
 };
+
+// export const sendData = async ({ id }) => {
+//   console.log({id});
+//   try {
+//     const res = await instanceClientAPI.post(`/api`, {id});
+//     return res;
+//   } catch (e) {
+//       toast.error('Щось пішло не так');
+//   }
+// };
 
 
 export const getData = async ({id}) => {

@@ -1,6 +1,8 @@
-import {TableSize} from './OptionsClick.styled';
+import { TableSize } from './OptionsClick.styled';
+import { Formik } from "formik";
+import { clientAPI } from '../../service/axios.config';
 
-const OptionsClick = ({ClickOption}) => {
+const OptionsClick = () => {
   const options = [
     { id: '-', value: '-', text: '-' },
     { id: 'None', value: '-', text: 'Вільно' },
@@ -43,7 +45,6 @@ const OptionsClick = ({ClickOption}) => {
     { id: '1800', text: '18:00' },
     { id: '1900', text: '19:00' },
     { id: '2000', text: '20:00' },
- 
   ];
   return (
     <>
@@ -60,16 +61,50 @@ const OptionsClick = ({ClickOption}) => {
               id={weekDay.id}
               className={weekDay.id}
             >
-              <select className='select' onChange={ClickOption}>
-                {options.map(option => (
-                  <option
-                    key={option.id}
-                    id={option.id}
-                    value={option.value}>
-                    {option.text}
-                  </option>
-                ))}
-              </select>
+            <Formik
+                initialValues={{
+                  id: weekDay.id + time.id,
+                  day: weekDay.id,
+                  time: time.id,
+                  kind_trainee:""
+              }}
+              onSubmit={async values => {
+                await clientAPI.sendData(values);
+              }}
+            >
+              {props => {
+                const {
+                  values,
+                  isSubmitting,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                } = props;
+              return (
+                <form onSubmit={handleSubmit}>
+                    <select
+                      id="kind_trainee"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.weekDay}
+                      className="select"
+                    >
+                      {options.map(option => (
+                        <option
+                          key={option.id}
+                          id={option.id}
+                          value={option.value}>
+                          {option.text}
+                        </option>
+                      ))}
+                    </select>
+                  <button type="submit" disabled={isSubmitting}>
+                    Змінити
+                  </button>
+                </form>
+              );
+              }}
+            </Formik>
             </TableSize>
           ))}
         </tr>
