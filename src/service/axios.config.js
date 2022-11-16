@@ -12,17 +12,6 @@ export const sendData = async ({ id, day, time, kind_trainee }) => {
   }
 };
 
-// export const sendData = async ({ id }) => {
-//   console.log({id});
-//   try {
-//     const res = await instanceClientAPI.post(`/api`, {id});
-//     return res;
-//   } catch (e) {
-//       toast.error('Щось пішло не так');
-//   }
-// };
-
-
 export const getData = async ({id}) => {
   try {
     const result = await instanceClientAPI.put(`/api`, { id });

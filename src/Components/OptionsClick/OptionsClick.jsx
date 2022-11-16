@@ -1,4 +1,7 @@
-import { TableSize } from './OptionsClick.styled';
+import {
+  TableSize,
+  SubmitBTN
+} from './OptionsClick.styled';
 import { Formik } from "formik";
 import { clientAPI } from '../../service/axios.config';
 
@@ -98,9 +101,9 @@ const OptionsClick = () => {
                         </option>
                       ))}
                     </select>
-                  <button type="submit" disabled={isSubmitting}>
+                  <SubmitBTN type="submit" disabled={isSubmitting}>
                     Змінити
-                  </button>
+                  </SubmitBTN>
                 </form>
               );
               }}
