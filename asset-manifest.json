@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/sandra-coach/static/css/main.b3eeeea7.css",
-    "main.js": "/sandra-coach/static/js/main.c31f563d.js",
+    "main.js": "/sandra-coach/static/js/main.41858c70.js",
     "MainPage.js": "/sandra-coach/static/js/MainPage.a3e2c584.chunk.js",
-    "Schedule.js": "/sandra-coach/static/js/Schedule.4de4f400.chunk.js",
+    "Schedule.js": "/sandra-coach/static/js/Schedule.25ea79c6.chunk.js",
     "ScheduleGet.js": "/sandra-coach/static/js/ScheduleGet.17286aaa.chunk.js",
     "InfoCoach.js": "/sandra-coach/static/js/InfoCoach.344d5226.chunk.js",
     "static/js/254.85cf92bf.chunk.js": "/sandra-coach/static/js/254.85cf92bf.chunk.js",
@@ -11,9 +11,9 @@
     "static/js/103.056e87f9.chunk.js": "/sandra-coach/static/js/103.056e87f9.chunk.js",
     "index.html": "/sandra-coach/index.html",
     "main.b3eeeea7.css.map": "/sandra-coach/static/css/main.b3eeeea7.css.map",
-    "main.c31f563d.js.map": "/sandra-coach/static/js/main.c31f563d.js.map",
+    "main.41858c70.js.map": "/sandra-coach/static/js/main.41858c70.js.map",
     "MainPage.a3e2c584.chunk.js.map": "/sandra-coach/static/js/MainPage.a3e2c584.chunk.js.map",
-    "Schedule.4de4f400.chunk.js.map": "/sandra-coach/static/js/Schedule.4de4f400.chunk.js.map",
+    "Schedule.25ea79c6.chunk.js.map": "/sandra-coach/static/js/Schedule.25ea79c6.chunk.js.map",
     "ScheduleGet.17286aaa.chunk.js.map": "/sandra-coach/static/js/ScheduleGet.17286aaa.chunk.js.map",
     "InfoCoach.344d5226.chunk.js.map": "/sandra-coach/static/js/InfoCoach.344d5226.chunk.js.map",
     "254.85cf92bf.chunk.js.map": "/sandra-coach/static/js/254.85cf92bf.chunk.js.map",
@@ -22,6 +22,6 @@
   },
   "entrypoints": [
     "static/css/main.b3eeeea7.css",
-    "static/js/main.c31f563d.js"
+    "static/js/main.41858c70.js"
   ]
 }
