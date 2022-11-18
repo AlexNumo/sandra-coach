@@ -35,12 +35,10 @@ const AddClient = () => {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset
         } = props;
         return (
           <form onSubmit={handleSubmit}>
@@ -82,14 +80,6 @@ const AddClient = () => {
             {errors.tel && touched.tel && (
               <div className="input-feedback">{errors.tel}</div>
             )}
-            <button
-              type="button"
-              className="outline"
-              onClick={handleReset}
-              disabled={!dirty || isSubmitting}
-            >
-              Збросити
-            </button>
             <BTNSubmit type="submit" disabled={isSubmitting}>
               Додати клієнта
             </BTNSubmit>

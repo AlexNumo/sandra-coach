@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { clientAPI } from "service/axios.config";
 import { Formik } from "formik";
+// import Select from 'react-select'
+import {
+  Wrapper,
+  BTNSubmit,
+} from './AddTrainee.styled';
 // import OptionsClick from "Components/OptionsClick/OptionsClick";
 // import * as Yup from "yup";
 // import { ERROR } from "./AddInfo.styled";
@@ -9,25 +14,36 @@ const AddInfo = () => {
   const [allCoach, setAllCoach] = useState([]);
   const [allClient, setAllClient] = useState([]);
   const options = [
-    { id: '-', value: '-', text: '-' },
-    { id: 'None', value: '-', text: 'Вільно' },
-    { id: "kangoo-jumps", value: "Kangoo jumps", text: 'Kangoo jumps' },
-    { id: "sky-jumping", value: "Sky jumping", text: 'Sky jumping' },
-    { id: "stretching", value: "Stretching", text: 'Stretching' },
-    { id: "trx", value: "TRX", text: 'TRX' },
-    { id: "health-back", value: "Здорова спина", text: 'Здорова спина' },
-    { id: "tabata", value: "Tabata", text: 'Tabata' },
-    { id: "high-heels", value: "High heels", text: 'High heels' },
-    { id: "tribal", value: "Tribal fusion", text: 'Tribal fusion' },
-    { id: "twerk", value: "Twerk", text: 'Twerk' },
-    { id: "body-balet", value: "Боди балет", text: 'Боди балет' },
-    { id: "sky-jumping-child", value: "Sky child", text: 'Sky child' },
-    { id: "kangoo-jumps-child-10", value: "Kangoo діти (6-10)", text: 'Kangoo діти (6-10)' },
-    { id: "kangoo-jumps-child-14", value: "Kangoo діти (10-14)", text: 'Kangoo діти (10-14)' },
-    { id: "yoga", value: "Йога", text: 'Йога' },
-    { id: "functional", value: "Functional", text: 'Functional' },
-    { id: "metabolick-workout", value: "Metabolick workout", text: 'Metabolick workout' },
+    { id: '-', value: '-', label: '-' },
+    { id: 'None', value: '-', label: 'Вільно' },
+    { id: "kangoo-jumps", value: "Kangoo jumps", label: 'Kangoo jumps' },
+    { id: "sky-jumping", value: "Sky jumping", label: 'Sky jumping' },
+    { id: "stretching", value: "Stretching", label: 'Stretching' },
+    { id: "trx", value: "TRX", label: 'TRX' },
+    { id: "health-back", value: "Здорова спина", label: 'Здорова спина' },
+    { id: "tabata", value: "Tabata", label: 'Tabata' },
+    { id: "high-heels", value: "High heels", label: 'High heels' },
+    { id: "tribal", value: "Tribal fusion", label: 'Tribal fusion' },
+    { id: "twerk", value: "Twerk", label: 'Twerk' },
+    { id: "body-balet", value: "Боди балет", label: 'Боди балет' },
+    { id: "sky-jumping-child", value: "Sky child", label: 'Sky child' },
+    { id: "kangoo-jumps-child-10", value: "Kangoo діти (6-10)", label: 'Kangoo діти (6-10)' },
+    { id: "kangoo-jumps-child-14", value: "Kangoo діти (10-14)", label: 'Kangoo діти (10-14)' },
+    { id: "yoga", value: "Йога", label: 'Йога' },
+    { id: "functional", value: "Functional", label: 'Functional' },
+    { id: "metabolick-workout", value: "Metabolick workout", label: 'Metabolick workout' },
   ];
+
+  // const options2 = allCoach.map(coach => (
+  //   { value: coach.name_Coach, label: coach.name_Coach }
+  // ))
+
+  // console.log("options2: ", options2);
+  // console.log("allCoach: ", allCoach);
+
+//   const MyComponent = () => (
+//   <Select options={options} />
+// )
 
   useEffect(() => {
     clientAPI.getAllCoach().then(
@@ -52,7 +68,7 @@ const AddInfo = () => {
   //     .required(<ERROR>Введіть номер телефону</ERROR>)
   // });
   return (
-    <div>
+    <Wrapper>
       <Formik
         initialValues={{
           name_Coach: "",
@@ -82,7 +98,18 @@ const AddInfo = () => {
           <label style={{ display: "block" }}>
             Оберіть ім'я тренера
           </label>
+          {/* <Select
+            options={options2}
+            id="name_Coach"
+            type="text"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.assigned}
+            // style={{ width: "150px !important"}}
+          /> */}
+
           <select
+            style={{ width: "150px" }}
             id="name_Coach"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -101,18 +128,20 @@ const AddInfo = () => {
           <label htmlFor="info" style={{ display: "block" }}>
               Оберіть дату тренування
           </label>
-            <input
-              id="info.date"
-              type="date"
-              name="info.date"
-              value={values.date}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              />
+          <input
+            style={{ width: "150px" }}
+            id="info.date"
+            type="date"
+            name="info.date"
+            value={values.date}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            />
           <label htmlFor="info" style={{ display: "block" }}>
               Оберіть вид тренування
           </label>
           <select
+            style={{ width: "150px" }}
             name="info.kind_trainee"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -124,7 +153,7 @@ const AddInfo = () => {
               id={option.id}
               value={option.value}
             >
-              {option.text}
+              {option.label}
             </option>
           ))}
           </select>
@@ -132,6 +161,7 @@ const AddInfo = () => {
               Оберіть клієнтів
           </label>
           <select
+            style={{ width: "150px" }}
             multiple
             name="info.client"
             onChange={handleChange}
@@ -148,14 +178,15 @@ const AddInfo = () => {
             </option>
           ))}
             </select>
-              <button type="submit" disabled={isSubmitting}>
+              <BTNSubmit type="submit" disabled={isSubmitting}>
                 Додати тренера
-              </button>
+          </BTNSubmit>
+          {/* <MyComponent/> */}
             </form>
           );
         }}
-      </Formik>
-    </div>
+        </Formik>
+    </Wrapper>
   )
 }
 

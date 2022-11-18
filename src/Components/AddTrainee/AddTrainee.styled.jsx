@@ -9,14 +9,6 @@ display: flex;
   background-color: #eabfed;
 `;
 
-const WrapperStyle = styled.div`
-  border: 2px solid;
-  width: 350px;
-  margin: 10px 10px 10px 10px;
-  padding: 10px 10px 10px 10px;
-  background-color: #eabfed;
-`;
-
 const BTNSubmit = styled.button`
   background-color: #78789e;
   color: #1a1818;
@@ -34,7 +26,6 @@ const ERROR = styled.div`
 
 export {
   Wrapper,
-  WrapperStyle,
   BTNSubmit,
   ERROR
 };

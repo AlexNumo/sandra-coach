@@ -1,39 +1,93 @@
 import { useState } from 'react';
 import AddTrainee from '../../Components/AddTrainee/AddTrainee';
 import AddCoach from 'Components/AddCoach/AddCoach';
+import AddClient from 'Components/AddClient/AddClient';
+import ViewTrainee from 'Components/ViewTrainee/ViewTrainee';
+import {
+  Wrapper,
+  WrapperBTN,
+  BTN,
+} from './InfoCoach.styled';
 
 const InfoCoach = () => {
   const [showAddTrainee, setShowAddTrainee] = useState(false);
   const [showAddCoach, setShowAddCoach] = useState(false);
+  const [showAddClient, setShowAddClient] = useState(false);
+  const [showTrainee, setShowTrainee] = useState(!false);
 
   const HandleShowAddTrainee = () => {
     if (showAddTrainee === true) {
       setShowAddTrainee(false);
+      setShowAddClient(false);
       setShowAddCoach(false);
+      setShowTrainee(false);
       return;
     }
     setShowAddTrainee(true);
     setShowAddCoach(false);
+    setShowAddClient(false);
+    setShowTrainee(false);
     return;
-  }
+  };
 
-    const HandleShowAddCoach = () => {
+  const HandleShowAddCoach = () => {
     if (showAddCoach === true) {
       setShowAddTrainee(false);
       setShowAddCoach(false);
+      setShowAddClient(false);
+      setShowTrainee(false);
       return;
     }
-      setShowAddCoach(true);
+    setShowAddTrainee(false);
+    setShowAddCoach(true);
+    setShowAddClient(false);
+    setShowTrainee(false);
+    return;
+  };
+
+  const HandleShowAddClient = () => {
+    if (showAddClient === true) {
       setShowAddTrainee(false);
+      setShowAddCoach(false);
+      setShowAddClient(false);
+      setShowTrainee(false);
       return;
-  }
+    }
+    setShowAddTrainee(false);
+    setShowAddCoach(false);
+    setShowAddClient(true);
+    setShowTrainee(false);
+    return;
+  };
+
+  const HandleShowViewTrainee = () => {
+    if (showTrainee === true) {
+      setShowAddTrainee(false);
+      setShowAddCoach(false);
+      setShowAddClient(false);
+      setShowTrainee(false);
+      return;
+    }
+    setShowAddTrainee(false);
+    setShowAddCoach(false);
+    setShowAddClient(false);
+    setShowTrainee(true);
+    return;
+  };
+
   return(
-    <>
-      <button onClick={HandleShowAddTrainee}>Додати нове тренування</button>
-      <button onClick={HandleShowAddCoach}>Додати нового тренера</button>
+    <Wrapper>
+      <WrapperBTN>
+        <BTN onClick={HandleShowAddTrainee}>Додати нове тренування</BTN>
+        <BTN onClick={HandleShowAddCoach}>Додати нового тренера</BTN>
+        <BTN onClick={HandleShowAddClient}>Додати нового клієнта</BTN>
+        <BTN onClick={HandleShowViewTrainee}>Показати всіх тренерів</BTN>
+      </WrapperBTN>
       {showAddCoach ? <AddCoach /> : null}
+      {showAddClient ? <AddClient /> : null}
       {showAddTrainee ? <AddTrainee /> : null}
-  </>
+      {showTrainee ? <ViewTrainee /> : null}
+  </Wrapper>
   )
 };
 
