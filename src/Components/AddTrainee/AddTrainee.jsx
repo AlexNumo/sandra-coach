@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { clientAPI } from "service/axios.config";
-import { Formik, Field } from "formik";
-import OptionsClick from "Components/OptionsClick/OptionsClick";
+import { Formik } from "formik";
+// import OptionsClick from "Components/OptionsClick/OptionsClick";
 // import * as Yup from "yup";
 // import { ERROR } from "./AddInfo.styled";
 
