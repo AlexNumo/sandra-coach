@@ -100,7 +100,8 @@ const OptionsClick = () => {
                           {option.text}
                         </option>
                       ))}
-                    </select>
+                  </select>
+                  
                   <SubmitBTN type="submit" disabled={isSubmitting}>
                     Змінити
                   </SubmitBTN>

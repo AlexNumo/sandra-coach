@@ -1,11 +1,38 @@
-import { Link } from 'react-router-dom';
-import AddInfo from '../../Components/AddInfo/AddInfo';
+import { useState } from 'react';
+import AddTrainee from '../../Components/AddTrainee/AddTrainee';
+import AddCoach from 'Components/AddCoach/AddCoach';
 
 const InfoCoach = () => {
+  const [showAddTrainee, setShowAddTrainee] = useState(false);
+  const [showAddCoach, setShowAddCoach] = useState(false);
+
+  const HandleShowAddTrainee = () => {
+    if (showAddTrainee === true) {
+      setShowAddTrainee(false);
+      setShowAddCoach(false);
+      return;
+    }
+    setShowAddTrainee(true);
+    setShowAddCoach(false);
+    return;
+  }
+
+    const HandleShowAddCoach = () => {
+    if (showAddCoach === true) {
+      setShowAddTrainee(false);
+      setShowAddCoach(false);
+      return;
+    }
+      setShowAddCoach(true);
+      setShowAddTrainee(false);
+      return;
+  }
   return(
     <>
-      <AddInfo />
-      <Link to='/'>Головне меню</Link>
+      <button onClick={HandleShowAddTrainee}>Додати нове тренування</button>
+      <button onClick={HandleShowAddCoach}>Додати нового тренера</button>
+      {showAddCoach ? <AddCoach /> : null}
+      {showAddTrainee ? <AddTrainee /> : null}
   </>
   )
 };

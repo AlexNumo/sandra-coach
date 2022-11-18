@@ -33,21 +33,31 @@ export const getDataALL = async () => {
   }
 };
 
-export const addNewCoach = async ({ name_Coach, date, kind_trainee, how_many_people }) => {
+export const addTrainee = async ({ name_Coach, info }) => {
   try {
-    const res = await instanceClientAPI.post(`/coach`, {name_Coach, date, kind_trainee, how_many_people});
+    const res = await instanceClientAPI.post(`/trainee`, { name_Coach, info });
+    toast.success('Зміни відправлено');
     return res;
   } catch (e) {
       toast.error('Щось пішло не так');
   }
 };
 
-
-export const findCoach = async ({name_Coach}) => {
+export const findTrainee = async ({name_Coach}) => {
   try {
-    const result = await instanceClientAPI.put(`/coach`, { name_Coach });
+    const result = await instanceClientAPI.put(`/trainee`, { name_Coach });
     console.log(result);
     return result;
+  } catch (error) {
+    toast.error('Упс, щось пішло не так');
+    console.error(error.message);
+  }
+};
+
+export const getAllTrainee = async () => {
+  try {
+    const result = await instanceClientAPI.get(`/trainee`);
+    return result.data;
   } catch (error) {
     toast.error('Упс, щось пішло не так');
     console.error(error.message);
@@ -64,11 +74,66 @@ export const getAllCoach = async () => {
   }
 };
 
+export const addCoach = async ({ name_Coach, tel }) => {
+  try {
+    const res = await instanceClientAPI.post(`/coach`, { name_Coach, tel });
+    toast.success('Нового тренера додано');
+    return res;
+  } catch (e) {
+      toast.error('Щось пішло не так');
+  }
+};
+
+export const deleteCoach = async ({name_Coach}) => {
+  try {
+    const result = await instanceClientAPI.put(`/coach`, { name_Coach });
+    return result;
+  } catch (error) {
+    toast.error('Упс, щось пішло не так');
+    console.error(error.message);
+  }
+};
+
+export const getAllClient = async () => {
+  try {
+    const result = await instanceClientAPI.get(`/client`);
+    return result.data;
+  } catch (error) {
+    toast.error('Упс, щось пішло не так');
+    console.error(error.message);
+  }
+};
+
+export const addClient = async ({ name_client, tel }) => {
+  try {
+    const res = await instanceClientAPI.post(`/client`, { name_client, tel });
+    toast.success('Нового тренера додано');
+    return res;
+  } catch (e) {
+      toast.error('Щось пішло не так');
+  }
+};
+
+export const deleteClient = async ({name_client}) => {
+  try {
+    const result = await instanceClientAPI.put(`/client`, { name_client });
+    return result;
+  } catch (error) {
+    toast.error('Упс, щось пішло не так');
+    console.error(error.message);
+  }
+};
+
 export const clientAPI = {
   sendData,
   getData,
   getDataALL,
-  addNewCoach,
-  findCoach,
-  getAllCoach
+  addTrainee,
+  findTrainee,
+  getAllTrainee,
+  addCoach,
+  deleteCoach,
+  getAllCoach,
+  getAllClient,
+  addClient,
 };

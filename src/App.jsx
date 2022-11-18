@@ -19,8 +19,8 @@ import Toaster from './Components/Toasts/Toasts';
 
 // const Header = lazy(() => import('./Components/Header/Header.jsx' /* webpackChunkName: "Header"*/));
 const MainPage = lazy(() => import('./Components/MainPage/MainPage.jsx' /* webpackChunkName: "MainPage"*/));
-const Schedule = lazy(() => import('./Components/Schedule/Schedule.jsx' /* webpackChunkName: "Schedule"*/));
-const ScheduleGet = lazy(() => import('./Components/ScheduleGet/ScheduleGet.jsx' /* webpackChunkName: "ScheduleGet"*/));
+const SchedulePage = lazy(() => import('./Pages/SchedulePage/SchedulePage.jsx' /* webpackChunkName: "SchedulePage"*/));
+// const ScheduleGet = lazy(() => import('./Components/ScheduleGet/ScheduleGet.jsx' /* webpackChunkName: "ScheduleGet"*/));
 // const ScheduleTEST = lazy(() => import('./Components/ScheduleTEST/ScheduleTEST.jsx' /* webpackChunkName: "ScheduleGet"*/));
 const InfoCoach = lazy(() => import('./Pages/InfoCoach/InfoCoach.jsx' /* webpackChunkName: "InfoCoach"*/));
 // const Market = lazy(() => import('./Components/Market/Market.jsx' /* webpackChunkName: "Market"*/));
@@ -33,14 +33,7 @@ function App() {
       <Suspense fallback={<h1>"Downloading..."</h1>}>
         <Routes>
           <Route exact path='/' element={<MainPage/>} />
-          <Route path='/schedule' element={
-            <>
-              <Schedule />
-              <ScheduleGet />
-              {/* <ScheduleTEST/> */}
-            </>
-          } />
-
+          <Route path='/schedule' element={<SchedulePage/>} />
           <Route path='/info-coach-clients' element={<><InfoCoach /></>} />
           {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Routes>
