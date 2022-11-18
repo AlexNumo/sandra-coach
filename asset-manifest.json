@@ -1,27 +1,23 @@
 {
   "files": {
     "main.css": "/sandra-coach/static/css/main.b3eeeea7.css",
-    "main.js": "/sandra-coach/static/js/main.41858c70.js",
+    "main.js": "/sandra-coach/static/js/main.5678c853.js",
     "MainPage.js": "/sandra-coach/static/js/MainPage.a3e2c584.chunk.js",
-    "Schedule.js": "/sandra-coach/static/js/Schedule.25ea79c6.chunk.js",
-    "ScheduleGet.js": "/sandra-coach/static/js/ScheduleGet.17286aaa.chunk.js",
-    "InfoCoach.js": "/sandra-coach/static/js/InfoCoach.344d5226.chunk.js",
-    "static/js/254.85cf92bf.chunk.js": "/sandra-coach/static/js/254.85cf92bf.chunk.js",
-    "static/js/705.00d10061.chunk.js": "/sandra-coach/static/js/705.00d10061.chunk.js",
+    "SchedulePage.js": "/sandra-coach/static/js/SchedulePage.966ed0c1.chunk.js",
+    "InfoCoach.js": "/sandra-coach/static/js/InfoCoach.82adc63a.chunk.js",
+    "static/js/697.203ca6e0.chunk.js": "/sandra-coach/static/js/697.203ca6e0.chunk.js",
     "static/js/103.056e87f9.chunk.js": "/sandra-coach/static/js/103.056e87f9.chunk.js",
     "index.html": "/sandra-coach/index.html",
     "main.b3eeeea7.css.map": "/sandra-coach/static/css/main.b3eeeea7.css.map",
-    "main.41858c70.js.map": "/sandra-coach/static/js/main.41858c70.js.map",
+    "main.5678c853.js.map": "/sandra-coach/static/js/main.5678c853.js.map",
     "MainPage.a3e2c584.chunk.js.map": "/sandra-coach/static/js/MainPage.a3e2c584.chunk.js.map",
-    "Schedule.25ea79c6.chunk.js.map": "/sandra-coach/static/js/Schedule.25ea79c6.chunk.js.map",
-    "ScheduleGet.17286aaa.chunk.js.map": "/sandra-coach/static/js/ScheduleGet.17286aaa.chunk.js.map",
-    "InfoCoach.344d5226.chunk.js.map": "/sandra-coach/static/js/InfoCoach.344d5226.chunk.js.map",
-    "254.85cf92bf.chunk.js.map": "/sandra-coach/static/js/254.85cf92bf.chunk.js.map",
-    "705.00d10061.chunk.js.map": "/sandra-coach/static/js/705.00d10061.chunk.js.map",
+    "SchedulePage.966ed0c1.chunk.js.map": "/sandra-coach/static/js/SchedulePage.966ed0c1.chunk.js.map",
+    "InfoCoach.82adc63a.chunk.js.map": "/sandra-coach/static/js/InfoCoach.82adc63a.chunk.js.map",
+    "697.203ca6e0.chunk.js.map": "/sandra-coach/static/js/697.203ca6e0.chunk.js.map",
     "103.056e87f9.chunk.js.map": "/sandra-coach/static/js/103.056e87f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b3eeeea7.css",
-    "static/js/main.41858c70.js"
+    "static/js/main.5678c853.js"
   ]
 }
