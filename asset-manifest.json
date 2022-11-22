@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/sandra-coach/static/css/main.b3eeeea7.css",
-    "main.js": "/sandra-coach/static/js/main.ba26c6ad.js",
+    "main.js": "/sandra-coach/static/js/main.046bc03d.js",
     "MainPage.js": "/sandra-coach/static/js/MainPage.a3e2c584.chunk.js",
-    "SchedulePage.js": "/sandra-coach/static/js/SchedulePage.fadd976c.chunk.js",
-    "InfoCoach.js": "/sandra-coach/static/js/InfoCoach.ccbcb44c.chunk.js",
-    "static/js/697.203ca6e0.chunk.js": "/sandra-coach/static/js/697.203ca6e0.chunk.js",
+    "SchedulePage.js": "/sandra-coach/static/js/SchedulePage.a0562d79.chunk.js",
+    "InfoCoach.js": "/sandra-coach/static/js/InfoCoach.63f65e4a.chunk.js",
+    "static/js/705.00d10061.chunk.js": "/sandra-coach/static/js/705.00d10061.chunk.js",
     "static/js/103.056e87f9.chunk.js": "/sandra-coach/static/js/103.056e87f9.chunk.js",
     "index.html": "/sandra-coach/index.html",
     "main.b3eeeea7.css.map": "/sandra-coach/static/css/main.b3eeeea7.css.map",
-    "main.ba26c6ad.js.map": "/sandra-coach/static/js/main.ba26c6ad.js.map",
+    "main.046bc03d.js.map": "/sandra-coach/static/js/main.046bc03d.js.map",
     "MainPage.a3e2c584.chunk.js.map": "/sandra-coach/static/js/MainPage.a3e2c584.chunk.js.map",
-    "SchedulePage.fadd976c.chunk.js.map": "/sandra-coach/static/js/SchedulePage.fadd976c.chunk.js.map",
-    "InfoCoach.ccbcb44c.chunk.js.map": "/sandra-coach/static/js/InfoCoach.ccbcb44c.chunk.js.map",
-    "697.203ca6e0.chunk.js.map": "/sandra-coach/static/js/697.203ca6e0.chunk.js.map",
+    "SchedulePage.a0562d79.chunk.js.map": "/sandra-coach/static/js/SchedulePage.a0562d79.chunk.js.map",
+    "InfoCoach.63f65e4a.chunk.js.map": "/sandra-coach/static/js/InfoCoach.63f65e4a.chunk.js.map",
+    "705.00d10061.chunk.js.map": "/sandra-coach/static/js/705.00d10061.chunk.js.map",
     "103.056e87f9.chunk.js.map": "/sandra-coach/static/js/103.056e87f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b3eeeea7.css",
-    "static/js/main.ba26c6ad.js"
+    "static/js/main.046bc03d.js"
   ]
 }
