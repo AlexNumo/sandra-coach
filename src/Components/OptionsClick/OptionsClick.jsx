@@ -18,7 +18,7 @@ const OptionsClick = () => {
       .then((result) => {
       return(setAllCoach(result.payload));
       });
-  }, []);
+  });
 
   const options = [
     { id: '-', value: '-', text: '-' },
