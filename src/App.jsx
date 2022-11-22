@@ -7,7 +7,6 @@ import {
   Route,
   // Navigate
 } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
 // import Header from "./Components/Header/Header";
 // import MainPage from "Components/MainPage/MainPage";
 // import ScheduleGet from 'Components/ScheduleGet/ScheduleGet';
@@ -31,17 +30,15 @@ const InfoCoach = lazy(() => import('./Pages/InfoCoach/InfoCoach.jsx' /* webpack
 function App() {
   return (
     <>
-    <BrowserRouter basename='/sandra-coach' forceRefresh='true'>
       <Suspense fallback={<h1>"Downloading..."</h1>}>
         <Routes>
-          <Route exact path='/' element={<MainPage/>} />
-          <Route path='/schedule' element={<SchedulePage/>} />
-          <Route path='/info-coach-clients' element={<InfoCoach />} />
+          <Route exact path='/' element={MainPage} />
+          <Route path='/schedule' element={SchedulePage} />
+          <Route path='/info-coach-clients' element={InfoCoach} />
           {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Routes>
       </Suspense>
         <Toaster />
-    </BrowserRouter>
     </>
   );
 }
