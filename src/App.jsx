@@ -1,6 +1,6 @@
 import {
   Suspense,
-  lazy
+  // lazy
 } from 'react';
 import {
   Routes,
