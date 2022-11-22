@@ -1,18 +1,23 @@
-import { useEffect, useState } from "react";
-import { clientAPI } from "service/axios.config";
-// import Select from 'react-select'
+const ChooseCoach = ({handleChange, handleBlur, values, allCoach}) => {
+  const GetResult = () => {
+    if (allCoach === []) {
+      return null;
+    }
+    return (
+    <>
+      {allCoach.map(coach => (
+      <option
+        key={coach.name_Coach}
+        id={coach.name_Coach}
+        value={coach.name_Coach}
+      >
+        {coach.name_Coach}
+      </option>
+      ))}
+      </>
+    )
+  }
 
-const ChooseCoach = ({handleChange, handleBlur, values}) => {
-
-  const [allCoach, setAllCoach] = useState([]);
-    
-  useEffect(() => {
-    clientAPI.getAllCoach().then(
-      (result) => {
-        setAllCoach(result)
-      }
-    );
-  }, [setAllCoach]);
   return (
     <>
       <label style={{ display: "block" }}>
@@ -36,15 +41,7 @@ const ChooseCoach = ({handleChange, handleBlur, values}) => {
         value={values.name_Coach}
         className="select"
       >
-        {allCoach.map(coach => (
-          <option
-            key={coach.name_Coach}
-            id={coach.name_Coach}
-            value={coach.name_Coach}
-          >
-            {coach.name_Coach}
-          </option>
-        ))}
+        <GetResult/>
       </select>
     </>
   )

@@ -1,3 +1,3 @@
 export * from './slice';
-export { authOperations } from './operations';
-export { authSelectors } from './selectors';
+export { scheduleOperations } from './operations';
+export { scheduleSelectors } from './selectors';

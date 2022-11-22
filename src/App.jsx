@@ -36,7 +36,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<MainPage/>} />
           <Route path='/schedule' element={<SchedulePage/>} />
-          <Route path='/info-coach-clients' element={<><InfoCoach /></>} />
+          <Route path='/info-coach-clients' element={<InfoCoach />} />
           {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Routes>
       </Suspense>

@@ -5,8 +5,21 @@ import {
 import { Formik } from "formik";
 import ChooseCoach from 'Components/ChooseCoach/ChooseCoach';
 import { clientAPI } from '../../service/axios.config';
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { scheduleOperations } from '../../redux/app/operations';
 
 const OptionsClick = () => {
+  const [allCoach, setAllCoach] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(scheduleOperations.actionGetAllCoach())
+      .then((result) => {
+      return(setAllCoach(result.payload));
+      });
+  }, []);
+
   const options = [
     { id: '-', value: '-', text: '-' },
     { id: 'None', value: '-', text: 'Вільно' },
@@ -110,6 +123,7 @@ const OptionsClick = () => {
                         handleChange={handleChange}
                         handleBlur={handleBlur}
                         values={values}
+                        allCoach={allCoach}
                       />
                       <SubmitBTN type="submit" disabled={isSubmitting}>
                         Змінити
