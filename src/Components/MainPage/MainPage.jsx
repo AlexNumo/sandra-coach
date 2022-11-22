@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import {
   Wrapper,
   LinkStyle
@@ -33,7 +34,8 @@ const MainPage = () => {
   return (
     <Wrapper>
       <LinkStyle to={Schedule} style={{backgroundColor: scheduleColor}}>Schedule</LinkStyle>
-      <LinkStyle to={InfoCoachClients} style={{backgroundColor: infoCoachClients}}>Info of coach and clients</LinkStyle>
+      <LinkStyle to={InfoCoachClients} style={{ backgroundColor: infoCoachClients }}>Info of coach and clients</LinkStyle>
+      <Outlet />
     </Wrapper>
   )
 };
