@@ -3,6 +3,7 @@ import {
   SubmitBTN
 } from './OptionsClick.styled';
 import { Formik } from "formik";
+import ChooseCoach from 'Components/ChooseCoach/ChooseCoach';
 import { clientAPI } from '../../service/axios.config';
 
 const OptionsClick = () => {
@@ -28,14 +29,15 @@ const OptionsClick = () => {
   ];
   const weekDaysTime = [
     { id: 'monday' },
-    { id: 'tuesday'},
-    { id: 'wednesday'},
-    { id: 'thursday'},
-    { id: 'friday'},
-    { id: 'saturday'},
+    { id: 'tuesday' },
+    { id: 'wednesday' },
+    { id: 'thursday' },
+    { id: 'friday' },
+    { id: 'saturday' },
     { id: 'sunday' },
   ];
-    const Times = [
+  const Times = [
+    { id: '0800', text: '8:00' },
     { id: '0900', text: '9:00' },
     { id: '1000', text: '10:00' },
     { id: '1100', text: '11:00' },
@@ -64,57 +66,64 @@ const OptionsClick = () => {
               id={weekDay.id}
               className={weekDay.id}
             >
-            <Formik
+              <Formik
                 initialValues={{
                   id: weekDay.id + time.id,
                   day: weekDay.id,
                   time: time.id,
-                  kind_trainee:""
-              }}
-              onSubmit={async values => {
-                await clientAPI.sendData(values);
-              }}
-            >
-              {props => {
-                const {
-                  values,
-                  isSubmitting,
-                  handleChange,
-                  handleBlur,
-                  handleSubmit,
-                } = props;
-              return (
-                <form onSubmit={handleSubmit}>
-                    <select
-                      id="kind_trainee"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.weekDay}
-                      className="select"
-                    >
-                      {options.map(option => (
-                        <option
-                          key={option.id}
-                          id={option.id}
-                          value={option.value}>
-                          {option.text}
-                        </option>
-                      ))}
-                  </select>
-                  
-                  <SubmitBTN type="submit" disabled={isSubmitting}>
-                    Змінити
-                  </SubmitBTN>
-                </form>
-              );
-              }}
-            </Formik>
+                  kind_trainee: "",
+                  name_Coach: ""
+                }}
+                onSubmit={async values => {
+                  await clientAPI.sendData(values);
+                  // await new Promise(resolve => setTimeout(resolve, 500));
+                  // alert(JSON.stringify(values, null, 2));
+                }}
+              >
+                {props => {
+                  const {
+                    values,
+                    isSubmitting,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                  } = props;
+                  return (
+                    <form onSubmit={handleSubmit}>
+                      <select
+                        id="kind_trainee"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.weekDay}
+                        className="select"
+                      >
+                        {options.map(option => (
+                          <option
+                            key={option.id}
+                            id={option.id}
+                            value={option.value}>
+                            {option.text}
+                          </option>
+                        ))}
+                      </select>
+                      <ChooseCoach
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}
+                        values={values}
+                      />
+                      <SubmitBTN type="submit" disabled={isSubmitting}>
+                        Змінити
+                      </SubmitBTN>
+                    </form>
+                  );
+                }}
+              </Formik>
             </TableSize>
           ))}
         </tr>
       ))}
     </>
   )
-}
+};
 
 export default OptionsClick;

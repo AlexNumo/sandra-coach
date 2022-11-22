@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { clientAPI } from "service/axios.config";
 import { Formik } from "formik";
-// import Select from 'react-select'
+import ChooseCoach from "Components/ChooseCoach/ChooseCoach";
 import {
   Wrapper,
   BTNSubmit,
@@ -11,7 +11,6 @@ import {
 // import { ERROR } from "./AddInfo.styled";
 
 const AddInfo = () => {
-  const [allCoach, setAllCoach] = useState([]);
   const [allClient, setAllClient] = useState([]);
   const options = [
     { id: '-', value: '-', label: '-' },
@@ -46,18 +45,13 @@ const AddInfo = () => {
 // )
 
   useEffect(() => {
-    clientAPI.getAllCoach().then(
-      (result) => {
-        setAllCoach(result)
-      }
-    );
     clientAPI.getAllClient().then(
       (result) => {
         setAllClient(result)
       }
     );
 
-  }, [setAllCoach]);
+  }, [setAllClient]);
 
   // const CoachSchema = Yup.object().shape({
   //   name_Coach: Yup.string()
@@ -95,36 +89,11 @@ const AddInfo = () => {
       } = props;
       return (
         <form onSubmit={handleSubmit}>
-          <label style={{ display: "block" }}>
-            Оберіть ім'я тренера
-          </label>
-          {/* <Select
-            options={options2}
-            id="name_Coach"
-            type="text"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.assigned}
-            // style={{ width: "150px !important"}}
-          /> */}
-
-          <select
-            style={{ width: "150px" }}
-            id="name_Coach"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.name_Coach}
-          >
-            {allCoach.map(coach => (
-              <option
-                key={coach.name_Coach}
-                id={coach.name_Coach}
-                value={coach.name_Coach}
-              >
-                {coach.name_Coach}
-              </option>
-          ))}
-          </select>
+          <ChooseCoach
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            values={values}
+          />
           <label htmlFor="info" style={{ display: "block" }}>
               Оберіть дату тренування
           </label>
@@ -178,8 +147,8 @@ const AddInfo = () => {
             </option>
           ))}
             </select>
-              <BTNSubmit type="submit" disabled={isSubmitting}>
-                Додати тренера
+          <BTNSubmit type="submit" disabled={isSubmitting}>
+            Додати тренування
           </BTNSubmit>
           {/* <MyComponent/> */}
             </form>

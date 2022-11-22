@@ -2,9 +2,9 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import instanceClientAPI from './api';
 
-export const sendData = async ({ id, day, time, kind_trainee }) => {
+export const sendData = async ({ id, day, time, kind_trainee, name_Coach }) => {
   try {
-    const res = await instanceClientAPI.post(`/api`, { id, day, time, kind_trainee });
+    const res = await instanceClientAPI.post(`/api`, { id, day, time, kind_trainee, name_Coach });
     toast.success('Зміни відправлено');
     return res;
   } catch (e) {

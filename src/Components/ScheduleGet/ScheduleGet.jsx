@@ -9,6 +9,7 @@ import {
 
 
 function ScheduleGet() {
+  const [data0800, setData0800] = useState([]);
   const [data0900, setData0900] = useState([]);
   const [data1000, setData1000] = useState([]);
   const [data1100, setData1100] = useState([]);
@@ -26,6 +27,13 @@ function ScheduleGet() {
   useEffect(() => {
     clientAPI.getDataALL().then(
       (result) => {
+        const FindMonday0800 = result.filter(arr => arr.id === 'monday0800');
+        const FindTuesday0800 = result.filter(arr => arr.id === 'tuesday0800');
+        const FindWednesday0800 = result.filter(arr => arr.id === 'wednesday0800');
+        const FindThursday0800 = result.filter(arr => arr.id === 'thursday0800');
+        const FindFriday0800 = result.filter(arr => arr.id === 'friday0800');
+        const FindSaturday0800 = result.filter(arr => arr.id === 'saturday0800');
+        const FindSunday0800 = result.filter(arr => arr.id === 'sunday0800');
         const FindMonday0900 = result.filter(arr => arr.id === 'monday0900');
         const FindTuesday0900 = result.filter(arr => arr.id === 'tuesday0900');
         const FindWednesday0900 = result.filter(arr => arr.id === 'wednesday0900');
@@ -111,114 +119,125 @@ function ScheduleGet() {
         const FindSaturday2000 = result.filter(arr => arr.id === 'saturday2000');
         const FindSunday2000 = result.filter(arr => arr.id === 'sunday2000');
 
+        const resultState0800 = [
+          {id: FindMonday0800[0].id, day: FindMonday0800[0].day, time: FindMonday0800[0].time, kind_trainee: FindMonday0800[0].kind_trainee, name_Coach: FindMonday0800[0].name_Coach},
+          {id: FindTuesday0800[0].id, day: FindTuesday0800[0].day, time: FindTuesday0800[0].time, kind_trainee: FindTuesday0800[0].kind_trainee, name_Coach: FindTuesday0800[0].name_Coach},
+          {id: FindWednesday0800[0].id, day: FindWednesday0800[0].day, time: FindWednesday0800[0].time, kind_trainee: FindWednesday0800[0].kind_trainee, name_Coach: FindWednesday0800[0].name_Coach},
+          {id: FindThursday0800[0].id, day: FindThursday0800[0].day, time: FindThursday0800[0].time, kind_trainee: FindThursday0800[0].kind_trainee, name_Coach: FindThursday0800[0].name_Coach},
+          {id: FindFriday0800[0].id, day: FindFriday0800[0].day, time: FindFriday0800[0].time, kind_trainee: FindFriday0800[0].kind_trainee, name_Coach: FindFriday0800[0].name_Coach},
+          {id: FindSaturday0800[0].id, day: FindSaturday0800[0].day, time: FindSaturday0800[0].time, kind_trainee: FindSaturday0800[0].kind_trainee, name_Coach: FindSaturday0800[0].name_Coach},
+          {id: FindSunday0800[0].id, day: FindSunday0800[0].day, time: FindSunday0800[0].time, kind_trainee: FindSunday0800[0].kind_trainee, name_Coach: FindSunday0800[0].name_Coach},
+        ]
+
         const resultState0900 = [
-          {id: FindMonday0900[0].id, day: FindMonday0900[0].day, time: FindMonday0900[0].time, kind_trainee: FindMonday0900[0].kind_trainee},
-          {id: FindTuesday0900[0].id, day: FindTuesday0900[0].day, time: FindTuesday0900[0].time, kind_trainee: FindTuesday0900[0].kind_trainee},
-          {id: FindWednesday0900[0].id, day: FindWednesday0900[0].day, time: FindWednesday0900[0].time, kind_trainee: FindWednesday0900[0].kind_trainee},
-          {id: FindThursday0900[0].id, day: FindThursday0900[0].day, time: FindThursday0900[0].time, kind_trainee: FindThursday0900[0].kind_trainee},
-          {id: FindFriday0900[0].id, day: FindFriday0900[0].day, time: FindFriday0900[0].time, kind_trainee: FindFriday0900[0].kind_trainee},
-          {id: FindSaturday0900[0].id, day: FindSaturday0900[0].day, time: FindSaturday0900[0].time, kind_trainee: FindSaturday0900[0].kind_trainee},
-          {id: FindSunday0900[0].id, day: FindSunday0900[0].day, time: FindSunday0900[0].time, kind_trainee: FindSunday0900[0].kind_trainee},
+          {id: FindMonday0900[0].id, day: FindMonday0900[0].day, time: FindMonday0900[0].time, kind_trainee: FindMonday0900[0].kind_trainee, name_Coach: FindMonday0900[0].name_Coach},
+          {id: FindTuesday0900[0].id, day: FindTuesday0900[0].day, time: FindTuesday0900[0].time, kind_trainee: FindTuesday0900[0].kind_trainee, name_Coach: FindTuesday0900[0].name_Coach},
+          {id: FindWednesday0900[0].id, day: FindWednesday0900[0].day, time: FindWednesday0900[0].time, kind_trainee: FindWednesday0900[0].kind_trainee, name_Coach: FindWednesday0900[0].name_Coach},
+          {id: FindThursday0900[0].id, day: FindThursday0900[0].day, time: FindThursday0900[0].time, kind_trainee: FindThursday0900[0].kind_trainee, name_Coach: FindThursday0900[0].name_Coach},
+          {id: FindFriday0900[0].id, day: FindFriday0900[0].day, time: FindFriday0900[0].time, kind_trainee: FindFriday0900[0].kind_trainee, name_Coach: FindFriday0900[0].name_Coach},
+          {id: FindSaturday0900[0].id, day: FindSaturday0900[0].day, time: FindSaturday0900[0].time, kind_trainee: FindSaturday0900[0].kind_trainee, name_Coach: FindSaturday0900[0].name_Coach},
+          {id: FindSunday0900[0].id, day: FindSunday0900[0].day, time: FindSunday0900[0].time, kind_trainee: FindSunday0900[0].kind_trainee, name_Coach: FindSunday0900[0].name_Coach},
         ]
         const resultState1000 = [
-          {id: FindMonday1000[0].id, day: FindMonday1000[0].day, time: FindMonday1000[0].time, kind_trainee: FindMonday1000[0].kind_trainee},
-          {id: FindTuesday1000[0].id, day: FindTuesday1000[0].day, time: FindTuesday1000[0].time, kind_trainee: FindTuesday1000[0].kind_trainee},
-          {id: FindWednesday1000[0].id, day: FindWednesday1000[0].day, time: FindWednesday1000[0].time, kind_trainee: FindWednesday1000[0].kind_trainee},
-          {id: FindThursday1000[0].id, day: FindThursday1000[0].day, time: FindThursday1000[0].time, kind_trainee: FindThursday1000[0].kind_trainee},
-          {id: FindFriday1000[0].id, day: FindFriday1000[0].day, time: FindFriday1000[0].time, kind_trainee: FindFriday1000[0].kind_trainee},
-          {id: FindSaturday1000[0].id, day: FindSaturday1000[0].day, time: FindSaturday1000[0].time, kind_trainee: FindSaturday1000[0].kind_trainee},
-          {id: FindSunday1000[0].id, day: FindSunday1000[0].day, time: FindSunday1000[0].time, kind_trainee: FindSunday1000[0].kind_trainee},
+          {id: FindMonday1000[0].id, day: FindMonday1000[0].day, time: FindMonday1000[0].time, kind_trainee: FindMonday1000[0].kind_trainee, name_Coach: FindMonday1000[0].name_Coach},
+          {id: FindTuesday1000[0].id, day: FindTuesday1000[0].day, time: FindTuesday1000[0].time, kind_trainee: FindTuesday1000[0].kind_trainee, name_Coach: FindTuesday1000[0].name_Coach},
+          {id: FindWednesday1000[0].id, day: FindWednesday1000[0].day, time: FindWednesday1000[0].time, kind_trainee: FindWednesday1000[0].kind_trainee, name_Coach: FindWednesday1000[0].name_Coach},
+          {id: FindThursday1000[0].id, day: FindThursday1000[0].day, time: FindThursday1000[0].time, kind_trainee: FindThursday1000[0].kind_trainee, name_Coach: FindThursday1000[0].name_Coach},
+          {id: FindFriday1000[0].id, day: FindFriday1000[0].day, time: FindFriday1000[0].time, kind_trainee: FindFriday1000[0].kind_trainee, name_Coach: FindFriday1000[0].name_Coach},
+          {id: FindSaturday1000[0].id, day: FindSaturday1000[0].day, time: FindSaturday1000[0].time, kind_trainee: FindSaturday1000[0].kind_trainee, name_Coach: FindSaturday1000[0].name_Coach},
+          {id: FindSunday1000[0].id, day: FindSunday1000[0].day, time: FindSunday1000[0].time, kind_trainee: FindSunday1000[0].kind_trainee, name_Coach: FindSunday1000[0].name_Coach},
         ]
         const resultState1100 = [
-          {id: FindMonday1100[0].id, day: FindMonday1100[0].day, time: FindMonday1100[0].time, kind_trainee: FindMonday1100[0].kind_trainee},
-          {id: FindTuesday1100[0].id, day: FindTuesday1100[0].day, time: FindTuesday1100[0].time, kind_trainee: FindTuesday1100[0].kind_trainee},
-          {id: FindWednesday1100[0].id, day: FindWednesday1100[0].day, time: FindWednesday1100[0].time, kind_trainee: FindWednesday1100[0].kind_trainee},
-          {id: FindThursday1100[0].id, day: FindThursday1100[0].day, time: FindThursday1100[0].time, kind_trainee: FindThursday1100[0].kind_trainee},
-          {id: FindFriday1100[0].id, day: FindFriday1100[0].day, time: FindFriday1100[0].time, kind_trainee: FindFriday1100[0].kind_trainee},
-          {id: FindSaturday1100[0].id, day: FindSaturday1100[0].day, time: FindSaturday1100[0].time, kind_trainee: FindSaturday1100[0].kind_trainee},
-          {id: FindSunday1100[0].id, day: FindSunday1100[0].day, time: FindSunday1100[0].time, kind_trainee: FindSunday1100[0].kind_trainee},
+          {id: FindMonday1100[0].id, day: FindMonday1100[0].day, time: FindMonday1100[0].time, kind_trainee: FindMonday1100[0].kind_trainee, name_Coach: FindMonday1100[0].name_Coach},
+          {id: FindTuesday1100[0].id, day: FindTuesday1100[0].day, time: FindTuesday1100[0].time, kind_trainee: FindTuesday1100[0].kind_trainee, name_Coach: FindTuesday1100[0].name_Coach},
+          {id: FindWednesday1100[0].id, day: FindWednesday1100[0].day, time: FindWednesday1100[0].time, kind_trainee: FindWednesday1100[0].kind_trainee, name_Coach: FindWednesday1100[0].name_Coach},
+          {id: FindThursday1100[0].id, day: FindThursday1100[0].day, time: FindThursday1100[0].time, kind_trainee: FindThursday1100[0].kind_trainee, name_Coach: FindThursday1100[0].name_Coach},
+          {id: FindFriday1100[0].id, day: FindFriday1100[0].day, time: FindFriday1100[0].time, kind_trainee: FindFriday1100[0].kind_trainee, name_Coach: FindFriday1100[0].name_Coach},
+          {id: FindSaturday1100[0].id, day: FindSaturday1100[0].day, time: FindSaturday1100[0].time, kind_trainee: FindSaturday1100[0].kind_trainee, name_Coach: FindSaturday1100[0].name_Coach},
+          {id: FindSunday1100[0].id, day: FindSunday1100[0].day, time: FindSunday1100[0].time, kind_trainee: FindSunday1100[0].kind_trainee, name_Coach: FindSunday1100[0].name_Coach},
         ]
         const resultState1200 = [
-          {id: FindMonday1200[0].id, day: FindMonday1200[0].day, time: FindMonday1200[0].time, kind_trainee: FindMonday1200[0].kind_trainee},
-          {id: FindTuesday1200[0].id, day: FindTuesday1200[0].day, time: FindTuesday1200[0].time, kind_trainee: FindTuesday1200[0].kind_trainee},
-          {id: FindWednesday1200[0].id, day: FindWednesday1200[0].day, time: FindWednesday1200[0].time, kind_trainee: FindWednesday1200[0].kind_trainee},
-          {id: FindThursday1200[0].id, day: FindThursday1200[0].day, time: FindThursday1200[0].time, kind_trainee: FindThursday1200[0].kind_trainee},
-          {id: FindFriday1200[0].id, day: FindFriday1200[0].day, time: FindFriday1200[0].time, kind_trainee: FindFriday1200[0].kind_trainee},
-          {id: FindSaturday1200[0].id, day: FindSaturday1200[0].day, time: FindSaturday1200[0].time, kind_trainee: FindSaturday1200[0].kind_trainee},
-          {id: FindSunday1200[0].id, day: FindSunday1200[0].day, time: FindSunday1200[0].time, kind_trainee: FindSunday1200[0].kind_trainee},
+          {id: FindMonday1200[0].id, day: FindMonday1200[0].day, time: FindMonday1200[0].time, kind_trainee: FindMonday1200[0].kind_trainee, name_Coach: FindMonday1200[0].name_Coach},
+          {id: FindTuesday1200[0].id, day: FindTuesday1200[0].day, time: FindTuesday1200[0].time, kind_trainee: FindTuesday1200[0].kind_trainee, name_Coach: FindTuesday1200[0].name_Coach},
+          {id: FindWednesday1200[0].id, day: FindWednesday1200[0].day, time: FindWednesday1200[0].time, kind_trainee: FindWednesday1200[0].kind_trainee, name_Coach: FindWednesday1200[0].name_Coach},
+          {id: FindThursday1200[0].id, day: FindThursday1200[0].day, time: FindThursday1200[0].time, kind_trainee: FindThursday1200[0].kind_trainee, name_Coach: FindThursday1200[0].name_Coach},
+          {id: FindFriday1200[0].id, day: FindFriday1200[0].day, time: FindFriday1200[0].time, kind_trainee: FindFriday1200[0].kind_trainee, name_Coach: FindFriday1200[0].name_Coach},
+          {id: FindSaturday1200[0].id, day: FindSaturday1200[0].day, time: FindSaturday1200[0].time, kind_trainee: FindSaturday1200[0].kind_trainee, name_Coach: FindSaturday1200[0].name_Coach},
+          {id: FindSunday1200[0].id, day: FindSunday1200[0].day, time: FindSunday1200[0].time, kind_trainee: FindSunday1200[0].kind_trainee, name_Coach: FindSunday1200[0].name_Coach},
         ]
         const resultState1300 = [
-          {id: FindMonday1300[0].id, day: FindMonday1300[0].day, time: FindMonday1300[0].time, kind_trainee: FindMonday1300[0].kind_trainee},
-          {id: FindTuesday1300[0].id, day: FindTuesday1300[0].day, time: FindTuesday1300[0].time, kind_trainee: FindTuesday1300[0].kind_trainee},
-          {id: FindWednesday1300[0].id, day: FindWednesday1300[0].day, time: FindWednesday1300[0].time, kind_trainee: FindWednesday1300[0].kind_trainee},
-          {id: FindThursday1300[0].id, day: FindThursday1300[0].day, time: FindThursday1300[0].time, kind_trainee: FindThursday1300[0].kind_trainee},
-          {id: FindFriday1300[0].id, day: FindFriday1300[0].day, time: FindFriday1300[0].time, kind_trainee: FindFriday1300[0].kind_trainee},
-          {id: FindSaturday1300[0].id, day: FindSaturday1300[0].day, time: FindSaturday1300[0].time, kind_trainee: FindSaturday1300[0].kind_trainee},
-          {id: FindSunday1300[0].id, day: FindSunday1300[0].day, time: FindSunday1300[0].time, kind_trainee: FindSunday1300[0].kind_trainee},                    
+          {id: FindMonday1300[0].id, day: FindMonday1300[0].day, time: FindMonday1300[0].time, kind_trainee: FindMonday1300[0].kind_trainee, name_Coach: FindMonday1300[0].name_Coach},
+          {id: FindTuesday1300[0].id, day: FindTuesday1300[0].day, time: FindTuesday1300[0].time, kind_trainee: FindTuesday1300[0].kind_trainee, name_Coach: FindTuesday1300[0].name_Coach},
+          {id: FindWednesday1300[0].id, day: FindWednesday1300[0].day, time: FindWednesday1300[0].time, kind_trainee: FindWednesday1300[0].kind_trainee, name_Coach: FindWednesday1300[0].name_Coach},
+          {id: FindThursday1300[0].id, day: FindThursday1300[0].day, time: FindThursday1300[0].time, kind_trainee: FindThursday1300[0].kind_trainee, name_Coach: FindThursday1300[0].name_Coach},
+          {id: FindFriday1300[0].id, day: FindFriday1300[0].day, time: FindFriday1300[0].time, kind_trainee: FindFriday1300[0].kind_trainee, name_Coach: FindFriday1300[0].name_Coach},
+          {id: FindSaturday1300[0].id, day: FindSaturday1300[0].day, time: FindSaturday1300[0].time, kind_trainee: FindSaturday1300[0].kind_trainee, name_Coach: FindSaturday1300[0].name_Coach},
+          {id: FindSunday1300[0].id, day: FindSunday1300[0].day, time: FindSunday1300[0].time, kind_trainee: FindSunday1300[0].kind_trainee, name_Coach: FindSunday1300[0].name_Coach},
         ]
         const resultState1400 = [
-          {id: FindMonday1400[0].id, day: FindMonday1400[0].day, time: FindMonday1400[0].time, kind_trainee: FindMonday1400[0].kind_trainee},
-          {id: FindTuesday1400[0].id, day: FindTuesday1400[0].day, time: FindTuesday1400[0].time, kind_trainee: FindTuesday1400[0].kind_trainee},
-          {id: FindWednesday1400[0].id, day: FindWednesday1400[0].day, time: FindWednesday1400[0].time, kind_trainee: FindWednesday1400[0].kind_trainee},
-          {id: FindThursday1400[0].id, day: FindThursday1400[0].day, time: FindThursday1400[0].time, kind_trainee: FindThursday1400[0].kind_trainee},
-          {id: FindFriday1400[0].id, day: FindFriday1400[0].day, time: FindFriday1400[0].time, kind_trainee: FindFriday1400[0].kind_trainee},
-          {id: FindSaturday1400[0].id, day: FindSaturday1400[0].day, time: FindSaturday1400[0].time, kind_trainee: FindSaturday1400[0].kind_trainee},
-          {id: FindSunday1400[0].id, day: FindSunday1400[0].day, time: FindSunday1400[0].time, kind_trainee: FindSunday1400[0].kind_trainee},
+          {id: FindMonday1400[0].id, day: FindMonday1400[0].day, time: FindMonday1400[0].time, kind_trainee: FindMonday1400[0].kind_trainee, name_Coach: FindMonday1400[0].name_Coach},
+          {id: FindTuesday1400[0].id, day: FindTuesday1400[0].day, time: FindTuesday1400[0].time, kind_trainee: FindTuesday1400[0].kind_trainee, name_Coach: FindTuesday1400[0].name_Coach},
+          {id: FindWednesday1400[0].id, day: FindWednesday1400[0].day, time: FindWednesday1400[0].time, kind_trainee: FindWednesday1400[0].kind_trainee, name_Coach: FindWednesday1400[0].name_Coach},
+          {id: FindThursday1400[0].id, day: FindThursday1400[0].day, time: FindThursday1400[0].time, kind_trainee: FindThursday1400[0].kind_trainee, name_Coach: FindThursday1400[0].name_Coach},
+          {id: FindFriday1400[0].id, day: FindFriday1400[0].day, time: FindFriday1400[0].time, kind_trainee: FindFriday1400[0].kind_trainee, name_Coach: FindFriday1400[0].name_Coach},
+          {id: FindSaturday1400[0].id, day: FindSaturday1400[0].day, time: FindSaturday1400[0].time, kind_trainee: FindSaturday1400[0].kind_trainee, name_Coach: FindSaturday1400[0].name_Coach},
+          {id: FindSunday1400[0].id, day: FindSunday1400[0].day, time: FindSunday1400[0].time, kind_trainee: FindSunday1400[0].kind_trainee, name_Coach: FindSunday1400[0].name_Coach},
         ]
         const resultState1500 = [
-          {id: FindMonday1500[0].id, day: FindMonday1500[0].day, time: FindMonday1500[0].time, kind_trainee: FindMonday1500[0].kind_trainee},
-          {id: FindTuesday1500[0].id, day: FindTuesday1500[0].day, time: FindTuesday1500[0].time, kind_trainee: FindTuesday1500[0].kind_trainee},
-          {id: FindWednesday1500[0].id, day: FindWednesday1500[0].day, time: FindWednesday1500[0].time, kind_trainee: FindWednesday1500[0].kind_trainee},
-          {id: FindThursday1500[0].id, day: FindThursday1500[0].day, time: FindThursday1500[0].time, kind_trainee: FindThursday1500[0].kind_trainee},
-          {id: FindFriday1500[0].id, day: FindFriday1500[0].day, time: FindFriday1500[0].time, kind_trainee: FindFriday1500[0].kind_trainee},
-          {id: FindSaturday1500[0].id, day: FindSaturday1500[0].day, time: FindSaturday1500[0].time, kind_trainee: FindSaturday1500[0].kind_trainee},
-          {id: FindSunday1500[0].id, day: FindSunday1500[0].day, time: FindSunday1500[0].time, kind_trainee: FindSunday1500[0].kind_trainee},
+          {id: FindMonday1500[0].id, day: FindMonday1500[0].day, time: FindMonday1500[0].time, kind_trainee: FindMonday1500[0].kind_trainee, name_Coach: FindMonday1500[0].name_Coach},
+          {id: FindTuesday1500[0].id, day: FindTuesday1500[0].day, time: FindTuesday1500[0].time, kind_trainee: FindTuesday1500[0].kind_trainee, name_Coach: FindTuesday1500[0].name_Coach},
+          {id: FindWednesday1500[0].id, day: FindWednesday1500[0].day, time: FindWednesday1500[0].time, kind_trainee: FindWednesday1500[0].kind_trainee, name_Coach: FindWednesday1500[0].name_Coach},
+          {id: FindThursday1500[0].id, day: FindThursday1500[0].day, time: FindThursday1500[0].time, kind_trainee: FindThursday1500[0].kind_trainee, name_Coach: FindThursday1500[0].name_Coach},
+          {id: FindFriday1500[0].id, day: FindFriday1500[0].day, time: FindFriday1500[0].time, kind_trainee: FindFriday1500[0].kind_trainee, name_Coach: FindFriday1500[0].name_Coach},
+          {id: FindSaturday1500[0].id, day: FindSaturday1500[0].day, time: FindSaturday1500[0].time, kind_trainee: FindSaturday1500[0].kind_trainee, name_Coach: FindSaturday1500[0].name_Coach},
+          {id: FindSunday1500[0].id, day: FindSunday1500[0].day, time: FindSunday1500[0].time, kind_trainee: FindSunday1500[0].kind_trainee, name_Coach: FindSunday1500[0].name_Coach},
         ]
         const resultState1600 = [
-          {id: FindMonday1600[0].id, day: FindMonday1600[0].day, time: FindMonday1600[0].time, kind_trainee: FindMonday1600[0].kind_trainee},
-          {id: FindTuesday1600[0].id, day: FindTuesday1600[0].day, time: FindTuesday1600[0].time, kind_trainee: FindTuesday1600[0].kind_trainee},
-          {id: FindWednesday1600[0].id, day: FindWednesday1600[0].day, time: FindWednesday1600[0].time, kind_trainee: FindWednesday1600[0].kind_trainee},
-          {id: FindThursday1600[0].id, day: FindThursday1600[0].day, time: FindThursday1600[0].time, kind_trainee: FindThursday1600[0].kind_trainee},
-          {id: FindFriday1600[0].id, day: FindFriday1600[0].day, time: FindFriday1600[0].time, kind_trainee: FindFriday1600[0].kind_trainee},
-          {id: FindSaturday1600[0].id, day: FindSaturday1600[0].day, time: FindSaturday1600[0].time, kind_trainee: FindSaturday1600[0].kind_trainee},
-          {id: FindSunday1600[0].id, day: FindSunday1600[0].day, time: FindSunday1600[0].time, kind_trainee: FindSunday1600[0].kind_trainee},                    
+          {id: FindMonday1600[0].id, day: FindMonday1600[0].day, time: FindMonday1600[0].time, kind_trainee: FindMonday1600[0].kind_trainee, name_Coach: FindMonday1600[0].name_Coach},
+          {id: FindTuesday1600[0].id, day: FindTuesday1600[0].day, time: FindTuesday1600[0].time, kind_trainee: FindTuesday1600[0].kind_trainee, name_Coach: FindTuesday1600[0].name_Coach},
+          {id: FindWednesday1600[0].id, day: FindWednesday1600[0].day, time: FindWednesday1600[0].time, kind_trainee: FindWednesday1600[0].kind_trainee, name_Coach: FindWednesday1600[0].name_Coach},
+          {id: FindThursday1600[0].id, day: FindThursday1600[0].day, time: FindThursday1600[0].time, kind_trainee: FindThursday1600[0].kind_trainee, name_Coach: FindThursday1600[0].name_Coach},
+          {id: FindFriday1600[0].id, day: FindFriday1600[0].day, time: FindFriday1600[0].time, kind_trainee: FindFriday1600[0].kind_trainee, name_Coach: FindFriday1600[0].name_Coach},
+          {id: FindSaturday1600[0].id, day: FindSaturday1600[0].day, time: FindSaturday1600[0].time, kind_trainee: FindSaturday1600[0].kind_trainee, name_Coach: FindSaturday1600[0].name_Coach},
+          {id: FindSunday1600[0].id, day: FindSunday1600[0].day, time: FindSunday1600[0].time, kind_trainee: FindSunday1600[0].kind_trainee, name_Coach: FindSunday1600[0].name_Coach},
         ]
         const resultState1700 = [
-          {id: FindMonday1700[0].id, day: FindMonday1700[0].day, time: FindMonday1700[0].time, kind_trainee: FindMonday1700[0].kind_trainee},
-          {id: FindTuesday1700[0].id, day: FindTuesday1700[0].day, time: FindTuesday1700[0].time, kind_trainee: FindTuesday1700[0].kind_trainee},
-          {id: FindWednesday1700[0].id, day: FindWednesday1700[0].day, time: FindWednesday1700[0].time, kind_trainee: FindWednesday1700[0].kind_trainee},
-          {id: FindThursday1700[0].id, day: FindThursday1700[0].day, time: FindThursday1700[0].time, kind_trainee: FindThursday1700[0].kind_trainee},
-          {id: FindFriday1700[0].id, day: FindFriday1700[0].day, time: FindFriday1700[0].time, kind_trainee: FindFriday1700[0].kind_trainee},
-          {id: FindSaturday1700[0].id, day: FindSaturday1700[0].day, time: FindSaturday1700[0].time, kind_trainee: FindSaturday1700[0].kind_trainee},
-          {id: FindSunday1700[0].id, day: FindSunday1700[0].day, time: FindSunday1700[0].time, kind_trainee: FindSunday1700[0].kind_trainee},
+          {id: FindMonday1700[0].id, day: FindMonday1700[0].day, time: FindMonday1700[0].time, kind_trainee: FindMonday1700[0].kind_trainee, name_Coach: FindMonday1700[0].name_Coach},
+          {id: FindTuesday1700[0].id, day: FindTuesday1700[0].day, time: FindTuesday1700[0].time, kind_trainee: FindTuesday1700[0].kind_trainee, name_Coach: FindTuesday1700[0].name_Coach},
+          {id: FindWednesday1700[0].id, day: FindWednesday1700[0].day, time: FindWednesday1700[0].time, kind_trainee: FindWednesday1700[0].kind_trainee, name_Coach: FindWednesday1700[0].name_Coach},
+          {id: FindThursday1700[0].id, day: FindThursday1700[0].day, time: FindThursday1700[0].time, kind_trainee: FindThursday1700[0].kind_trainee, name_Coach: FindThursday1700[0].name_Coach},
+          {id: FindFriday1700[0].id, day: FindFriday1700[0].day, time: FindFriday1700[0].time, kind_trainee: FindFriday1700[0].kind_trainee, name_Coach: FindFriday1700[0].name_Coach},
+          {id: FindSaturday1700[0].id, day: FindSaturday1700[0].day, time: FindSaturday1700[0].time, kind_trainee: FindSaturday1700[0].kind_trainee, name_Coach: FindSaturday1700[0].name_Coach},
+          {id: FindSunday1700[0].id, day: FindSunday1700[0].day, time: FindSunday1700[0].time, kind_trainee: FindSunday1700[0].kind_trainee, name_Coach: FindSunday1700[0].name_Coach},
         ]
         const resultState1800 = [
-          {id: FindMonday1800[0].id, day: FindMonday1800[0].day, time: FindMonday1800[0].time, kind_trainee: FindMonday1800[0].kind_trainee},
-          {id: FindTuesday1800[0].id, day: FindTuesday1800[0].day, time: FindTuesday1800[0].time, kind_trainee: FindTuesday1800[0].kind_trainee},
-          {id: FindWednesday1800[0].id, day: FindWednesday1800[0].day, time: FindWednesday1800[0].time, kind_trainee: FindWednesday1800[0].kind_trainee},
-          {id: FindThursday1800[0].id, day: FindThursday1800[0].day, time: FindThursday1800[0].time, kind_trainee: FindThursday1800[0].kind_trainee},
-          {id: FindFriday1800[0].id, day: FindFriday1800[0].day, time: FindFriday1800[0].time, kind_trainee: FindFriday1800[0].kind_trainee},
-          {id: FindSaturday1800[0].id, day: FindSaturday1800[0].day, time: FindSaturday1800[0].time, kind_trainee: FindSaturday1800[0].kind_trainee},
-          {id: FindSunday1800[0].id, day: FindSunday1800[0].day, time: FindSunday1800[0].time, kind_trainee: FindSunday1800[0].kind_trainee},
+          {id: FindMonday1800[0].id, day: FindMonday1800[0].day, time: FindMonday1800[0].time, kind_trainee: FindMonday1800[0].kind_trainee, name_Coach: FindMonday1800[0].name_Coach},
+          {id: FindTuesday1800[0].id, day: FindTuesday1800[0].day, time: FindTuesday1800[0].time, kind_trainee: FindTuesday1800[0].kind_trainee, name_Coach: FindTuesday1800[0].name_Coach},
+          {id: FindWednesday1800[0].id, day: FindWednesday1800[0].day, time: FindWednesday1800[0].time, kind_trainee: FindWednesday1800[0].kind_trainee, name_Coach: FindWednesday1800[0].name_Coach},
+          {id: FindThursday1800[0].id, day: FindThursday1800[0].day, time: FindThursday1800[0].time, kind_trainee: FindThursday1800[0].kind_trainee, name_Coach: FindThursday1800[0].name_Coach},
+          {id: FindFriday1800[0].id, day: FindFriday1800[0].day, time: FindFriday1800[0].time, kind_trainee: FindFriday1800[0].kind_trainee, name_Coach: FindFriday1800[0].name_Coach},
+          {id: FindSaturday1800[0].id, day: FindSaturday1800[0].day, time: FindSaturday1800[0].time, kind_trainee: FindSaturday1800[0].kind_trainee, name_Coach: FindSaturday1800[0].name_Coach},
+          {id: FindSunday1800[0].id, day: FindSunday1800[0].day, time: FindSunday1800[0].time, kind_trainee: FindSunday1800[0].kind_trainee, name_Coach: FindSunday1800[0].name_Coach},
         ]
         const resultState1900 = [
-          {id: FindMonday1900[0].id, day: FindMonday1900[0].day, time: FindMonday1900[0].time, kind_trainee: FindMonday1900[0].kind_trainee},
-          {id: FindTuesday1900[0].id, day: FindTuesday1900[0].day, time: FindTuesday1900[0].time, kind_trainee: FindTuesday1900[0].kind_trainee},
-          {id: FindWednesday1900[0].id, day: FindWednesday1900[0].day, time: FindWednesday1900[0].time, kind_trainee: FindWednesday1900[0].kind_trainee},
-          {id: FindThursday1900[0].id, day: FindThursday1900[0].day, time: FindThursday1900[0].time, kind_trainee: FindThursday1900[0].kind_trainee},
-          {id: FindFriday1900[0].id, day: FindFriday1900[0].day, time: FindFriday1900[0].time, kind_trainee: FindFriday1900[0].kind_trainee},
-          {id: FindSaturday1900[0].id, day: FindSaturday1900[0].day, time: FindSaturday1900[0].time, kind_trainee: FindSaturday1900[0].kind_trainee},
-          {id: FindSunday1900[0].id, day: FindSunday1900[0].day, time: FindSunday1900[0].time, kind_trainee: FindSunday1900[0].kind_trainee},
+          {id: FindMonday1900[0].id, day: FindMonday1900[0].day, time: FindMonday1900[0].time, kind_trainee: FindMonday1900[0].kind_trainee, name_Coach: FindMonday1900[0].name_Coach},
+          {id: FindTuesday1900[0].id, day: FindTuesday1900[0].day, time: FindTuesday1900[0].time, kind_trainee: FindTuesday1900[0].kind_trainee, name_Coach: FindTuesday1900[0].name_Coach},
+          {id: FindWednesday1900[0].id, day: FindWednesday1900[0].day, time: FindWednesday1900[0].time, kind_trainee: FindWednesday1900[0].kind_trainee, name_Coach: FindWednesday1900[0].name_Coach},
+          {id: FindThursday1900[0].id, day: FindThursday1900[0].day, time: FindThursday1900[0].time, kind_trainee: FindThursday1900[0].kind_trainee, name_Coach: FindThursday1900[0].name_Coach},
+          {id: FindFriday1900[0].id, day: FindFriday1900[0].day, time: FindFriday1900[0].time, kind_trainee: FindFriday1900[0].kind_trainee, name_Coach: FindFriday1900[0].name_Coach},
+          {id: FindSaturday1900[0].id, day: FindSaturday1900[0].day, time: FindSaturday1900[0].time, kind_trainee: FindSaturday1900[0].kind_trainee, name_Coach: FindSaturday1900[0].name_Coach},
+          {id: FindSunday1900[0].id, day: FindSunday1900[0].day, time: FindSunday1900[0].time, kind_trainee: FindSunday1900[0].kind_trainee, name_Coach: FindSunday1900[0].name_Coach},
         ]
         const resultState2000 = [
-          {id: FindMonday2000[0].id, day: FindMonday2000[0].day, time: FindMonday2000[0].time, kind_trainee: FindMonday2000[0].kind_trainee},
-          {id: FindTuesday2000[0].id, day: FindTuesday2000[0].day, time: FindTuesday2000[0].time, kind_trainee: FindTuesday2000[0].kind_trainee},
-          {id: FindWednesday2000[0].id, day: FindWednesday2000[0].day, time: FindWednesday2000[0].time, kind_trainee: FindWednesday2000[0].kind_trainee},
-          {id: FindThursday2000[0].id, day: FindThursday2000[0].day, time: FindThursday2000[0].time, kind_trainee: FindThursday2000[0].kind_trainee},
-          {id: FindFriday2000[0].id, day: FindFriday2000[0].day, time: FindFriday2000[0].time, kind_trainee: FindFriday2000[0].kind_trainee},
-          {id: FindSaturday2000[0].id, day: FindSaturday2000[0].day, time: FindSaturday2000[0].time, kind_trainee: FindSaturday2000[0].kind_trainee},
-          {id: FindSunday2000[0].id, day: FindSunday2000[0].day, time: FindSunday2000[0].time, kind_trainee: FindSunday2000[0].kind_trainee},        
+          {id: FindMonday2000[0].id, day: FindMonday2000[0].day, time: FindMonday2000[0].time, kind_trainee: FindMonday2000[0].kind_trainee, name_Coach: FindMonday2000[0].name_Coach},
+          {id: FindTuesday2000[0].id, day: FindTuesday2000[0].day, time: FindTuesday2000[0].time, kind_trainee: FindTuesday2000[0].kind_trainee, name_Coach: FindTuesday2000[0].name_Coach},
+          {id: FindWednesday2000[0].id, day: FindWednesday2000[0].day, time: FindWednesday2000[0].time, kind_trainee: FindWednesday2000[0].kind_trainee, name_Coach: FindWednesday2000[0].name_Coach},
+          {id: FindThursday2000[0].id, day: FindThursday2000[0].day, time: FindThursday2000[0].time, kind_trainee: FindThursday2000[0].kind_trainee, name_Coach: FindThursday2000[0].name_Coach},
+          {id: FindFriday2000[0].id, day: FindFriday2000[0].day, time: FindFriday2000[0].time, kind_trainee: FindFriday2000[0].kind_trainee, name_Coach: FindFriday2000[0].name_Coach},
+          {id: FindSaturday2000[0].id, day: FindSaturday2000[0].day, time: FindSaturday2000[0].time, kind_trainee: FindSaturday2000[0].kind_trainee, name_Coach: FindSaturday2000[0].name_Coach},
+          {id: FindSunday2000[0].id, day: FindSunday2000[0].day, time: FindSunday2000[0].time, kind_trainee: FindSunday2000[0].kind_trainee, name_Coach: FindSunday2000[0].name_Coach},
         ]
+        setData0800(resultState0800);
         setData0900(resultState0900);
         setData1000(resultState1000);
         setData1100(resultState1100);
@@ -233,9 +252,9 @@ function ScheduleGet() {
         setData2000(resultState2000);
       });
   },
-   [setData0900]
+   [setData0800]
    );
-  
+
   return (
     <PositionTable>
     <Table
@@ -258,6 +277,7 @@ function ScheduleGet() {
       </thead>
         <tbody>
         <ScheduleTable
+          data0800={data0800}
           data0900={data0900}
           data1000={data1000}
           data1100={data1100}
