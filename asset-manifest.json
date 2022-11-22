@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/sandra-coach/static/css/main.b3eeeea7.css",
-    "main.js": "/sandra-coach/static/js/main.becebce7.js",
+    "main.js": "/sandra-coach/static/js/main.4687819e.js",
     "index.html": "/sandra-coach/index.html",
     "main.b3eeeea7.css.map": "/sandra-coach/static/css/main.b3eeeea7.css.map",
-    "main.becebce7.js.map": "/sandra-coach/static/js/main.becebce7.js.map"
+    "main.4687819e.js.map": "/sandra-coach/static/js/main.4687819e.js.map"
   },
   "entrypoints": [
     "static/css/main.b3eeeea7.css",
-    "static/js/main.becebce7.js"
+    "static/js/main.4687819e.js"
   ]
 }
