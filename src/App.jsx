@@ -8,7 +8,9 @@ import {
   // Navigate
 } from 'react-router-dom';
 // import Header from "./Components/Header/Header";
-// import MainPage from "Components/MainPage/MainPage";
+import MainPage from "Components/MainPage/MainPage";
+import SchedulePage from 'Pages/SchedulePage/SchedulePage';
+import InfoCoach from 'Pages/InfoCoach/InfoCoach';
 // import ScheduleGet from 'Components/ScheduleGet/ScheduleGet';
 // import Schedule from 'Components/Schedule/Schedule';
 // import Album from 'Components/Album/Album';
@@ -18,11 +20,11 @@ import Toaster from './Components/Toasts/Toasts';
 // import TEST from './Components/TEST/TEST';
 
 // const Header = lazy(() => import('./Components/Header/Header.jsx' /* webpackChunkName: "Header"*/));
-const MainPage = lazy(() => import('./Components/MainPage/MainPage.jsx' /* webpackChunkName: "MainPage"*/));
-const SchedulePage = lazy(() => import('./Pages/SchedulePage/SchedulePage.jsx' /* webpackChunkName: "SchedulePage"*/));
+// const MainPage = lazy(() => import('./Components/MainPage/MainPage.jsx' /* webpackChunkName: "MainPage"*/));
+// const SchedulePage = lazy(() => import('./Pages/SchedulePage/SchedulePage.jsx' /* webpackChunkName: "SchedulePage"*/));
 // const ScheduleGet = lazy(() => import('./Components/ScheduleGet/ScheduleGet.jsx' /* webpackChunkName: "ScheduleGet"*/));
 // const ScheduleTEST = lazy(() => import('./Components/ScheduleTEST/ScheduleTEST.jsx' /* webpackChunkName: "ScheduleGet"*/));
-const InfoCoach = lazy(() => import('./Pages/InfoCoach/InfoCoach.jsx' /* webpackChunkName: "InfoCoach"*/));
+// const InfoCoach = lazy(() => import('./Pages/InfoCoach/InfoCoach.jsx' /* webpackChunkName: "InfoCoach"*/));
 // const Market = lazy(() => import('./Components/Market/Market.jsx' /* webpackChunkName: "Market"*/));
 // const Abonnement = lazy(() => import('./Pages/Abonnement/Abonnement.jsx' /* webpackChunkName: "Abonnement"*/));
 // const Toaster = lazy(() => import('./Components/Toasts/Toasts.jsx' /* webpackChunkName: "Toasts"*/));
