@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import {
   Wrapper,
-  LinkStyle
+  WrapperStyle
 } from './MainPage.styled';
 
 const MainPage = () => {
@@ -33,10 +34,10 @@ const MainPage = () => {
   
   return (
     <Wrapper>
-      <nav>
-        <LinkStyle to={Schedule} style={{backgroundColor: scheduleColor}}>Schedule</LinkStyle>
-        <LinkStyle to={InfoCoachClients} style={{ backgroundColor: infoCoachClients }}>Info of coach and clients</LinkStyle>
-      </nav>
+      <WrapperStyle>
+        <NavLink to={Schedule} style={{backgroundColor: scheduleColor}}>Schedule</NavLink>
+        <NavLink to={InfoCoachClients} style={{ backgroundColor: infoCoachClients }}>Info of coach and clients</NavLink>
+      </WrapperStyle>
       <Outlet />
     </Wrapper>
   )

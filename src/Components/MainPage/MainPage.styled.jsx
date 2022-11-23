@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -8,7 +7,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
 `;
-const LinkStyle = styled(NavLink)`
+const WrapperStyle = styled.nav`
   font-family: 'Times New Roman', Times, serif;
   font-size: 25px;
   font-weight: 400;
@@ -20,5 +19,5 @@ const LinkStyle = styled(NavLink)`
 
 export {
   Wrapper,
-  LinkStyle
+  WrapperStyle
 };
