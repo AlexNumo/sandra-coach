@@ -34,10 +34,11 @@ function App() {
     <>
       <Suspense fallback={<h1>"Downloading..."</h1>}>
         <Routes>
-          <Route exact path='/' element={<MainPage/>} />
-          <Route path='/schedule' element={<SchedulePage/>} />
-          <Route path='/info-coach-clients' element={<InfoCoach />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route exact path='/' element={<MainPage/>} >
+            <Route path='/schedule' element={<SchedulePage/>} />
+            <Route path='/info-coach-clients' element={<InfoCoach />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Route>
         </Routes>
       </Suspense>
         <Toaster />
