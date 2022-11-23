@@ -33,8 +33,10 @@ const MainPage = () => {
   
   return (
     <Wrapper>
-      <LinkStyle to={Schedule} style={{backgroundColor: scheduleColor}}>Schedule</LinkStyle>
-      <LinkStyle to={InfoCoachClients} style={{ backgroundColor: infoCoachClients }}>Info of coach and clients</LinkStyle>
+      <nav>
+        <LinkStyle to={Schedule} style={{backgroundColor: scheduleColor}}>Schedule</LinkStyle>
+        <LinkStyle to={InfoCoachClients} style={{ backgroundColor: infoCoachClients }}>Info of coach and clients</LinkStyle>
+      </nav>
       <Outlet />
     </Wrapper>
   )

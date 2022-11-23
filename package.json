@@ -46,5 +46,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://sandra-back-end.herokuapp.com"
+  "proxy": "https://sandra-back-end.herokuapp.com",
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5"
+  }
 }
