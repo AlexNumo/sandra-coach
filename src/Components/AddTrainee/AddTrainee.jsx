@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { clientAPI } from "service/axios.config";
 import { Formik } from "formik";
 import ChooseCoach from "Components/ChooseCoach/ChooseCoach";
+import { useDispatch } from "react-redux";
+import { scheduleOperations } from '../../redux/app/operations';
 import {
   Wrapper,
   BTNSubmit,
@@ -12,6 +14,15 @@ import {
 
 const AddInfo = () => {
   const [allClient, setAllClient] = useState([]);
+  const [allCoach, setAllCoach] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(scheduleOperations.actionGetAllCoach())
+      .then((result) => {
+      return(setAllCoach(result.payload));
+      });
+  });
   const options = [
     { id: '-', value: '-', label: '-' },
     { id: 'None', value: '-', label: 'Вільно' },
@@ -93,6 +104,7 @@ const AddInfo = () => {
             handleChange={handleChange}
             handleBlur={handleBlur}
             values={values}
+            allCoach={allCoach}
           />
           <label htmlFor="info" style={{ display: "block" }}>
               Оберіть дату тренування
