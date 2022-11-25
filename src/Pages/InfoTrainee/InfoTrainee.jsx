@@ -8,9 +8,9 @@ import {
   Wrapper,
   WrapperBTN,
   BTN,
-} from './InfoCoach.styled';
+} from './InfoTrainee.styled';
 
-const InfoCoach = () => {
+const InfoTrainee = () => {
   const [showAddTrainee, setShowAddTrainee] = useState(false);
   const [showAddCoach, setShowAddCoach] = useState(false);
   const [showAddClient, setShowAddClient] = useState(false);
@@ -102,7 +102,6 @@ const InfoCoach = () => {
     return;
   };
 
-
   return(
     <Wrapper>
       <WrapperBTN>
@@ -121,4 +120,4 @@ const InfoCoach = () => {
   )
 };
 
-export default InfoCoach;
+export default InfoTrainee;

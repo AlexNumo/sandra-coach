@@ -9,15 +9,21 @@ const Wrapper = styled.div`
 `;
 const WrapperStyle = styled.nav`
   font-family: 'Times New Roman', Times, serif;
-  font-size: 25px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 700;
   width: 100%;
   display: flex;
   justify-content: center;
+`;
 
+const BTN = styled.button`
+  width: 300px;
+  margin: 10px 30px 30px 30px;
+  padding: 10px 10px 10px 10px;
 `;
 
 export {
   Wrapper,
-  WrapperStyle
+  WrapperStyle,
+  BTN
 };

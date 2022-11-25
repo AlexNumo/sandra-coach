@@ -293,7 +293,7 @@ function ScheduleGet() {
         />
       </tbody>
       </Table>
-      <ScheduleLink to='/'>Головне меню</ScheduleLink>
+      {/* <ScheduleLink to='/'>Головне меню</ScheduleLink> */}
     </PositionTable>
   );
 }
