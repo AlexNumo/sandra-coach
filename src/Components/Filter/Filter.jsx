@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { clientAPI } from "service/axios.config";
+import {
+  WrapperResult
+} from './Filter.styled';
 
 const Filter = () => {
   const [allTrainee, setAllTrainee] = useState([]);
-  const [filter, setFilter] = useState();
-  const [test, setTest] = useState([]);
+  const [filterDate, setFilterDate] = useState();
+  const [resultFilter, setResultFilter] = useState([]);
 
   useEffect(() => {
     clientAPI.getAllTrainee().then(
@@ -12,20 +15,39 @@ const Filter = () => {
         setAllTrainee(result);
       }
     );
+    
   }, [setAllTrainee]);
   
   const HandleFilter = (e) => {
-    setFilter(e.target.value);
-  }
-  
-  console.log("allTrainee: ", allTrainee);
-  console.log("test: ", test);
+    setResultFilter(allTrainee.filter(items => items.info.some(item => item.date === e.target.value)))
+    setFilterDate(e.target.value);
+  };
+
+  const ChekingDate = ({ info, trainee }) => {
+    if (info.date === filterDate) {
+      return (
+        <WrapperResult>
+          {/* <p>{info.date}</p> */}
+          <p>Ім'я тренера: <span>{trainee.name_Coach}</span> </p>
+          <p>Клієнти: <span>{info.client.join(', ')}</span></p>
+          <p>Кількість клієнтів: <span>{info.client.length}</span></p>
+        </WrapperResult>
+      )
+    };
+    return null;
+  };
+
+  // console.log("allTrainee: ", allTrainee);
+  // console.log("resultFilter: ", resultFilter);
+  // console.log(allTrainee.filter(items => items.info.some(item => item.date === filter)))
+  // console.log("test: ", test);
 
 
   return (
     <div>
       <input type="date" onChange={HandleFilter} />
-      {allTrainee.map(trainee => (
+      <h2>{ filterDate }</h2>
+      {resultFilter.map(trainee => (
         <div
           key={trainee._id}
         >
@@ -33,15 +55,16 @@ const Filter = () => {
             <div
               key={info._id}
             >
-              <div>
-                <p>Дата тренування: </p>
-                <span>{info.date}</span>
-              </div>
+              {/* {info.map(date => ( */}
+                <div>
+                <ChekingDate info={info} trainee={trainee } />
+                </div>
+                {/* ))} */}
             </div>
           )
           )}
         </div>))
-      };
+      }
     </div>
   )
 }
