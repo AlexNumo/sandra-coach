@@ -4,7 +4,6 @@ import ScheduleTable from '../ScheduleTable/ScheduleTable';
 import {clientAPI} from '../../service/axios.config';
 import {
   PositionTable, 
-  ScheduleLink
 } from './ScheduleGet.styled';
 
 
