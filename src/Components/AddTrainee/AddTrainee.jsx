@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import ChooseCoach from "Components/ChooseCoach/ChooseCoach";
 import { useDispatch } from "react-redux";
 import { scheduleOperations } from '../../redux/app/operations';
+import DatePicker from 'react-date-picker';
 import {
   Wrapper,
   BTNSubmit,
@@ -15,6 +16,7 @@ import {
 const AddInfo = () => {
   const [allClient, setAllClient] = useState([]);
   const [allCoach, setAllCoach] = useState([]);
+  // const [value, onChange] = useState(new Date());
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -72,6 +74,7 @@ const AddInfo = () => {
   //   tel: Yup.string()
   //     .required(<ERROR>Введіть номер телефону</ERROR>)
   // });
+  // console.log("value: ", value);
   return (
     <Wrapper>
       <Formik
@@ -110,7 +113,7 @@ const AddInfo = () => {
               Оберіть дату тренування
           </label>
           <input
-            style={{ width: "150px" }}
+            style={{ width: "150px", height: "20px"}}
             id="info.date"
             type="date"
             name="info.date"
@@ -118,6 +121,18 @@ const AddInfo = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             />
+          {/* <DatePicker
+            onChange={() => (value) => alert('New date is: ', value)}
+            onBlur={handleBlur}
+            value={values.date}
+            name="info.date"
+            id="info.date"
+          /> */}
+          {/* <DatePicker
+            onChange={onChange}
+            value={value}
+            format="y-MM-dd"
+          /> */}
           <label htmlFor="info" style={{ display: "block" }}>
               Оберіть вид тренування
           </label>

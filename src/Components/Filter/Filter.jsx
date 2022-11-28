@@ -45,7 +45,10 @@ const Filter = () => {
 
   return (
     <div>
-      <input type="date" onChange={HandleFilter} />
+      <input
+        type="date"
+        onChange={HandleFilter}
+      />
       <h2>{ filterDate }</h2>
       {resultFilter.map(trainee => (
         <div
