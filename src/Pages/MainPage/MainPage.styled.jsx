@@ -6,7 +6,9 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
+  background-color: #ddd2c5;
 `;
+
 const WrapperStyle = styled.nav`
   font-family: 'Times New Roman', Times, serif;
   font-size: 15px;
@@ -20,6 +22,8 @@ const BTN = styled.button`
   width: 300px;
   margin: 10px 30px 30px 30px;
   padding: 10px 10px 10px 10px;
+  background-color: #8babc7;
+  border-radius: 22px;
 `;
 
 export {

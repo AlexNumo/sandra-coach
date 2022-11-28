@@ -14,8 +14,9 @@ const WrapperBTN = styled.div`
 `;
 
 const BTN = styled.button`
-  background-color: #afdcbc;
+  background-color: #8babc7;
   margin-left: 20px;
+  border-radius: 22px;
 `;
 
 export {

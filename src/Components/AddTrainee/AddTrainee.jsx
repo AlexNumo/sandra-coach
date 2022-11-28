@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import ChooseCoach from "Components/ChooseCoach/ChooseCoach";
 import { useDispatch } from "react-redux";
 import { scheduleOperations } from '../../redux/app/operations';
-// import DatePicker from 'react-date-picker';
+// import DatePicker  from 'react-date-picker';
 import {
   Wrapper,
   BTNSubmit,
@@ -16,15 +16,21 @@ import {
 const AddInfo = () => {
   const [allClient, setAllClient] = useState([]);
   const [allCoach, setAllCoach] = useState([]);
-  // const [value, onChange] = useState(new Date());
+  // const [startDate, setStartDate] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(scheduleOperations.actionGetAllCoach())
-      .then((result) => {
-      return(setAllCoach(result.payload));
-      });
-  });
+    const getAllCoach = () => {
+      dispatch(scheduleOperations.actionGetAllCoach())
+        .then((result) => {
+          return (setAllCoach(result.payload))
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    };
+    getAllCoach();
+  }, []);
   const options = [
     { id: '-', value: '-', label: '-' },
     { id: 'None', value: '-', label: 'Вільно' },
@@ -46,16 +52,21 @@ const AddInfo = () => {
     { id: "metabolick-workout", value: "Metabolick workout", label: 'Metabolick workout' },
   ];
 
-  // const options2 = allCoach.map(coach => (
-  //   { value: coach.name_Coach, label: coach.name_Coach }
-  // ))
-
-  // console.log("options2: ", options2);
-  // console.log("allCoach: ", allCoach);
-
-//   const MyComponent = () => (
-//   <Select options={options} />
-// )
+    const Times = [
+    { id: '0800', text: '8:00' },
+    { id: '0900', text: '9:00' },
+    { id: '1000', text: '10:00' },
+    { id: '1100', text: '11:00' },
+    { id: '1200', text: '12:00' },
+    { id: '1300', text: '13:00' },
+    { id: '1400', text: '14:00' },
+    { id: '1500', text: '15:00' },
+    { id: '1600', text: '16:00' },
+    { id: '1700', text: '17:00' },
+    { id: '1800', text: '18:00' },
+    { id: '1900', text: '19:00' },
+    { id: '2000', text: '20:00' },
+  ];
 
   useEffect(() => {
     clientAPI.getAllClient().then(
@@ -66,15 +77,6 @@ const AddInfo = () => {
 
   }, [setAllClient]);
 
-  // const CoachSchema = Yup.object().shape({
-  //   name_Coach: Yup.string()
-  //     .min(2, <ERROR>Введіть більше символів</ERROR>)
-  //     .max(50, <ERROR>Введіть меншк символів</ERROR>)
-  //     .required(<ERROR>Обовязкове поле</ERROR>),
-  //   tel: Yup.string()
-  //     .required(<ERROR>Введіть номер телефону</ERROR>)
-  // });
-  // console.log("value: ", value);
   return (
     <Wrapper>
       <Formik
@@ -82,6 +84,7 @@ const AddInfo = () => {
           name_Coach: "",
           info: {
             date: "",
+            time: "",
             kind_trainee: "",
             client:{},
           },
@@ -101,87 +104,101 @@ const AddInfo = () => {
           handleBlur,
           handleSubmit,
       } = props;
-      return (
-        <form onSubmit={handleSubmit}>
-          <ChooseCoach
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-            values={values}
-            allCoach={allCoach}
-          />
-          <label htmlFor="info" style={{ display: "block" }}>
-              Оберіть дату тренування
-          </label>
-          <input
-            style={{ width: "150px", height: "20px"}}
-            id="info.date"
-            type="date"
-            name="info.date"
-            value={values.date}
-            onChange={handleChange}
-            onBlur={handleBlur}
+          return (
+          <form
+            style={{ display: "block" }}
+            onSubmit={handleSubmit}
+          >
+            <ChooseCoach
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              values={values}
+              allCoach={allCoach}
             />
-          {/* <DatePicker
-            onChange={() => (value) => alert('New date is: ', value)}
-            onBlur={handleBlur}
-            value={values.date}
-            name="info.date"
-            id="info.date"
-          /> */}
-          {/* <DatePicker
-            onChange={onChange}
-            value={value}
-            format="y-MM-dd"
-          /> */}
-          <label htmlFor="info" style={{ display: "block" }}>
-              Оберіть вид тренування
-          </label>
-          <select
-            style={{ width: "150px" }}
-            name="info.kind_trainee"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.kind_trainee}
-          >
-          {options.map(option => (
-            <option
-              key={option.id}
-              id={option.id}
-              value={option.value}
+            <label
+              htmlFor="info"
+              id="date"
+              style={{ display: "block", marginTop: "15px" }}
             >
-              {option.label}
-            </option>
-          ))}
-          </select>
-          <label htmlFor="info" style={{ display: "block" }}>
-              Оберіть клієнтів
-          </label>
-          <select
-            style={{ width: "150px" }}
-            multiple
-            name="info.client"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.client}
-          >
-          {allClient.map(client => (
-            <option
-              key={client.name_client}
-              id={client.name_client}
-              value={client.name_client}
+                Оберіть дату тренування
+            </label>
+            <input
+              style={{ width: "150px", height: "20px"}}
+              id="date"
+              type="date"
+              name="info.date"
+              value={values.date}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              />
+              <label htmlFor="info" style={{ display: "block" }}>
+                Оберіть вид тренування
+            </label>
+            <select
+              style={{ width: "150px" }}
+              name="info.kind_trainee"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.kind_trainee}
             >
-              {client.name_client}
-            </option>
-          ))}
+            {options.map(option => (
+              <option
+                key={option.id}
+                id={option.id}
+                value={option.value}
+              >
+                {option.label}
+              </option>
+            ))}
             </select>
-          <BTNSubmit type="submit" disabled={isSubmitting}>
-            Додати тренування
-          </BTNSubmit>
-          {/* <MyComponent/> */}
+            <label htmlFor="info" style={{ display: "block" }}>
+                Оберіть час
+            </label>
+            <select
+              style={{ width: "150px", display: "block" }}
+              name="info.time"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.time}
+            >
+            {Times.map(time => (
+              <option
+                key={time.id}
+                id={time.id}
+                value={time.id}
+              >
+                {time.text}
+              </option>
+            ))}
+              </select>
+            <label htmlFor="info" style={{ display: "block" }}>
+                Оберіть клієнтів
+            </label>
+            <select
+              style={{ width: "150px", display: "block" }}
+              multiple
+              name="info.client"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.client}
+            >
+            {allClient.map(client => (
+              <option
+                key={client.name_client}
+                id={client.name_client}
+                value={client.name_client}
+              >
+                {client.name_client}
+              </option>
+            ))}
+              </select>
+            <BTNSubmit type="submit" disabled={isSubmitting}>
+              Додати тренування
+            </BTNSubmit>
             </form>
           );
         }}
-        </Formik>
+            </Formik>
     </Wrapper>
   )
 }
