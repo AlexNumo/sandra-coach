@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import ChooseCoach from "Components/ChooseCoach/ChooseCoach";
 import { useDispatch } from "react-redux";
 import { scheduleOperations } from '../../redux/app/operations';
-import DatePicker from 'react-date-picker';
+// import DatePicker from 'react-date-picker';
 import {
   Wrapper,
   BTNSubmit,
