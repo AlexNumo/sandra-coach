@@ -30,7 +30,7 @@ const AddInfo = () => {
         });
     };
     getAllCoach();
-  }, []);
+  });
   const options = [
     { id: '-', value: '-', label: '-' },
     { id: 'None', value: '-', label: 'Вільно' },
