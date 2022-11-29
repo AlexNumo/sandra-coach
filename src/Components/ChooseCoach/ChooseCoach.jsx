@@ -20,9 +20,6 @@ const ChooseCoach = ({handleChange, handleBlur, values, allCoach}) => {
 
   return (
     <>
-      <label style={{ display: "block" }}>
-        Оберіть ім'я тренера
-      </label>
       {/* <Select
             options={options2}
             id="name_Coach"

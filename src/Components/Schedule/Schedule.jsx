@@ -7,10 +7,13 @@ function Schedule() {
     <PositionTable>
       <Table
         striped
-        bordered
+        bordered={true}
         hover
         size='xl'
         className='table-back-color'
+        // scrolled horizontally
+        // responsive="sm"
+        // bordered={true}
         // responsive 
       >
         <thead >

@@ -27,7 +27,7 @@ const OptionsClick = () => {
   }, [dispatch]);
 
   const options = [
-    { id: '-', value: '-', text: '-' },
+    { id: '-', value: '-', text: 'Вид тренування' },
     { id: 'None', value: '-', text: 'Вільно' },
     { id: "kangoo-jumps", value: "Kangoo jumps", text: 'Kangoo jumps' },
     { id: "sky-jumping", value: "Sky jumping", text: 'Sky jumping' },

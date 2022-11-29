@@ -134,37 +134,48 @@ button {
 }
 @media screen and (max-width: 1200px){
   .monday {
-    width: 60px;
+    width: 50px;
+    font-size: 10px;
   }
 
   .tuesday {
-    width: 60px;
+    width: 50px;
+    font-size: 10px;
   }
 
   .wednesday {
-    width: 60px;
+    width: 50px;
+    font-size: 10px;
   }
 
   .thursday {
-    width: 60px;
+    width: 50px;
+    font-size: 10px;
   }
 
   .friday {
-    width: 60px;
+    width: 50px;
+    font-size: 10px;
   }
 
   .saturday {
-    width: 60px;
+    width: 50px;
+    font-size: 10px;
   }
 
   .sunday {
-    width: 60px;
+    width: 50px;
+    font-size: 10px;
   }
   .select{
+    font-size: 10px;
     width: 50px;
   }
+  .time{
+    font-size: 10px;
+  }
   .form-size{
-    width: 60px;
+    width: 50px;
   }
 }
 .table-back-color{
