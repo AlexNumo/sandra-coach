@@ -75,52 +75,99 @@ button {
   margin: 0;
 }
 
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.hidden{
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
 }
-input[type=number]{
-    -moz-appearance: textfield;
+
+.visible{
+  visibility: visible;
+}
+
+.active{
+  background-color: #FC842D !important;
 }
 
 .monday {
-  background-color: #b3ffb3;
+  /* background-color: #b3ffb3; */
+  width: 150px;
 }
 
 .tuesday {
-  background-color: #ffb3d9;
+  /* background-color: #ffb3d9; */
+  width: 150px;
 }
 
 .wednesday {
-  background-color: #ff00ff;
+  /* background-color: #ff00ff; */
+  width: 150px;
 }
 
 .thursday {
-  background-color: #b3d9ff;
+  /* background-color: #b3d9ff; */
+  width: 150px;
 }
 
 .friday {
-  background-color: #e6b3b3;
+  /* background-color: #e6b3b3; */
+  width: 150px;
 }
 
 .saturday {
-  background-color: #ffb3ff;
+  /* background-color: #ffb3ff; */
+  width: 150px;
 }
 
 .sunday {
-  background-color: #99ffff;
+  /* background-color: #99ffff; */
+  width: 150px;
 }
 
 .time{
-  background-color: #8080ff;
-  margin-right: 10px;
-  width: 50px;
+  /* background-color: #8080ff; */
 }
 
 .select{
   background-color: inherit;
+}
+@media screen and (max-width: 1200px){
+  .monday {
+    width: 70px;
+  }
+
+  .tuesday {
+    width: 70px;
+  }
+
+  .wednesday {
+    width: 70px;
+  }
+
+  .thursday {
+    width: 70px;
+  }
+
+  .friday {
+    width: 70px;
+  }
+
+  .saturday {
+    width: 70px;
+  }
+
+  .sunday {
+    width: 70px;
+  }
+  .select{
+    width: 50px;
+  }
+  .form-size{
+    width: 70px;
+  }
+}
+.table-back-color{
+  background-color: #91badd;
 }
 `;
 

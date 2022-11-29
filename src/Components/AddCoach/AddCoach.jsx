@@ -1,13 +1,33 @@
 import { Formik } from "formik";
+import { useEffect, useState } from "react";
 import { clientAPI } from '../../service/axios.config';
+import { useDispatch } from "react-redux";
+import { scheduleOperations } from '../../redux/app/operations';
 import {
   Wrapper,
   BTNSubmit,
-  ERROR
+  ERROR,
+  CoachWrapper
 } from './AddCoach.styled';
 import * as Yup from "yup";
 
 const AddCoach = () => {
+  const [allCoach, setAllCoach] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getAllCoach = () => {
+      dispatch(scheduleOperations.actionGetAllCoach())
+        .then((result) => {
+          return (setAllCoach(result.payload))
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    };
+    getAllCoach();
+  }, [dispatch]);
+
   const CoachSchema = Yup.object().shape({
     name_Coach: Yup.string()
       .min(2, <ERROR>Введіть більше символів</ERROR>)
@@ -16,6 +36,11 @@ const AddCoach = () => {
     tel: Yup.string()
       .required(<ERROR>Введіть номер телефону</ERROR>)
   });
+
+  const DeleteCoach = (e) => {
+    console.log(e.target.value);
+    clientAPI.deleteCoach(e.target.value);
+  }
   return (
     <Wrapper>
       <Formik
@@ -86,7 +111,23 @@ const AddCoach = () => {
           </form>
         );
       }}
-    </Formik>
+      </Formik>
+      {allCoach.map(coach => (
+        <CoachWrapper
+          key={coach.name_Coach}
+          id={coach.name_Coach}
+        >
+          <h3>
+          Ім'я: {coach.name_Coach}
+          </h3>
+          <p>
+          Телефон: {coach.tel}
+          </p>
+          <button
+            value={coach.name_Coach}
+            onClick={DeleteCoach}>Видалити тренера</button>
+        </CoachWrapper>
+      ))}
     </Wrapper>
   )
 };

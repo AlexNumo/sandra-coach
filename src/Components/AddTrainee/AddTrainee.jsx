@@ -13,7 +13,7 @@ import {
 // import * as Yup from "yup";
 // import { ERROR } from "./AddInfo.styled";
 
-const AddInfo = () => {
+const AddTrainee = () => {
   const [allClient, setAllClient] = useState([]);
   const [allCoach, setAllCoach] = useState([]);
   // const [startDate, setStartDate] = useState();
@@ -30,7 +30,17 @@ const AddInfo = () => {
         });
     };
     getAllCoach();
-  });
+  }, [dispatch]);
+
+  useEffect(() => {
+    clientAPI.getAllClient().then(
+      (result) => {
+        setAllClient(result)
+      }
+    );
+
+  }, [setAllClient]);
+  
   const options = [
     { id: '-', value: '-', label: '-' },
     { id: 'None', value: '-', label: 'Вільно' },
@@ -67,15 +77,6 @@ const AddInfo = () => {
     { id: '1900', text: '19:00' },
     { id: '2000', text: '20:00' },
   ];
-
-  useEffect(() => {
-    clientAPI.getAllClient().then(
-      (result) => {
-        setAllClient(result)
-      }
-    );
-
-  }, [setAllClient]);
 
   return (
     <Wrapper>
@@ -203,4 +204,4 @@ const AddInfo = () => {
   )
 }
 
-export default AddInfo;
+export default AddTrainee;

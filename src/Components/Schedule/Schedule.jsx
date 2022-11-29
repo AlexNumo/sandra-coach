@@ -5,27 +5,29 @@ import { PositionTable } from './Schedule.styled';
 function Schedule() {  
   return (
     <PositionTable>
-    <Table
-      striped
-      bordered
-      hover
-      size='xl'
-    >
-      <thead >
-        <tr>
-          <th className='time'>#</th>
-          <th className='monday'>Понеділок</th>
-          <th className='tuesday'>Вівторок</th>
-          <th className='wednesday'>Середа</th>
-          <th className='thursday'>Четвер</th>
-          <th className='friday'>П'ятниця</th>
-          <th className='saturday'>Субота</th>
-          <th className='sunday'>Неділя</th>
-        </tr>
-      </thead>
-      <tbody>
-        <OptionsClick/>
-      </tbody>
+      <Table
+        striped
+        bordered
+        hover
+        size='xl'
+        className='table-back-color'
+        // responsive 
+      >
+        <thead >
+          <tr>
+            <th className='time'>#</th>
+            <th className='monday'>Понеділок</th>
+            <th className='tuesday'>Вівторок</th>
+            <th className='wednesday'>Середа</th>
+            <th className='thursday'>Четвер</th>
+            <th className='friday'>П'ятниця</th>
+            <th className='saturday'>Субота</th>
+            <th className='sunday'>Неділя</th>
+          </tr>
+        </thead>
+        <tbody>
+          <OptionsClick/>
+        </tbody>
       </Table>
     </PositionTable>
   );

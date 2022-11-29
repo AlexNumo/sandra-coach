@@ -14,11 +14,17 @@ const OptionsClick = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(scheduleOperations.actionGetAllCoach())
-      .then((result) => {
-      return(setAllCoach(result.payload));
-      });
-  });
+    const getAllCoach = () => {
+      dispatch(scheduleOperations.actionGetAllCoach())
+        .then((result) => {
+          return (setAllCoach(result.payload))
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    };
+    getAllCoach();
+  }, [dispatch]);
 
   const options = [
     { id: '-', value: '-', text: '-' },
@@ -102,7 +108,10 @@ const OptionsClick = () => {
                     handleSubmit,
                   } = props;
                   return (
-                    <form onSubmit={handleSubmit}>
+                    <form
+                      onSubmit={handleSubmit}
+                      className="form-size"
+                    >
                       <select
                         id="kind_trainee"
                         onChange={handleChange}

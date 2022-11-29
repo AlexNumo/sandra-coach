@@ -1,13 +1,24 @@
 import { Formik } from "formik";
+import { useEffect, useState } from "react";
 import { clientAPI } from '../../service/axios.config';
 import {
   Wrapper,
   BTNSubmit,
-  ERROR
+  ERROR,
+  CleintWrapper
 } from './AddClient.styled';
 import * as Yup from "yup";
 
 const AddClient = () => {
+  const [allClient, setAllClient] = useState([]);
+  useEffect(() => {
+    clientAPI.getAllClient().then(
+      (result) => {
+        setAllClient(result)
+      }
+    );
+  }, [setAllClient]);
+
   const CoachSchema = Yup.object().shape({
     name_client: Yup.string()
       .min(2, <ERROR>Введіть більше символів</ERROR>)
@@ -86,7 +97,20 @@ const AddClient = () => {
           </form>
         );
       }}
-    </Formik>
+      </Formik>
+      {allClient.map(client => (
+        <CleintWrapper
+          key={client.name_client}
+          id={client.name_client}
+        >
+          <h3>
+          Ім'я: {client.name_client}
+          </h3>
+          <p>
+          Телефон: {client.tel}
+          </p>
+        </CleintWrapper>
+      ))}
     </Wrapper>
   )
 };

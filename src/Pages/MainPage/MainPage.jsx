@@ -37,8 +37,8 @@ const MainPage = () => {
   return (
     <Wrapper>
       <WrapperStyle>
-        <BTN type='button' onClick={ShowScheduleHandle}>Розклад</BTN>
-        <BTN type='button' onClick={ShowInfoTraineeHandle}>Інформація про клієнтів та тренерів</BTN>
+        <BTN type='button' onClick={ShowScheduleHandle} className={showSchedule ? 'active' : ''}>Розклад</BTN>
+        <BTN type='button' onClick={ShowInfoTraineeHandle} className={showInfoTrainee ? 'active' : ''}>Інформація про клієнтів та тренерів</BTN>
       </WrapperStyle>
       {showSchedule ? <SchedulePage /> : null}
       {showInfoTrainee ? <InfoTrainee /> : null}

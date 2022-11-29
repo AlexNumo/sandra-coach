@@ -23,8 +23,14 @@ const ERROR = styled.div`
   position: relative;
 `;
 
+const CoachWrapper = styled.div`
+  border: 1px solid;
+  margin-top: 5px;
+`;
+
 export {
   Wrapper,
   BTNSubmit,
-  ERROR
+  ERROR,
+  CoachWrapper
 };

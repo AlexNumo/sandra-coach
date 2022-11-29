@@ -260,7 +260,8 @@ function ScheduleGet() {
       striped
       bordered
       hover
-      size='xl'
+        size='xl'
+        className='table-back-color'
     >
       <thead >
         <tr>

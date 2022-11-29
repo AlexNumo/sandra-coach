@@ -15,7 +15,8 @@ const InfoTrainee = () => {
   const [showAddCoach, setShowAddCoach] = useState(false);
   const [showAddClient, setShowAddClient] = useState(false);
   const [showTrainee, setShowTrainee] = useState(false);
-  const [showFilter, setShowFilter] = useState(!false);
+  const [showFilter, setShowFilter] = useState(false);
+  const [showCustom, setShowCustom] = useState(true);
 
   const HandleShowAddTrainee = () => {
     if (showAddTrainee === true) {
@@ -24,6 +25,7 @@ const InfoTrainee = () => {
       setShowAddCoach(false);
       setShowTrainee(false);
       setShowFilter(false);
+      setShowCustom(true);
       return;
     }
     setShowAddTrainee(true);
@@ -31,6 +33,7 @@ const InfoTrainee = () => {
     setShowAddClient(false);
     setShowTrainee(false);
     setShowFilter(false);
+    setShowCustom(false);
     return;
   };
 
@@ -41,6 +44,7 @@ const InfoTrainee = () => {
       setShowAddClient(false);
       setShowTrainee(false);
       setShowFilter(false);
+      setShowCustom(true);
       return;
     }
     setShowAddTrainee(false);
@@ -48,6 +52,7 @@ const InfoTrainee = () => {
     setShowAddClient(false);
     setShowTrainee(false);
     setShowFilter(false);
+    setShowCustom(false);
     return;
   };
 
@@ -58,6 +63,7 @@ const InfoTrainee = () => {
       setShowAddClient(false);
       setShowTrainee(false);
       setShowFilter(false);
+      setShowCustom(true);
       return;
     }
     setShowAddTrainee(false);
@@ -65,6 +71,7 @@ const InfoTrainee = () => {
     setShowAddClient(true);
     setShowTrainee(false);
     setShowFilter(false);
+    setShowCustom(false);
     return;
   };
 
@@ -75,6 +82,7 @@ const InfoTrainee = () => {
       setShowAddClient(false);
       setShowTrainee(false);
       setShowFilter(false);
+      setShowCustom(true);
       return;
     }
     setShowAddTrainee(false);
@@ -82,6 +90,7 @@ const InfoTrainee = () => {
     setShowAddClient(false);
     setShowTrainee(true);
     setShowFilter(false);
+    setShowCustom(false);
     return;
   };
 
@@ -92,6 +101,7 @@ const InfoTrainee = () => {
       setShowAddClient(false);
       setShowTrainee(false);
       setShowFilter(false);
+      setShowCustom(true);
       return;
     }
     setShowAddTrainee(false);
@@ -99,18 +109,31 @@ const InfoTrainee = () => {
     setShowAddClient(false);
     setShowTrainee(false);
     setShowFilter(true);
+    setShowCustom(false);
     return;
   };
+
+  const ShowCustom = () => {
+    return (
+      <div className={showCustom ? 'visible' : 'hidden'}>
+        <h2>Будь ласка, оберіть вкладку</h2>
+      </div>
+    )
+  };
+
+  // console.log(document.getElementById('show-custom'));
 
   return(
     <Wrapper>
       <WrapperBTN>
-        <BTN onClick={HandleShowViewTrainee}>Показати всіх тренерів</BTN>
-        <BTN onClick={HandleShowAddTrainee}>Додати нове тренування</BTN>
-        <BTN onClick={HandleShowAddCoach}>Додати нового тренера</BTN>
-        <BTN onClick={HandleShowAddClient}>Додати нового клієнта</BTN>
-        <BTN onClick={HandleShowFilter}>Застосувати фільтр</BTN>
+        <BTN onClick={HandleShowViewTrainee} className={showTrainee ? 'active' : ''}>Показати всіх тренерів</BTN>
+        <BTN onClick={HandleShowAddTrainee} className={showAddTrainee ? 'active' : ''}>Додати нове тренування</BTN>
+        <BTN onClick={HandleShowAddCoach} className={showAddCoach ? 'active' : ''}>Показати тренерів</BTN>
+        <BTN onClick={HandleShowAddClient} className={showAddClient ? 'active' : ''}>Показати клієнтів</BTN>
+        <BTN onClick={HandleShowFilter} className={showFilter ? 'active' : ''}>Застосувати фільтр</BTN>
       </WrapperBTN>
+      <ShowCustom />
+      
       {showAddCoach ? <AddCoach /> : null}
       {showAddClient ? <AddClient /> : null}
       {showAddTrainee ? <AddTrainee /> : null}

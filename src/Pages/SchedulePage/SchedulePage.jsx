@@ -5,6 +5,9 @@ const SchedulePage = () => {
   return (
     <div>
       <Schedule />
+      <div
+        style={{ marginTop: "15px"}}
+      ></div>
       <ScheduleGet/>
     </div>
   )

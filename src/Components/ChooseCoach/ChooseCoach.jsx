@@ -34,7 +34,7 @@ const ChooseCoach = ({handleChange, handleBlur, values, allCoach}) => {
           /> */}
 
       <select
-        style={{ width: "150px" }}
+        // style={{ width: "150px" }}
         id="name_Coach"
         onChange={handleChange}
         onBlur={handleBlur}

@@ -84,10 +84,12 @@ export const addCoach = async ({ name_Coach, tel }) => {
   }
 };
 
-export const deleteCoach = async ({name_Coach}) => {
+export const deleteCoach = async (name_Coach) => {
   try {
+    console.log(name_Coach);
     const result = await instanceClientAPI.put(`/coach`, { name_Coach });
-    return result;
+    toast.success('Тренера видалено');
+    return console.log(result);
   } catch (error) {
     toast.error('Упс, щось пішло не так');
     console.error(error.message);

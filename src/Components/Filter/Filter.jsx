@@ -45,7 +45,9 @@ const Filter = () => {
 
   return (
     <div>
+      <h3>Оберіть дату</h3>
       <input
+        style={{ width: "150px", height: "20px"}}
         type="date"
         onChange={HandleFilter}
       />
