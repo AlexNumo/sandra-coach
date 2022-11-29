@@ -28,9 +28,29 @@ const CoachWrapper = styled.div`
   margin-top: 5px;
 `;
 
+const LinkStyle = styled.a`
+    margin-left: 8px;
+`;
+
+const ImageIcon = styled.img`
+    width: 15px;
+    margin-right: 5px;
+`;
+
+const BTN = styled.button`
+  display: block;
+  border-radius: 22px;
+  padding: 2px;
+  background-color: #878bad;
+  margin: 5px;
+`;
+
 export {
   Wrapper,
   BTNSubmit,
   ERROR,
-  CoachWrapper
+  CoachWrapper,
+  LinkStyle,
+  ImageIcon,
+  BTN
 };

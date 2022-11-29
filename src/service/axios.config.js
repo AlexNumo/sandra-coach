@@ -74,9 +74,9 @@ export const getAllCoach = async () => {
   }
 };
 
-export const addCoach = async ({ name_Coach, tel }) => {
+export const addCoach = async ({ name_Coach, tel, instagram }) => {
   try {
-    const res = await instanceClientAPI.post(`/coach`, { name_Coach, tel });
+    const res = await instanceClientAPI.post(`/coach`, { name_Coach, tel, instagram });
     toast.success('Нового тренера додано');
     return res;
   } catch (e) {

@@ -3,13 +3,18 @@ import { useEffect, useState } from "react";
 import { clientAPI } from '../../service/axios.config';
 import { useDispatch } from "react-redux";
 import { scheduleOperations } from '../../redux/app/operations';
+import InstagramIcon from '../../icons/instagram.svg';
+import PhoneIcon from '../../icons/phone.svg';
 import {
   Wrapper,
   BTNSubmit,
-  ERROR,
-  CoachWrapper
+  // ERROR,
+  CoachWrapper,
+  LinkStyle,
+  ImageIcon,
+  BTN
 } from './AddCoach.styled';
-import * as Yup from "yup";
+// import * as Yup from "yup";
 
 const AddCoach = () => {
   const [allCoach, setAllCoach] = useState([]);
@@ -28,18 +33,56 @@ const AddCoach = () => {
     getAllCoach();
   }, [dispatch]);
 
-  const CoachSchema = Yup.object().shape({
-    name_Coach: Yup.string()
-      .min(2, <ERROR>Введіть більше символів</ERROR>)
-      .max(50, <ERROR>Введіть меншк символів</ERROR>)
-      .required(<ERROR>Обовязкове поле</ERROR>),
-    tel: Yup.string()
-      .required(<ERROR>Введіть номер телефону</ERROR>)
-  });
+  // const CoachSchema = Yup.object().shape({
+  //   name_Coach: Yup.string()
+  //     .min(2, <ERROR>Введіть більше символів</ERROR>)
+  //     .max(50, <ERROR>Введіть меншк символів</ERROR>)
+  //     .required(<ERROR>Обовязкове поле</ERROR>),
+  //   tel: Yup.string()
+  //     .required(<ERROR>Введіть номер телефону</ERROR>)
+  // });
 
   const DeleteCoach = (e) => {
     console.log(e.target.value);
     clientAPI.deleteCoach(e.target.value);
+  };
+
+  const InstagramLink = ({ coach }) => {
+    if (coach.instagram !== undefined) {
+      return (
+        <>
+          <p>Соціальні мережі:</p>
+          <LinkStyle href={coach.instagram}>
+            <ImageIcon src={InstagramIcon} alt="InstagramIcon" />
+          </LinkStyle>
+          <LinkStyle href="tel:{coach.instagram}">
+            
+          </LinkStyle>
+        </>
+      )
+    }
+    return (
+      <>
+      <p>Соціальні мережі: ПУСТО</p>
+      </>
+    );
+  }
+    const PhoneLink = ({ coach }) => {
+    if (coach.tel !== undefined) {
+      return (
+        <>
+          <LinkStyle href="tel:{coach.instagram}">
+            <ImageIcon src={PhoneIcon} alt="PhoneIcon" />
+            {coach.tel}
+          </LinkStyle>
+        </>
+      )
+    }
+    return (
+      <>
+      <p>Телефон: відсутній</p>
+      </>
+    );
   }
   return (
     <Wrapper>
@@ -47,8 +90,9 @@ const AddCoach = () => {
         initialValues={{
           name_Coach: "",
           tel: "",
+          instagram: "",
         }}
-        validationSchema={CoachSchema}
+        // validationSchema={CoachSchema}
         onSubmit={async values => {
           await clientAPI.addCoach(values);
         // await new Promise(resolve => setTimeout(resolve, 500));
@@ -87,7 +131,7 @@ const AddCoach = () => {
               <div className="input-feedback">{errors.name_Coach}</div>
             )}
             <label htmlFor="tel" style={{ display: "block" }}>
-              Введіть номер телефону
+              Номер телефону
             </label>
             <input
               id="tel"
@@ -105,6 +149,25 @@ const AddCoach = () => {
             {errors.tel && touched.tel && (
               <div className="input-feedback">{errors.tel}</div>
             )}
+            <label htmlFor="instagram" style={{ display: "block" }}>
+              Посилання на instagram
+            </label>
+            <input
+              id="instagram"
+              placeholder="Введіть посилання"
+              type="text"
+              value={values.instagram}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={
+                errors.instagram && touched.instagram
+                  ? "text-input error"
+                  : "text-input"
+              }
+            />
+            {errors.instagram && touched.instagram && (
+              <div className="input-feedback">{errors.instagram}</div>
+            )}
             <BTNSubmit type="submit" disabled={isSubmitting}>
               Додати тренера
             </BTNSubmit>
@@ -120,12 +183,12 @@ const AddCoach = () => {
           <h3>
           Ім'я: {coach.name_Coach}
           </h3>
-          <p>
-          Телефон: {coach.tel}
-          </p>
-          <button
+          <PhoneLink coach={coach} />
+          <InstagramLink coach={coach} />
+          <BTN
             value={coach.name_Coach}
-            onClick={DeleteCoach}>Видалити тренера</button>
+            onClick={DeleteCoach}>Видалити тренера
+          </BTN>
         </CoachWrapper>
       ))}
     </Wrapper>
