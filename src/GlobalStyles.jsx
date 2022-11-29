@@ -125,6 +125,7 @@ button {
 }
 
 .time{
+    /* width: 70px; */
   /* background-color: #8080ff; */
 }
 
@@ -133,37 +134,37 @@ button {
 }
 @media screen and (max-width: 1200px){
   .monday {
-    width: 70px;
+    width: 60px;
   }
 
   .tuesday {
-    width: 70px;
+    width: 60px;
   }
 
   .wednesday {
-    width: 70px;
+    width: 60px;
   }
 
   .thursday {
-    width: 70px;
+    width: 60px;
   }
 
   .friday {
-    width: 70px;
+    width: 60px;
   }
 
   .saturday {
-    width: 70px;
+    width: 60px;
   }
 
   .sunday {
-    width: 70px;
+    width: 60px;
   }
   .select{
     width: 50px;
   }
   .form-size{
-    width: 70px;
+    width: 60px;
   }
 }
 .table-back-color{
