@@ -11,6 +11,7 @@ import { scheduleOperations } from '../../redux/app/operations';
 
 const OptionsClick = () => {
   const [allCoach, setAllCoach] = useState([]);
+  const [kindTrainee, setKindTrainee] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,26 +27,15 @@ const OptionsClick = () => {
     getAllCoach();
   }, [dispatch]);
 
-  const options = [
-    { id: '-', value: '-', text: 'Вид тренування' },
-    { id: 'None', value: '-', text: 'Вільно' },
-    { id: "kangoo-jumps", value: "Kangoo jumps", text: 'Kangoo jumps' },
-    { id: "sky-jumping", value: "Sky jumping", text: 'Sky jumping' },
-    { id: "stretching", value: "Stretching", text: 'Stretching' },
-    { id: "trx", value: "TRX", text: 'TRX' },
-    { id: "health-back", value: "Здорова спина", text: 'Здорова спина' },
-    { id: "tabata", value: "Tabata", text: 'Tabata' },
-    { id: "high-heels", value: "High heels", text: 'High heels' },
-    { id: "tribal", value: "Tribal fusion", text: 'Tribal fusion' },
-    { id: "twerk", value: "Twerk", text: 'Twerk' },
-    { id: "body-balet", value: "Боди балет", text: 'Боди балет' },
-    { id: "sky-jumping-child", value: "Sky child", text: 'Sky child' },
-    { id: "kangoo-jumps-child-10", value: "Kangoo діти (6-10)", text: 'Kangoo діти (6-10)' },
-    { id: "kangoo-jumps-child-14", value: "Kangoo діти (10-14)", text: 'Kangoo діти (10-14)' },
-    { id: "yoga", value: "Йога", text: 'Йога' },
-    { id: "functional", value: "Functional", text: 'Functional' },
-    { id: "metabolick-workout", value: "Metabolick workout", text: 'Metabolick workout' },
-  ];
+    useEffect(() => {
+    clientAPI.getKindTraineeAll().then(
+      (result) => {
+        setKindTrainee(result)
+      }
+    );
+
+  }, [setKindTrainee]);
+
   const weekDaysTime = [
     { id: 'monday' },
     { id: 'tuesday' },
@@ -119,12 +109,12 @@ const OptionsClick = () => {
                         value={values.weekDay}
                         className="select"
                       >
-                        {options.map(option => (
+                        {kindTrainee.map(option => (
                           <option
                             key={option.id}
                             id={option.id}
                             value={option.value}>
-                            {option.text}
+                            {option.label}
                           </option>
                         ))}
                       </select>

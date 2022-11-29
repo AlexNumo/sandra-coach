@@ -16,6 +16,7 @@ import {
 const AddTrainee = () => {
   const [allClient, setAllClient] = useState([]);
   const [allCoach, setAllCoach] = useState([]);
+  const [kindTrainee, setKindTrainee] = useState([]);
   // const [startDate, setStartDate] = useState();
   const dispatch = useDispatch();
 
@@ -38,29 +39,13 @@ const AddTrainee = () => {
         setAllClient(result)
       }
     );
+    clientAPI.getKindTraineeAll().then(
+      (result) => {
+        setKindTrainee(result)
+      }
+    );
 
   }, [setAllClient]);
-  
-  const options = [
-    { id: '-', value: '-', label: '-' },
-    { id: 'None', value: '-', label: 'Вільно' },
-    { id: "kangoo-jumps", value: "Kangoo jumps", label: 'Kangoo jumps' },
-    { id: "sky-jumping", value: "Sky jumping", label: 'Sky jumping' },
-    { id: "stretching", value: "Stretching", label: 'Stretching' },
-    { id: "trx", value: "TRX", label: 'TRX' },
-    { id: "health-back", value: "Здорова спина", label: 'Здорова спина' },
-    { id: "tabata", value: "Tabata", label: 'Tabata' },
-    { id: "high-heels", value: "High heels", label: 'High heels' },
-    { id: "tribal", value: "Tribal fusion", label: 'Tribal fusion' },
-    { id: "twerk", value: "Twerk", label: 'Twerk' },
-    { id: "body-balet", value: "Боди балет", label: 'Боди балет' },
-    { id: "sky-jumping-child", value: "Sky child", label: 'Sky child' },
-    { id: "kangoo-jumps-child-10", value: "Kangoo діти (6-10)", label: 'Kangoo діти (6-10)' },
-    { id: "kangoo-jumps-child-14", value: "Kangoo діти (10-14)", label: 'Kangoo діти (10-14)' },
-    { id: "yoga", value: "Йога", label: 'Йога' },
-    { id: "functional", value: "Functional", label: 'Functional' },
-    { id: "metabolick-workout", value: "Metabolick workout", label: 'Metabolick workout' },
-  ];
 
     const Times = [
     { id: '0800', text: '8:00' },
@@ -142,7 +127,7 @@ const AddTrainee = () => {
               onBlur={handleBlur}
               value={values.kind_trainee}
             >
-            {options.map(option => (
+            {kindTrainee.map(option => (
               <option
                 key={option.id}
                 id={option.id}

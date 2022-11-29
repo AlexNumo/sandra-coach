@@ -56,7 +56,6 @@ const AddCoach = () => {
             <ImageIcon src={InstagramIcon} alt="InstagramIcon" />
           </LinkStyle>
           <LinkStyle href="tel:{coach.instagram}">
-            
           </LinkStyle>
         </>
       )

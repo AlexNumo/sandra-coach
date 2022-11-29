@@ -15,7 +15,6 @@ export const sendData = async ({ id, day, time, kind_trainee, name_Coach }) => {
 export const getData = async ({id}) => {
   try {
     const result = await instanceClientAPI.put(`/api`, { id });
-    console.log(result);
     return result;
   } catch (error) {
     toast.error('Упс, щось пішло не так');
@@ -126,6 +125,36 @@ export const deleteClient = async ({name_client}) => {
   }
 };
 
+export const sendNewKindTrainee = async ({ id, value, label }) => {
+  try {
+    const res = await instanceClientAPI.post(`/kindtrainee`, { id, value, label });
+    toast.success('Зміни відправлено');
+    return res;
+  } catch (e) {
+      toast.error('Щось пішло не так');
+  }
+};
+
+export const deleteKindTrainee = async ({id}) => {
+  try {
+    const result = await instanceClientAPI.put(`/kindtrainee`, { id });
+    return result;
+  } catch (error) {
+    toast.error('Упс, щось пішло не так');
+    console.error(error.message);
+  }
+};
+
+export const getKindTraineeAll = async () => {
+  try {
+    const result = await instanceClientAPI.get(`/kindtrainee`);
+    return result.data;
+  } catch (error) {
+    toast.error('Упс, щось пішло не так');
+    console.error(error.message);
+  }
+};
+
 export const clientAPI = {
   sendData,
   getData,
@@ -138,4 +167,7 @@ export const clientAPI = {
   getAllCoach,
   getAllClient,
   addClient,
+  sendNewKindTrainee,
+  deleteKindTrainee,
+  getKindTraineeAll
 };
