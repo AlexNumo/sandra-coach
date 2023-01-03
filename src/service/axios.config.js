@@ -6,6 +6,7 @@ export const sendData = async ({ id, day, time, kind_trainee, name_Coach }) => {
   try {
     const res = await instanceClientAPI.post(`/api`, { id, day, time, kind_trainee, name_Coach });
     toast.success('Зміни відправлено');
+    console.log("res: ", res)
     return res;
   } catch (e) {
       toast.error('Щось пішло не так');
