@@ -2,6 +2,7 @@ import { useState } from 'react';
 // import Schedule from 'Components/Schedule/Schedule';
 import SchedulePage from 'Pages/SchedulePage/SchedulePage';
 import InfoTrainee from 'Pages/InfoTrainee/InfoTrainee';
+import Record from 'Pages/Record/Record';
 import {
   Wrapper,
   WrapperStyle,
@@ -11,6 +12,7 @@ import {
 const MainPage = () => {
   const [showSchedule, setShowSchedule] = useState(false);
   const [showInfoTrainee, setInfoTrainee] = useState(false);
+  const [showInfoRecord, setInfoRecord] = useState(false);
 
   const ShowScheduleHandle = () => {
     if (showSchedule === true) {
@@ -33,15 +35,30 @@ const MainPage = () => {
     setInfoTrainee(true);
     return;
   };
+
+    const ShowInfoRecordHandle = () => {
+    if (showInfoRecord === true) {
+      setShowSchedule(false);
+      setInfoTrainee(false);
+      setInfoRecord(false);
+      return;
+    }
+    setShowSchedule(false);
+    setInfoTrainee(false);
+    setInfoRecord(true);
+    return;
+  };
   
   return (
     <Wrapper>
       <WrapperStyle>
+        <BTN type='button' onClick={ShowInfoRecordHandle} className={showInfoRecord ? 'active' : ''}>ЗАПИСИ</BTN>
         <BTN type='button' onClick={ShowScheduleHandle} className={showSchedule ? 'active' : ''}>Розклад</BTN>
         <BTN type='button' onClick={ShowInfoTraineeHandle} className={showInfoTrainee ? 'active' : ''}>Інформація про клієнтів та тренерів</BTN>
       </WrapperStyle>
       {showSchedule ? <SchedulePage /> : null}
       {showInfoTrainee ? <InfoTrainee /> : null}
+      {showInfoRecord ? <Record/> : null}
     </Wrapper>
   )
 };
