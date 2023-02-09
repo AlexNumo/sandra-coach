@@ -37,7 +37,7 @@ const Record = () => {
   const [thursday, setThursday] = useState('');
   const [friday, setFriday] = useState('');
   const [saturday, setSaturday] = useState('');
-  const [dataClientsToday, setDataClientToday] = useState('');
+  const [dataClientsToday0800, setDataClientToday0800] = useState('');
   const [dataClientsNextDay, setDataClientNextDay] = useState('');
   const [dataClientsNextDay1, setDataClientNextDay1] = useState('');
   const [dataClientsNextDay2, setDataClientNextDay2] = useState('');
@@ -385,304 +385,321 @@ const Record = () => {
     // }
     // }, [dataClientsToday, data1800]);
 
-  // useEffect(() => {
-  //   clientAPI.getDataALLUsers().then(result => {
-  //     // console.log(result);
-  //     const dateToday = moment().add(0, 'days').format('').slice(0, 10);
-  //     const dateNextDay = moment().add(1, 'days').format('').slice(0, 10);
-  //     const dateNextDay1 = moment().add(2, 'days').format('').slice(0, 10);
-  //     const dateNextDay2 = moment().add(3, 'days').format('').slice(0, 10);
-  //     const dateNextDay3 = moment().add(4, 'days').format('').slice(0, 10);
-  //     const dateNextDay4 = moment().add(5, 'days').format('').slice(0, 10);
-  //     const dateNextDay5 = moment().add(6, 'days').format('').slice(0, 10);
-  //     const dataClientToday = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '18:00'));
-  //     // setDataClientToday(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday)));
-  //     setDataClientNextDay(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay)));
-  //     setDataClientNextDay1(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay1)));
-  //     setDataClientNextDay2(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay2)));
-  //     setDataClientNextDay3(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay3)));
-  //     setDataClientNextDay4(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay4)));
-  //     setDataClientNextDay5(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay5)));
-  //     // console.log(dataClientToday)
+  useEffect(() => {
+    clientAPI.getDataALLUsers().then(result => {
+    if(user1 === ''){
 
-  //   })
-  // },[])
+    // const dateToday = moment().add(0, 'days').format('').slice(0, 10);
+    // console.log(user1.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '18:00')));
+      // console.log(result);
+      const dateToday = moment().add(0, 'days').format('').slice(0, 10);
+      const dateNextDay = moment().add(1, 'days').format('').slice(0, 10);
+      const dateNextDay1 = moment().add(2, 'days').format('').slice(0, 10);
+      const dateNextDay2 = moment().add(3, 'days').format('').slice(0, 10);
+      const dateNextDay3 = moment().add(4, 'days').format('').slice(0, 10);
+      const dateNextDay4 = moment().add(5, 'days').format('').slice(0, 10);
+      const dateNextDay5 = moment().add(6, 'days').format('').slice(0, 10);
+      const dataClientToday0800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '08:00'));
+      const dataClientToday0900 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '09:00'));
+      const dataClientToday1000 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '10:00'));
+      const dataClientToday1100 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '11:00'));
+      const dataClientToday1200 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '12:00'));
+      const dataClientToday1300 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '13:00'));
+      
+      // setDataClientToday(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday)));
+      setDataClientNextDay(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay)));
+      setDataClientNextDay1(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay1)));
+      setDataClientNextDay2(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay2)));
+      setDataClientNextDay3(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay3)));
+      setDataClientNextDay4(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay4)));
+      setDataClientNextDay5(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay5)));
+      setUser1(dataClientToday0800);
+      
+}})},[user1])
+          console.log(user1);
 
-  const ChooseBTN = ({ item }) => {
-    if (item.day === "monday") {
-      return (
-        <WrapperBTN>
-          <InfoTraineeWrapper
-            id={item.day}
-            name={item.time}
-            kind_trainee={item.kind_trainee}
-            className={monday}
-            // // onClick={Close}
-          >
-            <span>{item.kind_trainee}</span>
-            {/* <Clients dataClients={dataClients} /> */}
-          </InfoTraineeWrapper>
-        </WrapperBTN>
-      )
-    };
-    if (item.day === "tuesday") {
-      return (
-        <WrapperBTN>
-          <InfoTraineeWrapper
-            id={item.day}
-            name={item.time}
-            kind_trainee={item.kind_trainee}
-            className={tuesday}
-            // // onClick={Close}
-          >
-            <span>{item.kind_trainee}</span>
-            {/* <Clients dataClients={dataClients} /> */}
-          </InfoTraineeWrapper>
-        </WrapperBTN>
-      )
-    };
-    if (item.day === "wednesday") {
-      return (
-        <WrapperBTN>
-          <InfoTraineeWrapper
-            id={item.day}
-            name={item.time}
-            kind_trainee={item.kind_trainee}
-            className={wednesday}
-            // onClick={Close}
-          >
-            <span>{item.kind_trainee}</span>
-            {/* {item.time} */}
-          {/* {dataClientsToday ? dataClientsToday.map(item => (item.info.map( info => (
-            <div key={item.id}>
-              <p>{info.name}</p>
-            </div>
-        )))) : null} */}
-            {/* <Clients dataClients={dataClients} /> */}
-          </InfoTraineeWrapper>
-        </WrapperBTN>
-      )
-    };
-    if (item.day === "thursday") {
-      return (
-        <WrapperBTN>
-          <InfoTraineeWrapper
-            id={item.day}
-            name={item.time}
-            kind_trainee={item.kind_trainee}
-            className={thursday}
-            // onClick={Close}
-          >
-            <span>{item.kind_trainee}</span>
-            {/* <Clients dataClients={dataClients} /> */}
-          </InfoTraineeWrapper>
-        </WrapperBTN>
-      )
-    };
-    if (item.day === "friday") {
-      return (
-        <WrapperBTN>
-          <InfoTraineeWrapper
-            id={item.day}
-            name={item.time}
-            kind_trainee={item.kind_trainee}
-            className={friday}
-            // onClick={Close}
-          >
-            <span>{item.kind_trainee}</span>
-            {/* <Clients dataClients={dataClients} /> */}
-          </InfoTraineeWrapper>
-        </WrapperBTN>
-      )
-    };
-    if (item.day === "saturday") {
-      return (
-        <WrapperBTN>
-          <InfoTraineeWrapper
-            id={item.day}
-            name={item.time}
-            kind_trainee={item.kind_trainee}
-            className={saturday}
-            // onClick={Close}
-          >
-            <span>{item.kind_trainee}</span>
-            {/* <Clients dataClients={dataClients} /> */}
-          </InfoTraineeWrapper>
-        </WrapperBTN>
-      )
-    };
-    if (item.day === "sunday") {
-      return (
-        <WrapperBTN>
-          <InfoTraineeWrapper
-            id={item.day}
-            name={item.time}
-            kind_trainee={item.kind_trainee}
-            className={sunday}
-            // onClick={Close}
-          >
-            <span>{item.kind_trainee}</span>
-            {/* <Clients dataClients={dataClients} /> */}
-          </InfoTraineeWrapper>
-        </WrapperBTN>
-      )
-    };
-    return (
-      <>
-      <p>HELP</p>
-      </>
-    )
-  };
-
-  const Waiting = () => {
-    if (data0800.length === 0) {
-      return (
-        <WaitingWrapper>
-          <h2>Інформація завантажуєтсья</h2>
-        </WaitingWrapper>
-      );
-    };
-    return (
-      <>
-      <WrapperDay>
-        <Time>Час</Time>
-        <Days>Понеділок</Days>
-        <Days>Вівторок</Days>
-        <Days>Середа</Days>
-        <Days>Четвер</Days>
-        <Days>П'ятниця</Days>
-        <Days>Субота</Days>
-        <Days>Неділя</Days>
-      </WrapperDay>
-      <WrapperDay>
-        <Time>08:00</Time>
-        {data0800 ? data0800.map(item => (
-          <ChooseBTN key={item.id} item={item}/>
-        )) : null}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>09:00</Time>
-        {data0900 ? data0900.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>10:00</Time>
-        {data1000 ? data1000.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>11:00</Time>
-        {data1100 ? data1100.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>12:00</Time>
-        {data1200 ? data1200.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>13:00</Time>
-        {data1300 ? data1300.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>14:00</Time>
-        {data1400 ? data1400.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>15:00</Time>
-        {data1500 ? data1500.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>16:00</Time>
-        {data1600 ? data1600.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>17:00</Time>
-        {data1700 ? data1700.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>18:00</Time>
-          {data1800 ? data1800.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-        {/* {user1 ? user1.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null} */}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>19:00</Time>
-        {data1900 ? data1900.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-      </WrapperDay>
-      <WrapperDay>
-        <Time>20:00</Time>
-        {data2000 ? data2000.map(item => (
-          <ChooseBTN
-            key={item.id}
-            item={item}
-          />
-        )) : null}
-      </WrapperDay>
-    </>
-    )
-  }
-
-  return (
+  return(
     <>
-      <Waiting />
+    <p>sfdsdfsfsdf</p>
     </>
-  )
-};
+  )}
+
+
+  // const ChooseBTN = ({ item }) => {
+  //   if (item.day === "monday") {
+  //     return (
+  //       <WrapperBTN>
+  //         <InfoTraineeWrapper
+  //           id={item.day}
+  //           name={item.time}
+  //           kind_trainee={item.kind_trainee}
+  //           className={monday}
+  //           // // onClick={Close}
+  //         >
+  //           <span>{item.kind_trainee}</span>
+  //           {/* <Clients dataClients={dataClients} /> */}
+  //         </InfoTraineeWrapper>
+  //       </WrapperBTN>
+  //     )
+  //   };
+  //   if (item.day === "tuesday") {
+  //     return (
+  //       <WrapperBTN>
+  //         <InfoTraineeWrapper
+  //           id={item.day}
+  //           name={item.time}
+  //           kind_trainee={item.kind_trainee}
+  //           className={tuesday}
+  //           // // onClick={Close}
+  //         >
+  //           <span>{item.kind_trainee}</span>
+  //           {/* <Clients dataClients={dataClients} /> */}
+  //         </InfoTraineeWrapper>
+  //       </WrapperBTN>
+  //     )
+  //   };
+  //   if (item.day === "wednesday") {
+  //     return (
+  //       <WrapperBTN>
+  //         <InfoTraineeWrapper
+  //           id={item.day}
+  //           name={item.time}
+  //           kind_trainee={item.kind_trainee}
+  //           className={wednesday}
+  //           // onClick={Close}
+  //         >
+  //           <span>{item.kind_trainee}</span>
+  //           {/* {item.time} */}
+  //         {/* {dataClientsToday ? dataClientsToday.map(item => (item.info.map( info => (
+  //           <div key={item.id}>
+  //             <p>{info.name}</p>
+  //           </div>
+  //       )))) : null} */}
+  //           {/* <Clients dataClients={dataClients} /> */}
+  //         </InfoTraineeWrapper>
+  //       </WrapperBTN>
+  //     )
+  //   };
+  //   if (item.day === "thursday") {
+  //     return (
+  //       <WrapperBTN>
+  //         <InfoTraineeWrapper
+  //           id={item.day}
+  //           name={item.time}
+  //           kind_trainee={item.kind_trainee}
+  //           className={thursday}
+  //           // onClick={Close}
+  //         >
+  //           <span>{item.kind_trainee}</span>
+  //           {/* <Clients dataClients={dataClients} /> */}
+  //         </InfoTraineeWrapper>
+  //       </WrapperBTN>
+  //     )
+  //   };
+  //   if (item.day === "friday") {
+  //     return (
+  //       <WrapperBTN>
+  //         <InfoTraineeWrapper
+  //           id={item.day}
+  //           name={item.time}
+  //           kind_trainee={item.kind_trainee}
+  //           className={friday}
+  //           // onClick={Close}
+  //         >
+  //           <span>{item.kind_trainee}</span>
+  //           {/* <Clients dataClients={dataClients} /> */}
+  //         </InfoTraineeWrapper>
+  //       </WrapperBTN>
+  //     )
+  //   };
+  //   if (item.day === "saturday") {
+  //     return (
+  //       <WrapperBTN>
+  //         <InfoTraineeWrapper
+  //           id={item.day}
+  //           name={item.time}
+  //           kind_trainee={item.kind_trainee}
+  //           className={saturday}
+  //           // onClick={Close}
+  //         >
+  //           <span>{item.kind_trainee}</span>
+  //           {/* <Clients dataClients={dataClients} /> */}
+  //         </InfoTraineeWrapper>
+  //       </WrapperBTN>
+  //     )
+  //   };
+  //   if (item.day === "sunday") {
+  //     return (
+  //       <WrapperBTN>
+  //         <InfoTraineeWrapper
+  //           id={item.day}
+  //           name={item.time}
+  //           kind_trainee={item.kind_trainee}
+  //           className={sunday}
+  //           // onClick={Close}
+  //         >
+  //           <span>{item.kind_trainee}</span>
+  //           {/* <Clients dataClients={dataClients} /> */}
+  //         </InfoTraineeWrapper>
+  //       </WrapperBTN>
+  //     )
+  //   };
+  //   return (
+  //     <>
+  //     <p>HELP</p>
+  //     </>
+  //   )
+  // };
+
+  // const Waiting = () => {
+  //   if (data0800.length === 0) {
+  //     return (
+  //       <WaitingWrapper>
+  //         <h2>Інформація завантажуєтсья</h2>
+  //       </WaitingWrapper>
+  //     );
+  //   };
+  //   return (
+  //     <>
+  //     <WrapperDay>
+  //       <Time>Час</Time>
+  //       <Days>Понеділок</Days>
+  //       <Days>Вівторок</Days>
+  //       <Days>Середа</Days>
+  //       <Days>Четвер</Days>
+  //       <Days>П'ятниця</Days>
+  //       <Days>Субота</Days>
+  //       <Days>Неділя</Days>
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>08:00</Time>
+  //       {data0800 ? data0800.map(item => (
+  //         <ChooseBTN key={item.id} item={item}/>
+  //       )) : null}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>09:00</Time>
+  //       {data0900 ? data0900.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>10:00</Time>
+  //       {data1000 ? data1000.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>11:00</Time>
+  //       {data1100 ? data1100.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>12:00</Time>
+  //       {data1200 ? data1200.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>13:00</Time>
+  //       {data1300 ? data1300.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>14:00</Time>
+  //       {data1400 ? data1400.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>15:00</Time>
+  //       {data1500 ? data1500.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>16:00</Time>
+  //       {data1600 ? data1600.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>17:00</Time>
+  //       {data1700 ? data1700.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>18:00</Time>
+  //         {data1800 ? data1800.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //       {/* {user1 ? user1.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null} */}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>19:00</Time>
+  //       {data1900 ? data1900.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //     </WrapperDay>
+  //     <WrapperDay>
+  //       <Time>20:00</Time>
+  //       {data2000 ? data2000.map(item => (
+  //         <ChooseBTN
+  //           key={item.id}
+  //           item={item}
+  //         />
+  //       )) : null}
+  //     </WrapperDay>
+  //   </>
+  //   )
+  // }
+
+//   return (
+//     <>
+//       <Waiting />
+//     </>
+//   )
+// };
 
 export default Record;
