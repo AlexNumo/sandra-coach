@@ -12,7 +12,7 @@ import {
 } from './Record.styled';
 
 const Record = () => {
-  const [data0800, setData0800] = useState([]);
+  const [data0800, setData0800] = useState('');
   const [data0900, setData0900] = useState([]);
   const [data1000, setData1000] = useState([]);
   const [data1100, setData1100] = useState([]);
@@ -35,7 +35,17 @@ const Record = () => {
   const [tuesday, setTuesday] = useState('');
   const [wednesday, setWednesday] = useState('');
   const [thursday, setThursday] = useState('');
-  const [friday, setFriday] = useState('');
+  // const [friday, setFriday] = useState({
+  //   id: '+380633576239',
+  //   info: {
+  //     day: 'friday',
+  //     time: '09:00',
+  //     kind_trainee: 'TRX + Tabata',
+  //     name: 'Олександр',
+  //     instaNickname: '@koksik839',
+  //     date: '2023-02-10T08:00:55.000+00:00'
+  //   }
+  // });
   const [saturday, setSaturday] = useState('');
   const [dataClientsToday0800, setDataClientToday0800] = useState('');
   const [dataClientsNextDay, setDataClientNextDay] = useState('');
@@ -385,43 +395,1804 @@ const Record = () => {
     // }
     // }, [dataClientsToday, data1800]);
 
-  useEffect(() => {
-    clientAPI.getDataALLUsers().then(result => {
-    if(user1 === ''){
+  
+  // const inialState = [
+  //   {
+  //     id: '+3',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '1',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+38',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '2',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+380',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '3',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+3806',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '4',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+38063',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '5',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+380633',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '6',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+3806335',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '7',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+38063357',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '8',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+380633576',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '9',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+3806335762',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '10',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+38063357623',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '11',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+380633576239',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '12',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+3806335762398',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '13',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  //   {
+  //     id: '+38063357623987',
+  //     info: {
+  //       day: '',
+  //       time: '',
+  //       kind_trainee: '',
+  //       name: '',
+  //       instaNickname: '',
+  //       date: ''
+  //     }
+  //   },
+  // ];
 
-    // const dateToday = moment().add(0, 'days').format('').slice(0, 10);
-    // console.log(user1.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '18:00')));
-      // console.log(result);
-      const dateToday = moment().add(0, 'days').format('').slice(0, 10);
-      const dateNextDay = moment().add(1, 'days').format('').slice(0, 10);
-      const dateNextDay1 = moment().add(2, 'days').format('').slice(0, 10);
-      const dateNextDay2 = moment().add(3, 'days').format('').slice(0, 10);
-      const dateNextDay3 = moment().add(4, 'days').format('').slice(0, 10);
-      const dateNextDay4 = moment().add(5, 'days').format('').slice(0, 10);
-      const dateNextDay5 = moment().add(6, 'days').format('').slice(0, 10);
-      const dataClientToday0800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '08:00'));
-      const dataClientToday0900 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '09:00'));
-      const dataClientToday1000 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '10:00'));
-      const dataClientToday1100 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '11:00'));
-      const dataClientToday1200 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '12:00'));
-      const dataClientToday1300 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '13:00'));
+  // const friday = [{
+  //   id: '',
+  //   name: '',
+  //   day: 'friday',
+  //   time: '08:00',
+  //   kind_trainee: '',
+  //   instaNickName: '',
+  //   date: '',
+  // }]
+  // const [noClients, setNoClients] = useState('');
+  const [monday0800, setMonday0800] = useState('');
+  const [monday0900, setMonday0900] = useState('');
+  const [monday1000, setMonday1000] = useState('');
+  const [monday1100, setMonday1100] = useState('');
+  const [monday1200, setMonday1200] = useState('');
+  const [monday1300, setMonday1300] = useState('');
+  const [monday1400, setMonday1400] = useState('');
+  const [monday1500, setMonday1500] = useState('');
+  const [monday1600, setMonday1600] = useState('');
+  const [monday1700, setMonday1700] = useState('');
+  const [monday1800, setMonday1800] = useState('');
+  const [monday1900, setMonday1900] = useState('');
+  const [monday2000, setMonday2000] = useState('');
+  const [tuesday0800, setTuesday0800] = useState('');
+  const [tuesday0900, setTuesday0900] = useState('');
+  const [tuesday1000, setTuesday1000] = useState('');
+  const [tuesday1100, setTuesday1100] = useState('');
+  const [tuesday1200, setTuesday1200] = useState('');
+  const [tuesday1300, setTuesday1300] = useState('');
+  const [tuesday1400, setTuesday1400] = useState('');
+  const [tuesday1500, setTuesday1500] = useState('');
+  const [tuesday1600, setTuesday1600] = useState('');
+  const [tuesday1700, setTuesday1700] = useState('');
+  const [tuesday1800, setTuesday1800] = useState('');
+  const [tuesday1900, setTuesday1900] = useState('');
+  const [tuesday2000, setTuesday2000] = useState('');
+  const [wednesday0800, setWednesday0800] = useState('');
+  const [wednesday0900, setWednesday0900] = useState('');
+  const [wednesday1000, setWednesday1000] = useState('');
+  const [wednesday1100, setWednesday1100] = useState('');
+  const [wednesday1200, setWednesday1200] = useState('');
+  const [wednesday1300, setWednesday1300] = useState('');
+  const [wednesday1400, setWednesday1400] = useState('');
+  const [wednesday1500, setWednesday1500] = useState('');
+  const [wednesday1600, setWednesday1600] = useState('');
+  const [wednesday1700, setWednesday1700] = useState('');
+  const [wednesday1800, setWednesday1800] = useState('');
+  const [wednesday1900, setWednesday1900] = useState('');
+  const [wednesday2000, setWednesday2000] = useState('');
+  const [thursday0800, setThursday0800] = useState('');
+  const [thursday0900, setThursday0900] = useState('');
+  const [thursday1000, setThursday1000] = useState('');
+  const [thursday1100, setThursday1100] = useState('');
+  const [thursday1200, setThursday1200] = useState('');
+  const [thursday1300, setThursday1300] = useState('');
+  const [thursday1400, setThursday1400] = useState('');
+  const [thursday1500, setThursday1500] = useState('');
+  const [thursday1600, setThursday1600] = useState('');
+  const [thursday1700, setThursday1700] = useState('');
+  const [thursday1800, setThursday1800] = useState('');
+  const [thursday1900, setThursday1900] = useState('');
+  const [thursday2000, setThursday2000] = useState('');
+  const [friday0800, setFriday0800] = useState('');
+  const [friday0900, setFriday0900] = useState('');
+  const [friday1000, setFriday1000] = useState('');
+  const [friday1100, setFriday1100] = useState('');
+  const [friday1200, setFriday1200] = useState('');
+  const [friday1300, setFriday1300] = useState('');
+  const [friday1400, setFriday1400] = useState('');
+  const [friday1500, setFriday1500] = useState('');
+  const [friday1600, setFriday1600] = useState('');
+  const [friday1700, setFriday1700] = useState('');
+  const [friday1800, setFriday1800] = useState('');
+  const [friday1900, setFriday1900] = useState('');
+  const [friday2000, setFriday2000] = useState('');
+  const [saturday0800, setSaturday0800] = useState('');
+  const [saturday0900, setSaturday0900] = useState('');
+  const [saturday1000, setSaturday1000] = useState('');
+  const [saturday1100, setSaturday1100] = useState('');
+  const [saturday1200, setSaturday1200] = useState('');
+  const [saturday1300, setSaturday1300] = useState('');
+  const [saturday1400, setSaturday1400] = useState('');
+  const [saturday1500, setSaturday1500] = useState('');
+  const [saturday1600, setSaturday1600] = useState('');
+  const [saturday1700, setSaturday1700] = useState('');
+  const [saturday1800, setSaturday1800] = useState('');
+  const [saturday1900, setSaturday1900] = useState('');
+  const [saturday2000, setSaturday2000] = useState('');
+  const [sunday0800, setSunday0800] = useState('');
+  const [sunday0900, setSunday0900] = useState('');
+  const [sunday1000, setSunday1000] = useState('');
+  const [sunday1100, setSunday1100] = useState('');
+  const [sunday1200, setSunday1200] = useState('');
+  const [sunday1300, setSunday1300] = useState('');
+  const [sunday1400, setSunday1400] = useState('');
+  const [sunday1500, setSunday1500] = useState('');
+  const [sunday1600, setSunday1600] = useState('');
+  const [sunday1700, setSunday1700] = useState('');
+  const [sunday1800, setSunday1800] = useState('');
+  const [sunday1900, setSunday1900] = useState('');
+  const [sunday2000, setSunday2000] = useState('');
+  
+  useEffect(() => {
+    if(user1 === ''){
+      clientAPI.getDataALLUsers().then(result => {
+        const dateToday = moment().add(0, 'days').format('').slice(0, 10);
+        const dateNextDay = moment().add(1, 'days').format('').slice(0, 10);
+        const dateNextDay1 = moment().add(2, 'days').format('').slice(0, 10);
+        const dateNextDay2 = moment().add(3, 'days').format('').slice(0, 10);
+        const dateNextDay3 = moment().add(4, 'days').format('').slice(0, 10);
+        const dateNextDay4 = moment().add(5, 'days').format('').slice(0, 10);
+        const dateNextDay5 = moment().add(6, 'days').format('').slice(0, 10);
+        const dataClientToday0800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '08:00'));
+        const dataClientToday0900 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '09:00'));
+        const dataClientToday1000 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '10:00'));
+        const dataClientToday1100 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '11:00'));
+        const dataClientToday1200 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '12:00'));
+        const dataClientToday1300 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '13:00'));
+        const dataClientToday1400 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '14:00'));
+        const dataClientToday1500 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '15:00'));
+        const dataClientToday1600 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '16:00'));
+        const dataClientToday1700 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '17:00'));
+        const dataClientToday1800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '18:00'));
+        const dataClientToday1900 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '19:00'));
+        const dataClientToday2000 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '20:00'));
+    
+        if (dataClientToday0800.length === 0) {
+            return (setFriday0800(0));
+          };
+          if (dataClientToday0800.length === 1) {
+            const client1 = dataClientToday0800[0].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const clientBase = [client1]
+            setFriday0800(clientBase);
+          };
+          if (dataClientToday0800.length === 2) {
+            const client1 = dataClientToday0800[0].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client2 = dataClientToday0800[1].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const clientBase = [client1, client2]
+            setFriday0800(clientBase);
+          };
+          if (dataClientToday0800.length === 3) {
+            const client1 = dataClientToday0800[0].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client2 = dataClientToday0800[1].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client3 = dataClientToday0800[2].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday0800(clientBase);
+          };
+          if (dataClientToday0800.length === 4) {
+            const client1 = dataClientToday0800[0].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client2 = dataClientToday0800[1].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client3 = dataClientToday0800[2].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client4 = dataClientToday0800[3].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday0800(clientBase);
+          };
+          if (dataClientToday0800.length === 5) {
+            const client1 = dataClientToday0800[0].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client2 = dataClientToday0800[1].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client3 = dataClientToday0800[2].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client4 = dataClientToday0800[3].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client5 = dataClientToday0800[4].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday0800(clientBase);
+          };
+          if (dataClientToday0800.length === 6) {
+            const client1 = dataClientToday0800[0].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client2 = dataClientToday0800[1].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client3 = dataClientToday0800[2].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client4 = dataClientToday0800[3].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client5 = dataClientToday0800[4].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client6 = dataClientToday0800[5].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday0800(clientBase);
+          };
+          if (dataClientToday0800.length === 7) {
+            const client1 = dataClientToday0800[0].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client2 = dataClientToday0800[1].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client3 = dataClientToday0800[2].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client4 = dataClientToday0800[3].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client5 = dataClientToday0800[4].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client6 = dataClientToday0800[5].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client7 = dataClientToday0800[6].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday0800(clientBase);
+          };
+          if (dataClientToday0800.length === 8) {
+            const client1 = dataClientToday0800[0].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client2 = dataClientToday0800[1].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client3 = dataClientToday0800[2].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client4 = dataClientToday0800[3].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client5 = dataClientToday0800[4].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client6 = dataClientToday0800[5].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client7 = dataClientToday0800[6].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client8 = dataClientToday0800[7].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday0800(clientBase);
+          };
+          if (dataClientToday0800.length === 9) {
+            const client1 = dataClientToday0800[0].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client2 = dataClientToday0800[1].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client3 = dataClientToday0800[2].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client4 = dataClientToday0800[3].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client5 = dataClientToday0800[4].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client6 = dataClientToday0800[5].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client7 = dataClientToday0800[6].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client8 = dataClientToday0800[7].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client9 = dataClientToday0800[8].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday0800(clientBase);
+          };
+          if (dataClientToday0800.length === 10) {
+            const client1 = dataClientToday0800[0].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client2 = dataClientToday0800[1].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client3 = dataClientToday0800[2].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client4 = dataClientToday0800[3].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client5 = dataClientToday0800[4].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client6 = dataClientToday0800[5].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client7 = dataClientToday0800[6].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client8 = dataClientToday0800[7].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client9 = dataClientToday0800[8].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const client10 = dataClientToday0800[9].info.find((value) => { return value.day === 'friday' && value.time === '08:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday0800(clientBase);
+        };
+        if (dataClientToday0900.length === '') {
+            return (setFriday0900(''));
+          };
+          if (dataClientToday0900.length === 1) {
+            const client1 = dataClientToday0900[0].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const clientBase = [client1]
+            setFriday0900(clientBase);
+          };
+          if (dataClientToday0900.length === 2) {
+            const client1 = dataClientToday0900[0].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client2 = dataClientToday0900[1].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const clientBase = [client1, client2]
+            setFriday0900(clientBase);
+          };
+          if (dataClientToday0900.length === 3) {
+            const client1 = dataClientToday0900[0].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client2 = dataClientToday0900[1].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client3 = dataClientToday0900[2].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday0900(clientBase);
+          };
+          if (dataClientToday0900.length === 4) {
+            const client1 = dataClientToday0900[0].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client2 = dataClientToday0900[1].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client3 = dataClientToday0900[2].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client4 = dataClientToday0900[3].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday0900(clientBase);
+          };
+          if (dataClientToday0900.length === 5) {
+            const client1 = dataClientToday0900[0].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client2 = dataClientToday0900[1].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client3 = dataClientToday0900[2].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client4 = dataClientToday0900[3].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client5 = dataClientToday0900[4].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday0900(clientBase);
+          };
+          if (dataClientToday0900.length === 6) {
+            const client1 = dataClientToday0900[0].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client2 = dataClientToday0900[1].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client3 = dataClientToday0900[2].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client4 = dataClientToday0900[3].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client5 = dataClientToday0900[4].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client6 = dataClientToday0900[5].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday0900(clientBase);
+          };
+          if (dataClientToday0900.length === 7) {
+            const client1 = dataClientToday0900[0].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client2 = dataClientToday0900[1].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client3 = dataClientToday0900[2].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client4 = dataClientToday0900[3].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client5 = dataClientToday0900[4].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client6 = dataClientToday0900[5].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client7 = dataClientToday0900[6].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday0900(clientBase);
+          };
+          if (dataClientToday0900.length === 8) {
+            const client1 = dataClientToday0900[0].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client2 = dataClientToday0900[1].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client3 = dataClientToday0900[2].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client4 = dataClientToday0900[3].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client5 = dataClientToday0900[4].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client6 = dataClientToday0900[5].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client7 = dataClientToday0900[6].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client8 = dataClientToday0900[7].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday0900(clientBase);
+          };
+          if (dataClientToday0900.length === 9) {
+            const client1 = dataClientToday0900[0].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client2 = dataClientToday0900[1].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client3 = dataClientToday0900[2].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client4 = dataClientToday0900[3].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client5 = dataClientToday0900[4].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client6 = dataClientToday0900[5].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client7 = dataClientToday0900[6].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client8 = dataClientToday0900[7].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client9 = dataClientToday0900[8].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday0900(clientBase);
+          };
+          if (dataClientToday0900.length === 10) {
+            const client1 = dataClientToday0900[0].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client2 = dataClientToday0900[1].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client3 = dataClientToday0900[2].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client4 = dataClientToday0900[3].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client5 = dataClientToday0900[4].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client6 = dataClientToday0900[5].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client7 = dataClientToday0900[6].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client8 = dataClientToday0900[7].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client9 = dataClientToday0900[8].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const client10 = dataClientToday0900[9].info.find((value) => { return value.day === 'friday' && value.time === '09:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday0900(clientBase);
+        };
+        if (dataClientToday1000.length === '') {
+            return (setFriday1000(''));
+          };
+          if (dataClientToday1000.length === 1) {
+            const client1 = dataClientToday1000[0].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const clientBase = [client1]
+            setFriday1000(clientBase);
+          };
+          if (dataClientToday1000.length === 2) {
+            const client1 = dataClientToday1000[0].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client2 = dataClientToday1000[1].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const clientBase = [client1, client2]
+            setFriday1000(clientBase);
+          };
+          if (dataClientToday1000.length === 3) {
+            const client1 = dataClientToday1000[0].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client2 = dataClientToday1000[1].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client3 = dataClientToday1000[2].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday1000(clientBase);
+          };
+          if (dataClientToday1000.length === 4) {
+            const client1 = dataClientToday1000[0].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client2 = dataClientToday1000[1].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client3 = dataClientToday1000[2].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client4 = dataClientToday1000[3].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday1000(clientBase);
+          };
+          if (dataClientToday1000.length === 5) {
+            const client1 = dataClientToday1000[0].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client2 = dataClientToday1000[1].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client3 = dataClientToday1000[2].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client4 = dataClientToday1000[3].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client5 = dataClientToday1000[4].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday1000(clientBase);
+          };
+          if (dataClientToday1000.length === 6) {
+            const client1 = dataClientToday1000[0].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client2 = dataClientToday1000[1].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client3 = dataClientToday1000[2].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client4 = dataClientToday1000[3].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client5 = dataClientToday1000[4].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client6 = dataClientToday1000[5].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday1000(clientBase);
+          };
+          if (dataClientToday1000.length === 7) {
+            const client1 = dataClientToday1000[0].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client2 = dataClientToday1000[1].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client3 = dataClientToday1000[2].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client4 = dataClientToday1000[3].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client5 = dataClientToday1000[4].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client6 = dataClientToday1000[5].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client7 = dataClientToday1000[6].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday1000(clientBase);
+          };
+          if (dataClientToday1000.length === 8) {
+            const client1 = dataClientToday1000[0].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client2 = dataClientToday1000[1].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client3 = dataClientToday1000[2].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client4 = dataClientToday1000[3].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client5 = dataClientToday1000[4].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client6 = dataClientToday1000[5].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client7 = dataClientToday1000[6].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client8 = dataClientToday1000[7].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday1000(clientBase);
+          };
+          if (dataClientToday1000.length === 9) {
+            const client1 = dataClientToday1000[0].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client2 = dataClientToday1000[1].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client3 = dataClientToday1000[2].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client4 = dataClientToday1000[3].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client5 = dataClientToday1000[4].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client6 = dataClientToday1000[5].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client7 = dataClientToday1000[6].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client8 = dataClientToday1000[7].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client9 = dataClientToday1000[8].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday1000(clientBase);
+          };
+          if (dataClientToday1000.length === 10) {
+            const client1 = dataClientToday1000[0].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client2 = dataClientToday1000[1].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client3 = dataClientToday1000[2].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client4 = dataClientToday1000[3].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client5 = dataClientToday1000[4].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client6 = dataClientToday1000[5].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client7 = dataClientToday1000[6].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client8 = dataClientToday1000[7].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client9 = dataClientToday1000[8].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const client10 = dataClientToday1000[9].info.find((value) => { return value.day === 'friday' && value.time === '10:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday1000(clientBase);
+        };
+        if (dataClientToday1100.length === '') {
+            return (setFriday1100(''));
+          };
+          if (dataClientToday1100.length === 1) {
+            const client1 = dataClientToday1100[0].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const clientBase = [client1]
+            setFriday1100(clientBase);
+          };
+          if (dataClientToday1100.length === 2) {
+            const client1 = dataClientToday1100[0].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client2 = dataClientToday1100[1].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const clientBase = [client1, client2]
+            setFriday1100(clientBase);
+          };
+          if (dataClientToday1100.length === 3) {
+            const client1 = dataClientToday1100[0].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client2 = dataClientToday1100[1].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client3 = dataClientToday1100[2].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday1100(clientBase);
+          };
+          if (dataClientToday1100.length === 4) {
+            const client1 = dataClientToday1100[0].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client2 = dataClientToday1100[1].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client3 = dataClientToday1100[2].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client4 = dataClientToday1100[3].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday1100(clientBase);
+          };
+          if (dataClientToday1100.length === 5) {
+            const client1 = dataClientToday1100[0].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client2 = dataClientToday1100[1].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client3 = dataClientToday1100[2].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client4 = dataClientToday1100[3].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client5 = dataClientToday1100[4].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday1100(clientBase);
+          };
+          if (dataClientToday1100.length === 6) {
+            const client1 = dataClientToday1100[0].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client2 = dataClientToday1100[1].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client3 = dataClientToday1100[2].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client4 = dataClientToday1100[3].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client5 = dataClientToday1100[4].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client6 = dataClientToday1100[5].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday1100(clientBase);
+          };
+          if (dataClientToday1100.length === 7) {
+            const client1 = dataClientToday1100[0].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client2 = dataClientToday1100[1].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client3 = dataClientToday1100[2].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client4 = dataClientToday1100[3].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client5 = dataClientToday1100[4].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client6 = dataClientToday1100[5].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client7 = dataClientToday1100[6].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday1100(clientBase);
+          };
+          if (dataClientToday1100.length === 8) {
+            const client1 = dataClientToday1100[0].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client2 = dataClientToday1100[1].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client3 = dataClientToday1100[2].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client4 = dataClientToday1100[3].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client5 = dataClientToday1100[4].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client6 = dataClientToday1100[5].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client7 = dataClientToday1100[6].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client8 = dataClientToday1100[7].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday1100(clientBase);
+          };
+          if (dataClientToday1100.length === 9) {
+            const client1 = dataClientToday1100[0].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client2 = dataClientToday1100[1].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client3 = dataClientToday1100[2].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client4 = dataClientToday1100[3].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client5 = dataClientToday1100[4].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client6 = dataClientToday1100[5].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client7 = dataClientToday1100[6].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client8 = dataClientToday1100[7].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client9 = dataClientToday1100[8].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday1100(clientBase);
+          };
+          if (dataClientToday1100.length === 10) {
+            const client1 = dataClientToday1100[0].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client2 = dataClientToday1100[1].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client3 = dataClientToday1100[2].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client4 = dataClientToday1100[3].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client5 = dataClientToday1100[4].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client6 = dataClientToday1100[5].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client7 = dataClientToday1100[6].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client8 = dataClientToday1100[7].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client9 = dataClientToday1100[8].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const client10 = dataClientToday1100[9].info.find((value) => { return value.day === 'friday' && value.time === '11:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday1100(clientBase);
+        };
+        if (dataClientToday1200.length === '') {
+            return (setFriday1200(''));
+          };
+          if (dataClientToday1200.length === 1) {
+            const client1 = dataClientToday1200[0].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const clientBase = [client1]
+            setFriday1200(clientBase);
+          };
+          if (dataClientToday1200.length === 2) {
+            const client1 = dataClientToday1200[0].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client2 = dataClientToday1200[1].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const clientBase = [client1, client2]
+            setFriday1200(clientBase);
+          };
+          if (dataClientToday1200.length === 3) {
+            const client1 = dataClientToday1200[0].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client2 = dataClientToday1200[1].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client3 = dataClientToday1200[2].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday1200(clientBase);
+          };
+          if (dataClientToday1200.length === 4) {
+            const client1 = dataClientToday1200[0].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client2 = dataClientToday1200[1].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client3 = dataClientToday1200[2].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client4 = dataClientToday1200[3].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday1200(clientBase);
+          };
+          if (dataClientToday1200.length === 5) {
+            const client1 = dataClientToday1200[0].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client2 = dataClientToday1200[1].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client3 = dataClientToday1200[2].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client4 = dataClientToday1200[3].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client5 = dataClientToday1200[4].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday1200(clientBase);
+          };
+          if (dataClientToday1200.length === 6) {
+            const client1 = dataClientToday1200[0].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client2 = dataClientToday1200[1].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client3 = dataClientToday1200[2].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client4 = dataClientToday1200[3].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client5 = dataClientToday1200[4].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client6 = dataClientToday1200[5].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday1200(clientBase);
+          };
+          if (dataClientToday1200.length === 7) {
+            const client1 = dataClientToday1200[0].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client2 = dataClientToday1200[1].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client3 = dataClientToday1200[2].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client4 = dataClientToday1200[3].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client5 = dataClientToday1200[4].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client6 = dataClientToday1200[5].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client7 = dataClientToday1200[6].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday1200(clientBase);
+          };
+          if (dataClientToday1200.length === 8) {
+            const client1 = dataClientToday1200[0].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client2 = dataClientToday1200[1].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client3 = dataClientToday1200[2].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client4 = dataClientToday1200[3].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client5 = dataClientToday1200[4].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client6 = dataClientToday1200[5].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client7 = dataClientToday1200[6].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client8 = dataClientToday1200[7].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday1200(clientBase);
+          };
+          if (dataClientToday1200.length === 9) {
+            const client1 = dataClientToday1200[0].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client2 = dataClientToday1200[1].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client3 = dataClientToday1200[2].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client4 = dataClientToday1200[3].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client5 = dataClientToday1200[4].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client6 = dataClientToday1200[5].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client7 = dataClientToday1200[6].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client8 = dataClientToday1200[7].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client9 = dataClientToday1200[8].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday1200(clientBase);
+          };
+          if (dataClientToday1200.length === 10) {
+            const client1 = dataClientToday1200[0].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client2 = dataClientToday1200[1].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client3 = dataClientToday1200[2].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client4 = dataClientToday1200[3].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client5 = dataClientToday1200[4].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client6 = dataClientToday1200[5].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client7 = dataClientToday1200[6].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client8 = dataClientToday1200[7].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client9 = dataClientToday1200[8].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const client10 = dataClientToday1200[9].info.find((value) => { return value.day === 'friday' && value.time === '12:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday1200(clientBase);
+        };
+        if (dataClientToday1300.length === '') {
+            return (setFriday1300(''));
+          };
+          if (dataClientToday1300.length === 1) {
+            const client1 = dataClientToday1300[0].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const clientBase = [client1]
+            setFriday1300(clientBase);
+          };
+          if (dataClientToday1300.length === 2) {
+            const client1 = dataClientToday1300[0].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client2 = dataClientToday1300[1].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const clientBase = [client1, client2]
+            setFriday1300(clientBase);
+          };
+          if (dataClientToday1300.length === 3) {
+            const client1 = dataClientToday1300[0].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client2 = dataClientToday1300[1].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client3 = dataClientToday1300[2].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday1300(clientBase);
+          };
+          if (dataClientToday1300.length === 4) {
+            const client1 = dataClientToday1300[0].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client2 = dataClientToday1300[1].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client3 = dataClientToday1300[2].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client4 = dataClientToday1300[3].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday1300(clientBase);
+          };
+          if (dataClientToday1300.length === 5) {
+            const client1 = dataClientToday1300[0].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client2 = dataClientToday1300[1].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client3 = dataClientToday1300[2].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client4 = dataClientToday1300[3].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client5 = dataClientToday1300[4].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday1300(clientBase);
+          };
+          if (dataClientToday1300.length === 6) {
+            const client1 = dataClientToday1300[0].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client2 = dataClientToday1300[1].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client3 = dataClientToday1300[2].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client4 = dataClientToday1300[3].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client5 = dataClientToday1300[4].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client6 = dataClientToday1300[5].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday1300(clientBase);
+          };
+          if (dataClientToday1300.length === 7) {
+            const client1 = dataClientToday1300[0].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client2 = dataClientToday1300[1].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client3 = dataClientToday1300[2].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client4 = dataClientToday1300[3].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client5 = dataClientToday1300[4].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client6 = dataClientToday1300[5].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client7 = dataClientToday1300[6].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday1300(clientBase);
+          };
+          if (dataClientToday1300.length === 8) {
+            const client1 = dataClientToday1300[0].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client2 = dataClientToday1300[1].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client3 = dataClientToday1300[2].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client4 = dataClientToday1300[3].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client5 = dataClientToday1300[4].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client6 = dataClientToday1300[5].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client7 = dataClientToday1300[6].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client8 = dataClientToday1300[7].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday1300(clientBase);
+          };
+          if (dataClientToday1300.length === 9) {
+            const client1 = dataClientToday1300[0].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client2 = dataClientToday1300[1].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client3 = dataClientToday1300[2].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client4 = dataClientToday1300[3].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client5 = dataClientToday1300[4].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client6 = dataClientToday1300[5].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client7 = dataClientToday1300[6].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client8 = dataClientToday1300[7].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client9 = dataClientToday1300[8].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday1300(clientBase);
+          };
+          if (dataClientToday1300.length === 10) {
+            const client1 = dataClientToday1300[0].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client2 = dataClientToday1300[1].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client3 = dataClientToday1300[2].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client4 = dataClientToday1300[3].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client5 = dataClientToday1300[4].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client6 = dataClientToday1300[5].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client7 = dataClientToday1300[6].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client8 = dataClientToday1300[7].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client9 = dataClientToday1300[8].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const client10 = dataClientToday1300[9].info.find((value) => { return value.day === 'friday' && value.time === '13:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday1300(clientBase);
+        };
+        if (dataClientToday1400.length === '') {
+          return (setFriday1400(''));
+        };
+        if (dataClientToday1400.length === 1) {
+          const client1 = dataClientToday1400[0].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const clientBase = [client1]
+          setFriday1400(clientBase);
+        };
+        if (dataClientToday1400.length === 2) {
+          const client1 = dataClientToday1400[0].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client2 = dataClientToday1400[1].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const clientBase = [client1, client2]
+          setFriday1400(clientBase);
+        };
+        if (dataClientToday1400.length === 3) {
+          const client1 = dataClientToday1400[0].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client2 = dataClientToday1400[1].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client3 = dataClientToday1400[2].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const clientBase = [client1, client2, client3]
+          setFriday1400(clientBase);
+        };
+        if (dataClientToday1400.length === 4) {
+          const client1 = dataClientToday1400[0].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client2 = dataClientToday1400[1].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client3 = dataClientToday1400[2].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client4 = dataClientToday1400[3].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const clientBase = [client1, client2, client3, client4]
+          setFriday1400(clientBase);
+        };
+        if (dataClientToday1400.length === 5) {
+          const client1 = dataClientToday1400[0].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client2 = dataClientToday1400[1].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client3 = dataClientToday1400[2].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client4 = dataClientToday1400[3].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client5 = dataClientToday1400[4].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const clientBase = [client1, client2, client3, client4, client5]
+          setFriday1400(clientBase);
+        };
+        if (dataClientToday1400.length === 6) {
+          const client1 = dataClientToday1400[0].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client2 = dataClientToday1400[1].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client3 = dataClientToday1400[2].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client4 = dataClientToday1400[3].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client5 = dataClientToday1400[4].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client6 = dataClientToday1400[5].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const clientBase = [client1, client2, client3, client4, client5, client6]
+          setFriday1400(clientBase);
+        };
+        if (dataClientToday1400.length === 7) {
+          const client1 = dataClientToday1400[0].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client2 = dataClientToday1400[1].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client3 = dataClientToday1400[2].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client4 = dataClientToday1400[3].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client5 = dataClientToday1400[4].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client6 = dataClientToday1400[5].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client7 = dataClientToday1400[6].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+          setFriday1400(clientBase);
+        };
+        if (dataClientToday1400.length === 8) {
+          const client1 = dataClientToday1400[0].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client2 = dataClientToday1400[1].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client3 = dataClientToday1400[2].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client4 = dataClientToday1400[3].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client5 = dataClientToday1400[4].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client6 = dataClientToday1400[5].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client7 = dataClientToday1400[6].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client8 = dataClientToday1400[7].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+          setFriday1400(clientBase);
+        };
+        if (dataClientToday1400.length === 9) {
+          const client1 = dataClientToday1400[0].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client2 = dataClientToday1400[1].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client3 = dataClientToday1400[2].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client4 = dataClientToday1400[3].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client5 = dataClientToday1400[4].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client6 = dataClientToday1400[5].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client7 = dataClientToday1400[6].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client8 = dataClientToday1400[7].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client9 = dataClientToday1400[8].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+          setFriday1400(clientBase);
+        };
+        if (dataClientToday1400.length === 10) {
+          const client1 = dataClientToday1400[0].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client2 = dataClientToday1400[1].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client3 = dataClientToday1400[2].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client4 = dataClientToday1400[3].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client5 = dataClientToday1400[4].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client6 = dataClientToday1400[5].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client7 = dataClientToday1400[6].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client8 = dataClientToday1400[7].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client9 = dataClientToday1400[8].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const client10 = dataClientToday1400[9].info.find((value) => { return value.day === 'friday' && value.time === '14:00'; });
+          const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+          setFriday1400(clientBase);
+        };
+        if (dataClientToday1500.length === '') {
+            return (setFriday1500(''));
+          };
+          if (dataClientToday1500.length === 1) {
+            const client1 = dataClientToday1500[0].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const clientBase = [client1]
+            setFriday1500(clientBase);
+          };
+          if (dataClientToday1500.length === 2) {
+            const client1 = dataClientToday1500[0].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client2 = dataClientToday1500[1].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const clientBase = [client1, client2]
+            setFriday1500(clientBase);
+          };
+          if (dataClientToday1500.length === 3) {
+            const client1 = dataClientToday1500[0].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client2 = dataClientToday1500[1].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client3 = dataClientToday1500[2].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday1500(clientBase);
+          };
+          if (dataClientToday1500.length === 4) {
+            const client1 = dataClientToday1500[0].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client2 = dataClientToday1500[1].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client3 = dataClientToday1500[2].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client4 = dataClientToday1500[3].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday1500(clientBase);
+          };
+          if (dataClientToday1500.length === 5) {
+            const client1 = dataClientToday1500[0].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client2 = dataClientToday1500[1].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client3 = dataClientToday1500[2].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client4 = dataClientToday1500[3].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client5 = dataClientToday1500[4].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday1500(clientBase);
+          };
+          if (dataClientToday1500.length === 6) {
+            const client1 = dataClientToday1500[0].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client2 = dataClientToday1500[1].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client3 = dataClientToday1500[2].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client4 = dataClientToday1500[3].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client5 = dataClientToday1500[4].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client6 = dataClientToday1500[5].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday1500(clientBase);
+          };
+          if (dataClientToday1500.length === 7) {
+            const client1 = dataClientToday1500[0].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client2 = dataClientToday1500[1].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client3 = dataClientToday1500[2].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client4 = dataClientToday1500[3].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client5 = dataClientToday1500[4].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client6 = dataClientToday1500[5].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client7 = dataClientToday1500[6].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday1500(clientBase);
+          };
+          if (dataClientToday1500.length === 8) {
+            const client1 = dataClientToday1500[0].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client2 = dataClientToday1500[1].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client3 = dataClientToday1500[2].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client4 = dataClientToday1500[3].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client5 = dataClientToday1500[4].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client6 = dataClientToday1500[5].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client7 = dataClientToday1500[6].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client8 = dataClientToday1500[7].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday1500(clientBase);
+          };
+          if (dataClientToday1500.length === 9) {
+            const client1 = dataClientToday1500[0].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client2 = dataClientToday1500[1].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client3 = dataClientToday1500[2].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client4 = dataClientToday1500[3].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client5 = dataClientToday1500[4].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client6 = dataClientToday1500[5].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client7 = dataClientToday1500[6].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client8 = dataClientToday1500[7].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client9 = dataClientToday1500[8].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday1500(clientBase);
+          };
+          if (dataClientToday1500.length === 10) {
+            const client1 = dataClientToday1500[0].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client2 = dataClientToday1500[1].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client3 = dataClientToday1500[2].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client4 = dataClientToday1500[3].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client5 = dataClientToday1500[4].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client6 = dataClientToday1500[5].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client7 = dataClientToday1500[6].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client8 = dataClientToday1500[7].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client9 = dataClientToday1500[8].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const client10 = dataClientToday1500[9].info.find((value) => { return value.day === 'friday' && value.time === '15:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday1500(clientBase);
+        };
+        if (dataClientToday1600.length === '') {
+            return (setFriday1600(''));
+          };
+          if (dataClientToday1600.length === 1) {
+            const client1 = dataClientToday1600[0].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const clientBase = [client1]
+            setFriday1600(clientBase);
+          };
+          if (dataClientToday1600.length === 2) {
+            const client1 = dataClientToday1600[0].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client2 = dataClientToday1600[1].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const clientBase = [client1, client2]
+            setFriday1600(clientBase);
+          };
+          if (dataClientToday1600.length === 3) {
+            const client1 = dataClientToday1600[0].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client2 = dataClientToday1600[1].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client3 = dataClientToday1600[2].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday1600(clientBase);
+          };
+          if (dataClientToday1600.length === 4) {
+            const client1 = dataClientToday1600[0].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client2 = dataClientToday1600[1].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client3 = dataClientToday1600[2].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client4 = dataClientToday1600[3].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday1600(clientBase);
+          };
+          if (dataClientToday1600.length === 5) {
+            const client1 = dataClientToday1600[0].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client2 = dataClientToday1600[1].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client3 = dataClientToday1600[2].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client4 = dataClientToday1600[3].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client5 = dataClientToday1600[4].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday1600(clientBase);
+          };
+          if (dataClientToday1600.length === 6) {
+            const client1 = dataClientToday1600[0].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client2 = dataClientToday1600[1].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client3 = dataClientToday1600[2].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client4 = dataClientToday1600[3].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client5 = dataClientToday1600[4].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client6 = dataClientToday1600[5].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday1600(clientBase);
+          };
+          if (dataClientToday1600.length === 7) {
+            const client1 = dataClientToday1600[0].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client2 = dataClientToday1600[1].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client3 = dataClientToday1600[2].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client4 = dataClientToday1600[3].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client5 = dataClientToday1600[4].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client6 = dataClientToday1600[5].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client7 = dataClientToday1600[6].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday1600(clientBase);
+          };
+          if (dataClientToday1600.length === 8) {
+            const client1 = dataClientToday1600[0].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client2 = dataClientToday1600[1].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client3 = dataClientToday1600[2].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client4 = dataClientToday1600[3].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client5 = dataClientToday1600[4].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client6 = dataClientToday1600[5].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client7 = dataClientToday1600[6].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client8 = dataClientToday1600[7].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday1600(clientBase);
+          };
+          if (dataClientToday1600.length === 9) {
+            const client1 = dataClientToday1600[0].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client2 = dataClientToday1600[1].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client3 = dataClientToday1600[2].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client4 = dataClientToday1600[3].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client5 = dataClientToday1600[4].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client6 = dataClientToday1600[5].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client7 = dataClientToday1600[6].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client8 = dataClientToday1600[7].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client9 = dataClientToday1600[8].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday1600(clientBase);
+          };
+          if (dataClientToday1600.length === 10) {
+            const client1 = dataClientToday1600[0].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client2 = dataClientToday1600[1].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client3 = dataClientToday1600[2].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client4 = dataClientToday1600[3].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client5 = dataClientToday1600[4].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client6 = dataClientToday1600[5].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client7 = dataClientToday1600[6].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client8 = dataClientToday1600[7].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client9 = dataClientToday1600[8].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const client10 = dataClientToday1600[9].info.find((value) => { return value.day === 'friday' && value.time === '16:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday1600(clientBase);
+        };
+        if (dataClientToday1700.length === '') {
+            return (setFriday1700(''));
+          };
+          if (dataClientToday1700.length === 1) {
+            const client1 = dataClientToday1700[0].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const clientBase = [client1]
+            setFriday1700(clientBase);
+          };
+          if (dataClientToday1700.length === 2) {
+            const client1 = dataClientToday1700[0].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client2 = dataClientToday1700[1].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const clientBase = [client1, client2]
+            setFriday1700(clientBase);
+          };
+          if (dataClientToday1700.length === 3) {
+            const client1 = dataClientToday1700[0].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client2 = dataClientToday1700[1].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client3 = dataClientToday1700[2].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday1700(clientBase);
+          };
+          if (dataClientToday1700.length === 4) {
+            const client1 = dataClientToday1700[0].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client2 = dataClientToday1700[1].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client3 = dataClientToday1700[2].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client4 = dataClientToday1700[3].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday1700(clientBase);
+          };
+          if (dataClientToday1700.length === 5) {
+            const client1 = dataClientToday1700[0].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client2 = dataClientToday1700[1].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client3 = dataClientToday1700[2].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client4 = dataClientToday1700[3].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client5 = dataClientToday1700[4].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday1700(clientBase);
+          };
+          if (dataClientToday1700.length === 6) {
+            const client1 = dataClientToday1700[0].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client2 = dataClientToday1700[1].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client3 = dataClientToday1700[2].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client4 = dataClientToday1700[3].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client5 = dataClientToday1700[4].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client6 = dataClientToday1700[5].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday1700(clientBase);
+          };
+          if (dataClientToday1700.length === 7) {
+            const client1 = dataClientToday1700[0].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client2 = dataClientToday1700[1].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client3 = dataClientToday1700[2].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client4 = dataClientToday1700[3].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client5 = dataClientToday1700[4].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client6 = dataClientToday1700[5].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client7 = dataClientToday1700[6].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday1700(clientBase);
+          };
+          if (dataClientToday1700.length === 8) {
+            const client1 = dataClientToday1700[0].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client2 = dataClientToday1700[1].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client3 = dataClientToday1700[2].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client4 = dataClientToday1700[3].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client5 = dataClientToday1700[4].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client6 = dataClientToday1700[5].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client7 = dataClientToday1700[6].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client8 = dataClientToday1700[7].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday1700(clientBase);
+          };
+          if (dataClientToday1700.length === 9) {
+            const client1 = dataClientToday1700[0].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client2 = dataClientToday1700[1].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client3 = dataClientToday1700[2].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client4 = dataClientToday1700[3].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client5 = dataClientToday1700[4].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client6 = dataClientToday1700[5].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client7 = dataClientToday1700[6].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client8 = dataClientToday1700[7].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client9 = dataClientToday1700[8].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday1700(clientBase);
+          };
+          if (dataClientToday1700.length === 10) {
+            const client1 = dataClientToday1700[0].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client2 = dataClientToday1700[1].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client3 = dataClientToday1700[2].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client4 = dataClientToday1700[3].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client5 = dataClientToday1700[4].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client6 = dataClientToday1700[5].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client7 = dataClientToday1700[6].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client8 = dataClientToday1700[7].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client9 = dataClientToday1700[8].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const client10 = dataClientToday1700[9].info.find((value) => { return value.day === 'friday' && value.time === '17:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday1700(clientBase);
+        };
+        if (dataClientToday1800.length === '') {
+            return (setFriday1800(''));
+          };
+          if (dataClientToday1800.length === 1) {
+            const client1 = dataClientToday1800[0].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const clientBase = [client1]
+            setFriday1800(clientBase);
+          };
+          if (dataClientToday1800.length === 2) {
+            const client1 = dataClientToday1800[0].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client2 = dataClientToday1800[1].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const clientBase = [client1, client2]
+            setFriday1800(clientBase);
+          };
+          if (dataClientToday1800.length === 3) {
+            const client1 = dataClientToday1800[0].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client2 = dataClientToday1800[1].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client3 = dataClientToday1800[2].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday1800(clientBase);
+          };
+          if (dataClientToday1800.length === 4) {
+            const client1 = dataClientToday1800[0].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client2 = dataClientToday1800[1].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client3 = dataClientToday1800[2].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client4 = dataClientToday1800[3].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday1800(clientBase);
+          };
+          if (dataClientToday1800.length === 5) {
+            const client1 = dataClientToday1800[0].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client2 = dataClientToday1800[1].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client3 = dataClientToday1800[2].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client4 = dataClientToday1800[3].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client5 = dataClientToday1800[4].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday1800(clientBase);
+          };
+          if (dataClientToday1800.length === 6) {
+            const client1 = dataClientToday1800[0].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client2 = dataClientToday1800[1].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client3 = dataClientToday1800[2].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client4 = dataClientToday1800[3].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client5 = dataClientToday1800[4].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client6 = dataClientToday1800[5].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday1800(clientBase);
+          };
+          if (dataClientToday1800.length === 7) {
+            const client1 = dataClientToday1800[0].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client2 = dataClientToday1800[1].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client3 = dataClientToday1800[2].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client4 = dataClientToday1800[3].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client5 = dataClientToday1800[4].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client6 = dataClientToday1800[5].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client7 = dataClientToday1800[6].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday1800(clientBase);
+          };
+          if (dataClientToday1800.length === 8) {
+            const client1 = dataClientToday1800[0].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client2 = dataClientToday1800[1].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client3 = dataClientToday1800[2].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client4 = dataClientToday1800[3].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client5 = dataClientToday1800[4].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client6 = dataClientToday1800[5].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client7 = dataClientToday1800[6].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client8 = dataClientToday1800[7].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday1800(clientBase);
+          };
+          if (dataClientToday1800.length === 9) {
+            const client1 = dataClientToday1800[0].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client2 = dataClientToday1800[1].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client3 = dataClientToday1800[2].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client4 = dataClientToday1800[3].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client5 = dataClientToday1800[4].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client6 = dataClientToday1800[5].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client7 = dataClientToday1800[6].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client8 = dataClientToday1800[7].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client9 = dataClientToday1800[8].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday1800(clientBase);
+          };
+          if (dataClientToday1800.length === 10) {
+            const client1 = dataClientToday1800[0].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client2 = dataClientToday1800[1].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client3 = dataClientToday1800[2].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client4 = dataClientToday1800[3].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client5 = dataClientToday1800[4].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client6 = dataClientToday1800[5].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client7 = dataClientToday1800[6].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client8 = dataClientToday1800[7].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client9 = dataClientToday1800[8].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const client10 = dataClientToday1800[9].info.find((value) => { return value.day === 'friday' && value.time === '18:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday1800(clientBase);
+        };
+        if (dataClientToday1900.length === '') {
+          return (setFriday1900(''));
+          };
+          if (dataClientToday1900.length === 1) {
+            const client1 = dataClientToday1900[0].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const clientBase = [client1]
+            setFriday1900(clientBase);
+          };
+          if (dataClientToday1900.length === 2) {
+            const client1 = dataClientToday1900[0].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client2 = dataClientToday1900[1].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const clientBase = [client1, client2]
+            setFriday1900(clientBase);
+          };
+          if (dataClientToday1900.length === 3) {
+            const client1 = dataClientToday1900[0].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client2 = dataClientToday1900[1].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client3 = dataClientToday1900[2].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday1900(clientBase);
+          };
+          if (dataClientToday1900.length === 4) {
+            const client1 = dataClientToday1900[0].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client2 = dataClientToday1900[1].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client3 = dataClientToday1900[2].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client4 = dataClientToday1900[3].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday1900(clientBase);
+          };
+          if (dataClientToday1900.length === 5) {
+            const client1 = dataClientToday1900[0].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client2 = dataClientToday1900[1].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client3 = dataClientToday1900[2].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client4 = dataClientToday1900[3].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client5 = dataClientToday1900[4].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday1900(clientBase);
+          };
+          if (dataClientToday1900.length === 6) {
+            const client1 = dataClientToday1900[0].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client2 = dataClientToday1900[1].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client3 = dataClientToday1900[2].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client4 = dataClientToday1900[3].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client5 = dataClientToday1900[4].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client6 = dataClientToday1900[5].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday1900(clientBase);
+          };
+          if (dataClientToday1900.length === 7) {
+            const client1 = dataClientToday1900[0].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client2 = dataClientToday1900[1].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client3 = dataClientToday1900[2].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client4 = dataClientToday1900[3].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client5 = dataClientToday1900[4].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client6 = dataClientToday1900[5].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client7 = dataClientToday1900[6].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday1900(clientBase);
+          };
+          if (dataClientToday1900.length === 8) {
+            const client1 = dataClientToday1900[0].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client2 = dataClientToday1900[1].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client3 = dataClientToday1900[2].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client4 = dataClientToday1900[3].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client5 = dataClientToday1900[4].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client6 = dataClientToday1900[5].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client7 = dataClientToday1900[6].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client8 = dataClientToday1900[7].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday1900(clientBase);
+          };
+          if (dataClientToday1900.length === 9) {
+            const client1 = dataClientToday1900[0].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client2 = dataClientToday1900[1].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client3 = dataClientToday1900[2].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client4 = dataClientToday1900[3].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client5 = dataClientToday1900[4].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client6 = dataClientToday1900[5].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client7 = dataClientToday1900[6].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client8 = dataClientToday1900[7].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client9 = dataClientToday1900[8].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday1900(clientBase);
+          };
+          if (dataClientToday1900.length === 10) {
+            const client1 = dataClientToday1900[0].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client2 = dataClientToday1900[1].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client3 = dataClientToday1900[2].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client4 = dataClientToday1900[3].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client5 = dataClientToday1900[4].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client6 = dataClientToday1900[5].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client7 = dataClientToday1900[6].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client8 = dataClientToday1900[7].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client9 = dataClientToday1900[8].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const client10 = dataClientToday1900[9].info.find((value) => { return value.day === 'friday' && value.time === '19:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday1900(clientBase);
+        };
+        if (dataClientToday2000.length === '') {
+            return (setFriday2000(''));
+          };
+          if (dataClientToday2000.length === 1) {
+            const client1 = dataClientToday2000[0].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const clientBase = [client1]
+            setFriday2000(clientBase);
+          };
+          if (dataClientToday2000.length === 2) {
+            const client1 = dataClientToday2000[0].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client2 = dataClientToday2000[1].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const clientBase = [client1, client2]
+            setFriday2000(clientBase);
+          };
+          if (dataClientToday2000.length === 3) {
+            const client1 = dataClientToday2000[0].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client2 = dataClientToday2000[1].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client3 = dataClientToday2000[2].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const clientBase = [client1, client2, client3]
+            setFriday2000(clientBase);
+          };
+          if (dataClientToday2000.length === 4) {
+            const client1 = dataClientToday2000[0].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client2 = dataClientToday2000[1].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client3 = dataClientToday2000[2].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client4 = dataClientToday2000[3].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const clientBase = [client1, client2, client3, client4]
+            setFriday2000(clientBase);
+          };
+          if (dataClientToday2000.length === 5) {
+            const client1 = dataClientToday2000[0].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client2 = dataClientToday2000[1].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client3 = dataClientToday2000[2].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client4 = dataClientToday2000[3].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client5 = dataClientToday2000[4].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const clientBase = [client1, client2, client3, client4, client5]
+            setFriday2000(clientBase);
+          };
+          if (dataClientToday2000.length === 6) {
+            const client1 = dataClientToday2000[0].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client2 = dataClientToday2000[1].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client3 = dataClientToday2000[2].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client4 = dataClientToday2000[3].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client5 = dataClientToday2000[4].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client6 = dataClientToday2000[5].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6]
+            setFriday2000(clientBase);
+          };
+          if (dataClientToday2000.length === 7) {
+            const client1 = dataClientToday2000[0].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client2 = dataClientToday2000[1].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client3 = dataClientToday2000[2].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client4 = dataClientToday2000[3].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client5 = dataClientToday2000[4].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client6 = dataClientToday2000[5].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client7 = dataClientToday2000[6].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7]
+            setFriday2000(clientBase);
+          };
+          if (dataClientToday2000.length === 8) {
+            const client1 = dataClientToday2000[0].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client2 = dataClientToday2000[1].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client3 = dataClientToday2000[2].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client4 = dataClientToday2000[3].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client5 = dataClientToday2000[4].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client6 = dataClientToday2000[5].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client7 = dataClientToday2000[6].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client8 = dataClientToday2000[7].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8]
+            setFriday2000(clientBase);
+          };
+          if (dataClientToday2000.length === 9) {
+            const client1 = dataClientToday2000[0].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client2 = dataClientToday2000[1].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client3 = dataClientToday2000[2].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client4 = dataClientToday2000[3].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client5 = dataClientToday2000[4].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client6 = dataClientToday2000[5].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client7 = dataClientToday2000[6].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client8 = dataClientToday2000[7].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client9 = dataClientToday2000[8].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+            setFriday2000(clientBase);
+          };
+          if (dataClientToday2000.length === 10) {
+            const client1 = dataClientToday2000[0].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client2 = dataClientToday2000[1].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client3 = dataClientToday2000[2].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client4 = dataClientToday2000[3].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client5 = dataClientToday2000[4].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client6 = dataClientToday2000[5].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client7 = dataClientToday2000[6].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client8 = dataClientToday2000[7].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client9 = dataClientToday2000[8].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const client10 = dataClientToday2000[9].info.find((value) => { return value.day === 'friday' && value.time === '20:00'; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            setFriday2000(clientBase);
+        };
+
+        setUser1(dataClientToday2000)
+              console.log(friday1400);
+              console.log(friday0800);
       
-      // setDataClientToday(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday)));
-      setDataClientNextDay(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay)));
-      setDataClientNextDay1(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay1)));
-      setDataClientNextDay2(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay2)));
-      setDataClientNextDay3(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay3)));
-      setDataClientNextDay4(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay4)));
-      setDataClientNextDay5(result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay5)));
-      setUser1(dataClientToday0800);
+            
+            
       
-}})},[user1])
-          console.log(user1);
+      
+      
+
+
+
+      // for (var key in dataClientToday1400) {
+      //   // этот код будет вызван для каждого свойства объекта
+      //   // ..и выведет имя свойства и его значение
+
+      //   console.log( "Ключ: " + key + " значение: " + dataClientToday0900[key] );
+      // }
+      
+    
+    })}
+  }, [user1, friday0800, friday0900, friday1000, friday1100, friday1200, friday1300,
+    friday1400, friday1500, friday1600, friday1700, friday1800, friday1900, friday2000])
+          // console.log(user1);
 
   return(
-    <>
-    <p>sfdsdfsfsdf</p>
-    </>
+    <div style={{ display: 'flex'}}>
+      <div style={{ padding: '5px'}}>
+        <p>Час/День тижня</p>
+        <p>8:00</p>
+        <p>9:00</p>
+        <p>10:00</p>
+        <p>11:00</p>
+        <p>12:00</p>
+        <p>13:00</p>
+        <p>14:00</p>
+        <p>15:00</p>
+        <p>16:00</p>
+        <p>17:00</p>
+        <p>18:00</p>
+        <p>19:00</p>
+        <p>20:00</p>
+      </div>
+      <div style={{ padding: '5px'}}>
+        <p>Понеділок</p>
+        {/* {inialState ? inialState.map( item =>(
+          <div key={item.id}>
+            <p>{item.info.name}</p>
+          </div>
+        )) : null} */}
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+      </div>
+      <div style={{ padding: '5px'}}>
+        <p>Вівторок</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+      </div>
+      <div style={{ padding: '5px'}}>
+        <p>Середа</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+      </div>
+      <div style={{ padding: '5px'}}>
+        <p>Четвер</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+      </div>
+      <div style={{ padding: '5px'}}>
+        <p>П'ятниця</p>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday0800 ? friday0800[0].kind_trainee : null}
+          {friday0800 ? friday0800.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday0900 ? friday0900[0].kind_trainee : null}
+          {friday0900 ? friday0900.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday1000 ? friday1000[0].kind_trainee : null}
+          {friday1000 ? friday1000.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday1100 ? friday1100[0].kind_trainee : null}
+          {friday1100 ? friday1100.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday1200 ? friday1200[0].kind_trainee : null}
+          {friday1200 ? friday1200.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday1300 ? friday1300[0].kind_trainee : null}
+          {friday1300 ? friday1300.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday1400 ? friday1400[0].kind_trainee : null}
+          {friday1400 ? friday1400.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday1500 ? friday1500[0].kind_trainee : null}
+          {friday1500 ? friday1500.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday1600 ? friday1600[0].kind_trainee : null}
+          {friday1600 ? friday1600.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday1700 ? friday1700[0].kind_trainee : null}
+          {friday1700 ? friday1700.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday1800 ? friday1800[0].kind_trainee : null}
+          {friday1800 ? friday1800.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday1900 ? friday1900[0].kind_trainee : null}
+          {friday1900 ? friday1900.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+        <div style={{ border: 'solid 1px', borderRadius: '3px'}}>
+          {friday2000 ? friday2000[0].kind_trainee : null}
+          {friday2000 ? friday2000.map((item) => (
+            <div key={item.name}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Відсутні клієнти</p>}</div>
+      </div>
+      <div style={{ padding: '5px'}}>
+        <p>Субота</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+      </div>
+      <div style={{ padding: '5px'}}>
+        <p>Неділя</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+        <p>sfdsdfsfsdf</p>
+      </div>
+    </div>
   )}
 
 
