@@ -1,70 +1,42 @@
 import styled from "styled-components";
 
-const WrapperDay = styled.div`
+const DayOfWeekWrapper = styled.p`
+  position: sticky;
+  top: 60px;
+  background-color: #ddd2c5;
+`;
+
+const WrapperInfoTime = styled.div`
   display: flex;
-  /* justify-content: space-around; */
-  /* justify-content: space-between; */
-  /* width: 100px; */
-  width: 697px;
-`;
-
-const WrapperBTN = styled.div`
-  /* display: inline-block; */
-  width: 80px;
-  /* height: 35px; */
-  /* background-color: aqua; */
-`;
-
-const InfoTraineeWrapper = styled.div`
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 8px;
-  font-weight: 400;
-  width: 70px;
-  height: 30px;
-  margin: 2px;
-  padding: 2px;
-  color: black;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: solid 1px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 3px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 2px;
+  width: 90px;
+  height: 200px;
 `;
 
-const Days = styled.span`
+const KindTrainee = styled.span`
   font-family: 'Times New Roman', Times, serif;
-  font-size: 8px;
   font-weight: 400;
-  width: 80px;
-  text-align: center;
-  /* color: inherit; */
+  font-size: 12px;
 `;
 
-const Time = styled.span`
+const Clients = styled.li`
   font-family: 'Times New Roman', Times, serif;
-  font-size: 8px;
   font-weight: 400;
-  width: 40px;
-  /* text-align: center; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* height: 50px; */
-  /* color: inherit; */
+  font-size: 10px;
+  /* padding: 1px; */
 `;
 
-const WaitingWrapper = styled.div`
-  display: flex;
-  margin-top: auto;
-  justify-content: center;
-  align-items: center;
-  width: 697px;
-`;
 
 export {
-  WrapperDay,
-  WrapperBTN,
-  Days,
-  InfoTraineeWrapper,
-  Time,
-  WaitingWrapper,
+  DayOfWeekWrapper,
+  WrapperInfoTime,
+  KindTrainee,
+  Clients
 }

@@ -10,6 +10,9 @@ const Wrapper = styled.div`
 `;
 
 const WrapperStyle = styled.nav`
+  position: sticky;
+  top: 0;
+  background-color: #ddd2c5;
   font-family: 'Times New Roman', Times, serif;
   font-size: 15px;
   font-weight: 700;

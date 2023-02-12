@@ -57,9 +57,10 @@ li
 }
 
 
-ul{
-  list-style: none;
-    padding: 0;
+ul,
+ol{
+    padding: 0px;
+    margin: 0;
 }
 
 a {

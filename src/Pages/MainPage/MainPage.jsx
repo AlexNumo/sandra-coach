@@ -17,10 +17,12 @@ const MainPage = () => {
   const ShowScheduleHandle = () => {
     if (showSchedule === true) {
       setShowSchedule(false);
+      setInfoRecord(false);
       setInfoTrainee(false);
       return;
     }
     setShowSchedule(true);
+    setInfoRecord(false);
     setInfoTrainee(false);
     return;
   };
@@ -28,10 +30,12 @@ const MainPage = () => {
   const ShowInfoTraineeHandle = () => {
     if (showInfoTrainee === true) {
       setShowSchedule(false);
+      setInfoRecord(false);
       setInfoTrainee(false);
       return;
     }
     setShowSchedule(false);
+    setInfoRecord(false);
     setInfoTrainee(true);
     return;
   };
