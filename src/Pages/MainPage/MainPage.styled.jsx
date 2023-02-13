@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 795px;
   background-color: #ddd2c5;
 `;
 

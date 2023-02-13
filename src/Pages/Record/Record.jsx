@@ -9316,7 +9316,7 @@ const Record = () => {
   // const urlInsta = `https://www.instagram.com/${instaNickName.substring(1)}/`
   const URLInsta = ({ item }) => {
     // console.log(item)
-    const urlInstagram = `https://www.instagram.com/${item.instaNickName.substring(1)}/`
+    const urlInstagram = `https://www.instagram.com/${item.instaNickName.substring(1)}`
     if (item.instaNickName === undefined) {
       // console.log("DADADA")
       const notFound = `https://www.instagram.com/`;
