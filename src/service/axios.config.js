@@ -4,6 +4,7 @@ import {
   instance,
   tgSandra
 } from './api';
+// import ToastInfo from 'Components/ToastInfo/ToastInfo';
 
 export const sendData = async ({ id, day, time, kind_trainee, name_Coach }) => {
   try {
@@ -159,9 +160,10 @@ export const getKindTraineeAll = async () => {
   }
 };
 
-export const sendDataUsers = async ({ id, info }) => {
+export const sendDataUsers = async ({ id, day_translate, info }) => {
   try {
     const res = await instance.post(`/tgbot`, { id, info });
+    // ToastInfo({day_translate, info});
     return res;
   } catch (e) {
       toast.error('Щось пішло не так');
@@ -188,15 +190,18 @@ export const getDataALLUsers = async () => {
   }
 };
 
-const sendTgRecord = async ({id, day_translate, clientName, kind_trainee, time, date}) => {
+const sendTgRecord = async ({id, day_translate, clientName, kind_trainee, time, date, instaNickName}) => {
   try {
-    const res = await tgSandra.post(`Записався клієнт ${clientName} на тренування ${kind_trainee} в ${day_translate} о ${time}. Номер телефону клієнта ${id}, дата тренування: ${date}`,);
+    // const instaNickNameConvertation =
+    // instaNickName.substring(1);
+    const urlInsta = `https://www.instagram.com/${instaNickName.substring(1)}/`
+    // https://www.instagram.com/koksik839/
+    const res = await tgSandra.post(`Записався клієнт ${clientName} на тренування ${kind_trainee} в ${day_translate} о ${time}. Номер телефону клієнта ${id}, дата тренування: ${date}, Instagram: ${urlInsta}`,);
     return res;
   } catch (e) {
       toast.error('Щось пішло не так');
   }
 };
-
 export const clientAPI = {
   sendData,
   getData,

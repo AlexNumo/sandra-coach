@@ -169,8 +169,9 @@ button {
     font-size: 10px;
   }
   .select{
-    font-size: 10px;
-    width: 50px;
+    font-size: 12px;
+    width: 100%;
+    background-color: inherit;
   }
   .time{
     font-size: 10px;

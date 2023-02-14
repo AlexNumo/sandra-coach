@@ -3,6 +3,7 @@ import styled from "styled-components";
 const DayOfWeekWrapper = styled.p`
   position: sticky;
   top: 80px;
+  height: auto;
   background-color: #ddd2c5;
   text-align: center;
 `;
