@@ -33,12 +33,14 @@ const Clients = styled.li`
   font-weight: 400;
   font-size: 10px;
   /* padding: 1px; */
+  border: solid 1px;
+  margin-bottom: 1px;
+  border-radius: 5px;
 `;
-
 
 export {
   DayOfWeekWrapper,
   WrapperInfoTime,
   KindTrainee,
-  Clients
+  Clients,
 }

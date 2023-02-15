@@ -160,19 +160,36 @@ export const getKindTraineeAll = async () => {
   }
 };
 
-export const sendDataUsers = async ({ id, day_translate, info }) => {
+export const sendDataUsers = async ({ id, info }) => {
   try {
     const res = await instance.post(`/tgbot`, { id, info });
-    // ToastInfo({day_translate, info});
     return res;
   } catch (e) {
       toast.error('Щось пішло не так');
   }
 };
 
-export const deleteDataUsers = async ({id}) => {
+export const sendVisitTrainee = async (id, status) => {
   try {
-    const result = await instance.put(`/tgbot`, { id });
+    if (status.status === true) {
+      const res = await instance.put(`/tgbot/visit`, { id, status });
+      toast.success(`Підтверджено заняття для клієнта "${res.data.info[0].name}"`)
+    return res;
+    }
+    if (status.status === false) {
+      const res = await instance.put(`/tgbot/visit`, { id, status });
+      toast.success(`Скасовано заняття для клієнта "${res.data.info[0].name}"`)
+    return res;
+    }   
+  } catch (e) {
+    toast.error('Щось пішло не так');
+    console.error(e.message);
+  }
+};
+
+export const deleteDataUsers = async (id) => {
+  try {
+    const result = await instance.put(`/tgbot`, id);
     return result;
   } catch (error) {
     toast.error('Упс, щось пішло не так');
@@ -218,6 +235,7 @@ export const clientAPI = {
   deleteKindTrainee,
   getKindTraineeAll,
   sendDataUsers,
+  sendVisitTrainee,
   deleteDataUsers,
   getDataALLUsers,
   sendTgRecord
