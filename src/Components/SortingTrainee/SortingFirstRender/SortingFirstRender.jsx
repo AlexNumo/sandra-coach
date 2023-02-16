@@ -59,7 +59,7 @@ const SortingFirstRender = ({
   return(
     <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', width: '100%' }}>
 {/* ===========================ToDay======================================================================================== */}
-      <div style={{ padding: '5px' }}>
+      <div style={{ padding: '2px' }}>
         <DayOfWeekWrapper><p>{today}</p><p>{dateOfToday}</p></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsToday0800 ? <KindTrainee>{clientsToday0800[0].kind_trainee}</KindTrainee> : null}
@@ -388,7 +388,7 @@ const SortingFirstRender = ({
         </WrapperInfoTime>
       </div>
 {/* ===========================NextDay======================================================================================== */}
-      <div style={{ padding: '5px' }}>
+      <div style={{ padding: '2px' }}>
         <DayOfWeekWrapper><p>{nextDay}</p><p>{dateOfNextDay}</p></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDay0800 ? <KindTrainee>{clientsNextDay0800[0].kind_trainee}</KindTrainee> : null}
@@ -717,7 +717,7 @@ const SortingFirstRender = ({
         </WrapperInfoTime>
       </div>
 {/* ===========================NextDayTwo======================================================================================== */}
-      <div style={{ padding: '5px' }}>
+      <div style={{ padding: '2px' }}>
         <DayOfWeekWrapper><p>{nextDay1}</p><p>{dateOfNextDay1}</p></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDayTwo0800 ? <KindTrainee>{clientsNextDayTwo0800[0].kind_trainee}</KindTrainee> : null}

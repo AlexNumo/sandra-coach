@@ -73,7 +73,7 @@ const SortingSecondRender = ({
   return(
     <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', width: '100%' }}>
 {/* ===========================NextDayThree=========================================== */}
-      <div style={{ padding: '5px' }}>
+      <div style={{ padding: '2px' }}>
         <DayOfWeekWrapper><p>{nextDay2}</p><p>{dateOfNextDay2}</p></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDayThree0800 ? <KindTrainee>{clientsNextDayThree0800[0].kind_trainee}</KindTrainee> : null}
@@ -402,7 +402,7 @@ const SortingSecondRender = ({
         </WrapperInfoTime>
       </div>
 {/* ===========================NextDayFour======================================================================================== */}
-      <div style={{ padding: '5px' }}>
+      <div style={{ padding: '2px' }}>
         <DayOfWeekWrapper><p>{nextDay3}</p><p>{dateOfNextDay3}</p></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDayFour0800 ? <KindTrainee>{clientsNextDayFour0800[0].kind_trainee}</KindTrainee> : null}
@@ -731,7 +731,7 @@ const SortingSecondRender = ({
         </WrapperInfoTime>
       </div>
 {/* ===========================NextDayFive======================================================================================== */}
-      <div style={{ padding: '5px' }}>
+      <div style={{ padding: '2px' }}>
         <DayOfWeekWrapper><p>{nextDay4}</p><p>{dateOfNextDay4}</p></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDayFive0800 ? <KindTrainee>{clientsNextDayFive0800[0].kind_trainee}</KindTrainee> : null}
@@ -1060,7 +1060,7 @@ const SortingSecondRender = ({
         </WrapperInfoTime>
       </div>
       {/* ===========================NextDaySix======================================================================================== */}
-      <div style={{ padding: '5px' }}>
+      <div style={{ padding: '2px' }}>
         <DayOfWeekWrapper><p>{nextDay5}</p><p>{dateOfNextDay5}</p></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDaySix0800 ? <KindTrainee>{clientsNextDaySix0800[0].kind_trainee}</KindTrainee> : null}
