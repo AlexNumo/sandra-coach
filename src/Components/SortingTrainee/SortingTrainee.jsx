@@ -4,7 +4,7 @@ import moment from 'moment/moment';
 import SortingFirstRender from './SortingFirstRender/SortingFirstRender';
 import SortingSecondRender from './SortingSecondRender/SortingSecondRender';
 import {
-  DayOfWeekWrapper,
+  WrapperBTN,
   WrapperInfoTime,
   // NextBTNPosition,
   // NextBTNWrapper,
@@ -9340,29 +9340,29 @@ const SortingTrainee = () => {
       // style={{ display: 'flex', flexDirection: 'column' }}
       style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}
     >
-      <div style={{ padding: '5px' }}>
+      <div>
         {/* <DayOfWeekWrapper><p>День/</p><p>Час</p></DayOfWeekWrapper> */}
         {continueView ?
-        <DayOfWeekWrapper>
-          <NextDaysBTN onClick={ContinueBTN}>Наступні дні</NextDaysBTN>
-        </DayOfWeekWrapper>
+        <WrapperBTN>
+          <NextDaysBTN onClick={ContinueBTN}>Next</NextDaysBTN>
+        </WrapperBTN>
         :
-        <DayOfWeekWrapper>
-          <NextDaysBTN onClick={ContinueBTN}>Попередні дні</NextDaysBTN>
-        </DayOfWeekWrapper>}
-        <WrapperInfoTime>8:00</WrapperInfoTime>
-        <WrapperInfoTime>9:00</WrapperInfoTime>
-        <WrapperInfoTime>10:00</WrapperInfoTime>
-        <WrapperInfoTime>11:00</WrapperInfoTime>
-        <WrapperInfoTime>12:00</WrapperInfoTime>
-        <WrapperInfoTime>13:00</WrapperInfoTime>
-        <WrapperInfoTime>14:00</WrapperInfoTime>
-        <WrapperInfoTime>15:00</WrapperInfoTime>
-        <WrapperInfoTime>16:00</WrapperInfoTime>
-        <WrapperInfoTime>17:00</WrapperInfoTime>
-        <WrapperInfoTime>18:00</WrapperInfoTime>
-        <WrapperInfoTime>19:00</WrapperInfoTime>
-        <WrapperInfoTime>20:00</WrapperInfoTime>
+        <WrapperBTN>
+          <NextDaysBTN onClick={ContinueBTN}>Back</NextDaysBTN>
+        </WrapperBTN>}
+        <WrapperInfoTime><p>8:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>9:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>10:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>11:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>12:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>13:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>14:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>15:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>16:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>17:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>18:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>19:00</p></WrapperInfoTime>
+        <WrapperInfoTime><p>20:00</p></WrapperInfoTime>
       </div>
       
       {continueView ?
