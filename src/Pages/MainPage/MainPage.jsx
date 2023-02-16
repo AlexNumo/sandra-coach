@@ -2,7 +2,8 @@ import { useState } from 'react';
 // import Schedule from 'Components/Schedule/Schedule';
 import SchedulePage from 'Pages/SchedulePage/SchedulePage';
 // import InfoTrainee from 'Pages/InfoTrainee/InfoTrainee';
-import AddTraineeClients from 'Components/AddTraineeClients/AddTraineeClients';
+// import AddTraineeClients from 'Components/AddTraineeClients/AddTraineeClients';
+import TGBot from 'Pages/TGBot/TGBot';
 import Record from 'Pages/Record/Record';
 import {
   Wrapper,
@@ -12,6 +13,7 @@ import {
 
 const MainPage = () => {
   const [showSchedule, setShowSchedule] = useState(false);
+  const [showTGBot, setShowTGBot] = useState(false);
   // const [showInfoTrainee, setInfoTrainee] = useState(false);
   const [showInfoRecord, setInfoRecord] = useState(false);
   const [showInfoTraineeClients, setInfoTraineeClients] = useState(false);
@@ -22,9 +24,11 @@ const MainPage = () => {
       setInfoRecord(false);
       // setInfoTrainee(false);
       setInfoTraineeClients(false);
+      setShowTGBot(false);
       return;
     }
     setShowSchedule(true);
+    setShowTGBot(false);
     setInfoRecord(false);
     // setInfoTrainee(false);
     setInfoTraineeClients(false);
@@ -50,12 +54,14 @@ const MainPage = () => {
     if (showInfoRecord === true) {
       setShowSchedule(false);
       // setInfoTrainee(false);
+      setShowTGBot(false);
       setInfoRecord(false);
       setInfoTraineeClients(false);
       return;
     }
     setShowSchedule(false);
     // setInfoTrainee(false);
+    setShowTGBot(false);
     setInfoRecord(true);
     setInfoTraineeClients(false);
     return;
@@ -65,14 +71,33 @@ const MainPage = () => {
     if (showInfoTraineeClients === true) {
       setShowSchedule(false);
       // setInfoTrainee(false);
+      setShowTGBot(false);
       setInfoRecord(false);
       setInfoTraineeClients(false);
       return;
     }
     setShowSchedule(false);
     // setInfoTrainee(false);
+    setShowTGBot(false);
     setInfoRecord(false);
     setInfoTraineeClients(true);
+    return;
+  };
+
+    const ShowTGBotTrainee = () => {
+    if (showTGBot === true) {
+      setShowSchedule(false);
+      // setInfoTrainee(false);
+      setShowTGBot(false);
+      setInfoRecord(false);
+      setInfoTraineeClients(false);
+      return;
+    }
+    setShowSchedule(false);
+    // setInfoTrainee(false);
+    setShowTGBot(true);
+    setInfoRecord(false);
+    setInfoTraineeClients(false);
     return;
   };
   
@@ -80,6 +105,7 @@ const MainPage = () => {
     <Wrapper>
       <WrapperStyle>
         <BTN type='button' onClick={ShowInfoRecordHandle} className={showInfoRecord ? 'active' : ''}>ЗАПИСИ</BTN>
+        <BTN type='button' onClick={ShowTGBotTrainee} className={showTGBot ? 'active' : ''}>Telegram BOT</BTN>
         <BTN type='button' onClick={ShowScheduleHandle} className={showSchedule ? 'active' : ''}>Розклад</BTN>
         <BTN type='button' onClick={ShowInfoTraineeClients} className={showInfoTraineeClients ? 'active' : ''}>Додати тренування та клієнта</BTN>
         {/* <BTN type='button' onClick={ShowInfoTraineeHandle} className={showInfoTrainee ? 'active' : ''}>Інформація про клієнтів та тренерів</BTN> */}
@@ -87,7 +113,8 @@ const MainPage = () => {
       {showSchedule ? <SchedulePage /> : null}
       {/* {showInfoTrainee ? <InfoTrainee /> : null} */}
       {showInfoRecord ? <Record/> : null}
-      {showInfoTraineeClients ? <AddTraineeClients/> : null}
+      {showTGBot ? <TGBot/> : null}
+      {/* {showInfoTraineeClients ? <AddTraineeClients/> : null} */}
     </Wrapper>
   )
 };
