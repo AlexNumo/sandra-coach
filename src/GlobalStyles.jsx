@@ -132,7 +132,16 @@ button {
 
 .select{
   background-color: inherit;
+};
+
+.visitTraineeYES{
+  background-color: #9df8a0;
 }
+
+.visitTraineeNO{
+  background-color: #f56666;
+}
+
 @media screen and (max-width: 1200px){
   .monday {
     width: 50px;
