@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const DayOfWeekWrapper = styled.p`
   position: sticky;
-  top: 80px;
+  top: 100px;
   height: auto;
   background-color: #ddd2c5;
   text-align: center;
@@ -18,29 +18,41 @@ const WrapperInfoTime = styled.div`
   margin-top: 2px;
   margin-bottom: 2px;
   padding: 2px;
-  width: 90px;
+  /* width: 90px; */
   height: 200px;
 `;
 
-const KindTrainee = styled.span`
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: 400;
-  font-size: 12px;
+const NextBTNPosition = styled.div`
+  position: sticky;
+  top: 0px;
+  left: 10px;
+  /* width: 120px; */
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
 `;
 
-const Clients = styled.li`
+// const NextBTNWrapper = styled.div`
+//   position: absolute;
+//   top: 0px;
+//   left: 10px;
+//   width: 120px;
+// `;
+
+const NextDaysBTN = styled.button`
+  background-color: #434c46;
+  border-radius: 8px;
+  width: 100%;
+  color: #ddcaca;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 400;
-  font-size: 10px;
-  /* padding: 1px; */
-  border: solid 1px;
-  margin-bottom: 1px;
-  border-radius: 5px;
-`;
+  font-size: 13px;
+`
 
 export {
   DayOfWeekWrapper,
   WrapperInfoTime,
-  KindTrainee,
-  Clients,
-}
+  NextBTNPosition,
+  // NextBTNWrapper,
+  NextDaysBTN
+};

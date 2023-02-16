@@ -1,7 +1,15 @@
 import { useState, useEffect } from 'react';
 import { clientAPI } from 'service/axios.config';
 import moment from 'moment/moment';
-import SortingRender from './SortingAll/SortingRender';
+import SortingFirstRender from './SortingFirstRender/SortingFirstRender';
+import SortingSecondRender from './SortingSecondRender/SortingSecondRender';
+import {
+  DayOfWeekWrapper,
+  WrapperInfoTime,
+  // NextBTNPosition,
+  // NextBTNWrapper,
+  NextDaysBTN
+} from './SortingTrainee.styled';
 
 const SortingTrainee = () => {
   const [dataAllClients, setDataAllClients] = useState('');
@@ -103,6 +111,7 @@ const SortingTrainee = () => {
   const [nextDay3, setNextDay3] = useState('');
   const [nextDay4, setNextDay4] = useState('');
   const [nextDay5, setNextDay5] = useState('');
+  const [continueView, setContinueView] = useState(true);
   
   useEffect(() => {
     if(dataAllClients === ''){
@@ -9317,113 +9326,157 @@ const SortingTrainee = () => {
       return (notFound);
     }
     return (urlInstagram);
-  }
+  };
+
+  const ContinueBTN = () => {
+    if (continueView === true) {
+      return(setContinueView(false));
+    }
+    setContinueView(true);
+  };
 
   return(
-    <>
-      <SortingRender
-        URLInsta={URLInsta}
-        clientsToday0800={clientsToday0800}
-        clientsToday0900={clientsToday0900}
-        clientsToday1000={clientsToday1000}
-        clientsToday1100={clientsToday1100}
-        clientsToday1200={clientsToday1200}
-        clientsToday1300={clientsToday1300}
-        clientsToday1400={clientsToday1400}
-        clientsToday1500={clientsToday1500}
-        clientsToday1600={clientsToday1600}
-        clientsToday1700={clientsToday1700}
-        clientsToday1800={clientsToday1800}
-        clientsToday1900={clientsToday1900}
-        clientsToday2000={clientsToday2000}
-        clientsNextDay0800={clientsNextDay0800}
-        clientsNextDay0900={clientsNextDay0900}
-        clientsNextDay1000={clientsNextDay1000}
-        clientsNextDay1100={clientsNextDay1100}
-        clientsNextDay1200={clientsNextDay1200}
-        clientsNextDay1300={clientsNextDay1300}
-        clientsNextDay1400={clientsNextDay1400}
-        clientsNextDay1500={clientsNextDay1500}
-        clientsNextDay1600={clientsNextDay1600}
-        clientsNextDay1700={clientsNextDay1700}
-        clientsNextDay1800={clientsNextDay1800}
-        clientsNextDay1900={clientsNextDay1900}
-        clientsNextDay2000={clientsNextDay2000}
-        clientsNextDayTwo0800={clientsNextDayTwo0800}
-        clientsNextDayTwo0900={clientsNextDayTwo0900}
-        clientsNextDayTwo1000={clientsNextDayTwo1000}
-        clientsNextDayTwo1100={clientsNextDayTwo1100}
-        clientsNextDayTwo1200={clientsNextDayTwo1200}
-        clientsNextDayTwo1300={clientsNextDayTwo1300}
-        clientsNextDayTwo1400={clientsNextDayTwo1400}
-        clientsNextDayTwo1500={clientsNextDayTwo1500}
-        clientsNextDayTwo1600={clientsNextDayTwo1600}
-        clientsNextDayTwo1700={clientsNextDayTwo1700}
-        clientsNextDayTwo1800={clientsNextDayTwo1800}
-        clientsNextDayTwo1900={clientsNextDayTwo1900}
-        clientsNextDayTwo2000={clientsNextDayTwo2000}
-        clientsNextDayThree0800={clientsNextDayThree0800}
-        clientsNextDayThree0900={clientsNextDayThree0900}
-        clientsNextDayThree1000={clientsNextDayThree1000}
-        clientsNextDayThree1100={clientsNextDayThree1100}
-        clientsNextDayThree1200={clientsNextDayThree1200}
-        clientsNextDayThree1300={clientsNextDayThree1300}
-        clientsNextDayThree1400={clientsNextDayThree1400}
-        clientsNextDayThree1500={clientsNextDayThree1500}
-        clientsNextDayThree1600={clientsNextDayThree1600}
-        clientsNextDayThree1700={clientsNextDayThree1700}
-        clientsNextDayThree1800={clientsNextDayThree1800}
-        clientsNextDayThree1900={clientsNextDayThree1900}
-        clientsNextDayThree2000={clientsNextDayThree2000}
-        clientsNextDayFour0800={clientsNextDayFour0800}
-        clientsNextDayFour0900={clientsNextDayFour0900}
-        clientsNextDayFour1000={clientsNextDayFour1000}
-        clientsNextDayFour1100={clientsNextDayFour1100}
-        clientsNextDayFour1200={clientsNextDayFour1200}
-        clientsNextDayFour1300={clientsNextDayFour1300}
-        clientsNextDayFour1400={clientsNextDayFour1400}
-        clientsNextDayFour1500={clientsNextDayFour1500}
-        clientsNextDayFour1600={clientsNextDayFour1600}
-        clientsNextDayFour1700={clientsNextDayFour1700}
-        clientsNextDayFour1800={clientsNextDayFour1800}
-        clientsNextDayFour1900={clientsNextDayFour1900}
-        clientsNextDayFour2000={clientsNextDayFour2000}
-        clientsNextDayFive0800={clientsNextDayFive0800}
-        clientsNextDayFive0900={clientsNextDayFive0900}
-        clientsNextDayFive1000={clientsNextDayFive1000}
-        clientsNextDayFive1100={clientsNextDayFive1100}
-        clientsNextDayFive1200={clientsNextDayFive1200}
-        clientsNextDayFive1300={clientsNextDayFive1300}
-        clientsNextDayFive1400={clientsNextDayFive1400}
-        clientsNextDayFive1500={clientsNextDayFive1500}
-        clientsNextDayFive1600={clientsNextDayFive1600}
-        clientsNextDayFive1700={clientsNextDayFive1700}
-        clientsNextDayFive1800={clientsNextDayFive1800}
-        clientsNextDayFive1900={clientsNextDayFive1900}
-        clientsNextDayFive2000={clientsNextDayFive2000}
-        clientsNextDaySix0800={clientsNextDaySix0800}
-        clientsNextDaySix0900={clientsNextDaySix0900}
-        clientsNextDaySix1000={clientsNextDaySix1000}
-        clientsNextDaySix1100={clientsNextDaySix1100}
-        clientsNextDaySix1200={clientsNextDaySix1200}
-        clientsNextDaySix1300={clientsNextDaySix1300}
-        clientsNextDaySix1400={clientsNextDaySix1400}
-        clientsNextDaySix1500={clientsNextDaySix1500}
-        clientsNextDaySix1600={clientsNextDaySix1600}
-        clientsNextDaySix1700={clientsNextDaySix1700}
-        clientsNextDaySix1800={clientsNextDaySix1800}
-        clientsNextDaySix1900={clientsNextDaySix1900}
-        clientsNextDaySix2000={clientsNextDaySix2000}
-        today={today}
-        nextDay={nextDay}
-        nextDay1={nextDay1}
-        nextDay2={nextDay2}
-        nextDay3={nextDay3}
-        nextDay4={nextDay4}
-        nextDay5={nextDay5}
-        
-  ></SortingRender>
-    </>
+    <div
+      // style={{ display: 'flex', flexDirection: 'column' }}
+      style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}
+    >
+      <div style={{ padding: '5px' }}>
+        {/* <DayOfWeekWrapper><p>День/</p><p>Час</p></DayOfWeekWrapper> */}
+        {continueView ?
+        <DayOfWeekWrapper>
+          <NextDaysBTN onClick={ContinueBTN}>Наступні дні</NextDaysBTN>
+        </DayOfWeekWrapper>
+        :
+        <DayOfWeekWrapper>
+          <NextDaysBTN onClick={ContinueBTN}>Попередні дні</NextDaysBTN>
+        </DayOfWeekWrapper>}
+        <WrapperInfoTime>8:00</WrapperInfoTime>
+        <WrapperInfoTime>9:00</WrapperInfoTime>
+        <WrapperInfoTime>10:00</WrapperInfoTime>
+        <WrapperInfoTime>11:00</WrapperInfoTime>
+        <WrapperInfoTime>12:00</WrapperInfoTime>
+        <WrapperInfoTime>13:00</WrapperInfoTime>
+        <WrapperInfoTime>14:00</WrapperInfoTime>
+        <WrapperInfoTime>15:00</WrapperInfoTime>
+        <WrapperInfoTime>16:00</WrapperInfoTime>
+        <WrapperInfoTime>17:00</WrapperInfoTime>
+        <WrapperInfoTime>18:00</WrapperInfoTime>
+        <WrapperInfoTime>19:00</WrapperInfoTime>
+        <WrapperInfoTime>20:00</WrapperInfoTime>
+      </div>
+      
+      {continueView ?
+        <>
+          <SortingFirstRender
+            URLInsta={URLInsta}
+            clientsToday0800={clientsToday0800}
+            clientsToday0900={clientsToday0900}
+            clientsToday1000={clientsToday1000}
+            clientsToday1100={clientsToday1100}
+            clientsToday1200={clientsToday1200}
+            clientsToday1300={clientsToday1300}
+            clientsToday1400={clientsToday1400}
+            clientsToday1500={clientsToday1500}
+            clientsToday1600={clientsToday1600}
+            clientsToday1700={clientsToday1700}
+            clientsToday1800={clientsToday1800}
+            clientsToday1900={clientsToday1900}
+            clientsToday2000={clientsToday2000}
+            clientsNextDay0800={clientsNextDay0800}
+            clientsNextDay0900={clientsNextDay0900}
+            clientsNextDay1000={clientsNextDay1000}
+            clientsNextDay1100={clientsNextDay1100}
+            clientsNextDay1200={clientsNextDay1200}
+            clientsNextDay1300={clientsNextDay1300}
+            clientsNextDay1400={clientsNextDay1400}
+            clientsNextDay1500={clientsNextDay1500}
+            clientsNextDay1600={clientsNextDay1600}
+            clientsNextDay1700={clientsNextDay1700}
+            clientsNextDay1800={clientsNextDay1800}
+            clientsNextDay1900={clientsNextDay1900}
+            clientsNextDay2000={clientsNextDay2000}
+            clientsNextDayTwo0800={clientsNextDayTwo0800}
+            clientsNextDayTwo0900={clientsNextDayTwo0900}
+            clientsNextDayTwo1000={clientsNextDayTwo1000}
+            clientsNextDayTwo1100={clientsNextDayTwo1100}
+            clientsNextDayTwo1200={clientsNextDayTwo1200}
+            clientsNextDayTwo1300={clientsNextDayTwo1300}
+            clientsNextDayTwo1400={clientsNextDayTwo1400}
+            clientsNextDayTwo1500={clientsNextDayTwo1500}
+            clientsNextDayTwo1600={clientsNextDayTwo1600}
+            clientsNextDayTwo1700={clientsNextDayTwo1700}
+            clientsNextDayTwo1800={clientsNextDayTwo1800}
+            clientsNextDayTwo1900={clientsNextDayTwo1900}
+            clientsNextDayTwo2000={clientsNextDayTwo2000}
+            today={today}
+            nextDay={nextDay}
+            nextDay1={nextDay1}
+          />
+        </>
+        :
+        <>
+          <SortingSecondRender
+            URLInsta={URLInsta}
+            clientsNextDayThree0800={clientsNextDayThree0800}
+            clientsNextDayThree0900={clientsNextDayThree0900}
+            clientsNextDayThree1000={clientsNextDayThree1000}
+            clientsNextDayThree1100={clientsNextDayThree1100}
+            clientsNextDayThree1200={clientsNextDayThree1200}
+            clientsNextDayThree1300={clientsNextDayThree1300}
+            clientsNextDayThree1400={clientsNextDayThree1400}
+            clientsNextDayThree1500={clientsNextDayThree1500}
+            clientsNextDayThree1600={clientsNextDayThree1600}
+            clientsNextDayThree1700={clientsNextDayThree1700}
+            clientsNextDayThree1800={clientsNextDayThree1800}
+            clientsNextDayThree1900={clientsNextDayThree1900}
+            clientsNextDayThree2000={clientsNextDayThree2000}
+            clientsNextDayFour0800={clientsNextDayFour0800}
+            clientsNextDayFour0900={clientsNextDayFour0900}
+            clientsNextDayFour1000={clientsNextDayFour1000}
+            clientsNextDayFour1100={clientsNextDayFour1100}
+            clientsNextDayFour1200={clientsNextDayFour1200}
+            clientsNextDayFour1300={clientsNextDayFour1300}
+            clientsNextDayFour1400={clientsNextDayFour1400}
+            clientsNextDayFour1500={clientsNextDayFour1500}
+            clientsNextDayFour1600={clientsNextDayFour1600}
+            clientsNextDayFour1700={clientsNextDayFour1700}
+            clientsNextDayFour1800={clientsNextDayFour1800}
+            clientsNextDayFour1900={clientsNextDayFour1900}
+            clientsNextDayFour2000={clientsNextDayFour2000}
+            clientsNextDayFive0800={clientsNextDayFive0800}
+            clientsNextDayFive0900={clientsNextDayFive0900}
+            clientsNextDayFive1000={clientsNextDayFive1000}
+            clientsNextDayFive1100={clientsNextDayFive1100}
+            clientsNextDayFive1200={clientsNextDayFive1200}
+            clientsNextDayFive1300={clientsNextDayFive1300}
+            clientsNextDayFive1400={clientsNextDayFive1400}
+            clientsNextDayFive1500={clientsNextDayFive1500}
+            clientsNextDayFive1600={clientsNextDayFive1600}
+            clientsNextDayFive1700={clientsNextDayFive1700}
+            clientsNextDayFive1800={clientsNextDayFive1800}
+            clientsNextDayFive1900={clientsNextDayFive1900}
+            clientsNextDayFive2000={clientsNextDayFive2000}
+            clientsNextDaySix0800={clientsNextDaySix0800}
+            clientsNextDaySix0900={clientsNextDaySix0900}
+            clientsNextDaySix1000={clientsNextDaySix1000}
+            clientsNextDaySix1100={clientsNextDaySix1100}
+            clientsNextDaySix1200={clientsNextDaySix1200}
+            clientsNextDaySix1300={clientsNextDaySix1300}
+            clientsNextDaySix1400={clientsNextDaySix1400}
+            clientsNextDaySix1500={clientsNextDaySix1500}
+            clientsNextDaySix1600={clientsNextDaySix1600}
+            clientsNextDaySix1700={clientsNextDaySix1700}
+            clientsNextDaySix1800={clientsNextDaySix1800}
+            clientsNextDaySix1900={clientsNextDaySix1900}
+            clientsNextDaySix2000={clientsNextDaySix2000}
+            nextDay2={nextDay2}
+            nextDay3={nextDay3}
+            nextDay4={nextDay4}
+            nextDay5={nextDay5}
+          />
+        </>
+      }      
+    </div>
   )}
 
 export default SortingTrainee;
