@@ -2,10 +2,7 @@ import styled from "styled-components";
 
 const WrapperDay = styled.div`
   display: flex;
-  /* justify-content: space-around; */
-  /* justify-content: space-between; */
-  /* width: 100px; */
-  width: 697px;
+  /* width: 697px; */
   @media (prefers-color-scheme: light){
     color: black !important;
   }
@@ -15,28 +12,27 @@ const WrapperDay = styled.div`
 `;
 
 const WrapperBTN = styled.div`
-  /* display: inline-block; */
-  width: 80px;
-  /* height: 35px; */
-  /* background-color: aqua; */
+  /* width: 80px; */
 `;
 
 const BTN = styled.button`
   font-family: 'Times New Roman', Times, serif;
   font-size: 8px;
   font-weight: 400;
-  width: 70px;
+  width: 50px;
   height: 30px;
-  margin: 2px;
-  padding: 2px;
+  margin: 1px;
+  padding: 1px;
   color: black;
+  border-radius: 12px;
+  background-color: #ced6de;
 `;
 
 const Days = styled.span`
   font-family: 'Times New Roman', Times, serif;
   font-size: 8px;
   font-weight: 400;
-  width: 80px;
+  width: 52px;
   text-align: center;
   /* color: inherit; */
 `;
@@ -45,7 +41,7 @@ const Time = styled.span`
   font-family: 'Times New Roman', Times, serif;
   font-size: 8px;
   font-weight: 400;
-  width: 40px;
+  width: 20px;
   /* text-align: center; */
   display: flex;
   align-items: center;
@@ -56,36 +52,10 @@ const Time = styled.span`
 
 const WaitingWrapper = styled.div`
   display: flex;
-  margin-top: auto;
+  /* margin-top: auto; */
   justify-content: center;
   align-items: center;
-  width: 697px;
-`;
-
-const LogoPosition = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 10px;
-  width: 600px;
-`;
-
-const LogoStudio = styled.p`
-  font-family: 'Philosopher', sans-serif;
-  font-weight: 700;
-  font-size: 35px;
-  color: #986e70;
-`;
-
-const LogoSandra = styled.p`
-  font-family: 'Philosopher', sans-serif;
-  /* font-family: 'Signika Negative', sans-serif; */
-  font-weight: 300;
-  font-size: 18px;
-  margin-top: -8px;
-  color: #986e70;
-
+  width: 100%;
 `;
 
 export {
@@ -94,8 +64,5 @@ export {
   Days,
   BTN,
   Time,
-  WaitingWrapper,
-  LogoPosition,
-  LogoStudio,
-  LogoSandra
+  WaitingWrapper
 }

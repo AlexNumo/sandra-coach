@@ -55,12 +55,12 @@ const SortingFirstRender = ({
   const dateOfToday = moment().add(0, 'days').format('L');
   const dateOfNextDay = moment().add(1, 'days').format('L');
   const dateOfNextDay1 = moment().add(2, 'days').format('L');
-  // console.log(clientsToday1400);
+  // console.log(clientsNextDayTwo1400);
   return(
     <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', width: '100%' }}>
 {/* ===========================ToDay======================================================================================== */}
       <div style={{ padding: '2px' }}>
-        <DayOfWeekWrapper><p>{today}</p><p>{dateOfToday}</p></DayOfWeekWrapper>
+        <DayOfWeekWrapper><span>{today}</span><span>{dateOfToday}</span></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsToday0800 ? <KindTrainee>{clientsToday0800[0].kind_trainee}</KindTrainee> : null}
           <ol start={1} type={1} style={{ marginLeft: '10px' }}>
@@ -389,7 +389,7 @@ const SortingFirstRender = ({
       </div>
 {/* ===========================NextDay======================================================================================== */}
       <div style={{ padding: '2px' }}>
-        <DayOfWeekWrapper><p>{nextDay}</p><p>{dateOfNextDay}</p></DayOfWeekWrapper>
+        <DayOfWeekWrapper><span>{nextDay}</span><span>{dateOfNextDay}</span></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDay0800 ? <KindTrainee>{clientsNextDay0800[0].kind_trainee}</KindTrainee> : null}
           <ol start={1} type={1} style={{ marginLeft: '10px' }}>
@@ -718,7 +718,7 @@ const SortingFirstRender = ({
       </div>
 {/* ===========================NextDayTwo======================================================================================== */}
       <div style={{ padding: '2px' }}>
-        <DayOfWeekWrapper><p>{nextDay1}</p><p>{dateOfNextDay1}</p></DayOfWeekWrapper>
+        <DayOfWeekWrapper><span>{nextDay1}</span><span>{dateOfNextDay1}</span></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDayTwo0800 ? <KindTrainee>{clientsNextDayTwo0800[0].kind_trainee}</KindTrainee> : null}
           <ol start={1} type={1} style={{ marginLeft: '10px' }}>

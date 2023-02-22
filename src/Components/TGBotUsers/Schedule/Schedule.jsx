@@ -9,9 +9,6 @@ import {
   BTN,
   Time,
   WaitingWrapper,
-  LogoPosition,
-  LogoStudio,
-  LogoSandra
 } from './Schedule.styled';
 const Schedule = () => {
   const [data0800, setData0800] = useState([]);
@@ -621,10 +618,6 @@ const Schedule = () => {
 
   return (
     <>
-      <LogoPosition>
-        <LogoStudio>Ars Fit Studio</LogoStudio>
-        <LogoSandra>by Sandrochka_strong</LogoSandra>
-      </LogoPosition>
       <Waiting />
       {modalOpen ?
         <SignUp

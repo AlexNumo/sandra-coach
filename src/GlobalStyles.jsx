@@ -185,6 +185,7 @@ button {
   }
   .time{
     font-size: 10px;
+    width: 10px;
   }
   .form-size{
     width: 50px;

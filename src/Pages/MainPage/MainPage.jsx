@@ -5,6 +5,7 @@ import SchedulePage from 'Pages/SchedulePage/SchedulePage';
 // import AddTraineeClients from 'Components/AddTraineeClients/AddTraineeClients';
 import TGBot from 'Pages/TGBot/TGBot';
 import Record from 'Pages/Record/Record';
+import Logo from 'Components/Logo/Logo';
 import {
   Wrapper,
   WrapperStyle,
@@ -16,14 +17,14 @@ const MainPage = () => {
   const [showTGBot, setShowTGBot] = useState(false);
   // const [showInfoTrainee, setInfoTrainee] = useState(false);
   const [showInfoRecord, setInfoRecord] = useState(false);
-  const [showInfoTraineeClients, setInfoTraineeClients] = useState(false);
+  // const [showInfoTraineeClients, setInfoTraineeClients] = useState(false);
 
   const ShowScheduleHandle = () => {
     if (showSchedule === true) {
       setShowSchedule(false);
       setInfoRecord(false);
       // setInfoTrainee(false);
-      setInfoTraineeClients(false);
+      // setInfoTraineeClients(false);
       setShowTGBot(false);
       return;
     }
@@ -31,7 +32,7 @@ const MainPage = () => {
     setShowTGBot(false);
     setInfoRecord(false);
     // setInfoTrainee(false);
-    setInfoTraineeClients(false);
+    // setInfoTraineeClients(false);
     return;
   };
 
@@ -40,13 +41,13 @@ const MainPage = () => {
   //     setShowSchedule(false);
   //     setInfoRecord(false);
   //     setInfoTrainee(false);
-  //     setInfoTraineeClients(false);
+  //     // setInfoTraineeClients(false);
   //     return;
   //   }
   //   setShowSchedule(false);
   //   setInfoRecord(false);
   //   setInfoTrainee(true);
-  //   setInfoTraineeClients(false);
+  //   // setInfoTraineeClients(false);
   //   return;
   // };
 
@@ -56,33 +57,33 @@ const MainPage = () => {
       // setInfoTrainee(false);
       setShowTGBot(false);
       setInfoRecord(false);
-      setInfoTraineeClients(false);
+      // setInfoTraineeClients(false);
       return;
     }
     setShowSchedule(false);
     // setInfoTrainee(false);
     setShowTGBot(false);
     setInfoRecord(true);
-    setInfoTraineeClients(false);
+    // setInfoTraineeClients(false);
     return;
   };
   
-  const ShowInfoTraineeClients = () => {
-    if (showInfoTraineeClients === true) {
-      setShowSchedule(false);
-      // setInfoTrainee(false);
-      setShowTGBot(false);
-      setInfoRecord(false);
-      setInfoTraineeClients(false);
-      return;
-    }
-    setShowSchedule(false);
-    // setInfoTrainee(false);
-    setShowTGBot(false);
-    setInfoRecord(false);
-    setInfoTraineeClients(true);
-    return;
-  };
+  // const ShowInfoTraineeClients = () => {
+  //   if (showInfoTraineeClients === true) {
+  //     setShowSchedule(false);
+  //     // setInfoTrainee(false);
+  //     setShowTGBot(false);
+  //     setInfoRecord(false);
+  //     // setInfoTraineeClients(false);
+  //     return;
+  //   }
+  //   setShowSchedule(false);
+  //   // setInfoTrainee(false);
+  //   setShowTGBot(false);
+  //   setInfoRecord(false);
+  //   setInfoTraineeClients(true);
+  //   return;
+  // };
 
     const ShowTGBotTrainee = () => {
     if (showTGBot === true) {
@@ -90,14 +91,14 @@ const MainPage = () => {
       // setInfoTrainee(false);
       setShowTGBot(false);
       setInfoRecord(false);
-      setInfoTraineeClients(false);
+      // setInfoTraineeClients(false);
       return;
     }
     setShowSchedule(false);
     // setInfoTrainee(false);
     setShowTGBot(true);
     setInfoRecord(false);
-    setInfoTraineeClients(false);
+    // setInfoTraineeClients(false);
     return;
   };
   
@@ -107,9 +108,10 @@ const MainPage = () => {
         <BTN type='button' onClick={ShowInfoRecordHandle} className={showInfoRecord ? 'active' : ''}>ЗАПИСИ</BTN>
         <BTN type='button' onClick={ShowTGBotTrainee} className={showTGBot ? 'active' : ''}>Telegram BOT</BTN>
         <BTN type='button' onClick={ShowScheduleHandle} className={showSchedule ? 'active' : ''}>Розклад</BTN>
-        <BTN type='button' onClick={ShowInfoTraineeClients} className={showInfoTraineeClients ? 'active' : ''}>Додати тренування та клієнта</BTN>
+        {/* <BTN type='button' onClick={ShowInfoTraineeClients} className={showInfoTraineeClients ? 'active' : ''}>Додати тренування та клієнта</BTN> */}
         {/* <BTN type='button' onClick={ShowInfoTraineeHandle} className={showInfoTrainee ? 'active' : ''}>Інформація про клієнтів та тренерів</BTN> */}
       </WrapperStyle>
+      <Logo/>
       {showSchedule ? <SchedulePage /> : null}
       {/* {showInfoTrainee ? <InfoTrainee /> : null} */}
       {showInfoRecord ? <Record/> : null}
