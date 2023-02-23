@@ -18,7 +18,7 @@ const MainPage = () => {
   const [showTGBot, setShowTGBot] = useState(false);
   // const [showInfoTrainee, setInfoTrainee] = useState(false);
   const [showInfoRecord, setInfoRecord] = useState(false);
-  const [showAllClients, setAllClients] = useState(!false);
+  const [showAllClients, setAllClients] = useState(false);
   // const [showInfoTraineeClients, setInfoTraineeClients] = useState(false);
 
   const ShowScheduleHandle = () => {
