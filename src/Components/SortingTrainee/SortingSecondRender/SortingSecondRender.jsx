@@ -74,7 +74,7 @@ const SortingSecondRender = ({
     <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', width: '100%' }}>
 {/* ===========================NextDayThree=========================================== */}
       <div style={{ padding: '2px' }}>
-        <DayOfWeekWrapper><span>{nextDay2}</span><span>{dateOfNextDay2}</span></DayOfWeekWrapper>
+        <DayOfWeekWrapper><span>{nextDay2}</span><br/><span>{dateOfNextDay2}</span></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDayThree0800 ? <KindTrainee>{clientsNextDayThree0800[0].kind_trainee}</KindTrainee> : null}
           <ol start={1} type={1} style={{ marginLeft: '10px' }}>
@@ -403,7 +403,7 @@ const SortingSecondRender = ({
       </div>
 {/* ===========================NextDayFour======================================================================================== */}
       <div style={{ padding: '2px' }}>
-        <DayOfWeekWrapper><span>{nextDay3}</span><span>{dateOfNextDay3}</span></DayOfWeekWrapper>
+        <DayOfWeekWrapper><span>{nextDay3}</span><br/><span>{dateOfNextDay3}</span></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDayFour0800 ? <KindTrainee>{clientsNextDayFour0800[0].kind_trainee}</KindTrainee> : null}
           <ol start={1} type={1} style={{ marginLeft: '10px' }}>
@@ -732,7 +732,7 @@ const SortingSecondRender = ({
       </div>
 {/* ===========================NextDayFive======================================================================================== */}
       <div style={{ padding: '2px' }}>
-        <DayOfWeekWrapper><span>{nextDay4}</span><span>{dateOfNextDay4}</span></DayOfWeekWrapper>
+        <DayOfWeekWrapper><span>{nextDay4}</span><br/><span>{dateOfNextDay4}</span></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDayFive0800 ? <KindTrainee>{clientsNextDayFive0800[0].kind_trainee}</KindTrainee> : null}
           <ol start={1} type={1} style={{ marginLeft: '10px' }}>
@@ -1061,7 +1061,7 @@ const SortingSecondRender = ({
       </div>
       {/* ===========================NextDaySix======================================================================================== */}
       <div style={{ padding: '2px' }}>
-        <DayOfWeekWrapper><span>{nextDay5}</span><span>{dateOfNextDay5}</span></DayOfWeekWrapper>
+        <DayOfWeekWrapper><span>{nextDay5}</span><br/><span>{dateOfNextDay5}</span></DayOfWeekWrapper>
         <WrapperInfoTime>
           {clientsNextDaySix0800 ? <KindTrainee>{clientsNextDaySix0800[0].kind_trainee}</KindTrainee> : null}
           <ol start={1} type={1} style={{ marginLeft: '10px' }}>

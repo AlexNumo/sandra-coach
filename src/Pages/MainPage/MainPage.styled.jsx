@@ -17,13 +17,16 @@ const WrapperStyle = styled.nav`
   font-size: 15px;
   font-weight: 700;
   width: 100%;
+  margin-top: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+
 `;
 
 const BTN = styled.button`
-  width: 300px;
-  margin: 10px 30px 30px 30px;
+  /* width: 300px; */
+  /* margin: 10px 30px 30px 30px; */
+  /* margin-left: 15px; */
   padding: 10px 10px 10px 10px;
   background-color: #8babc7;
   border-radius: 22px;

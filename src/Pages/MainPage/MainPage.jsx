@@ -6,6 +6,7 @@ import SchedulePage from 'Pages/SchedulePage/SchedulePage';
 import TGBot from 'Pages/TGBot/TGBot';
 import Record from 'Pages/Record/Record';
 import Logo from 'Components/Logo/Logo';
+import AllClients from 'Components/AllClients/AllClients';
 import {
   Wrapper,
   WrapperStyle,
@@ -17,12 +18,14 @@ const MainPage = () => {
   const [showTGBot, setShowTGBot] = useState(false);
   // const [showInfoTrainee, setInfoTrainee] = useState(false);
   const [showInfoRecord, setInfoRecord] = useState(false);
+  const [showAllClients, setAllClients] = useState(!false);
   // const [showInfoTraineeClients, setInfoTraineeClients] = useState(false);
 
   const ShowScheduleHandle = () => {
     if (showSchedule === true) {
       setShowSchedule(false);
       setInfoRecord(false);
+      setAllClients(false);
       // setInfoTrainee(false);
       // setInfoTraineeClients(false);
       setShowTGBot(false);
@@ -30,6 +33,7 @@ const MainPage = () => {
     }
     setShowSchedule(true);
     setShowTGBot(false);
+    setAllClients(false);
     setInfoRecord(false);
     // setInfoTrainee(false);
     // setInfoTraineeClients(false);
@@ -55,6 +59,7 @@ const MainPage = () => {
     if (showInfoRecord === true) {
       setShowSchedule(false);
       // setInfoTrainee(false);
+      setAllClients(false);
       setShowTGBot(false);
       setInfoRecord(false);
       // setInfoTraineeClients(false);
@@ -63,6 +68,7 @@ const MainPage = () => {
     setShowSchedule(false);
     // setInfoTrainee(false);
     setShowTGBot(false);
+    setAllClients(false);
     setInfoRecord(true);
     // setInfoTraineeClients(false);
     return;
@@ -90,6 +96,7 @@ const MainPage = () => {
       setShowSchedule(false);
       // setInfoTrainee(false);
       setShowTGBot(false);
+      setAllClients(false);
       setInfoRecord(false);
       // setInfoTraineeClients(false);
       return;
@@ -97,6 +104,26 @@ const MainPage = () => {
     setShowSchedule(false);
     // setInfoTrainee(false);
     setShowTGBot(true);
+    setAllClients(false);
+    setInfoRecord(false);
+    // setInfoTraineeClients(false);
+    return;
+  };
+
+   const ShowAllClientsHandle = () => {
+    if (showAllClients === true) {
+      setShowSchedule(false);
+      // setInfoTrainee(false);
+      setShowTGBot(false);
+      setAllClients(false);
+      setInfoRecord(false);
+      // setInfoTraineeClients(false);
+      return;
+    }
+    setShowSchedule(false);
+    // setInfoTrainee(false);
+    setShowTGBot(false);
+    setAllClients(true);
     setInfoRecord(false);
     // setInfoTraineeClients(false);
     return;
@@ -107,12 +134,14 @@ const MainPage = () => {
       <WrapperStyle>
         <BTN type='button' onClick={ShowInfoRecordHandle} className={showInfoRecord ? 'active' : ''}>ЗАПИСИ</BTN>
         <BTN type='button' onClick={ShowTGBotTrainee} className={showTGBot ? 'active' : ''}>Telegram BOT</BTN>
+        <BTN type='button' onClick={ShowAllClientsHandle} className={showAllClients ? 'active' : ''}>Всі клієнти</BTN>
         <BTN type='button' onClick={ShowScheduleHandle} className={showSchedule ? 'active' : ''}>Розклад</BTN>
         {/* <BTN type='button' onClick={ShowInfoTraineeClients} className={showInfoTraineeClients ? 'active' : ''}>Додати тренування та клієнта</BTN> */}
         {/* <BTN type='button' onClick={ShowInfoTraineeHandle} className={showInfoTrainee ? 'active' : ''}>Інформація про клієнтів та тренерів</BTN> */}
       </WrapperStyle>
       <Logo/>
       {showSchedule ? <SchedulePage /> : null}
+      {showAllClients ? <AllClients /> : null}
       {/* {showInfoTrainee ? <InfoTrainee /> : null} */}
       {showInfoRecord ? <Record/> : null}
       {showTGBot ? <TGBot/> : null}
