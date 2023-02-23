@@ -128,6 +128,7 @@ const CardUser = ({ allClients }) => {
           <div>
             <p>Ім'я: {item.info[0].name}</p>
             <button onClick={HandleShowAllNames} id={item._id}>Всі імена</button>
+            <button id={item._id}>Додати абонемент</button>
             <HandleRenderNames item={item}/>
           </div>
           <span>Номер телефону:</span>

@@ -1434,6 +1434,7 @@ const SortingTrainee = () => {
         const dataClientNextDay1800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay && infoDate.time === '18:00'));
         const dataClientNextDay1900 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay && infoDate.time === '19:00'));
         const dataClientNextDay2000 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay && infoDate.time === '20:00'));
+        console.log(dataClientNextDay0900)
         if (dataClientNextDay0800.length === '') {
             return (setClientsNextDay0800(''));
           };
