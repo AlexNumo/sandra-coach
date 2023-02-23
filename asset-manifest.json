@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/sandra-coach/static/css/main.b3eeeea7.css",
-    "main.js": "/sandra-coach/static/js/main.253cf223.js",
-    "MainPage.js": "/sandra-coach/static/js/MainPage.18fc2550.chunk.js",
+    "main.js": "/sandra-coach/static/js/main.d5eebbb3.js",
+    "MainPage.js": "/sandra-coach/static/js/MainPage.fe4589e3.chunk.js",
     "static/js/487.85bcf87d.chunk.js": "/sandra-coach/static/js/487.85bcf87d.chunk.js",
     "index.html": "/sandra-coach/index.html",
     "main.b3eeeea7.css.map": "/sandra-coach/static/css/main.b3eeeea7.css.map",
-    "main.253cf223.js.map": "/sandra-coach/static/js/main.253cf223.js.map",
-    "MainPage.18fc2550.chunk.js.map": "/sandra-coach/static/js/MainPage.18fc2550.chunk.js.map",
+    "main.d5eebbb3.js.map": "/sandra-coach/static/js/main.d5eebbb3.js.map",
+    "MainPage.fe4589e3.chunk.js.map": "/sandra-coach/static/js/MainPage.fe4589e3.chunk.js.map",
     "487.85bcf87d.chunk.js.map": "/sandra-coach/static/js/487.85bcf87d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b3eeeea7.css",
-    "static/js/main.253cf223.js"
+    "static/js/main.d5eebbb3.js"
   ]
 }
