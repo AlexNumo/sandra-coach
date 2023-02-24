@@ -1,14 +1,18 @@
 import { useState } from 'react';
+import AddSeasonTicket from './AddSeasonTicket/AddSeasonTicket';
 import {
-  CardWrapper
+  CardWrapper,
+  WrapperSelectSeasonTicket
 } from './CardUser.styled'
 const CardUser = ({ allClients }) => {
   const [showAllNames, setshowAllNames] = useState(false);
   const [showAllNickNames, setShowAllNickNames] = useState(false);
   const [showUserTrainee, setShowUserTrainee] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const [getNameID, setGetNameID] = useState('');
   const [getInstaID, setGetInstaID] = useState('');
   const [getUserTraineeID, setGetUserTraineeID] = useState('');
+  const [getUserSeasonTicketID, setGetUserSeasonTicketID] = useState('');
 
   const HandleShowAllNames = (e) => {
     if (showAllNames === true) {
@@ -121,6 +125,20 @@ const CardUser = ({ allClients }) => {
     )
   }
 
+  const HandleOpenModal = (e) =>{
+    e.preventDefault();
+    if(openModal === true){
+      return([
+        setOpenModal(false),
+        setGetUserSeasonTicketID('')
+      ]);
+    }
+    return([
+      setOpenModal(true),
+      setGetUserSeasonTicketID(e.target.id)
+    ]);
+  }
+
   return (
     <>
       {allClients.map((item) => (
@@ -128,9 +146,13 @@ const CardUser = ({ allClients }) => {
           <div>
             <p>Ім'я: {item.info[0].name}</p>
             <button onClick={HandleShowAllNames} id={item._id}>Всі імена</button>
-            <button id={item._id}>Додати абонемент</button>
             <HandleRenderNames item={item}/>
           </div>
+          <WrapperSelectSeasonTicket>
+            <p>Абонемент: ?????</p>
+            <button onClick={HandleOpenModal} id={item._id}>Додати</button>
+            {openModal ? <AddSeasonTicket HandleOpenModal={HandleOpenModal} getUserSeasonTicketID={getUserSeasonTicketID} item={item}/> : null}
+          </WrapperSelectSeasonTicket>
           <span>Номер телефону:</span>
           <a href='tel:{item.id}' rel="noopener noreferrer">{item.id}</a>
           <div>

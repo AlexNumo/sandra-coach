@@ -20,7 +20,7 @@ const WrapperStyle = styled.nav`
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
-
+  z-index: 99;
 `;
 
 const BTN = styled.button`
