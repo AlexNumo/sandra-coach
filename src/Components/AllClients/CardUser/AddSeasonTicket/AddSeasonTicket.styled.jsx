@@ -7,7 +7,7 @@ const WrapperModal = styled.div`
   display: flex;
   flex-direction: column;
   background-color: rgba(190, 175, 175, 0.4);
-  border-radius: 2px;
+  border-radius: 8px;
   margin-left: 5px;
   padding-left: 5px;
 `;
@@ -26,8 +26,10 @@ const Modal = styled.form`
 
 const ChooseTicket = styled.select`
   width: 70px;
-  font-size: 10px;
+  font-size: 8px;
   height: 15px;
+  background-color: inherit;
+  border-radius: 22px;
 `;
 
 const BTN = styled.button`

@@ -207,6 +207,17 @@ export const getDataALLUsers = async () => {
   }
 };
 
+export const sendSeasonTicket = async (data) => {
+    try {
+      // console.log(data)
+      const result = await instance.put(`/tgbot/seasonTicket`, data);
+      return result.data;
+    } catch (error) {
+      toast.error('Упс, щось пішло не так');
+      console.error(error.message);
+    }
+  };
+
 const sendTgRecord = async ({id, day_translate, clientName, kind_trainee, time, date, instaNickName}) => {
   try {
     // const instaNickNameConvertation =
@@ -238,5 +249,6 @@ export const clientAPI = {
   sendVisitTrainee,
   deleteDataUsers,
   getDataALLUsers,
+  sendSeasonTicket,
   sendTgRecord
 };

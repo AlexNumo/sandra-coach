@@ -2,17 +2,22 @@ import { useState } from 'react';
 import AddSeasonTicket from './AddSeasonTicket/AddSeasonTicket';
 import {
   CardWrapper,
-  WrapperSelectSeasonTicket
+  WrapperSelectSeasonTicket,
+  WrapperName,
+  ResultRender,
+  BTN
 } from './CardUser.styled'
 const CardUser = ({ allClients }) => {
   const [showAllNames, setshowAllNames] = useState(false);
   const [showAllNickNames, setShowAllNickNames] = useState(false);
   const [showUserTrainee, setShowUserTrainee] = useState(false);
+  const [showUserSeasonTicket, setShowUserSeasonTicket] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [getNameID, setGetNameID] = useState('');
   const [getInstaID, setGetInstaID] = useState('');
   const [getUserTraineeID, setGetUserTraineeID] = useState('');
   const [getUserSeasonTicketID, setGetUserSeasonTicketID] = useState('');
+  const [getUserSeasonTicketsID, setGetUserSeasonTicketsID] = useState('');
 
   const HandleShowAllNames = (e) => {
     if (showAllNames === true) {
@@ -32,9 +37,9 @@ const CardUser = ({ allClients }) => {
       return (
         <ol style={{marginLeft: '20px'}}>
           {showAllNames ? item.info.map((name) => (
-            <li key={name._id}>
+            <ResultRender key={name._id}>
               <p>{name.name}</p>
-            </li>
+            </ResultRender>
           )) : null}
         </ol>
       )
@@ -79,9 +84,9 @@ const CardUser = ({ allClients }) => {
       return (
         <ol style={{marginLeft: '20px'}}>
           {showAllNickNames ? item.info.map((info) => (
-            <li key={info._id}>
+            <ResultRender key={info._id}>
               <URLInsta instaNickName={info.instaNickName} />
-            </li>
+            </ResultRender>
           )) : null}
         </ol>
       )
@@ -103,18 +108,18 @@ const CardUser = ({ allClients }) => {
         setShowUserTrainee(true),
         setGetUserTraineeID(e.target.id)
       ]);
-  }
+  };
 
   const HandleRenderUserTrainee = ({ item }) => {
     if (item._id === getUserTraineeID) {
       return (
         <ol style={{marginLeft: '20px'}}>
           {showUserTrainee ? item.info.map((info) => (
-            <li key={info._id}>
+            <ResultRender key={info._id}>
               <span>Вид: {info.kind_trainee},</span><br/>
               <span>{info.date.substring(0, 10)} об {info.time},</span><br/>
               <span>{info.visitTrainee ? <>Так</> : <>Ні</>}</span>
-            </li>
+            </ResultRender>
           )) : null}
         </ol>
       )
@@ -137,32 +142,79 @@ const CardUser = ({ allClients }) => {
       setOpenModal(true),
       setGetUserSeasonTicketID(e.target.id)
     ]);
+  };
+
+  const HandleRenderUserSeasonTickets = ({ item }) => {
+    // console.log(item.seasonTickets[item.seasonTickets.length - 1])
+    if (item._id === getUserSeasonTicketsID) {
+      return (
+        <ol style={{marginLeft: '20px'}}>
+          {showUserSeasonTicket ? item.seasonTickets.map((ticket) => (
+            <ResultRender key={ticket._id}>
+              <span>Абонемент на {ticket.limitOfTrainnings} занять,</span><br/><span>придбаний {ticket.dateOfBuying.substring(0, 10)}</span><br/>
+              {/* <span>{info.date.substring(0, 10)} об {info.time},</span><br/>
+              <span>{info.visitTrainee ? <>Так</> : <>Ні</>}</span> */}
+            </ResultRender>
+          )) : null}
+        </ol>
+      )
+    }
+    return (
+      <>
+      </>
+    )
   }
+
+  const HandleShowAllSeasonTickets = (e) =>{
+    if (showUserSeasonTicket === true) {
+      return ([
+        setShowUserSeasonTicket(false),
+        setGetUserSeasonTicketsID('')
+      ]);
+    }
+      return ([
+        setShowUserSeasonTicket(true),
+        setGetUserSeasonTicketsID(e.target.id)
+      ]);
+  };
 
   return (
     <>
       {allClients.map((item) => (
         <CardWrapper key={item._id}>
           <div>
-            <p>Ім'я: {item.info[0].name}</p>
-            <button onClick={HandleShowAllNames} id={item._id}>Всі імена</button>
+            <WrapperName>
+              <p>Ім'я: {item.info[0].name}</p>
+              <BTN onClick={HandleShowAllNames} id={item._id}>Всі імена</BTN>
+            </WrapperName>
             <HandleRenderNames item={item}/>
           </div>
           <WrapperSelectSeasonTicket>
-            <p>Абонемент: ?????</p>
-            <button onClick={HandleOpenModal} id={item._id}>Додати</button>
+            {/* <p>Абонемент: на  занять</p> */}
+            {item.seasonTickets.length > 0 
+            ?
+            <>
+            <p>Абонемент: на {item.seasonTickets[item.seasonTickets.length - 1].id} занять</p>
+            <BTN onClick={HandleOpenModal} id={item._id}>+</BTN>
+            <BTN onClick={HandleShowAllSeasonTickets} id={item._id}>Всі</BTN>
+            <HandleRenderUserSeasonTickets item={item}/>
+            </>
+            : 
+            <>
+            <p>Абонемент: відсутні дані</p>
+            <BTN onClick={HandleOpenModal} id={item._id}>+</BTN></>}
             {openModal ? <AddSeasonTicket HandleOpenModal={HandleOpenModal} getUserSeasonTicketID={getUserSeasonTicketID} item={item}/> : null}
           </WrapperSelectSeasonTicket>
           <span>Номер телефону:</span>
-          <a href='tel:{item.id}' rel="noopener noreferrer">{item.id}</a>
+          <a href='tel:item.id' rel="noopener noreferrer">{item.id}</a>
           <div>
             <p>Instagram: <URLInsta instaNickName={item.info[0].instaNickName}/></p>
-            <button onClick={HandleShowAllInstaNickNames} id={item._id}>Всі nickname</button>
+            <BTN onClick={HandleShowAllInstaNickNames} id={item._id}>Всі nickname</BTN>
             <HandleRenderInstaNickNames item={item}/>
           </div>
           <div>
             <span>Тренування:</span>
-            <button onClick={HandleShowUserTrainee} id={item._id}>Всі тренування</button>
+            <BTN onClick={HandleShowUserTrainee} id={item._id}>Всі тренування</BTN>
             <HandleRenderUserTrainee item={item}/>
           </div>
         </CardWrapper>

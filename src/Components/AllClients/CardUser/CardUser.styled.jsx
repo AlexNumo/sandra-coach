@@ -16,10 +16,31 @@ const CardWrapper = styled.li`
 
 const WrapperSelectSeasonTicket = styled.div`
   position: relative;
+`;
 
+const WrapperName = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+`;
+
+const ResultRender = styled.li`
+  font-size: 10px;
+`;
+
+const BTN = styled.button`
+  border-radius: 12px;
+  padding-left: 2px;
+  padding-right: 2px;
+  background-color: #f3ae92;
+  border-color: #f3ae92;
+  font-size: 10px;
 `;
 
 export {
   CardWrapper,
-  WrapperSelectSeasonTicket
+  WrapperSelectSeasonTicket,
+  WrapperName,
+  ResultRender,
+  BTN
 };

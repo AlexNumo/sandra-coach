@@ -16,7 +16,7 @@ const AllClients = () => {
       getAllClients();
     }
   },[allClients]);
-  console.log(allClients)
+  // console.log(allClients)
   return (
     <>
       <WrapperAllClients>
