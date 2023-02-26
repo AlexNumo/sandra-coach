@@ -69,7 +69,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''}>
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -77,7 +77,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -94,7 +94,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -102,7 +102,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -119,7 +119,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -127,7 +127,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -144,7 +144,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -152,7 +152,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -169,7 +169,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -177,7 +177,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -194,7 +194,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -202,7 +202,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -219,7 +219,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -227,7 +227,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -244,7 +244,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -252,7 +252,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -269,7 +269,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -277,7 +277,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -294,7 +294,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -302,7 +302,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -319,7 +319,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -327,7 +327,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -344,7 +344,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -352,7 +352,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -369,7 +369,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -377,7 +377,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -398,7 +398,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -406,7 +406,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -423,7 +423,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -431,7 +431,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -448,7 +448,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -456,7 +456,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -473,7 +473,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -481,7 +481,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -498,7 +498,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -506,7 +506,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -523,7 +523,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -531,7 +531,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -548,7 +548,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -556,7 +556,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -573,7 +573,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -581,7 +581,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -598,7 +598,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -606,7 +606,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -623,7 +623,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -631,7 +631,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -648,7 +648,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -656,7 +656,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -673,7 +673,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -681,7 +681,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -698,7 +698,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -706,7 +706,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -727,7 +727,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -735,7 +735,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -752,7 +752,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -760,7 +760,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -777,7 +777,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -785,7 +785,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -802,7 +802,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -810,7 +810,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -827,7 +827,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -835,7 +835,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -852,7 +852,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -860,7 +860,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -877,7 +877,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -885,7 +885,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -902,7 +902,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -910,7 +910,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -927,7 +927,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -935,7 +935,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -952,7 +952,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -960,7 +960,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -977,7 +977,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -985,7 +985,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -1002,7 +1002,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -1010,7 +1010,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -1027,7 +1027,7 @@ const SortingFirstRender = ({
                 {item.visitTrainee ?
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeYES'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />
@@ -1035,7 +1035,7 @@ const SortingFirstRender = ({
                   :
                   <>
                     <HandleVisitTraineeYES item={item} />
-                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className='visitTraineeNO'>
+                    <a href={URLInsta({ item })} target="_blank" rel="noopener noreferrer" id={item._id} className={item.canceledTraining ? 'visitTraineeNO' : ''} >
                       {item.name}
                     </a>
                     <HandleVisitTraineeNO item={item} />

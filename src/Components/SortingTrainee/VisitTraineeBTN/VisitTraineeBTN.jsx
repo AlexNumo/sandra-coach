@@ -23,13 +23,14 @@ const HandleVisitTraineeYES = ({ item }) => {
 };
 
 const HandleVisitTraineeNO = ({ item }) => {
+  // console.log(item)
   const HandleVisitTraineeNoAPI = async (e) => {
     e.preventDefault(e);
     const value = item._id;
     const send = { _id: value };
-    const statusNO = { status: false };
+    const statusNO = { status: true };
     const onClickBTN = document.getElementById(`${value}`);
-    await clientAPI.sendVisitTrainee(send, statusNO).then(() => {
+    await clientAPI.canceledTraining(send, statusNO).then(() => {
       onClickBTN.classList.remove('visitTraineeYES')
       onClickBTN.classList.add('visitTraineeNO')
   });;

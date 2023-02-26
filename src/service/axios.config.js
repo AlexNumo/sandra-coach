@@ -172,7 +172,8 @@ export const sendDataUsers = async ({ id, info }) => {
 export const sendVisitTrainee = async (id, status) => {
   try {
     if (status.status === true) {
-      const res = await instance.put(`/tgbot/visit`, { id, status });
+      const res = await instance.put(`/tgbot/changeSeasonTicket`, { id, status });
+      // const changeSeasonTickets = await instance.put(`/tgbot/changeSeasonTicket`, )
       toast.success(`Підтверджено заняття для клієнта "${res.data.info[0].name}"`)
     return res;
     }
@@ -181,6 +182,32 @@ export const sendVisitTrainee = async (id, status) => {
       toast.success(`Скасовано заняття для клієнта "${res.data.info[0].name}"`)
     return res;
     }   
+  } catch (e) {
+    toast.error('Щось пішло не так');
+    console.error(e.message);
+  }
+};
+
+export const canceledTraining = async (id, status) => {
+  try {
+    if (status.status === true) {
+      const res = await instance.put(`/tgbot/visit`, { id, status });
+      toast.success(`Скасовано заняття для клієнта "${res.data.info[0].name}"`)
+    return res;
+    }   
+  } catch (e) {
+    toast.error('Щось пішло не так');
+    console.error(e.message);
+  }
+};
+
+export const sendSeasonTicketVisitTrainee = async (id) => {
+  try {
+    // if (status.status === false) {
+      const res = await instance.put(`/tgbot/visit`, { id });
+      toast.success(`Скасовано заняття для клієнта "${res.data.info[0].name}"`)
+    return res;
+    // }   
   } catch (e) {
     toast.error('Щось пішло не так');
     console.error(e.message);
@@ -250,5 +277,6 @@ export const clientAPI = {
   deleteDataUsers,
   getDataALLUsers,
   sendSeasonTicket,
+  canceledTraining,
   sendTgRecord
 };

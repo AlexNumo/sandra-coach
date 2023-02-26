@@ -1434,7 +1434,7 @@ const SortingTrainee = () => {
         const dataClientNextDay1800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay && infoDate.time === '18:00'));
         const dataClientNextDay1900 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay && infoDate.time === '19:00'));
         const dataClientNextDay2000 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateNextDay && infoDate.time === '20:00'));
-        console.log(dataClientNextDay0900)
+        // console.log(dataClientNextDay0900)
         if (dataClientNextDay0800.length === '') {
             return (setClientsNextDay0800(''));
           };
@@ -3311,11 +3311,11 @@ const SortingTrainee = () => {
             const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
             setClientsNextDayTwo1300(clientBase);
         };
-        console.log("dataClientNextDayTwo1400: ", dataClientNextDayTwo1400)
-        console.log("dataClientNextDayTwo1400: ", dataClientNextDayTwo1400.length)
-        console.log("dayOfWeekToday: ", dayOfWeekToday)
-        console.log("dayOfWeekNextDay: ", dayOfWeekNextDay)
-        console.log("dayOfWeekNextDay1: ", dayOfWeekNextDay1)
+        // console.log("dataClientNextDayTwo1400: ", dataClientNextDayTwo1400)
+        // console.log("dataClientNextDayTwo1400: ", dataClientNextDayTwo1400.length)
+        // console.log("dayOfWeekToday: ", dayOfWeekToday)
+        // console.log("dayOfWeekNextDay: ", dayOfWeekNextDay)
+        // console.log("dayOfWeekNextDay1: ", dayOfWeekNextDay1)
         // console.log("dayOfWeekNextDay1: ", dayOfWeekNextDay1)
         if (dataClientNextDayTwo1400.length === '') {
           return (setClientsNextDayTwo1400(''));
@@ -9341,7 +9341,7 @@ const SortingTrainee = () => {
     }
     setContinueView(true);
   };
-  console.log("clientsNextDayTwo1400: ", clientsNextDayTwo1400)
+  // console.log("clientsNextDayTwo1400: ", clientsNextDayTwo1400)
 
   return(
     <div
