@@ -6,11 +6,12 @@ import { clientAPI } from "service/axios.config";
 const HandleVisitTraineeYES = ({ item }) => {
   const HandleVisitTraineeYesAPI = async (e) => {
     e.preventDefault(e);
+    // console.log(item)
     const value = item._id;
     const send = { _id: value };
     const statusYES = { status: true };
     const onClickBTN = document.getElementById(`${value}`);
-    await clientAPI.sendVisitTrainee(send, statusYES).then(() => {
+    await clientAPI.sendSeasonTicketVisitTrainee(send, statusYES).then(() => {
       onClickBTN.classList.add('visitTraineeYES')
       onClickBTN.classList.remove('visitTraineeNO')
   });
@@ -28,7 +29,7 @@ const HandleVisitTraineeNO = ({ item }) => {
     e.preventDefault(e);
     const value = item._id;
     const send = { _id: value };
-    const statusNO = { status: true };
+    const statusNO = { status: false };
     const onClickBTN = document.getElementById(`${value}`);
     await clientAPI.canceledTraining(send, statusNO).then(() => {
       onClickBTN.classList.remove('visitTraineeYES')

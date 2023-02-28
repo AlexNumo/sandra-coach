@@ -169,28 +169,9 @@ export const sendDataUsers = async ({ id, info }) => {
   }
 };
 
-export const sendVisitTrainee = async (id, status) => {
-  try {
-    if (status.status === true) {
-      const res = await instance.put(`/tgbot/changeSeasonTicket`, { id, status });
-      // const changeSeasonTickets = await instance.put(`/tgbot/changeSeasonTicket`, )
-      toast.success(`Підтверджено заняття для клієнта "${res.data.info[0].name}"`)
-    return res;
-    }
-    if (status.status === false) {
-      const res = await instance.put(`/tgbot/visit`, { id, status });
-      toast.success(`Скасовано заняття для клієнта "${res.data.info[0].name}"`)
-    return res;
-    }   
-  } catch (e) {
-    toast.error('Щось пішло не так');
-    console.error(e.message);
-  }
-};
-
 export const canceledTraining = async (id, status) => {
   try {
-    if (status.status === true) {
+    if (status.status === false) {
       const res = await instance.put(`/tgbot/visit`, { id, status });
       toast.success(`Скасовано заняття для клієнта "${res.data.info[0].name}"`)
     return res;
@@ -203,11 +184,9 @@ export const canceledTraining = async (id, status) => {
 
 export const sendSeasonTicketVisitTrainee = async (id) => {
   try {
-    // if (status.status === false) {
-      const res = await instance.put(`/tgbot/visit`, { id });
-      toast.success(`Скасовано заняття для клієнта "${res.data.info[0].name}"`)
+      const res = await instance.put(`/tgbot/changeSeasonTicket`,  id );
+      toast.success(`Підтвердженео заняття для клієнта "${res.data.info[0].name}"`)
     return res;
-    // }   
   } catch (e) {
     toast.error('Щось пішло не так');
     console.error(e.message);
@@ -236,7 +215,6 @@ export const getDataALLUsers = async () => {
 
 export const sendSeasonTicket = async (data) => {
     try {
-      // console.log(data)
       const result = await instance.put(`/tgbot/seasonTicket`, data);
       return result.data;
     } catch (error) {
@@ -247,10 +225,7 @@ export const sendSeasonTicket = async (data) => {
 
 const sendTgRecord = async ({id, day_translate, clientName, kind_trainee, time, date, instaNickName}) => {
   try {
-    // const instaNickNameConvertation =
-    // instaNickName.substring(1);
     const urlInsta = `https://www.instagram.com/${instaNickName.substring(1)}/`
-    // https://www.instagram.com/koksik839/
     const res = await tgSandra.post(`Записався клієнт ${clientName} на тренування ${kind_trainee} в ${day_translate} о ${time}. Номер телефону клієнта ${id}, дата тренування: ${date}, Instagram: ${urlInsta}`,);
     return res;
   } catch (e) {
@@ -273,7 +248,7 @@ export const clientAPI = {
   deleteKindTrainee,
   getKindTraineeAll,
   sendDataUsers,
-  sendVisitTrainee,
+  sendSeasonTicketVisitTrainee,
   deleteDataUsers,
   getDataALLUsers,
   sendSeasonTicket,
