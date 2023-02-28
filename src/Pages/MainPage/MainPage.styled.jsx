@@ -17,7 +17,6 @@ const WrapperStyle = styled.nav`
   font-size: 15px;
   font-weight: 700;
   width: 100%;
-  margin-top: 10px;
   display: flex;
   justify-content: space-around;
   z-index: 99;
@@ -25,8 +24,7 @@ const WrapperStyle = styled.nav`
 
 const BTN = styled.button`
   /* width: 300px; */
-  /* margin: 10px 30px 30px 30px; */
-  /* margin-left: 15px; */
+  margin: 10px 0px 30px 0px;
   padding: 10px 10px 10px 10px;
   background-color: #8babc7;
   border-radius: 22px;
