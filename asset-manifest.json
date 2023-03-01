@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/sandra-coach/static/css/main.b3eeeea7.css",
-    "main.js": "/sandra-coach/static/js/main.c68268b2.js",
+    "main.js": "/sandra-coach/static/js/main.482bc2c8.js",
     "MainPage.js": "/sandra-coach/static/js/MainPage.53930250.chunk.js",
     "static/js/487.85bcf87d.chunk.js": "/sandra-coach/static/js/487.85bcf87d.chunk.js",
     "index.html": "/sandra-coach/index.html",
     "main.b3eeeea7.css.map": "/sandra-coach/static/css/main.b3eeeea7.css.map",
-    "main.c68268b2.js.map": "/sandra-coach/static/js/main.c68268b2.js.map",
+    "main.482bc2c8.js.map": "/sandra-coach/static/js/main.482bc2c8.js.map",
     "MainPage.53930250.chunk.js.map": "/sandra-coach/static/js/MainPage.53930250.chunk.js.map",
     "487.85bcf87d.chunk.js.map": "/sandra-coach/static/js/487.85bcf87d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b3eeeea7.css",
-    "static/js/main.c68268b2.js"
+    "static/js/main.482bc2c8.js"
   ]
 }
