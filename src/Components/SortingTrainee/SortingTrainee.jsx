@@ -9246,6 +9246,7 @@ const SortingTrainee = () => {
           // console.log(clientsNextDay1400);
   useEffect(() => {
     const dayOfWeekToday = moment().add(0, 'days').format('dddd');
+    const dayTranslate = () => {
     if (dayOfWeekToday.toLocaleLowerCase() === 'monday') {
           return[
             setToday('Понеділок'),
@@ -9323,6 +9324,8 @@ const SortingTrainee = () => {
             setNextDay5('Субота'),
           ]
         }
+      };
+      dayTranslate();
   }, [today]);
   // const instaNickName = '12121212';
   // const urlInsta = `https://www.instagram.com/${instaNickName.substring(1)}/`
