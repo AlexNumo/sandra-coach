@@ -1333,7 +1333,8 @@ const SortingTrainee = () => {
             const client8 = dataClientToday1900[7].info.find((value) => { return value.day === dayOfWeekToday.toLocaleLowerCase() && value.time === '19:00' && value.date.slice(0, 10) === dateToday; });
             const client9 = dataClientToday1900[8].info.find((value) => { return value.day === dayOfWeekToday.toLocaleLowerCase() && value.time === '19:00' && value.date.slice(0, 10) === dateToday; });
             const client10 = dataClientToday1900[9].info.find((value) => { return value.day === dayOfWeekToday.toLocaleLowerCase() && value.time === '19:00' && value.date.slice(0, 10) === dateToday; });
-            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+            const client11 = dataClientToday1900[10].info.find((value) => { return value.day === dayOfWeekToday.toLocaleLowerCase() && value.time === '19:00' && value.date.slice(0, 10) === dateToday; });
+            const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11]
             setClientsToday1900(clientBase);
         };
         if (dataClientToday2000.length === '') {
