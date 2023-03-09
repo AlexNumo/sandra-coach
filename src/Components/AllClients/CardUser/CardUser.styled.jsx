@@ -24,9 +24,16 @@ const WrapperName = styled.div`
   /* flex-wrap: wrap; */
 `;
 
-const ResultRender = styled.li`
-  font-size: 10px;
-`;
+// const ShowAllNames = styled.div`
+//   position: absolute;
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   background-color: rgba(190, 175, 175, 1);
+//   z-index: 99;
+//   padding: 2px;
+//   /* flex-wrap: wrap; */
+// `;
 
 const BTN = styled.button`
   border-radius: 12px;
@@ -41,6 +48,6 @@ export {
   CardWrapper,
   WrapperSelectSeasonTicket,
   WrapperName,
-  ResultRender,
+  // ShowAllNames,
   BTN
 };

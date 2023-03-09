@@ -6,7 +6,7 @@ import SchedulePage from 'Pages/SchedulePage/SchedulePage';
 import TGBot from 'Pages/TGBot/TGBot';
 import Record from 'Pages/Record/Record';
 import Logo from 'Components/Logo/Logo';
-import AllClients from 'Components/AllClients/AllClients';
+import AllClients from 'Components/AllClients2/AllClients';
 import {
   Wrapper,
   WrapperStyle,

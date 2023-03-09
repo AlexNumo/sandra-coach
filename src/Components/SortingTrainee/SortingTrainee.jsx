@@ -1224,6 +1224,7 @@ const SortingTrainee = () => {
             const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
             setClientsToday1800(clientBase);
         };
+        // console.log(dataClientToday1900);
         if (dataClientToday1900.length === '') {
           return (setClientsToday1900(''));
           };
@@ -9158,92 +9159,13 @@ const SortingTrainee = () => {
             const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
             setClientsNextDaySix2000(clientBase);
           };
-        // if (dayOfWeekToday.toLocaleLowerCase() === 'monday') {
-        //   return[
-        //     setToday('Понеділок'),
-        //     setNextDay('Вівторок'),
-        //     setNextDay1('Середа'),
-        //     setNextDay2('Четвер'),
-        //     setNextDay3('П"ятниця'),
-        //     setNextDay4('Субота'),
-        //     setNextDay5('Неділя'),
-        //   ]
-        // }
-        // if (dayOfWeekToday.toLocaleLowerCase() === 'tuesday') {
-        //   return[
-        //     setToday('Вівторок'),
-        //     setNextDay('Середа'),
-        //     setNextDay1('Четвер'),
-        //     setNextDay2('П"ятниця'),
-        //     setNextDay3('Субота'),
-        //     setNextDay4('Неділя'),
-        //     setNextDay5('Понеділок'),
-        //   ]
-        // }
-        // if (dayOfWeekToday.toLocaleLowerCase() === 'wednesday') {
-        //   return[
-        //     setToday('Середа'),
-        //     setNextDay('Четвер'),
-        //     setNextDay1('П"ятниця'),
-        //     setNextDay2('Субота'),
-        //     setNextDay3('Неділя'),
-        //     setNextDay4('Понеділок'),
-        //     setNextDay5('Вівторок'),
-        //   ]
-        // }
-        // if (dayOfWeekToday.toLocaleLowerCase() === 'thursday') {
-        //   return[
-        //     setToday('Четвер'),
-        //     setNextDay('П"ятниця'),
-        //     setNextDay1('Субота'),
-        //     setNextDay2('Неділя'),
-        //     setNextDay3('Понеділок'),
-        //     setNextDay4('Вівторок'),
-        //     setNextDay5('Середа'),
-        //   ]
-        // }
-        // if (dayOfWeekToday.toLocaleLowerCase() === 'friday') {
-        //   return[
-        //     setToday('П"ятниця'),
-        //     setNextDay('Субота'),
-        //     setNextDay1('Неділя'),
-        //     setNextDay2('Понеділок'),
-        //     setNextDay3('Вівторок'),
-        //     setNextDay4('Середа'),
-        //     setNextDay5('Четвер'),
-        //   ]
-        // }
-        // if (dayOfWeekToday.toLocaleLowerCase() === 'saturday') {
-        //   return[
-        //     setToday('Субота'),
-        //     setNextDay('Неділя'),
-        //     setNextDay1('Понеділок'),
-        //     setNextDay2('Вівторок'),
-        //     setNextDay3('Середа'),
-        //     setNextDay4('Четвер'),
-        //     setNextDay5('П"ятниця'),
-        //   ]
-        // }
-        // if (dayOfWeekToday.toLocaleLowerCase() === 'sunday') {
-        //   return[
-        //     setToday('Неділя'),
-        //     setNextDay('Понеділок'),
-        //     setNextDay1('Вівторок'),
-        //     setNextDay2('Середа'),
-        //     setNextDay3('Четвер'),
-        //     setNextDay4('П"ятниця'),
-        //     setNextDay5('Субота'),
-        //   ]
-        // }
         setDataAllClients(dayOfWeekToday);
-              // console.log(dayOfWeekNextDay);
-              // console.log(dataClientNextDay1400[0].info[2].name);
     })}
   }, [dataAllClients, clientsToday0800, clientsToday0900, clientsToday1000, clientsToday1100, clientsToday1200, clientsToday1300,
     clientsToday1400, clientsToday1500, clientsToday1600, clientsToday1700, clientsToday1800, clientsToday1900, clientsToday2000,
   clientsNextDay0800, clientsNextDay0900, clientsNextDay1000, clientsNextDay1100, clientsNextDay1200, clientsNextDay1300,
     clientsNextDay1400, clientsNextDay1500, clientsNextDay1600, clientsNextDay1700, clientsNextDay1800, clientsNextDay1900, clientsToday2000])
-          // console.log(clientsNextDay1400);
+          // console.log(clientsToday1900);
   useEffect(() => {
     const dayOfWeekToday = moment().add(0, 'days').format('dddd');
     const dayTranslate = () => {

@@ -10,7 +10,7 @@ import {
   BTN
  } from "./AddSeasonTicket.styled";
 
-const AddSeasonTicket = ({item, getUserSeasonTicketID, HandleOpenModal}) => {
+const AddSeasonTicket = ({item, getUserSeasonTicketID, handleOpenModal}) => {
   const [userSeasonTicket, setUserSeasonTicket] =useState('');
   const [seasonTicketID, setSeasonTicketID] =useState('');
   const [seasonTicketNumberValue, setSeasonTicketNumberValue] =useState('');
@@ -122,7 +122,7 @@ const AddSeasonTicket = ({item, getUserSeasonTicketID, HandleOpenModal}) => {
             ))}
           </ChooseTicket>
             <BTN type="submit" onClick={HandleSubmit}><FcCheckmark size={12}/></BTN>
-            <BTN onClick={HandleOpenModal}><IoIosClose size={18} style={{color: 'red', size: '22px'}}/></BTN>
+            <BTN onClick={handleOpenModal}><IoIosClose size={18} style={{color: 'red', size: '22px'}}/></BTN>
         </Modal>
       </WrapperModal>
     )

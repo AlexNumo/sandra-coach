@@ -1,0 +1,211 @@
+import { useEffect, useState } from "react";
+import { clientAPI } from "service/axios.config";
+import { BsInstagram, BsFillTelephoneFill } from "react-icons/bs";
+import { BiSearchAlt2 } from "react-icons/bi";
+import AddSeasonTicket from "./AddSeasonTicket/AddSeasonTicket";
+import {
+  WrapperUsers,
+  ListName,
+  UserInfo,
+  WrapperList,
+  ListUsers,
+  CardWrapper,
+  SearchUser,
+  SearchList,
+  NameOfSearch,
+  ResetBTN
+} from './AllClients.styled';
+// import FindUser from "./FindUser/FindUser";
+
+const AllClients = () => {
+  const [allClients, setAllClients] = useState('');
+  const [resultOfFind, setResultOfFind] = useState('');
+  const [showAllUsers, setShowAllUsers] = useState(true);
+  const [openModal, setOpenModal] = useState(true);
+  const [getUserSeasonTicketID, setGetUserSeasonTicketID] = useState('');
+  // const [resultOfFindInsta, setResultOfFindInsta] = useState('');
+  
+
+  useEffect(() => {
+    const getAllClients = async () => {
+      const result = await clientAPI.getDataALLUsers();
+      setAllClients(result);
+    };
+    if (allClients === '') {
+      getAllClients();
+    }
+  },[allClients]);
+
+  const handleOpenModal = (e) =>{
+    e.preventDefault();
+    if(openModal === true){
+      return([
+        setOpenModal(false),
+        setGetUserSeasonTicketID('')
+      ]);
+    }
+    return([
+      setOpenModal(true),
+      setGetUserSeasonTicketID(e.target.id)
+    ]);
+  };
+
+  const URLInsta = ({ item }) => {
+    const nickname = item.info[0].instaNickName;
+    if (item.info[0].instaNickName === undefined || '') {
+      return (null);
+    }
+      const restructureNickname = nickname.substring(1);
+      const linkInsta = `https://www.instagram.com/${restructureNickname}/`
+      return (
+        <>
+          <a href={linkInsta} target="_blank" rel="noopener noreferrer" style={{marginLeft:'10px'}}><BsInstagram size={12}/></a>
+        </>
+      );
+  };
+
+  const LongestName = ({item}) =>{
+    const result = [];
+    item.info.map((info) => (
+      result.push(info.name.length)));
+    const indexOfMaxValue = result.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+      return(
+        <>
+          <span>{item.info[indexOfMaxValue].name}</span>
+        </>
+      )
+  };
+
+  const handleFindOfName = (e) => {
+    const searchName = e.target.value;
+    // const dataClientToday0800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '08:00'));
+    const find = allClients.filter(arr => arr.info.some(infoName => infoName.name === searchName));
+    return [setResultOfFind(find),
+      setShowAllUsers(false)];
+  }
+
+  const handleFindOfInsta = (e) => {
+    const searchInstaNickName = '@' + e.target.value;
+    // const dataClientToday0800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '08:00'));
+    const find = allClients.filter(arr => arr.info.some(infoInsta => infoInsta.instaNickName === searchInstaNickName));
+    return setResultOfFind(find);
+  }
+
+  const handleFindOfNumber = (e) => {
+    const searchINumber = '+38' + e.target.value;
+    // const dataClientToday0800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '08:00'));
+    const find = allClients.filter(arr => arr.id === searchINumber);
+    return setResultOfFind(find);
+  }
+
+  const RenderFindingUser = () => {
+    if(resultOfFind.length === 0){
+      return(null)
+    };
+    return(
+      resultOfFind.map((item) => (
+        <li key={item._id}>
+        <CardWrapper key={item._id}>
+{/* ===============================Прізвище та ім'я============================================================ */}
+          <UserInfo><LongestName item={item}/><br/>
+          <div style={{marginLeft:'10px'}}>
+            <a href={`tel:${item.id}`} rel="noopener noreferrer"><BsFillTelephoneFill size={12}/></a>
+          <URLInsta item={item}/></div>
+          </UserInfo>
+{/* ===============================Найчастіше відвідування====================================================== */}
+          <UserInfo>{item.info[item.info.length - 1].kind_trainee}</UserInfo>
+{/* ===============================Дата останнього тренування=================================================== */}
+          <UserInfo>{item.info[item.info.length - 1].date.slice(0, 10)}</UserInfo>
+{/* ===============================Абонемент (залишок) та дата придбання======================================== */}
+          <UserInfo>
+            {item.seasonTickets[item.seasonTickets.length - 1] === undefined 
+            ? 
+            <span>-</span> 
+            : 
+            <span>{item.seasonTickets[item.seasonTickets.length - 1].limitOfTrainnings}&nbsp; 
+            ({item.seasonTickets[item.seasonTickets.length - 1].remainderOfTrainnings})<br/>
+            {item.seasonTickets[item.seasonTickets.length - 1].dateOfBuying.slice(0,10)}</span>}
+            </UserInfo>
+            {/* {openModal ? <>dfsdfsf</> : null} */}
+        </CardWrapper>
+        </li>
+      ))
+    )
+  };
+  
+  const RenderAllUser = () => {
+    if(allClients.length === 0){
+      return(null)
+    }
+    return(
+      <>
+      {showAllUsers ? 
+      allClients.map((item) => (
+      <li key={item._id}>
+      <CardWrapper key={item._id}>
+{/* ===============================Прізвище та ім'я============================================================ */}
+        <UserInfo><LongestName item={item}/><br/>
+        <div style={{marginLeft:'10px'}}>
+          <a href={`tel:${item.id}`} rel="noopener noreferrer"><BsFillTelephoneFill size={12}/></a>
+        <URLInsta item={item}/></div>
+        </UserInfo>
+{/* ===============================Найчастіше відвідування====================================================== */}
+        <UserInfo>{item.info[item.info.length - 1].kind_trainee}</UserInfo>
+{/* ===============================Дата останнього тренування=================================================== */}
+        <UserInfo>{item.info[item.info.length - 1].date.slice(0, 10)}</UserInfo>
+{/* ===============================Абонемент (залишок) та дата придбання======================================== */}
+        <UserInfo>
+          {item.seasonTickets[item.seasonTickets.length - 1] === undefined 
+          ? 
+          <span>-</span> 
+          : 
+          <span>{item.seasonTickets[item.seasonTickets.length - 1].limitOfTrainnings}&nbsp; 
+          ({item.seasonTickets[item.seasonTickets.length - 1].remainderOfTrainnings})<br/><button onClick={handleOpenModal} id={item._id}>+</button>
+          {item.seasonTickets[item.seasonTickets.length - 1].dateOfBuying.slice(0,10)}</span>}</UserInfo>
+          {openModal ? <AddSeasonTicket HandleOpenModal={handleOpenModal} getUserSeasonTicketID={getUserSeasonTicketID} item={item}/> : null}
+      </CardWrapper>
+      </li>
+    )) : <></>}
+  </>)};
+
+  const handleShowAllUsers = () =>{
+    document.getElementById("name").value = "";
+    document.getElementById("nickname").value = "";
+    document.getElementById("number").value = "";
+    setShowAllUsers(true)
+    setResultOfFind('')
+  }
+
+  return (
+    <WrapperUsers>
+      <WrapperList>
+        <ListName>Прізвище та ім'я</ListName>
+        <ListName>Найчастіше відвідування</ListName>
+        <ListName>Дата останнього тренування</ListName>
+        <ListName>Абонемент (залишок) та дата придбання</ListName>
+      </WrapperList>
+      <SearchList>
+        <NameOfSearch>
+          <p><BiSearchAlt2/>ПІБ</p>
+          <SearchUser type="text" id="name" placeholder="Олександр" onChange={handleFindOfName}/>
+        </NameOfSearch>
+        <NameOfSearch>
+          <p><BiSearchAlt2/>Instagram</p>
+          <SearchUser type="text" id="nickname" placeholder="arsfit_studio" onChange={handleFindOfInsta}/>
+        </NameOfSearch>
+        <NameOfSearch>
+          <p><BsFillTelephoneFill/>Телефон</p>
+          <SearchUser type="text" id="number" placeholder="0631234567" onChange={handleFindOfNumber}/>
+        </NameOfSearch>
+        <NameOfSearch>
+          <ResetBTN type="button" onClick={handleShowAllUsers}>Всі</ResetBTN>
+        </NameOfSearch>
+      </SearchList>
+      <ListUsers>
+        {resultOfFind ? <RenderFindingUser/> : <RenderAllUser/>}
+      </ListUsers>
+    </WrapperUsers>
+  )
+};
+
+export default AllClients;
