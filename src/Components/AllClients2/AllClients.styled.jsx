@@ -15,6 +15,7 @@ const WrapperList = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #ddd2c5;
+  z-index: 99;
 `;
 
 const ListName = styled.p`
@@ -27,6 +28,7 @@ const ListUsers = styled.ol`
 `;
 
 const CardWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -43,7 +45,6 @@ const CardWrapper = styled.div`
 `;
 
 const UserInfo = styled.div`
-  position: relative;
   width: 90px;
   text-align: left;
 `;
@@ -80,6 +81,28 @@ const ResetBTN = styled.button`
   margin-bottom: 2px;
 `;
 
+const AddSeasonTicketBTN = styled.button`
+  border-radius: 12px;
+  background-color: #b2b8be;
+  padding: 2px 4px 2px 4px;
+  border: none;
+  margin-left: 15px;
+
+`;
+
+const WrapperSeasonTiket = styled.div`
+  width: 90px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ShowCardUserBTN = styled.button`
+  margin-left: 10px;
+  border: none;
+`;
+
 
 
 
@@ -93,5 +116,8 @@ export {
   SearchUser,
   SearchList,
   NameOfSearch,
-  ResetBTN
+  ResetBTN,
+  AddSeasonTicketBTN,
+  WrapperSeasonTiket,
+  ShowCardUserBTN
 };

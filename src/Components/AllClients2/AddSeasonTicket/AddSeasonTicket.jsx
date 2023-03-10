@@ -26,6 +26,7 @@ const AddSeasonTicket = ({item, getUserSeasonTicketID, handleOpenModal}) => {
       label: ''
     }
   })
+  // console.log(item)
   const CheckSeasonTicket = [
     {id: '0', label: '-', numberOfTrainnings: '0', price: '0'},
     {id: '6', label: '6', numberOfTrainnings: '6', price: '1100'},

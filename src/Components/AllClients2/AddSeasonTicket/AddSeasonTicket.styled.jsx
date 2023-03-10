@@ -2,14 +2,16 @@ import styled from "styled-components";
 
 const WrapperModal = styled.div`
   position: absolute;
-  top: 33px;
-  left: 30px;
+  left: 270px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(190, 175, 175, 1);
   border-radius: 8px;
   margin-left: 5px;
   padding-left: 2px;
+  height: 42px;
 `;
 
 const Modal = styled.form`

@@ -3,6 +3,8 @@ import { clientAPI } from "service/axios.config";
 import { BsInstagram, BsFillTelephoneFill } from "react-icons/bs";
 import { BiSearchAlt2 } from "react-icons/bi";
 import AddSeasonTicket from "./AddSeasonTicket/AddSeasonTicket";
+import CardUser from "./CardUser/CardUser";
+import { HiMagnifyingGlassPlus } from "react-icons/hi2";
 import {
   WrapperUsers,
   ListName,
@@ -13,18 +15,20 @@ import {
   SearchUser,
   SearchList,
   NameOfSearch,
-  ResetBTN
+  ResetBTN,
+  AddSeasonTicketBTN,
+  WrapperSeasonTiket,
+  ShowCardUserBTN
 } from './AllClients.styled';
-// import FindUser from "./FindUser/FindUser";
 
 const AllClients = () => {
   const [allClients, setAllClients] = useState('');
   const [resultOfFind, setResultOfFind] = useState('');
   const [showAllUsers, setShowAllUsers] = useState(true);
-  const [openModal, setOpenModal] = useState(true);
+  const [openModalSeasonTicket, setOpenModalSeasonTicket] = useState(false);
+  const [openModalCardUser, setOpenModalCardUser] = useState(false);
   const [getUserSeasonTicketID, setGetUserSeasonTicketID] = useState('');
-  // const [resultOfFindInsta, setResultOfFindInsta] = useState('');
-  
+  const [userData, setUserData] = useState('');
 
   useEffect(() => {
     const getAllClients = async () => {
@@ -36,17 +40,33 @@ const AllClients = () => {
     }
   },[allClients]);
 
-  const handleOpenModal = (e) =>{
+  const handleOpenModalSeasonTicket = (e) =>{
     e.preventDefault();
-    if(openModal === true){
+    if(openModalSeasonTicket === true){
       return([
-        setOpenModal(false),
+        setOpenModalSeasonTicket(false),
         setGetUserSeasonTicketID('')
       ]);
     }
     return([
-      setOpenModal(true),
+      setOpenModalSeasonTicket(true),
       setGetUserSeasonTicketID(e.target.id)
+    ]);
+  };
+
+  const handleOpenModalCardUser = (e) =>{
+    // console.log(e.target.id)
+    e.preventDefault();
+    if(openModalCardUser === true){
+      return([
+        setOpenModalCardUser(false),
+        setGetUserSeasonTicketID('')
+      ]);
+    }
+    return([
+      setOpenModalCardUser(true),
+      setGetUserSeasonTicketID(e.target.id),
+      setUserData(allClients.filter(arr => arr._id === e.target.id)[0])
     ]);
   };
 
@@ -78,7 +98,6 @@ const AllClients = () => {
 
   const handleFindOfName = (e) => {
     const searchName = e.target.value;
-    // const dataClientToday0800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '08:00'));
     const find = allClients.filter(arr => arr.info.some(infoName => infoName.name === searchName));
     return [setResultOfFind(find),
       setShowAllUsers(false)];
@@ -103,7 +122,8 @@ const AllClients = () => {
       return(null)
     };
     return(
-      resultOfFind.map((item) => (
+      <>
+      {resultOfFind.map((item) => (
         <li key={item._id}>
         <CardWrapper key={item._id}>
 {/* ===============================Прізвище та ім'я============================================================ */}
@@ -117,23 +137,26 @@ const AllClients = () => {
 {/* ===============================Дата останнього тренування=================================================== */}
           <UserInfo>{item.info[item.info.length - 1].date.slice(0, 10)}</UserInfo>
 {/* ===============================Абонемент (залишок) та дата придбання======================================== */}
-          <UserInfo>
+          <WrapperSeasonTiket>
             {item.seasonTickets[item.seasonTickets.length - 1] === undefined 
             ? 
-            <span>-</span> 
+            <span></span> 
             : 
             <span>{item.seasonTickets[item.seasonTickets.length - 1].limitOfTrainnings}&nbsp; 
             ({item.seasonTickets[item.seasonTickets.length - 1].remainderOfTrainnings})<br/>
             {item.seasonTickets[item.seasonTickets.length - 1].dateOfBuying.slice(0,10)}</span>}
-            </UserInfo>
-            {/* {openModal ? <>dfsdfsf</> : null} */}
+            <AddSeasonTicketBTN onClick={handleOpenModalSeasonTicket} id={item._id}>+</AddSeasonTicketBTN>
+            </WrapperSeasonTiket>
+            {openModalSeasonTicket ? <AddSeasonTicket handleOpenModal={handleOpenModalSeasonTicket} getUserSeasonTicketID={getUserSeasonTicketID} item={item}/> : null}
         </CardWrapper>
+        {openModalCardUser ? <CardUser handleOpenModalCardUser={handleOpenModalCardUser} item={item}/> : null}
         </li>
-      ))
+      ))}
+      </>
     )
   };
   
-  const RenderAllUser = () => {
+  const RenderAllUsers = () => {
     if(allClients.length === 0){
       return(null)
     }
@@ -147,23 +170,28 @@ const AllClients = () => {
         <UserInfo><LongestName item={item}/><br/>
         <div style={{marginLeft:'10px'}}>
           <a href={`tel:${item.id}`} rel="noopener noreferrer"><BsFillTelephoneFill size={12}/></a>
-        <URLInsta item={item}/></div>
+          <URLInsta item={item}/>
+          <ShowCardUserBTN type="button" id={item._id} onClick={handleOpenModalCardUser}><HiMagnifyingGlassPlus size={12} id={item._id} onClick={handleOpenModalCardUser}/></ShowCardUserBTN>
+        </div>
         </UserInfo>
 {/* ===============================Найчастіше відвідування====================================================== */}
         <UserInfo>{item.info[item.info.length - 1].kind_trainee}</UserInfo>
 {/* ===============================Дата останнього тренування=================================================== */}
         <UserInfo>{item.info[item.info.length - 1].date.slice(0, 10)}</UserInfo>
 {/* ===============================Абонемент (залишок) та дата придбання======================================== */}
-        <UserInfo>
+        <WrapperSeasonTiket>
           {item.seasonTickets[item.seasonTickets.length - 1] === undefined 
           ? 
-          <span>-</span> 
+          <span></span> 
           : 
           <span>{item.seasonTickets[item.seasonTickets.length - 1].limitOfTrainnings}&nbsp; 
-          ({item.seasonTickets[item.seasonTickets.length - 1].remainderOfTrainnings})<br/><button onClick={handleOpenModal} id={item._id}>+</button>
-          {item.seasonTickets[item.seasonTickets.length - 1].dateOfBuying.slice(0,10)}</span>}</UserInfo>
-          {openModal ? <AddSeasonTicket HandleOpenModal={handleOpenModal} getUserSeasonTicketID={getUserSeasonTicketID} item={item}/> : null}
+          ({item.seasonTickets[item.seasonTickets.length - 1].remainderOfTrainnings})<br/>
+          {item.seasonTickets[item.seasonTickets.length - 1].dateOfBuying.slice(0,10)}</span>}
+          <AddSeasonTicketBTN onClick={handleOpenModalSeasonTicket} id={item._id}>+</AddSeasonTicketBTN>
+          </WrapperSeasonTiket>
+          {openModalSeasonTicket ? <AddSeasonTicket handleOpenModal={handleOpenModalSeasonTicket} getUserSeasonTicketID={getUserSeasonTicketID} item={item}/> : null}
       </CardWrapper>
+      {openModalCardUser ? <CardUser handleOpenModalCardUser={handleOpenModalCardUser} userData={userData}/> : null}
       </li>
     )) : <></>}
   </>)};
@@ -202,7 +230,7 @@ const AllClients = () => {
         </NameOfSearch>
       </SearchList>
       <ListUsers>
-        {resultOfFind ? <RenderFindingUser/> : <RenderAllUser/>}
+        {resultOfFind ? <RenderFindingUser/> : <RenderAllUsers/>}
       </ListUsers>
     </WrapperUsers>
   )

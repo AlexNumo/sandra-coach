@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import {
   WrapperNames,
-  NamesStyle,
+  // NamesStyle,
   ResultRender,
   BTN
 } from './Names.styled';
