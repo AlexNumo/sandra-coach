@@ -5,26 +5,29 @@ const WrapperUsers = styled.div`
   flex-direction: column;
   font-family: 'Times New Roman', Times, serif;
   font-size: 10px;
+  height: 450px;
+  overflow: scroll;
 `;
 
 const WrapperList = styled.div`
   position: sticky;
-  top: 80px;
+  top: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   background-color: #ddd2c5;
+  padding-left: 20px;
   z-index: 99;
 `;
 
 const ListName = styled.p`
-  width: 100px;
+  width: 90px;
   text-align: left;
 `;
 
 const ListUsers = styled.ol`
-
+  margin-left: 25px;
 `;
 
 const CardWrapper = styled.div`
@@ -68,6 +71,7 @@ const SearchList = styled.div`
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
+  padding-left: 20px;
 `;
 
 const NameOfSearch = styled.div`
