@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const WrapperModal = styled.div`
   position: absolute;
-  left: 270px;
+  left: 237px;
   display: flex;
   flex-direction: column;
   justify-content: center;

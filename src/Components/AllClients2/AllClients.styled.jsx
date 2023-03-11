@@ -5,7 +5,7 @@ const WrapperUsers = styled.div`
   flex-direction: column;
   font-family: 'Times New Roman', Times, serif;
   font-size: 10px;
-  height: 450px;
+  height: 100%;
   overflow: scroll;
 `;
 

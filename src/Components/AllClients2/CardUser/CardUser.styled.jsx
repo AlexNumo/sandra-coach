@@ -20,7 +20,7 @@ const BlockCardUser = styled.div`
   background-color: #ddd2c5;
   overflow: auto;
   width: 380px;
-  height: 400px;
+  height: 100%;
   overflow: auto;
 `;
 
