@@ -3,8 +3,8 @@ import { clientAPI } from "service/axios.config";
 import { BsInstagram, BsFillTelephoneFill } from "react-icons/bs";
 import { BiSearchAlt2 } from "react-icons/bi";
 import AddSeasonTicket from "./AddSeasonTicket/AddSeasonTicket";
-import CardUser from "./CardUser/CardUser";
-import { HiMagnifyingGlassPlus } from "react-icons/hi2";
+// import CardUser from "./CardUser/CardUser";
+// import { HiMagnifyingGlassPlus } from "react-icons/hi2";
 import {
   WrapperUsers,
   ListName,
@@ -18,7 +18,7 @@ import {
   ResetBTN,
   AddSeasonTicketBTN,
   WrapperSeasonTiket,
-  ShowCardUserBTN
+  // ShowCardUserBTN
 } from './AllClients.styled';
 
 const AllClients = () => {
@@ -26,9 +26,9 @@ const AllClients = () => {
   const [resultOfFind, setResultOfFind] = useState('');
   const [showAllUsers, setShowAllUsers] = useState(true);
   const [openModalSeasonTicket, setOpenModalSeasonTicket] = useState(false);
-  const [openModalCardUser, setOpenModalCardUser] = useState(false);
+  // const [openModalCardUser, setOpenModalCardUser] = useState(false);
   const [getUserSeasonTicketID, setGetUserSeasonTicketID] = useState('');
-  const [userData, setUserData] = useState('');
+  // const [userData, setUserData] = useState('');
 
   useEffect(() => {
     const getAllClients = async () => {
@@ -54,21 +54,21 @@ const AllClients = () => {
     ]);
   };
 
-  const handleOpenModalCardUser = (e) =>{
-    // console.log(e.target.id)
-    e.preventDefault();
-    if(openModalCardUser === true){
-      return([
-        setOpenModalCardUser(false),
-        setGetUserSeasonTicketID('')
-      ]);
-    }
-    return([
-      setOpenModalCardUser(true),
-      setGetUserSeasonTicketID(e.target.id),
-      setUserData(allClients.filter(arr => arr._id === e.target.id)[0])
-    ]);
-  };
+  // const handleOpenModalCardUser = (e) =>{
+  //   // console.log(e.target.id)
+  //   e.preventDefault();
+  //   if(openModalCardUser === true){
+  //     return([
+  //       setOpenModalCardUser(false),
+  //       setGetUserSeasonTicketID('')
+  //     ]);
+  //   }
+  //   return([
+  //     setOpenModalCardUser(true),
+  //     setGetUserSeasonTicketID(e.target.id),
+  //     // setUserData(allClients.filter(arr => arr._id === e.target.id)[0])
+  //   ]);
+  // };
 
   const URLInsta = ({ item }) => {
     const nickname = item.info[0].instaNickName;
@@ -149,7 +149,7 @@ const AllClients = () => {
             </WrapperSeasonTiket>
             {openModalSeasonTicket ? <AddSeasonTicket handleOpenModal={handleOpenModalSeasonTicket} getUserSeasonTicketID={getUserSeasonTicketID} item={item}/> : null}
         </CardWrapper>
-        {openModalCardUser ? <CardUser handleOpenModalCardUser={handleOpenModalCardUser} item={item}/> : null}
+        {/* {openModalCardUser ? <CardUser handleOpenModalCardUser={handleOpenModalCardUser} item={item}/> : null} */}
         </li>
       ))}
       </>
@@ -171,7 +171,7 @@ const AllClients = () => {
         <div style={{marginLeft:'10px'}}>
           <a href={`tel:${item.id}`} rel="noopener noreferrer"><BsFillTelephoneFill size={12}/></a>
           <URLInsta item={item}/>
-          <ShowCardUserBTN type="button" id={item._id} onClick={handleOpenModalCardUser}><HiMagnifyingGlassPlus size={12} id={item._id} onClick={handleOpenModalCardUser}/></ShowCardUserBTN>
+          {/* <ShowCardUserBTN type="button" id={item._id} onClick={handleOpenModalCardUser}><HiMagnifyingGlassPlus size={12} id={item._id} onClick={handleOpenModalCardUser}/></ShowCardUserBTN> */}
         </div>
         </UserInfo>
 {/* ===============================Найчастіше відвідування====================================================== */}
@@ -191,7 +191,7 @@ const AllClients = () => {
           </WrapperSeasonTiket>
           {openModalSeasonTicket ? <AddSeasonTicket handleOpenModal={handleOpenModalSeasonTicket} getUserSeasonTicketID={getUserSeasonTicketID} item={item}/> : null}
       </CardWrapper>
-      {openModalCardUser ? <CardUser handleOpenModalCardUser={handleOpenModalCardUser} userData={userData}/> : null}
+      {/* {openModalCardUser ? <CardUser handleOpenModalCardUser={handleOpenModalCardUser} userData={userData}/> : null} */}
       </li>
     )) : <></>}
   </>)};
