@@ -55,7 +55,8 @@ const SortingFirstRender = ({
   const dateOfToday = moment().add(0, 'days').format('L');
   const dateOfNextDay = moment().add(1, 'days').format('L');
   const dateOfNextDay1 = moment().add(2, 'days').format('L');
-  // console.log(clientsNextDay0900);
+  
+  // console.log(clientsToday1600);
   return(
     <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', width: '100%' }}>
 {/* ===========================ToDay======================================================================================== */}

@@ -252,7 +252,7 @@ const SortingTrainee = () => {
             const clientBase = [client1]
             setClientsToday0900(clientBase);
           };
-          if (dataClientToday0900.length === 2) {
+        if (dataClientToday0900.length === 2) {
             const client1 = dataClientToday0900[0].info.find((value) => { return value.day === dayOfWeekToday.toLocaleLowerCase() && value.time === '09:00' && value.date.slice(0, 10) === dateToday; });
             const client2 = dataClientToday0900[1].info.find((value) => { return value.day === dayOfWeekToday.toLocaleLowerCase() && value.time === '09:00' && value.date.slice(0, 10) === dateToday; });
             const clientBase = [client1, client2]

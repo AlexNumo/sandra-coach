@@ -7,6 +7,7 @@ import TGBot from 'Pages/TGBot/TGBot';
 import Record from 'Pages/Record/Record';
 import Logo from 'Components/Logo/Logo';
 import AllClients from 'Components/AllClients2/AllClients';
+import Analysis from 'Components/Analysis/Analysis';
 import {
   Wrapper,
   WrapperStyle,
@@ -20,12 +21,14 @@ const MainPage = () => {
   const [showInfoRecord, setInfoRecord] = useState(false);
   const [showAllClients, setAllClients] = useState(false);
   // const [showInfoTraineeClients, setInfoTraineeClients] = useState(false);
+  const [showAnalysis, setShowAnalysis] = useState(false);
 
   const ShowScheduleHandle = () => {
     if (showSchedule === true) {
       setShowSchedule(false);
       setInfoRecord(false);
       setAllClients(false);
+      setShowAnalysis(false)
       // setInfoTrainee(false);
       // setInfoTraineeClients(false);
       setShowTGBot(false);
@@ -34,6 +37,7 @@ const MainPage = () => {
     setShowSchedule(true);
     setShowTGBot(false);
     setAllClients(false);
+    setShowAnalysis(false)
     setInfoRecord(false);
     // setInfoTrainee(false);
     // setInfoTraineeClients(false);
@@ -59,6 +63,7 @@ const MainPage = () => {
     if (showInfoRecord === true) {
       setShowSchedule(false);
       // setInfoTrainee(false);
+      setShowAnalysis(false)
       setAllClients(false);
       setShowTGBot(false);
       setInfoRecord(false);
@@ -67,6 +72,7 @@ const MainPage = () => {
     }
     setShowSchedule(false);
     // setInfoTrainee(false);
+    setShowAnalysis(false)
     setShowTGBot(false);
     setAllClients(false);
     setInfoRecord(true);
@@ -95,6 +101,7 @@ const MainPage = () => {
     if (showTGBot === true) {
       setShowSchedule(false);
       // setInfoTrainee(false);
+      setShowAnalysis(false)
       setShowTGBot(false);
       setAllClients(false);
       setInfoRecord(false);
@@ -104,6 +111,7 @@ const MainPage = () => {
     setShowSchedule(false);
     // setInfoTrainee(false);
     setShowTGBot(true);
+    setShowAnalysis(false)
     setAllClients(false);
     setInfoRecord(false);
     // setInfoTraineeClients(false);
@@ -115,6 +123,7 @@ const MainPage = () => {
       setShowSchedule(false);
       // setInfoTrainee(false);
       setShowTGBot(false);
+      setShowAnalysis(false)
       setAllClients(false);
       setInfoRecord(false);
       // setInfoTraineeClients(false);
@@ -123,7 +132,29 @@ const MainPage = () => {
     setShowSchedule(false);
     // setInfoTrainee(false);
     setShowTGBot(false);
+    setShowAnalysis(false)
     setAllClients(true);
+    setInfoRecord(false);
+    // setInfoTraineeClients(false);
+    return;
+  };
+
+  const handleShowAnalysis = () => {
+    if (showAnalysis === true) {
+      setShowSchedule(false);
+      // setInfoTrainee(false);
+      setShowTGBot(false);
+      setShowAnalysis(false)
+      setAllClients(false);
+      setInfoRecord(false);
+      // setInfoTraineeClients(false);
+      return;
+    }
+    setShowSchedule(false);
+    // setInfoTrainee(false);
+    setShowTGBot(false);
+    setShowAnalysis(true)
+    setAllClients(false);
     setInfoRecord(false);
     // setInfoTraineeClients(false);
     return;
@@ -136,10 +167,12 @@ const MainPage = () => {
         <BTN type='button' onClick={ShowTGBotTrainee} className={showTGBot ? 'active' : ''}>Telegram BOT</BTN>
         <BTN type='button' onClick={ShowAllClientsHandle} className={showAllClients ? 'active' : ''}>Всі клієнти</BTN>
         <BTN type='button' onClick={ShowScheduleHandle} className={showSchedule ? 'active' : ''}>Розклад</BTN>
+        <BTN type='button' onClick={handleShowAnalysis} className={showAnalysis ? 'active' : ''}>Аналіз</BTN>
         {/* <BTN type='button' onClick={ShowInfoTraineeClients} className={showInfoTraineeClients ? 'active' : ''}>Додати тренування та клієнта</BTN> */}
         {/* <BTN type='button' onClick={ShowInfoTraineeHandle} className={showInfoTrainee ? 'active' : ''}>Інформація про клієнтів та тренерів</BTN> */}
       </WrapperStyle>
-      <Logo/>
+      <Logo />
+      {showAnalysis ? <Analysis/> : null}
       {showSchedule ? <SchedulePage /> : null}
       {showAllClients ? <AllClients /> : null}
       {/* {showInfoTrainee ? <InfoTrainee /> : null} */}
