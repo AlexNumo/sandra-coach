@@ -3,6 +3,7 @@ import { clientAPI } from "service/axios.config";
 import { BsInstagram, BsFillTelephoneFill } from "react-icons/bs";
 import { BiSearchAlt2 } from "react-icons/bi";
 import AddSeasonTicket from "./AddSeasonTicket/AddSeasonTicket";
+import moment from 'moment/moment';
 // import CardUser from "./CardUser/CardUser";
 // import { HiMagnifyingGlassPlus } from "react-icons/hi2";
 import {
@@ -54,25 +55,9 @@ const AllClients = () => {
     ]);
   };
 
-  // const handleOpenModalCardUser = (e) =>{
-  //   // console.log(e.target.id)
-  //   e.preventDefault();
-  //   if(openModalCardUser === true){
-  //     return([
-  //       setOpenModalCardUser(false),
-  //       setGetUserSeasonTicketID('')
-  //     ]);
-  //   }
-  //   return([
-  //     setOpenModalCardUser(true),
-  //     setGetUserSeasonTicketID(e.target.id),
-  //     // setUserData(allClients.filter(arr => arr._id === e.target.id)[0])
-  //   ]);
-  // };
-
   const URLInsta = ({ item }) => {
-    const nickname = item.info[0].instaNickName;
-    if (item.info[0].instaNickName === undefined || '') {
+    const nickname = item.info[item.info.length - 1].instaNickName;
+    if (item.info[item.info.length - 1].instaNickName === undefined || '') {
       return (null);
     }
       const restructureNickname = nickname.substring(1);
@@ -88,33 +73,68 @@ const AllClients = () => {
     const result = [];
     item.info.map((info) => (
       result.push(info.name.length)));
-    const indexOfMaxValue = result.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+    // const indexOfMaxValue = result.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
       return(
         <>
-          <span>{item.info[indexOfMaxValue].name}</span>
+          <span>{item.info[item.info.length - 1].name}</span>
         </>
       )
   };
 
-  const handleFindOfName = (e) => {
-    const searchName = e.target.value;
-    const find = allClients.filter(arr => arr.info.some(infoName => infoName.name === searchName));
-    return [setResultOfFind(find),
-      setShowAllUsers(false)];
-  }
+const handleFindOfName = (e) => {
+  const searchName = e.target.value.toLowerCase();
+  const find = allClients.filter(client => {
+    const { info } = client;
+    for (let i = 0; i < info.length; i++) {
+      const name = info[i].name.toLowerCase();
+      if (name.includes(searchName)) {
+        return true;
+      }
+    }
+    return false;
+  });
+  setResultOfFind(find);
+  setShowAllUsers(false);
+};
 
   const handleFindOfInsta = (e) => {
     const searchInstaNickName = '@' + e.target.value;
-    // const dataClientToday0800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '08:00'));
-    const find = allClients.filter(arr => arr.info.some(infoInsta => infoInsta.instaNickName === searchInstaNickName));
-    return setResultOfFind(find);
+    const find = allClients.filter(client => {
+    const { info } = client;
+    for (let i = 0; i < info.length; i++) {
+      const insta = info[i].instaNickName;
+      if (insta === undefined) {
+        return false;
+      }
+      if (insta.includes(searchInstaNickName)) {
+        return true;
+      }
+    }
+    return false;
+  });
+  setResultOfFind(find);
+  setShowAllUsers(false);
   }
 
   const handleFindOfNumber = (e) => {
     const searchINumber = '+38' + e.target.value;
-    // const dataClientToday0800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '08:00'));
-    const find = allClients.filter(arr => arr.id === searchINumber);
-    return setResultOfFind(find);
+    const find = allClients.filter((client) => {
+      const number = client.id;
+      return number.includes(searchINumber);
+    });
+    setResultOfFind(find);
+    setShowAllUsers(false);
+  };
+
+  const CalculateBetween = ({ item }) => {
+    const dateToday = moment().add(0, 'days').format('').slice(0, 10);
+    const dateLastTraining = item.info[item.info.length - 1].date.slice(0, 10);
+    const diffInDays = moment(dateToday).diff(moment(dateLastTraining), 'days');
+    // Now you can use the `diffInDays` variable to conditionally apply styles to UserInfo component
+    return(
+    <UserInfo style={{ color: diffInDays >= 7 ? 'red' : 'green' }}>
+      {dateLastTraining}<span>({item.info.length})</span>
+    </UserInfo>)
   }
 
   const RenderFindingUser = () => {
@@ -135,7 +155,7 @@ const AllClients = () => {
 {/* ===============================Найчастіше відвідування====================================================== */}
           <UserInfo>{item.info[item.info.length - 1].kind_trainee}</UserInfo>
 {/* ===============================Дата останнього тренування=================================================== */}
-          <UserInfo>{item.info[item.info.length - 1].date.slice(0, 10)}</UserInfo>
+          <UserInfo>{item.info[item.info.length - 1].date.slice(0, 10)}<span>({item.info.length})</span></UserInfo>
 {/* ===============================Абонемент (залишок) та дата придбання======================================== */}
           <WrapperSeasonTiket>
             {item.seasonTickets[item.seasonTickets.length - 1] === undefined 
@@ -160,10 +180,14 @@ const AllClients = () => {
     if(allClients.length === 0){
       return(null)
     }
+    // const dateToday = moment().add(0, 'days').format('').slice(0, 10);
+    // const dateDiff = ({ item }) => { return (moment(dateToday).diff(moment(item.info[item.info.length - 1].date.slice(0, 10)), 'days')) };
+    // console.log(dateToday)
+    const sortedClients = allClients.sort((a, b) => b.info.length - a.info.length);
     return(
       <>
       {showAllUsers ? 
-      allClients.map((item) => (
+      sortedClients.map((item) => (
       <li key={item._id}>
       <CardWrapper key={item._id}>
 {/* ===============================Прізвище та ім'я============================================================ */}
@@ -177,7 +201,7 @@ const AllClients = () => {
 {/* ===============================Найчастіше відвідування====================================================== */}
         <UserInfo>{item.info[item.info.length - 1].kind_trainee}</UserInfo>
 {/* ===============================Дата останнього тренування=================================================== */}
-        <UserInfo>{item.info[item.info.length - 1].date.slice(0, 10)}</UserInfo>
+        <CalculateBetween item={item}/>
 {/* ===============================Абонемент (залишок) та дата придбання======================================== */}
         <WrapperSeasonTiket>
           {item.seasonTickets[item.seasonTickets.length - 1] === undefined 

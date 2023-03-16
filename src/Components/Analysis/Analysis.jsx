@@ -176,8 +176,8 @@ export default function Analysis() {
   if (getMonth.length === 0) {
     return null;
   }
-  const month = allTrainee.filter(arr => arr.date.slice(5, 7) === getMonth);
-    const allCanceledTraining = month.filter(arr => arr.canceledTraining === true).length;
+    const month = allTrainee.filter(arr => arr.date.slice(5, 7) === getMonth);
+  const allCanceledTraining = month.filter(arr => arr.canceledTraining === true).length;
   const kindTraineeResults = allKindTrainee
     .map((item) => ({
       value: item.value,
@@ -272,7 +272,7 @@ export default function Analysis() {
   return (
     <ResultsWrapper>
       <div>
-        <AllResults>Час </AllResults>
+        <AllResults>Час</AllResults>
         <AllResultsUsers>К-сть</AllResultsUsers>
         <AllResultsUsers>Відміна</AllResultsUsers>
       </div>
