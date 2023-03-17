@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { clientAPI } from "service/axios.config";
+import moment from 'moment/moment';
 import {
   ResultsWrapper,
   WrapperKindTrainee,
@@ -14,7 +15,7 @@ import {
 export default function Analysis() {
   const [allTrainee, setAllTrainee] = useState([]);
   const [allKindTrainee, setAllKindTrainee] = useState([]);
-  const [getMonth, setGetMonth] = useState([]);
+  const [getMonth, setGetMonth] = useState(moment().add(0, 'days').format('').slice(5, 7));
   // const [getDay, setGetDay] = useState([]);
   // const [getTime, setGetTime] = useState([]);
 
@@ -150,6 +151,11 @@ export default function Analysis() {
     getAllKindTrainee();
   })
 
+  useEffect(() => {
+    const select = document.getElementById('choose-month');
+    select.value = getMonth;
+  }, [getMonth]);
+
   // const SortingOfMonth = () => {
   //   if (getMonth.length === 0) {
   //     return null;
@@ -176,7 +182,7 @@ export default function Analysis() {
   if (getMonth.length === 0) {
     return null;
   }
-    const month = allTrainee.filter(arr => arr.date.slice(5, 7) === getMonth);
+  const month = allTrainee.filter(arr => arr.date.slice(5, 7) === getMonth);
   const allCanceledTraining = month.filter(arr => arr.canceledTraining === true).length;
   const kindTraineeResults = allKindTrainee
     .map((item) => ({
@@ -212,7 +218,7 @@ export default function Analysis() {
 };
 
   const SortingOfDay = () => {
-    if (getMonth.length === 0) {
+  if (getMonth.length === 0) {
     return null;
   }
   const month = allTrainee.filter(arr => arr.date.slice(5, 7) === getMonth);
@@ -295,7 +301,7 @@ export default function Analysis() {
 
   return (
     <>
-      <select name="choose-month" id="choose-month" onChange={handleChooseMonth}>
+      <select name="choose-month" id="choose-month" onChange={handleChooseMonth} style={{backgroundColor: 'inherit', border: 'none'}}>
         {month.map((item) => (
           <option value={item.label} key={item.id}>{item.translate}</option>
         ))}

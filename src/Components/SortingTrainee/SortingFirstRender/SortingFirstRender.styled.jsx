@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const DayOfWeekWrapper = styled.p`
   position: sticky;
-  top: 80px;
+  top: 97px;
   height: auto;
   background-color: #ddd2c5;
   text-align: center;
@@ -19,7 +19,7 @@ const WrapperInfoTime = styled.div`
   margin-bottom: 2px;
   padding: 2px;
   width: 90px;
-  height: 200px;
+  /* height: 200px; */
 `;
 
 const KindTrainee = styled.span`

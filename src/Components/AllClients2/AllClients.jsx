@@ -126,6 +126,22 @@ const handleFindOfName = (e) => {
     setShowAllUsers(false);
   };
 
+  const countGreenUserInfos = () => {
+  const dateToday = moment().add(0, 'days').format('').slice(0, 10);
+  let count = 0;
+  for (let i = 0; i < allClients.length; i++) {
+    const dateLastTraining = allClients[i].info[allClients[i].info.length - 1].date.slice(0, 10);
+    const diffInDays = moment(dateToday).diff(moment(dateLastTraining), 'days');
+    if (diffInDays < 7) {
+      count++;
+    }
+  }
+  return count;
+  };
+  
+  // const sortedClients = allClients.sort((a, b) => b.info.length - a.info.length);
+  const greenUserInfosCount = countGreenUserInfos();
+
   const CalculateBetween = ({ item }) => {
     const dateToday = moment().add(0, 'days').format('').slice(0, 10);
     const dateLastTraining = item.info[item.info.length - 1].date.slice(0, 10);
@@ -214,7 +230,7 @@ const handleFindOfName = (e) => {
           <AddSeasonTicketBTN onClick={handleOpenModalSeasonTicket} id={item._id}>+</AddSeasonTicketBTN>
           </WrapperSeasonTiket>
           {openModalSeasonTicket ? <AddSeasonTicket handleOpenModal={handleOpenModalSeasonTicket} getUserSeasonTicketID={getUserSeasonTicketID} item={item}/> : null}
-      </CardWrapper>
+          </CardWrapper>
       {/* {openModalCardUser ? <CardUser handleOpenModalCardUser={handleOpenModalCardUser} userData={userData}/> : null} */}
       </li>
     )) : <></>}
@@ -254,6 +270,7 @@ const handleFindOfName = (e) => {
         </NameOfSearch>
       </SearchList>
       <ListUsers>
+      <p>Клієнтів за тиждень: {greenUserInfosCount}</p>
         {resultOfFind ? <RenderFindingUser/> : <RenderAllUsers/>}
       </ListUsers>
     </WrapperUsers>
