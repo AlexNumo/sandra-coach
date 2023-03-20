@@ -184,8 +184,8 @@ export const canceledTraining = async (id, status) => {
 
 export const sendSeasonTicketVisitTrainee = async (id) => {
   try {
-      const res = await instance.put(`/tgbot/changeSeasonTicket`,  id );
-      toast.success(`Підтвердженео заняття для клієнта "${res.data.info[0].name}"`);
+    const res = await instance.put(`/tgbot/changeSeasonTicket`, id);
+    toast.success(`Підтвердженео заняття для клієнта "${res.data.info[0].name}"`);
     return res;
   } catch (e) {
     toast.error('Щось пішло не так');

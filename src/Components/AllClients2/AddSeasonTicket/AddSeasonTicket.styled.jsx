@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const WrapperModal = styled.div`
   position: absolute;
-  left: 237px;
+  left: 228px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@ const Modal = styled.form`
 `;
 
 const ChooseTicket = styled.select`
-  width: 70px;
+  width: 40px;
   font-size: 8px;
   height: 15px;
   background-color: inherit;
