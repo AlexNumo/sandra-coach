@@ -9363,8 +9363,8 @@ const SortingTrainee = () => {
   };
 
   const calculateHeight = (...clientCounts) => {
-    const baseHeight = 50; // базова висота для одного клієнта
-    const minHeight = 30; // мінімальна висота
+    const baseHeight = 38; // базова висота для одного клієнта
+    const minHeight = 50; // мінімальна висота
     const maxHeight = 500; // максимальна висота
     const maxClients = Math.max(...clientCounts); // вибираємо максимальну кількість клієнтів
     const height = baseHeight * maxClients; // висота в залежності від кількості клієнтів

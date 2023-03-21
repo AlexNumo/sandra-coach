@@ -193,6 +193,11 @@ export default function Analysis() {
     .filter((item) => item.count > 0);
   if (kindTraineeResults.length === 0) {
     return null;
+    }
+    
+  function calculatePercentage(itemCount, monthLength) {
+    const percentage = (itemCount / monthLength) * 100;
+    return percentage.toFixed(2);
   }
   return (
     <ResultsWrapper>
@@ -200,18 +205,21 @@ export default function Analysis() {
         <AllResults>Вид тренування </AllResults>
         <AllResultsUsers>К-сть</AllResultsUsers>
         <AllResultsUsers>Відміна</AllResultsUsers>
+        <AllResultsUsers>%</AllResultsUsers>
       </div>
       {kindTraineeResults.map((item) => (
         <WrapperKindTrainee key={item.value}>
           <KindTraineeRes>{item.value} </KindTraineeRes>
           <KindTraineeUsers>{item.count}</KindTraineeUsers>
           <KindTraineeUsers>{item.canceledTraining}</KindTraineeUsers>
+          <KindTraineeUsers>{calculatePercentage(item.count, month.length)}%</KindTraineeUsers>
         </WrapperKindTrainee>
       ))}
       <div>
         <AllResults>Всього: </AllResults>
         <AllResultsUsers>{month.length}</AllResultsUsers>
         <AllResultsUsers>{allCanceledTraining}</AllResultsUsers>
+        <AllResultsUsers>{100}%</AllResultsUsers>
       </div>
     </ResultsWrapper>
   );
@@ -306,8 +314,8 @@ export default function Analysis() {
           <option value={item.label} key={item.id}>{item.translate}</option>
         ))}
       </select>
-      <SortingOfMonth />
-      <SortingOfDay />
+      <SortingOfMonth/>
+      <SortingOfDay/>
       <SortingOfTime/>
       {/* {allKindTrainee.map((item) => (
         <div key={item._id}>
