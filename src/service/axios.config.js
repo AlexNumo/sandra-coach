@@ -193,6 +193,17 @@ export const sendSeasonTicketVisitTrainee = async (id) => {
   }
 };
 
+export const sendVisitTrainingInfoSeasonTickets = async (data) => {
+  try {
+    // console.log(data)
+    const res = await instance.put(`/tgbot/changeSeasonTicket/infoTrainings`, data);
+    return res;
+  } catch (e) {
+    toast.error('Щось пішло не так');
+    console.error(e.message);
+  }
+};
+
 export const deleteDataUsers = async (id) => {
   try {
     const result = await instance.put(`/tgbot`, id);
@@ -249,6 +260,7 @@ export const clientAPI = {
   getKindTraineeAll,
   sendDataUsers,
   sendSeasonTicketVisitTrainee,
+  sendVisitTrainingInfoSeasonTickets,
   deleteDataUsers,
   getDataALLUsers,
   sendSeasonTicket,
