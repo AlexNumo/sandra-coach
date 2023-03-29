@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
+const AnalysisStyled = styled.div`
+  position: relative;
+  /* height: 250px; */
+`;
+
 const ResultsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   padding-bottom: 20px;
+  /* overflow: auto; */
 `;
 
 const WrapperKindTrainee = styled.div`
@@ -16,7 +22,7 @@ const KindTraineeRes = styled.p`
   display: inline-block;
   border: 1px solid;
   border-color: #808487;
-  width: 185px;
+  width: 125px;
 `;
 
 const KindTraineeUsers = styled.p`
@@ -24,7 +30,7 @@ const KindTraineeUsers = styled.p`
   text-align: center;
   border: 1px solid;
   border-color: #808487;
-  width: 80px;
+  width: 70px;
 `;
 
 const AllResults = styled.p`
@@ -34,7 +40,7 @@ const AllResults = styled.p`
   display: inline-block;
   border: 1px solid;
   border-color: #808487;
-  width: 185px;
+  width: 125px;
 `;
 
 const AllResultsUsers = styled.p`
@@ -45,14 +51,23 @@ const AllResultsUsers = styled.p`
   text-align: center;
   border: 1px solid;
   border-color: #808487;
-  width: 80px;
+  width: 70px;
+`;
+
+const InfoCoachBTN = styled.button`
+  border: none;
+  margin: 0;
+  padding: 0;
+  margin-left: 10px;
 `;
 
 export {
+  AnalysisStyled,
   ResultsWrapper,
   WrapperKindTrainee,
   KindTraineeRes,
   KindTraineeUsers,
   AllResults,
-  AllResultsUsers
+  AllResultsUsers,
+  InfoCoachBTN
 }

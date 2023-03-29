@@ -1,23 +1,31 @@
 import { useEffect, useState } from 'react';
 import { clientAPI } from "service/axios.config";
 import moment from 'moment/moment';
+import { BiSearchAlt2 } from "react-icons/bi";
 import {
+  AnalysisStyled,
   ResultsWrapper,
   WrapperKindTrainee,
   KindTraineeRes,
   KindTraineeUsers,
   AllResults,
-  AllResultsUsers
+  AllResultsUsers,
+  InfoCoachBTN
 } from './Analysis.styled';
+import Modal from 'Components/Modal/Modal';
 // import Diagram from './Diagram/Diagram';
 // import moment from 'moment/moment';
 
 export default function Analysis() {
   const [allTrainee, setAllTrainee] = useState([]);
-  const [allKindTrainee, setAllKindTrainee] = useState([]);
+  const [allCoach, setAllCoach] = useState([]);
+  const [allKindTrainings, setAllKindTrainings] = useState([]);
   const [getMonth, setGetMonth] = useState(moment().add(0, 'days').format('').slice(5, 7));
-  // const [getDay, setGetDay] = useState([]);
-  // const [getTime, setGetTime] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [coachInfoTrainings, setCoachInfoTrainings] = useState('');
+  const [coachInfo, setCoachInfo] = useState('');
+  const monthFiltered = allTrainee.filter(arr => arr.date.slice(5, 7) === getMonth);
+  const allCanceledTraining = monthFiltered.filter(arr => arr.canceledTraining === true).length;
 
   const month = [
     { id: 'january', label: '01', translate:'Січень' },
@@ -62,266 +70,210 @@ export default function Analysis() {
   ];
 
   useEffect(() => {
-    const getAllClients = async () => {
-      const result = await clientAPI.getDataALLUsers();
-      const extractInfo = result.flatMap(item => item.info);
-      setAllTrainee(extractInfo)
-      // const february = '02';
-      // const march = '03';
-      // const june = '01';
-      // const HighHeels = 'High heels';
-      // const vogue = 'Vogue';
-      // const kangooJumps = 'Kangoo jumps';
-      // const skyJumping = 'Sky jumping';
-      // const stretching = 'Stretching';
-      // const healthBack = 'Здорова спина';
-      // const healthBack2 = 'Здорова спина +';
-      // const tribal = 'Tribal fusion';
-      // const twerk = 'Twerk';
-      // const bodyBalet = 'Боди балет';
-      // const functional = 'Functional';
-      // const fitnessMomChild = 'Фітнес мама + малюк';
-      // const strip18 = 'Strip 18+';
-      // const zumba = 'Zumba';
-      // const bachata = 'Bachata (парні танці)';
-      // const jazzFunk = 'Jazz-Funk';
-      // const TRXTabata = 'TRX + Tabata';
-      // const flyStretching = 'Fly stretching';
-      // const ladyStyle = 'Lady style';
-      // const childDance = 'Дитяча хореографія';
-      // const baking_18 = 'Булочна 18+';
-      // const bootyStretching = 'Booty stretching';
-
-
-      // const extractFebruaryTreinings = extractInfo.filter(arr => arr.date.slice(5, 7) === march);
-      // const dateToday = moment().add(0, 'days').format('').slice(5, 7);
-      // console.log("canceledTraining: ", extractFebruaryTreinings.filter(arr => arr.canceledTraining === true))
-      // console.log("skyJumping: ", extractFebruaryTreinings.filter(arr => arr.kind_trainee === skyJumping))
-      // console.log("08:00: ", extractFebruaryTreinings.filter(arr => arr.time === '08:00'))
-      // console.log("09:00: ", extractFebruaryTreinings.filter(arr => arr.time === '09:00'))
-      // console.log("10:00: ", extractFebruaryTreinings.filter(arr => arr.time === '10:00'))
-      // console.log("11:00: ", extractFebruaryTreinings.filter(arr => arr.time === '11:00'))
-      // console.log("12:00: ", extractFebruaryTreinings.filter(arr => arr.time === '12:00'))
-      // console.log("13:00: ", extractFebruaryTreinings.filter(arr => arr.time === '13:00'))
-      // console.log("14:00: ", extractFebruaryTreinings.filter(arr => arr.time === '14:00'))
-      // console.log("15:00: ", extractFebruaryTreinings.filter(arr => arr.time === '15:00'))
-      // console.log("16:00: ", extractFebruaryTreinings.filter(arr => arr.time === '16:00'))
-      // console.log("17:00: ", extractFebruaryTreinings.filter(arr => arr.time === '17:00'))
-      // console.log("18:00: ", extractFebruaryTreinings.filter(arr => arr.time === '18:00'))
-      // console.log("19:00: ", extractFebruaryTreinings.filter(arr => arr.time === '19:00'))
-      // console.log("20:00: ", extractFebruaryTreinings.filter(arr => arr.time === '20:00'))
-      // const Extractvogue = 'Vogue';
-      // const ExtractkangooJumps = 'Kangoo jumps';
-      // const ExtractskyJumping = 'Sky jumping';
-      // const Extractstretching = 'Stretching';
-      // const ExtracthealthBack = 'Здорова спина';
-      // const ExtracthealthBack2 = 'Здорова спина +';
-      // const Extracttribal = 'Tribal fusion';
-      // const Extracttwerk = 'Twerk';
-      // const ExtractbodyBalet = 'Боди балет';
-      // const Extractfunctional = 'Functional';
-      // const ExtractfitnessMomChild = 'Фітнес мама + малюк';
-      // const Extractstrip18 = 'Strip 18+';
-      // const Extractzumba = 'Zumba';
-      // const Extractbachata = 'Bachata (парні танці)';
-      // const ExtractjazzFunk = 'Jazz-Funk';
-      // const ExtractTRXTabata = 'TRX + Tabata';
-      // const ExtractflyStretching = 'Fly stretching';
-      // const ExtractladyStyle = 'Lady style';
-      // const ExtractchildDance = 'Дитяча хореографія';
-      // const Extractbaking_18 = 'Булочна 18+';
-      // const ExtractbootyStretching = 'Booty stretching';
-
-      // console.log("extractFebruaryTreinings: ", extractFebruaryTreinings);
-      // const dataClientToday0800 = result.filter(arr => arr.info.some(infoDate => infoDate.date.slice(0, 10) === dateToday && infoDate.time === '08:00'));
-      // setAllClients(result);
+    const getData = async () => {
+      const getAllClients = await clientAPI.getDataALLUsers();
+      const getAllCoach = await clientAPI.getAllCoach();
+      const getAllKindTrainings = await clientAPI.getKindTraineeAll();
+      const extractInfo = getAllClients.flatMap(item => item.info);
+      setAllTrainee(extractInfo);
+      setAllCoach(getAllCoach);
+      setAllKindTrainings(getAllKindTrainings);
     };
     if (allTrainee.length === 0) {
-      getAllClients();
+      getData();
     }
   }, [allTrainee]);
-
-  useEffect(() => {
-    const getAllKindTrainee = async () => {
-      if (allKindTrainee.length === 0) {
-        const result = await clientAPI.getKindTraineeAll();
-        setAllKindTrainee(result)
-      }
-    }
-    getAllKindTrainee();
-  })
 
   useEffect(() => {
     const select = document.getElementById('choose-month');
     select.value = getMonth;
   }, [getMonth]);
 
-  // const SortingOfMonth = () => {
-  //   if (getMonth.length === 0) {
-  //     return null;
-  //   }
-  //   const month = allTrainee.filter(arr => arr.date.slice(5, 7) === getMonth);
-  //   return (
-  //     <ResultsWrapper>
-  //       <p>Всього: {month.length}</p>
-  //       {allKindTrainee.map((item) => (
-  //         <WrapperKindTrainee key={item._id}>
-  //           <KindTraineeRes>{item.value} : </KindTraineeRes>
-  //           <KindTraineeUsers>{month.filter(arr => arr.kind_trainee === item.value).length}</KindTraineeUsers>
-  //         </WrapperKindTrainee>
-  //     ))}
-  //     </ResultsWrapper>
-  //   )
-  // }
-
   const handleChooseMonth = (e) => {
     setGetMonth(e.target.value);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+    setCoachInfoTrainings('');
   }
 
-  const SortingOfMonth = () => {
-  if (getMonth.length === 0) {
-    return null;
+  const handleChooseCoach = (e) => {
+    const idCoach = e.target.id
+    const findCoach = allCoach.filter(arr => arr._id === idCoach);
+    const findTrainingsCoach = monthFiltered.filter(arr => arr.coach === findCoach[0].name_Coach);
+    setCoachInfoTrainings(findTrainingsCoach);
+    setCoachInfo(findCoach);
+    setShowModal(true);
   }
-  const month = allTrainee.filter(arr => arr.date.slice(5, 7) === getMonth);
-  const allCanceledTraining = month.filter(arr => arr.canceledTraining === true).length;
-  const kindTraineeResults = allKindTrainee
-    .map((item) => ({
-      value: item.value,
-      count: month.filter(arr => arr.kind_trainee === item.value).length,
-      canceledTraining: month.filter(arr => arr.kind_trainee === item.value && arr.canceledTraining === true).length
-    }))
-    .filter((item) => item.count > 0);
-  if (kindTraineeResults.length === 0) {
-    return null;
+
+  const SortingAnalysis = () => {
+    if (getMonth.length === 0) {
+      return null;
     }
+    const coachResults = allCoach
+      .map((item) => ({
+        value: item.name_Coach,
+        id: item._id,
+        count: monthFiltered.filter(arr => arr.coach === item.name_Coach).length,
+        canceledTraining: monthFiltered.filter(arr => arr.coach === item.name_Coach && arr.canceledTraining === true).length
+      }))
+      .filter((item) => item.count > 0);
+    const kindTraineeResults = allKindTrainings
+      .map((item) => ({
+        value: item.value,
+        count: monthFiltered.filter(arr => arr.kind_trainee === item.value).length,
+        canceledTraining: monthFiltered.filter(arr => arr.kind_trainee === item.value && arr.canceledTraining === true).length
+      }))
+      .filter((item) => item.count > 0);
+    const dayResults = day
+      .map((item) => ({
+        value: item.translate,
+        day: item.id,
+        count: monthFiltered.filter(arr => arr.day === item.id).length,
+        canceledTraining: monthFiltered.filter(arr => arr.day === item.id && arr.canceledTraining === true).length
+      }))
+      .filter((item) => item.count > 0);
+    const timeResults = time
+      .map((item) => ({
+        value: item.id,
+        count: monthFiltered.filter(arr => arr.time === item.id).length,
+        canceledTraining: monthFiltered.filter(arr => arr.time === item.id && arr.canceledTraining === true).length
+      }))
+      .filter((item) => item.count > 0);
     
+    // console.log(coachResults.map(item => item.value));
+
+    if (timeResults.length === 0) {
+      return null;
+    }
+    if (dayResults.length === 0) {
+      return null;
+    }
+    if (kindTraineeResults.length === 0) {
+      return null;
+      }
+    if (coachResults.length === 0) {
+      return null;
+    };
+    if (timeResults.length === 0) {
+      return null;
+    }
   function calculatePercentage(itemCount, monthLength) {
     const percentage = (itemCount / monthLength) * 100;
     return percentage.toFixed(2);
   }
-  return (
-    <ResultsWrapper>
-      <div>
-        <AllResults>Вид тренування </AllResults>
-        <AllResultsUsers>К-сть</AllResultsUsers>
-        <AllResultsUsers>Відміна</AllResultsUsers>
-        <AllResultsUsers>%</AllResultsUsers>
-      </div>
-      {kindTraineeResults.map((item) => (
-        <WrapperKindTrainee key={item.value}>
-          <KindTraineeRes>{item.value} </KindTraineeRes>
-          <KindTraineeUsers>{item.count}</KindTraineeUsers>
-          <KindTraineeUsers>{item.canceledTraining}</KindTraineeUsers>
-          <KindTraineeUsers>{calculatePercentage(item.count, month.length)}%</KindTraineeUsers>
-        </WrapperKindTrainee>
-      ))}
-      <div>
-        <AllResults>Всього: </AllResults>
-        <AllResultsUsers>{month.length}</AllResultsUsers>
-        <AllResultsUsers>{allCanceledTraining}</AllResultsUsers>
-        <AllResultsUsers>{100}%</AllResultsUsers>
-      </div>
-    </ResultsWrapper>
-  );
-};
-
-  const SortingOfDay = () => {
-  if (getMonth.length === 0) {
-    return null;
-  }
-  const month = allTrainee.filter(arr => arr.date.slice(5, 7) === getMonth);
-  const allCanceledTraining = month.filter(arr => arr.canceledTraining === true).length;
-  const dayResults = day
-    .map((item) => ({
-      value: item.translate,
-      day: item.id,
-      count: month.filter(arr => arr.day === item.id).length,
-      canceledTraining: month.filter(arr => arr.day === item.id && arr.canceledTraining === true).length
-    }))
-      .filter((item) => item.count > 0);
-    // console.log(month.filter(arr => arr.day === 'monday').length)
-  if (dayResults.length === 0) {
-    return null;
-  }
-  return (
-    <ResultsWrapper>
-      <div>
-        <AllResults>Вид тренування </AllResults>
-        <AllResultsUsers>К-сть</AllResultsUsers>
-        <AllResultsUsers>Відміна</AllResultsUsers>
-      </div>
-      {dayResults.map((item) => (
-        <WrapperKindTrainee key={item.value}>
-          <KindTraineeRes>{item.value} </KindTraineeRes>
-          <KindTraineeUsers>{item.count}</KindTraineeUsers>
-          <KindTraineeUsers>{item.canceledTraining}</KindTraineeUsers>
-        </WrapperKindTrainee>
-      ))}
-      <div>
-        <AllResults>Всього: </AllResults>
-        <AllResultsUsers>{month.length}</AllResultsUsers>
-        <AllResultsUsers>{allCanceledTraining}</AllResultsUsers>
-      </div>
-    </ResultsWrapper>
-  );
-  }
-
-  const SortingOfTime = () => {
-    if (getMonth.length === 0) {
-    return null;
-  }
-  const month = allTrainee.filter(arr => arr.date.slice(5, 7) === getMonth);
-  const allCanceledTraining = month.filter(arr => arr.canceledTraining === true).length;
-  const dayResults = time
-    .map((item) => ({
-      value: item.id,
-      count: month.filter(arr => arr.time === item.id).length,
-      canceledTraining: month.filter(arr => arr.time === item.id && arr.canceledTraining === true).length
-    }))
-      .filter((item) => item.count > 0);
-    // console.log(month.filter(arr => arr.day === 'monday').length)
-  if (dayResults.length === 0) {
-    return null;
-  }
-  return (
-    <ResultsWrapper>
-      <div>
-        <AllResults>Час</AllResults>
-        <AllResultsUsers>К-сть</AllResultsUsers>
-        <AllResultsUsers>Відміна</AllResultsUsers>
-      </div>
-      {dayResults.map((item) => (
-        <WrapperKindTrainee key={item.value}>
-          <KindTraineeRes>{item.value} </KindTraineeRes>
-          <KindTraineeUsers>{item.count}</KindTraineeUsers>
-          <KindTraineeUsers>{item.canceledTraining}</KindTraineeUsers>
-        </WrapperKindTrainee>
-      ))}
-      <div>
-        <AllResults>Всього: </AllResults>
-        <AllResultsUsers>{month.length}</AllResultsUsers>
-        <AllResultsUsers>{allCanceledTraining}</AllResultsUsers>
-      </div>
-    </ResultsWrapper>
-  );
-  }
-
+    return (
+      <>
+        {coachResults ?
+          <>
+            <ResultsWrapper>
+              <div>
+                <AllResults>Тренер</AllResults>
+                <AllResultsUsers>К-сть</AllResultsUsers>
+                <AllResultsUsers>Відміна</AllResultsUsers>
+              </div>
+              {coachResults.map((item) => (
+                <WrapperKindTrainee key={item.value}>
+                  <KindTraineeRes>{item.value} </KindTraineeRes>
+                  <KindTraineeUsers>
+                    {item.count}
+                    <InfoCoachBTN id={item.id} onClick={handleChooseCoach}>
+                      <BiSearchAlt2 id={item.id} onClick={handleChooseCoach} size={10} />
+                    </InfoCoachBTN>
+                  </KindTraineeUsers>
+                  <KindTraineeUsers>{item.canceledTraining}</KindTraineeUsers>
+                </WrapperKindTrainee>
+              ))}
+              <div>
+                <AllResults>Всього: </AllResults>
+                <AllResultsUsers>{monthFiltered.length}</AllResultsUsers>
+                <AllResultsUsers>{allCanceledTraining}</AllResultsUsers>
+              </div>
+            </ResultsWrapper>
+          </> : null}
+        {kindTraineeResults ?
+          <>
+            <ResultsWrapper>
+              <div>
+                <AllResults>Вид тренування </AllResults>
+                <AllResultsUsers>К-сть</AllResultsUsers>
+                <AllResultsUsers>Відміна</AllResultsUsers>
+                <AllResultsUsers>%</AllResultsUsers>
+              </div>
+              {kindTraineeResults.map((item) => (
+                <WrapperKindTrainee key={item.value}>
+                  <KindTraineeRes>{item.value} </KindTraineeRes>
+                  <KindTraineeUsers>{item.count}</KindTraineeUsers>
+                  <KindTraineeUsers>{item.canceledTraining}</KindTraineeUsers>
+                  <KindTraineeUsers>{calculatePercentage(item.count, monthFiltered.length)}%</KindTraineeUsers>
+                </WrapperKindTrainee>
+              ))}
+              <div>
+                <AllResults>Всього: </AllResults>
+                <AllResultsUsers>{monthFiltered.length}</AllResultsUsers>
+                <AllResultsUsers>{allCanceledTraining}</AllResultsUsers>
+                <AllResultsUsers>{100}%</AllResultsUsers>
+              </div>
+            </ResultsWrapper>
+          </> : null}
+        {dayResults ?
+          <>
+            <ResultsWrapper>
+              <div>
+                <AllResults>Вид тренування </AllResults>
+                <AllResultsUsers>К-сть</AllResultsUsers>
+                <AllResultsUsers>Відміна</AllResultsUsers>
+              </div>
+              {dayResults.map((item) => (
+                <WrapperKindTrainee key={item.value}>
+                  <KindTraineeRes>{item.value} </KindTraineeRes>
+                  <KindTraineeUsers>{item.count}</KindTraineeUsers>
+                  <KindTraineeUsers>{item.canceledTraining}</KindTraineeUsers>
+                </WrapperKindTrainee>
+              ))}
+              <div>
+                <AllResults>Всього: </AllResults>
+                <AllResultsUsers>{monthFiltered.length}</AllResultsUsers>
+                <AllResultsUsers>{allCanceledTraining}</AllResultsUsers>
+              </div>
+            </ResultsWrapper>
+          </> : null}
+        {timeResults ?
+          <>
+            <ResultsWrapper>
+              <div>
+                <AllResults>Час</AllResults>
+                <AllResultsUsers>К-сть</AllResultsUsers>
+                <AllResultsUsers>Відміна</AllResultsUsers>
+              </div>
+              {timeResults.map((item) => (
+                <WrapperKindTrainee key={item.value}>
+                  <KindTraineeRes>{item.value} </KindTraineeRes>
+                  <KindTraineeUsers>{item.count}</KindTraineeUsers>
+                  <KindTraineeUsers>{item.canceledTraining}</KindTraineeUsers>
+                </WrapperKindTrainee>
+              ))}
+              <div>
+                <AllResults>Всього: </AllResults>
+                <AllResultsUsers>{monthFiltered.length}</AllResultsUsers>
+                <AllResultsUsers>{allCanceledTraining}</AllResultsUsers>
+              </div>
+            </ResultsWrapper>
+          </> : null}
+      </>
+    );
+  };
 
   return (
-    <>
+    <AnalysisStyled>
       <select name="choose-month" id="choose-month" onChange={handleChooseMonth} style={{backgroundColor: 'inherit', border: 'none'}}>
         {month.map((item) => (
           <option value={item.label} key={item.id}>{item.translate}</option>
         ))}
       </select>
-      <SortingOfMonth/>
-      <SortingOfDay/>
-      <SortingOfTime/>
-      {/* {allKindTrainee.map((item) => (
-        <div key={item._id}>
-          <p></p>
-        </div>
-      ))} */}
-    </>
+      <SortingAnalysis />
+      {showModal ? <Modal closeModal={handleCloseModal} data={coachInfoTrainings} info={coachInfo} month={getMonth} /> : null}
+    </AnalysisStyled>
   );
 }
