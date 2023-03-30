@@ -1745,7 +1745,7 @@ const SortingTrainee = () => {
             const client10 = dataClientNextDay1000[9].info.find((value) => { return value.day === dayOfWeekNextDay.toLocaleLowerCase() && value.time === '10:00' && value.date.slice(0, 10) === dateNextDay; });
             const clientBase = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
             setClientsNextDay1000(clientBase);
-          };
+        };
           if (dataClientNextDay1100.length === '') {
             return (setClientsNextDay1100(''));
           };
@@ -9371,7 +9371,7 @@ const SortingTrainee = () => {
     const cappedHeight = Math.max(minHeight, Math.min(height, maxHeight)); // обмежуємо висоту від мінімальної до максимальної
   return `${cappedHeight}px`; // додаємо "px" для встановлення висоти в CSS
 };
-
+  // console.log(clientsNextDay1100)
   return(
     <div
       // style={{ display: 'flex', flexDirection: 'column' }}

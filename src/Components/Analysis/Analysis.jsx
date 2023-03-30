@@ -101,8 +101,10 @@ export default function Analysis() {
   const handleChooseCoach = (e) => {
     const idCoach = e.target.id
     const findCoach = allCoach.filter(arr => arr._id === idCoach);
+    if (findCoach) {
     const findTrainingsCoach = monthFiltered.filter(arr => arr.coach === findCoach[0].name_Coach);
     setCoachInfoTrainings(findTrainingsCoach);
+    }
     setCoachInfo(findCoach);
     setShowModal(true);
   }
@@ -273,7 +275,7 @@ export default function Analysis() {
         ))}
       </select>
       <SortingAnalysis />
-      {showModal ? <Modal closeModal={handleCloseModal} data={coachInfoTrainings} info={coachInfo} month={getMonth} /> : null}
+      {showModal ? <Modal closeModal={handleCloseModal} data={coachInfoTrainings} info={coachInfo} month={getMonth} times={time} /> : null}
     </AnalysisStyled>
   );
 }

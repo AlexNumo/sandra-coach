@@ -69,10 +69,12 @@ const AllClients = () => {
       );
   };
 
-  const LongestName = ({item}) =>{
-    const result = [];
-    item.info.map((info) => (
-      result.push(info.name.length)));
+  const LongestName = ({ item }) => {
+    // console.log(allClients.findIndex(arr => arr === item))
+    // const findIndexOnBase = allClients.findIndex(arr => arr === item);
+    // const result = [];
+    // item.info.map((info) => (
+    //   result.push(info.name.length)));
     // const indexOfMaxValue = result.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
       return(
         <>
@@ -127,17 +129,17 @@ const handleFindOfName = (e) => {
   };
 
   const countGreenUserInfos = () => {
-  const dateToday = moment().add(0, 'days').format('').slice(0, 10);
-  let count = 0;
-  for (let i = 0; i < allClients.length; i++) {
-    const dateLastTraining = allClients[i].info[allClients[i].info.length - 1].date.slice(0, 10);
-    const diffInDays = moment(dateToday).diff(moment(dateLastTraining), 'days');
-    if (diffInDays < 7) {
-      count++;
+    const dateToday = moment().add(0, 'days').format('').slice(0, 10);
+    let count = 0;
+    for (let i = 0; i < allClients.length; i++) {
+      const dateLastTraining = allClients[i].info[allClients[i].info.length - 1].date.slice(0, 10);
+      const diffInDays = moment(dateToday).diff(moment(dateLastTraining), 'days');
+      if (diffInDays < 7) {
+        count++;
+      }
     }
-  }
-  return count;
-  };
+    return count;
+    };
   
   // const sortedClients = allClients.sort((a, b) => b.info.length - a.info.length);
   const greenUserInfosCount = countGreenUserInfos();
@@ -199,11 +201,11 @@ const handleFindOfName = (e) => {
     // const dateToday = moment().add(0, 'days').format('').slice(0, 10);
     // const dateDiff = ({ item }) => { return (moment(dateToday).diff(moment(item.info[item.info.length - 1].date.slice(0, 10)), 'days')) };
     // console.log(dateToday)
-    const sortedClients = allClients.sort((a, b) => b.info.length - a.info.length);
+    // const sortedClients = allClients.sort((a, b) => b.info.length - a.info.length);
     return(
       <>
       {showAllUsers ? 
-      sortedClients.map((item) => (
+      allClients.map((item) => (
       <li key={item._id}>
       <CardWrapper key={item._id}>
 {/* ===============================Прізвище та ім'я============================================================ */}

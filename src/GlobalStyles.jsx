@@ -143,6 +143,10 @@ button {
   background-color: #f56666;
 }
 
+.canceled-training{
+  color: red;
+};
+
 @media screen and (max-width: 1200px){
   .monday {
     width: 50px;
