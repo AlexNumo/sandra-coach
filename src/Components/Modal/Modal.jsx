@@ -8,6 +8,7 @@ import {
   NameCoach,
   ListUsers,
   NotVisitTraining,
+  WrapperTitle,
 } from './Modal.styled';
 import { IoIosClose } from "react-icons/io";
 
@@ -177,20 +178,16 @@ const SalaryPaid = (clients, canceledClients) => {
 
   return (
     <WrapperModal>
+        <IoIosClose style={{ position: 'absolute', marginLeft: '385px', marginTop: '100px', color: '#7a7272', zIndex:'99' }} size={30} onClick={closeModal} />
       <Wrapper>
-        <IoIosClose style={{ position: 'absolute', marginLeft: '365px', marginTop: '-5px', color: '#7a7272' }} size={30} onClick={closeModal} />
-        <div style={{
-          width: '100%',
-          // display: 'flex', justifyContent: 'flex-start'
-        }}>
+        <WrapperTitle>
           Тренера &nbsp;
           <span style={{ color: '#56528d', fontWeight: '700' }}> {info[0].name_Coach}</span>
           &nbsp; у {getMonthName(month)} відвідало &nbsp;
           <span style={{ color: '#56528d', fontWeight: '700' }}>{data.length}&nbsp;</span>
           клієнта, які принесли йому ЗП у розмірі <span style={{ color: '#56528d', fontWeight: '700' }}>{paidCoach}&nbsp;₴</span>
-        </div>
+        </WrapperTitle>
         <ResultTrainingsOfCoach/>
-
       </Wrapper>
     </WrapperModal>
   )

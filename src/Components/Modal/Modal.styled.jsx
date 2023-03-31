@@ -58,6 +58,13 @@ const NotVisitTraining = styled.span`
   font-size: 14px;
 `;
 
+const WrapperTitle = styled.div`
+  position: sticky;
+  top: 0px;
+  background-color: inherit;
+  width: 100%;
+`;
+
 export {
   WrapperModal,
   Wrapper,
@@ -66,4 +73,5 @@ export {
   NameCoach,
   ListUsers,
   NotVisitTraining,
+  WrapperTitle,
 }

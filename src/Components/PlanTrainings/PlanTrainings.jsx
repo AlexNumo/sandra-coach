@@ -14,9 +14,6 @@ const PlanTrainings = () => {
     }
   }, [dataAllClients])
 
-
-
-
   const closeModal = () => {
     setShowModal(false);
   };

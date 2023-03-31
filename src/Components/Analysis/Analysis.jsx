@@ -13,8 +13,6 @@ import {
   InfoCoachBTN
 } from './Analysis.styled';
 import Modal from 'Components/Modal/Modal';
-// import Diagram from './Diagram/Diagram';
-// import moment from 'moment/moment';
 
 export default function Analysis() {
   const [allTrainee, setAllTrainee] = useState([]);
@@ -101,12 +99,12 @@ export default function Analysis() {
   const handleChooseCoach = (e) => {
     const idCoach = e.target.id
     const findCoach = allCoach.filter(arr => arr._id === idCoach);
-    if (findCoach) {
-    const findTrainingsCoach = monthFiltered.filter(arr => arr.coach === findCoach[0].name_Coach);
-    setCoachInfoTrainings(findTrainingsCoach);
+    if (findCoach.length > 0) { // Перевірка на довжину масиву
+      const findTrainingsCoach = monthFiltered.filter(arr => arr.coach === findCoach[0].name_Coach);
+      setCoachInfoTrainings(findTrainingsCoach);
+      setCoachInfo(findCoach);
+      setShowModal(true);
     }
-    setCoachInfo(findCoach);
-    setShowModal(true);
   }
 
   const SortingAnalysis = () => {

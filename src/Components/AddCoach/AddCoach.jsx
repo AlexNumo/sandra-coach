@@ -43,7 +43,6 @@ const AddCoach = () => {
   // });
 
   const DeleteCoach = (e) => {
-    console.log(e.target.value);
     clientAPI.deleteCoach(e.target.value);
   };
 
@@ -90,6 +89,7 @@ const AddCoach = () => {
           name_Coach: "",
           tel: "",
           instagram: "",
+          trainings: ''
         }}
         // validationSchema={CoachSchema}
         onSubmit={async values => {
@@ -167,6 +167,25 @@ const AddCoach = () => {
             {errors.instagram && touched.instagram && (
               <div className="input-feedback">{errors.instagram}</div>
             )}
+            <label htmlFor="trainings" style={{ display: "block" }}>
+              Назви тренувань
+            </label>
+            <input
+              id="trainings"
+              placeholder="Введіть назви тренувань"
+              type="text"
+              value={values.trainings}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={
+                errors.trainings && touched.trainings
+                  ? "text-input error"
+                  : "text-input"
+              }
+            />
+            {errors.trainings && touched.trainings && (
+              <div className="input-feedback">{errors.trainings}</div>
+            )}
             <BTNSubmit type="submit" disabled={isSubmitting}>
               Додати тренера
             </BTNSubmit>
@@ -180,7 +199,7 @@ const AddCoach = () => {
           id={coach.name_Coach}
         >
           <h3>
-          Ім'я: {coach.name_Coach}
+          Ім'я: {coach.name_Coach} {coach.trainings}
           </h3>
           <PhoneLink coach={coach} />
           <InstagramLink coach={coach} />
