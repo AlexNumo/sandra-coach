@@ -56,8 +56,9 @@ const AllClients = () => {
   };
 
   const URLInsta = ({ item }) => {
-    const nickname = item.info[item.info.length - 1].instaNickName;
-    if (item.info[item.info.length - 1].instaNickName === undefined || '') {
+    const nickname = item.info.length > 0 ? item.info[item.info.length - 1].instaNickName : 'test';
+    // if (item.info[item.info.length - 1].instaNickName === undefined && item.info.length > 0 || '') {
+    if (item.info.length > 0 && item.info[item.info.length - 1].instaNickName === undefined) {
       return (null);
     }
       const restructureNickname = nickname.substring(1);
@@ -78,7 +79,7 @@ const AllClients = () => {
     // const indexOfMaxValue = result.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
       return(
         <>
-          <span>{item.info[item.info.length - 1].name}</span>
+          <span>{item.info.length > 0 ? item.info[item.info.length - 1].name : <span></span>}</span>
         </>
       )
   };
@@ -128,25 +129,42 @@ const handleFindOfName = (e) => {
     setShowAllUsers(false);
   };
 
+  // const countGreenUserInfos = () => {
+  //   const dateToday = moment().add(0, 'days').format('').slice(0, 10);
+  //   let count = 0;
+  //   for (let i = 0; i < allClients.length; i++) {
+  //     const dateLastTraining = allClients[i].info[allClients[i].info.length - 1].date.slice(0, 10);
+  //     const diffInDays = moment(dateToday).diff(moment(dateLastTraining), 'days');
+  //     if (diffInDays < 7) {
+  //       count++;
+  //     }
+  //   }
+  //   return count;
+  //   };
   const countGreenUserInfos = () => {
-    const dateToday = moment().add(0, 'days').format('').slice(0, 10);
-    let count = 0;
-    for (let i = 0; i < allClients.length; i++) {
+  const dateToday = moment().add(0, 'days').format('').slice(0, 10);
+  let count = 0;
+  for (let i = 0; i < allClients.length; i++) {
+    if (allClients[i].info && allClients[i].info.length && allClients[i].info[allClients[i].info.length - 1]) {
       const dateLastTraining = allClients[i].info[allClients[i].info.length - 1].date.slice(0, 10);
+      if (dateLastTraining === "0") {
+        continue;
+      }
       const diffInDays = moment(dateToday).diff(moment(dateLastTraining), 'days');
       if (diffInDays < 7) {
         count++;
       }
     }
-    return count;
-    };
+  }
+  return count;
+  };
   
   // const sortedClients = allClients.sort((a, b) => b.info.length - a.info.length);
   const greenUserInfosCount = countGreenUserInfos();
 
   const CalculateBetween = ({ item }) => {
     const dateToday = moment().add(0, 'days').format('').slice(0, 10);
-    const dateLastTraining = item.info[item.info.length - 1].date.slice(0, 10);
+    const dateLastTraining = item.info.length > 0 ? item.info[item.info.length - 1].date.slice(0, 10) : '';
     const diffInDays = moment(dateToday).diff(moment(dateLastTraining), 'days');
     // Now you can use the `diffInDays` variable to conditionally apply styles to UserInfo component
     return(
@@ -171,9 +189,9 @@ const handleFindOfName = (e) => {
           <URLInsta item={item}/></div>
           </UserInfo>
 {/* ===============================Найчастіше відвідування====================================================== */}
-          <UserInfo>{item.info[item.info.length - 1].kind_trainee}</UserInfo>
+          <UserInfo>{item.info.length > 0 ? item.info[item.info.length - 1].kind_trainee : <span></span> }</UserInfo>
 {/* ===============================Дата останнього тренування=================================================== */}
-          <UserInfo>{item.info[item.info.length - 1].date.slice(0, 10)}<span>({item.info.length})</span></UserInfo>
+          <UserInfo>{item.info.length > 0 ? item.info[item.info.length - 1].date.slice(0, 10)  : <span></span>}<span>({item.info.length})</span></UserInfo>
 {/* ===============================Абонемент (залишок) та дата придбання======================================== */}
           <WrapperSeasonTiket>
             {item.seasonTickets[item.seasonTickets.length - 1] === undefined 
@@ -217,7 +235,7 @@ const handleFindOfName = (e) => {
         </div>
         </UserInfo>
 {/* ===============================Найчастіше відвідування====================================================== */}
-        <UserInfo>{item.info[item.info.length - 1].kind_trainee}</UserInfo>
+        <UserInfo>{item.info.length > 0 ? item.info[item.info.length - 1].kind_trainee : <span></span>}</UserInfo>
 {/* ===============================Дата останнього тренування=================================================== */}
         <CalculateBetween item={item}/>
 {/* ===============================Абонемент (залишок) та дата придбання======================================== */}
