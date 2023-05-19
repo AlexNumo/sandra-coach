@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { clientAPI } from "service/axios.config";
-import { BsInstagram, BsFillTelephoneFill } from "react-icons/bs";
+import { BsInstagram, BsFillTelephoneFill, BsTelegram } from "react-icons/bs";
 import { BiSearchAlt2 } from "react-icons/bi";
+// BsTelegram
 import AddSeasonTicket from "./AddSeasonTicket/AddSeasonTicket";
 import moment from 'moment/moment';
 // import CardUser from "./CardUser/CardUser";
@@ -70,6 +71,25 @@ const AllClients = () => {
       );
   };
 
+  const TGInfo = ({ item }) => {
+    // console.log(item)
+    if (item.infoTG && item.infoTG.length > 0) {
+      // console.log(item.infoTG.length)
+      return (
+        <>
+          <BsTelegram size={12} style={{marginLeft:'10px', color: 'green'}}/>
+        </>
+      )
+    }
+    return (
+      <>
+        <BsTelegram size={12} style={{marginLeft:'10px', color: 'red'}}/>
+      </>
+    )
+  }
+
+  // console.log(allClients[188].infoTG.length)
+
   const LongestName = ({ item }) => {
     // console.log(allClients.findIndex(arr => arr === item))
     // const findIndexOnBase = allClients.findIndex(arr => arr === item);
@@ -124,6 +144,16 @@ const handleFindOfName = (e) => {
     const find = allClients.filter((client) => {
       const number = client.id;
       return number.includes(searchINumber);
+    });
+    setResultOfFind(find);
+    setShowAllUsers(false);
+  };
+
+  const handleFindTGInfo = () => {
+    // const searchTG = e.target.value;
+    const find = allClients.filter((client) => {
+      const infoTG = client.infoTG.length > 0;
+      return infoTG;
     });
     setResultOfFind(find);
     setShowAllUsers(false);
@@ -186,7 +216,9 @@ const handleFindOfName = (e) => {
           <UserInfo><LongestName item={item}/><br/>
           <div style={{marginLeft:'10px'}}>
             <a href={`tel:${item.id}`} rel="noopener noreferrer"><BsFillTelephoneFill size={12}/></a>
-          <URLInsta item={item}/></div>
+            <URLInsta item={item} />
+            <TGInfo item={item} />    
+          </div>
           </UserInfo>
 {/* ===============================Найчастіше відвідування====================================================== */}
           <UserInfo>{item.info.length > 0 ? item.info[item.info.length - 1].kind_trainee : <span></span> }</UserInfo>
@@ -211,7 +243,43 @@ const handleFindOfName = (e) => {
       </>
     )
   };
-  
+  // ============Перевірка дублікатів====================================================================================
+
+  // if (allClients.length > 0) {
+  //   const checkedIds = [];
+  //   const duplicates = allClients.reduce((result, client, index) => {
+  //     if (checkedIds.includes(client.id) && !result.some(c => c.id === client.id)) {
+  //       result.push({
+  //         id: client.id,
+  //         info: client.info,
+  //         indexes: [checkedIds.indexOf(client.id), index]
+  //       });
+  //     } else {
+  //       checkedIds.push(client.id);
+  //     }
+  //     return result;
+  //   }, []);
+  //   if (duplicates.length > 0) {
+  //     console.log('Є дублікати:');
+  //     duplicates.forEach((duplicate) => {
+  //       console.log(`id: ${duplicate.id}, indexes: ${duplicate.indexes.join(', ')}, 
+  //       day: ${duplicate.info[0].day}, 
+  //       time: ${duplicate.info[0].time}, 
+  //       kind_trainee: ${duplicate.info[0].kind_trainee}, 
+  //       name: ${duplicate.info[0].name}, 
+  //       instaNickName: ${duplicate.info[0].instaNickName}, 
+  //       date: ${duplicate.info[0].date}, 
+  //       visitTrainee: ${duplicate.info[0].visitTrainee}, 
+  //       date: ${duplicate.info[0].date}, 
+  //       date: ${duplicate.info[0].date}, 
+  //       date: ${duplicate.info[0].date} `);
+  //     });
+  //   } else {
+  //     console.log('Дублікатів немає');
+  //   }
+  // }
+
+
   const RenderAllUsers = () => {
     if(allClients.length === 0){
       return(null)
@@ -230,7 +298,8 @@ const handleFindOfName = (e) => {
         <UserInfo><LongestName item={item}/><br/>
         <div style={{marginLeft:'10px'}}>
           <a href={`tel:${item.id}`} rel="noopener noreferrer"><BsFillTelephoneFill size={12}/></a>
-          <URLInsta item={item}/>
+          <URLInsta item={item} />
+          <TGInfo item={item} />    
           {/* <ShowCardUserBTN type="button" id={item._id} onClick={handleOpenModalCardUser}><HiMagnifyingGlassPlus size={12} id={item._id} onClick={handleOpenModalCardUser}/></ShowCardUserBTN> */}
         </div>
         </UserInfo>
@@ -263,6 +332,25 @@ const handleFindOfName = (e) => {
     setShowAllUsers(true)
     setResultOfFind('')
   }
+  // console.log("allClients, ", allClients);
+
+  function countUsersWithInfoTG(users) {
+    // if (!Array.isArray(users)) {
+    //   return 0;
+    // }
+
+    let count = 0;
+    for (const user of users) {
+      if (user.infoTG && user.infoTG.length > 0) {
+        count++;
+      }
+    }
+
+    return count;
+  }
+  // if (allClients.length > 0) {
+    const result = countUsersWithInfoTG(allClients);
+  // }
 
   return (
     <WrapperUsers>
@@ -290,7 +378,12 @@ const handleFindOfName = (e) => {
         </NameOfSearch>
       </SearchList>
       <ListUsers>
-      <p>Клієнтів за тиждень: {greenUserInfosCount}</p>
+        <p>Клієнтів за тиждень: {greenUserInfosCount}</p>
+        <p>Клієнтів TG: {result}
+          <button onClick={handleFindTGInfo} style={{ padding: '2px 5px 2px 5px', border: 'none' }}>
+            <BsTelegram size={8} style={{ marginLeft: '1px', paddingTop: '0px', color: 'green' }} />
+          </button>
+        </p>
         {resultOfFind ? <RenderFindingUser/> : <RenderAllUsers/>}
       </ListUsers>
     </WrapperUsers>
