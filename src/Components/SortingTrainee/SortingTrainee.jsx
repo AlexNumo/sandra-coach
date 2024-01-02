@@ -115,7 +115,7 @@ const SortingTrainee = () => {
   // console.log(clientsToday1700)
   
   useEffect(() => {
-    if(dataAllClients === ''){
+    if (dataAllClients === '') {
       clientAPI.getDataALLUsers().then(result => {
         const dateToday = moment().add(0, 'days').format('').slice(0, 10);
         const dateNextDay = moment().add(1, 'days').format('').slice(0, 10);
@@ -149,7 +149,7 @@ const SortingTrainee = () => {
           return clients;
         };
 
-// ========================TODAY================================================================================================
+        // ========================TODAY================================================================================================
         setClientsToday0800(getClientsDayTime('08:00', dateToday, dayOfWeekToday));
         setClientsToday0900(getClientsDayTime('09:00', dateToday, dayOfWeekToday));
         setClientsToday1000(getClientsDayTime('10:00', dateToday, dayOfWeekToday));
@@ -163,7 +163,7 @@ const SortingTrainee = () => {
         setClientsToday1800(getClientsDayTime('18:00', dateToday, dayOfWeekToday));
         setClientsToday1900(getClientsDayTime('19:00', dateToday, dayOfWeekToday));
         setClientsToday2000(getClientsDayTime('20:00', dateToday, dayOfWeekToday));
-// =========================NextDay================================================================================================
+        // =========================NextDay================================================================================================
         setClientsNextDay0800(getClientsDayTime('08:00', dateNextDay, dayOfWeekNextDay));
         setClientsNextDay0900(getClientsDayTime('09:00', dateNextDay, dayOfWeekNextDay));
         setClientsNextDay1000(getClientsDayTime('10:00', dateNextDay, dayOfWeekNextDay));
@@ -178,7 +178,7 @@ const SortingTrainee = () => {
         setClientsNextDay1900(getClientsDayTime('19:00', dateNextDay, dayOfWeekNextDay));
         setClientsNextDay2000(getClientsDayTime('20:00', dateNextDay, dayOfWeekNextDay));
 
-// =========================NextDayTwo================================================================================================
+        // =========================NextDayTwo================================================================================================
         setClientsNextDayTwo0800(getClientsDayTime('08:00', dateNextDay1, dayOfWeekNextDay1));
         setClientsNextDayTwo0900(getClientsDayTime('09:00', dateNextDay1, dayOfWeekNextDay1));
         setClientsNextDayTwo1000(getClientsDayTime('10:00', dateNextDay1, dayOfWeekNextDay1));
@@ -192,7 +192,7 @@ const SortingTrainee = () => {
         setClientsNextDayTwo1800(getClientsDayTime('18:00', dateNextDay1, dayOfWeekNextDay1));
         setClientsNextDayTwo1900(getClientsDayTime('19:00', dateNextDay1, dayOfWeekNextDay1));
         setClientsNextDayTwo2000(getClientsDayTime('20:00', dateNextDay1, dayOfWeekNextDay1));
-// =========================NextDayThree================================================================================================
+        // =========================NextDayThree================================================================================================
         setClientsNextDayThree0800(getClientsDayTime('08:00', dateNextDay2, dayOfWeekNextDay2));
         setClientsNextDayThree0900(getClientsDayTime('09:00', dateNextDay2, dayOfWeekNextDay2));
         setClientsNextDayThree1000(getClientsDayTime('10:00', dateNextDay2, dayOfWeekNextDay2));
@@ -206,7 +206,7 @@ const SortingTrainee = () => {
         setClientsNextDayThree1800(getClientsDayTime('18:00', dateNextDay2, dayOfWeekNextDay2));
         setClientsNextDayThree1900(getClientsDayTime('19:00', dateNextDay2, dayOfWeekNextDay2));
         setClientsNextDayThree2000(getClientsDayTime('20:00', dateNextDay2, dayOfWeekNextDay2));
-// =========================NextDayFour================================================================================================
+        // =========================NextDayFour================================================================================================
         setClientsNextDayFour0800(getClientsDayTime('08:00', dateNextDay3, dayOfWeekNextDay3));
         setClientsNextDayFour0900(getClientsDayTime('09:00', dateNextDay3, dayOfWeekNextDay3));
         setClientsNextDayFour1000(getClientsDayTime('10:00', dateNextDay3, dayOfWeekNextDay3));
@@ -220,7 +220,7 @@ const SortingTrainee = () => {
         setClientsNextDayFour1800(getClientsDayTime('18:00', dateNextDay3, dayOfWeekNextDay3));
         setClientsNextDayFour1900(getClientsDayTime('19:00', dateNextDay3, dayOfWeekNextDay3));
         setClientsNextDayFour2000(getClientsDayTime('20:00', dateNextDay3, dayOfWeekNextDay3));
-// =========================NextDayFive================================================================================================
+        // =========================NextDayFive================================================================================================
         setClientsNextDayFive0800(getClientsDayTime('08:00', dateNextDay4, dayOfWeekNextDay4));
         setClientsNextDayFive0900(getClientsDayTime('09:00', dateNextDay4, dayOfWeekNextDay4));
         setClientsNextDayFive1000(getClientsDayTime('10:00', dateNextDay4, dayOfWeekNextDay4));
@@ -234,7 +234,7 @@ const SortingTrainee = () => {
         setClientsNextDayFive1800(getClientsDayTime('18:00', dateNextDay4, dayOfWeekNextDay4));
         setClientsNextDayFive1900(getClientsDayTime('19:00', dateNextDay4, dayOfWeekNextDay4));
         setClientsNextDayFive2000(getClientsDayTime('20:00', dateNextDay4, dayOfWeekNextDay4));
-// =========================NextDaySix================================================================================================
+        // =========================NextDaySix================================================================================================
         setClientsNextDaySix0800(getClientsDayTime('08:00', dateNextDay5, dayOfWeekNextDay5));
         setClientsNextDaySix0900(getClientsDayTime('09:00', dateNextDay5, dayOfWeekNextDay5));
         setClientsNextDaySix1000(getClientsDayTime('10:00', dateNextDay5, dayOfWeekNextDay5));
@@ -249,11 +249,9 @@ const SortingTrainee = () => {
         setClientsNextDaySix1900(getClientsDayTime('19:00', dateNextDay5, dayOfWeekNextDay5));
         setClientsNextDaySix2000(getClientsDayTime('20:00', dateNextDay5, dayOfWeekNextDay5));
         setDataAllClients(dayOfWeekToday);
-    })}
-  }, [dataAllClients, clientsToday0800, clientsToday0900, clientsToday1000, clientsToday1100, clientsToday1200, clientsToday1300,
-    clientsToday1400, clientsToday1500, clientsToday1600, clientsToday1700, clientsToday1800, clientsToday1900, clientsToday2000,
-  clientsNextDay0800, clientsNextDay0900, clientsNextDay1000, clientsNextDay1100, clientsNextDay1200, clientsNextDay1300,
-    clientsNextDay1400, clientsNextDay1500, clientsNextDay1600, clientsNextDay1700, clientsNextDay1800, clientsNextDay1900, clientsToday2000])
+      })
+    }
+  }, [dataAllClients]);
           // console.log(clientsNextDay1400);
   useEffect(() => {
     const dayOfWeekToday = moment().add(0, 'days').format('dddd');
@@ -337,20 +335,19 @@ const SortingTrainee = () => {
         }
       };
       dayTranslate();
-  }, [today]);
-  // const instaNickName = '12121212';
-  // const urlInsta = `https://www.instagram.com/${instaNickName.substring(1)}/`
+  }, []);
+
   const URLInsta = ({ item }) => {
-    // console.log(item)
     const urlInstagram = `https://www.instagram.com/${item.instaNickName.substring(1)}`
     if (item.instaNickName === undefined) {
-      // console.log("DADADA")
       const notFound = `https://www.instagram.com/`;
       return (notFound);
     }
     return (urlInstagram);
   };
 
+  console.log('BAD 2')
+  
   const ContinueBTN = () => {
     if (continueView === true) {
       return(setContinueView(false));
@@ -369,14 +366,11 @@ const SortingTrainee = () => {
     return `${cappedHeight}px`; // додаємо "px" для встановлення висоти в CSS
   };
 
-  console.log('BAD 2')
   return(
     <div
-      // style={{ display: 'flex', flexDirection: 'column' }}
       style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}
     >
       <div>
-        {/* <DayOfWeekWrapper><p>День/</p><p>Час</p></DayOfWeekWrapper> */}
         {continueView ?
         <WrapperBTN>
           <NextDaysBTN onClick={ContinueBTN}>Next</NextDaysBTN>
