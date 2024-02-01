@@ -18,11 +18,11 @@ export default function Analysis() {
   const [allTrainee, setAllTrainee] = useState([]);
   const [allCoach, setAllCoach] = useState([]);
   const [allKindTrainings, setAllKindTrainings] = useState([]);
-  const [getMonth, setGetMonth] = useState(moment().add(0, 'days').format('').slice(5, 7));
+  const [getYearMonth, setGetYearMonth] = useState(moment().add(0, 'days').format('YYYY-MM'));
   const [showModal, setShowModal] = useState(false);
   const [coachInfoTrainings, setCoachInfoTrainings] = useState('');
   const [coachInfo, setCoachInfo] = useState('');
-  const monthFiltered = allTrainee.filter(arr => arr.date.slice(5, 7) === getMonth);
+  const monthFiltered = allTrainee.filter(arr => arr.date.slice(0, 7) === getYearMonth);
   const allCanceledTraining = monthFiltered.filter(arr => arr.canceledTraining === true).length;
 
   const month = [
@@ -84,11 +84,12 @@ export default function Analysis() {
 
   useEffect(() => {
     const select = document.getElementById('choose-month');
-    select.value = getMonth;
-  }, [getMonth]);
+    select.value = getYearMonth.slice(5, 7);
+  }, [getYearMonth]);
 
   const handleChooseMonth = (e) => {
-    setGetMonth(e.target.value);
+    const newMonth = e.target.value;
+    setGetYearMonth(`${getYearMonth.slice(0, 4)}-${newMonth}`);
   };
 
   const handleCloseModal = () => {
@@ -99,7 +100,7 @@ export default function Analysis() {
   const handleChooseCoach = (e) => {
     const idCoach = e.target.id
     const findCoach = allCoach.filter(arr => arr._id === idCoach);
-    if (findCoach.length > 0) { // Перевірка на довжину масиву
+    if (findCoach.length > 0) {
       const findTrainingsCoach = monthFiltered.filter(arr => arr.coach === findCoach[0].name_Coach);
       setCoachInfoTrainings(findTrainingsCoach);
       setCoachInfo(findCoach);
@@ -108,7 +109,7 @@ export default function Analysis() {
   }
 
   const SortingAnalysis = () => {
-    if (getMonth.length === 0) {
+    if (getYearMonth.length === 0) {
       return null;
     }
     const coachResults = allCoach
@@ -267,13 +268,15 @@ export default function Analysis() {
 
   return (
     <AnalysisStyled>
-      <select name="choose-month" id="choose-month" onChange={handleChooseMonth} style={{backgroundColor: 'inherit', border: 'none'}}>
+      <select name="choose-month" id="choose-month" onChange={handleChooseMonth} style={{ backgroundColor: 'inherit', border: 'none' }}>
         {month.map((item) => (
-          <option value={item.label} key={item.id}>{item.translate}</option>
+          <option value={item.label} key={item.id}>
+            {item.translate}
+          </option>
         ))}
       </select>
       <SortingAnalysis />
-      {showModal ? <Modal closeModal={handleCloseModal} data={coachInfoTrainings} info={coachInfo} month={getMonth} times={time} /> : null}
+      {showModal ? <Modal closeModal={handleCloseModal} data={coachInfoTrainings} info={coachInfo} month={getYearMonth} times={time} /> : null}
     </AnalysisStyled>
   );
 }
