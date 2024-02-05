@@ -13,6 +13,7 @@ import {
 import { IoIosClose } from "react-icons/io";
 
 const Modal = ({ closeModal, data, info, month, times }) => {
+  // console.log(data)
   const [dates, setDates] = useState([]);
   const [showClients, setShowClients] = useState({});
   const [paidCoach, setPaidCoach] = useState([]);
@@ -36,19 +37,37 @@ const Modal = ({ closeModal, data, info, month, times }) => {
   }
   
   useEffect(() => {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const monthIndex = parseInt(month) - 1;
-    const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+    // const currentDate = new Date();
+    // const year = currentDate.getFullYear();
+
+    // Розділити значення month на рік та місяць
+    const [inputYear, inputMonth] = month.split('-');
+    
+    const yearNumber = parseInt(inputYear, 10);
+    const monthIndex = parseInt(inputMonth, 10);
+
+    // Перевірка на коректність значень
+    if (isNaN(yearNumber) || isNaN(monthIndex) || yearNumber < 1 || yearNumber > 9999 || monthIndex < 1 || monthIndex > 12) {
+      console.error('Некоректне значення місяця', month);
+      return;
+    }
+
+    const daysInMonth = new Date(yearNumber, monthIndex + 1, 0).getDate();
     const monthDates = [];
 
     for (let i = 1; i <= daysInMonth; i++) {
-      const day = i < 10 ? `0${i}` : `${i}`;
-      const date = `${year}-${month}-${day}`;
+      const day = i.toString().padStart(2, '0');
+      const formattedMonth = (monthIndex).toString().padStart(2, '0');
+      const date = `${yearNumber}-${formattedMonth}-${day}`;
       monthDates.push(date);
     }
+
+    // console.log('monthDates:', monthDates);
     setDates(monthDates);
   }, [month]);
+
+
+
 
   useEffect(() => {
     const paidElements = Array.from(document.querySelectorAll('#paid'));
@@ -71,6 +90,7 @@ const Modal = ({ closeModal, data, info, month, times }) => {
     return filteredData;
   }
   filterDataByDates();
+
   const salary = [
     { id: 0, paid: 100 },
     { id: 1, paid: 200 },
@@ -108,12 +128,17 @@ const SalaryPaid = (clients, canceledClients) => {
   // console.log(paidCoach)
   const ResultTrainingsOfCoach = () => {
     const timesArray = Object.values(times);
+    // console.log(timesArray)
     return (
     <>
       {dates.map((item) => (
         <div key={item}>
           {timesArray.map((time) => {
+            // console.log("dates: ", dates);
+            // const filteredData = data.filter(arr => arr.date.slice(0, 10) === item && arr.time === time.id);
             const filteredData = data.filter(arr => arr.date.slice(0, 10) === item && arr.time === time.id);
+            // console.log("filteredData: ", filteredData)
+            // console.log("item: ", item)
             const filteredDataCanceled = data.filter(arr => arr.date.slice(0, 10) === item && arr.time === time.id && arr.canceledTraining === true);
             if (filteredData.length > 0) {
               return (
