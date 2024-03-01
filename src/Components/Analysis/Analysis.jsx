@@ -93,11 +93,11 @@ export default function Analysis() {
     setGetYearMonth(`${selectedYear}-${newMonth}`);
   };
 
-  const handleChooseYear = (e) => {
-    const newYear = e.target.value;
-    setSelectedYear(newYear);
-    setGetYearMonth(`${newYear}-${getYearMonth.slice(5, 7)}`);
-  };
+const handleChooseYear = (e) => {
+  const newYear = e.target.value;
+  setSelectedYear(newYear);
+  setGetYearMonth(`${newYear}-${getYearMonth.slice(5, 7)}`);
+};
 
   const handleCloseModal = () => {
     setShowModal(false)
